@@ -15,8 +15,6 @@
 # **************************************************************************************
 import sys
 import math
-# import library for all combinations, to get started, install the library: pip install more-itertools
-from more_itertools import powerset
 from itertools import combinations
 
 print("*****************************************************************")
