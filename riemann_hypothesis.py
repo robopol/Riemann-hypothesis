@@ -171,7 +171,7 @@ while True:
         break     
     # sequence (1)
     if sequen==1:
-        print("Enter the number of members in sequence '1', max 20 (memory overflow):")
+        print("Enter the number of members in sequence '1', max 30 (memory overflow):")
         count_n=get_input()
         field_sequence_1=sequence_1(count_n)
         print("--wait for the result--")
