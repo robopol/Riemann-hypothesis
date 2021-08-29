@@ -23,16 +23,16 @@ import math
 from itertools import combinations
 import matplotlib.pyplot as plt
 
-print("**************************************************************************")
+print("********************************************************************************")
 print("Riemann hypothesis:")
 print("")
-print("To select a sequence, press 0,1,2, 3 -(it is not available yet)")
+print("To select a sequence, press 0,1,2,3")
 print("0 - to end the program, press 0 and the enter.")
 print("1 - infinite prime number sequence: N=2*3*5*7*11*13...")
 print("2 - infinite sequence: N=2*3*4*5*6*7*8...")
-print("3 - ideal pattern: it is not available yet")
+print("3 - ideal pattern sequence based on 1) and 2) that maximizes the Guy robin index")
 print("To end the program, press 0 and the enter.")
-print("**************************************************************************")
+print("********************************************************************************")
 
 # defining the necessary constants.
 e_gama=1.7909733665348811333619013505910
