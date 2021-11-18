@@ -203,7 +203,7 @@ def sequence_2(count_n):
             decomposition=decomp_number(number)
             # call new sigma function, robopol theorem
             sigma_value=sigma_new(decomposition)
-            # calculate Guy Robin index for sequence
+            # calculate Guy Robin  index for sequence
             if sigma_value >=10**300:
                 logarithm=math.log(math.log(number))       
                 divis=multipl(logarithm,number)
@@ -426,29 +426,31 @@ def sequence():
             messagebox.showwarning(title=Warning, message="Enter the number of members in sequence '3'-(only integer value):")
         count_n=get_input()
         global field_sequence_3
-        field_sequence_3=sequence_3(count_n)
-        print("Last number in sequence '3' is:")
-        print(field_sequence_3[-1])
-        index_i=1; field_chart_3=[]
+        field_sequence_3=sequence_3(count_n)                
+        max_3=1; field_max_3=[]; field_chart_3=[]        
         for field_3_i in field_sequence_3:
             field_chart_3.append(field_3_i[-1])
-            if field_3_i==field_sequence_3[-1]:
-                # initialization of the number decomposition function
-                decomposition=decomp_number(field_3_i[0])      
-                print("Number decomposition is:")    
-                v=1
-                for numb in decomposition:
-                    u=1                        
-                    for i in numb:
-                        if u == len(numb):
-                            print (f'{i}',end='')
-                        else:
-                            u+=1
-                            print (f'{i}ˆ',end='')                              
-                    if v < len(decomposition):
-                        print(f' * ',end='')
-                        v+=1      
-                print("")
+            if field_3_i[0] > max_3 and field_3_i[0] >5040: 
+                max_3=field_3_i[0]
+                field_max_3=field_3_i            
+        print("Best score in sequence '3' is:")
+        print(field_max_3)
+        # initialization of the number decomposition function
+        decomposition=decomp_number(max_3)
+        print("Number decomposition is:")
+        v=1
+        for numb in decomposition:
+            u=1
+            for i in numb:
+                if u == len(numb):
+                    print (f'{i}',end='')
+                else:
+                    u+=1
+                    print (f'{i}ˆ',end='')
+            if v < len(decomposition):
+                print(f' * ',end='')
+                v+=1
+        print("")
         # plot a sequence graph (3)
         plt.title(" Chart Guy Robin sequence no.'3'- ideal numbers")
         plt.grid(True)
