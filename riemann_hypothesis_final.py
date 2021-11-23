@@ -34,7 +34,6 @@ root.geometry("510x710")
 # Add image file
 bg=PhotoImage(file="riemann.png")
 
-
 # tkinker forms  
 frame_riemann=LabelFrame(root, text="Calculate Guy Robin", padx=20, pady=20)
 frame_riemann.pack(padx=20, pady=20)
@@ -130,23 +129,17 @@ def multipl(float_num, number):
 
 # New function calculate sigma, robopol theorem
 def sigma_new(decomposition):
-    sigma_last=1; number=1    
+    # defining the necessary constants.
+    sigma_last=1; decomp_correction=[]     
     for decom in decomposition:
-        number*=decom[0]        
-        sigma_last*=(decom[0]+1)        
-        if decom[1] >1:
-            index=1
-            for i in range(2,decom[1]+1):                                
-                if i==2:
-                    index=decom[0]+1/(1+decom[0])
-                if i>2:
-                    index=index*decom[0]+1/(1+decom[0])
-            if sigma_last >10**200:
-                # correction for multiplication of large numbers
-                sigma_last=multipl(index,sigma_last)                
-            else:
-                sigma_last=int(sigma_last*index)
-            
+        number_correction=0
+        for i in range(1,decom[1]+1):
+            number_correction+=int(decom[0]**(i))
+        decomp_correction.append(number_correction)
+    # calculate sigma
+    for numb in decomp_correction:
+        sigma_last*=int(numb+1)
+                    
     return sigma_last       
 
 #  function basic sequence primes
@@ -203,7 +196,7 @@ def sequence_2(count_n):
             decomposition=decomp_number(number)
             # call new sigma function, robopol theorem
             sigma_value=sigma_new(decomposition)
-            # calculate Guy Robin  index for sequence
+            # calculate Guy Robin index for sequence
             if sigma_value >=10**300:
                 logarithm=math.log(math.log(number))       
                 divis=multipl(logarithm,number)
@@ -357,26 +350,10 @@ def sequence():
         field_sequence_1=sequence_1(count_n)        
         print("Last number in sequence '1' is:")
         print(field_sequence_1[-1])
-        index_i=1; field_chart_1=[]
+        field_chart_1=[]
         for field_1_i in field_sequence_1:
             field_chart_1.append(field_1_i[-1])
-            if field_1_i==field_sequence_1[-1]:
-                # initialization of the number decomposition function
-                decomposition=decomp_number(field_1_i[0])      
-                print("Number decomposition is:")    
-                v=1
-                for numb in decomposition:
-                    u=1                        
-                    for i in numb:
-                        if u == len(numb):
-                            print (f'{i}',end='')
-                        else:
-                            u+=1
-                            print (f'{i}ˆ',end='')                              
-                    if v < len(decomposition):
-                        print(f' * ',end='')
-                        v+=1      
-                print("")                           
+                                       
         # plot a sequence graph (1)
         plt.title("Chart Guy Robin sequence no.'1'")
         plt.grid(True)
@@ -393,26 +370,10 @@ def sequence():
         field_sequence_2=sequence_2(count_n)        
         print("Last number in sequence '2' is:")
         print(field_sequence_2[-1])
-        index_i=1; field_chart_2=[]
+        field_chart_2=[]
         for field_2_i in field_sequence_2:
             field_chart_2.append(field_2_i[-1])            
-            if field_2_i==field_sequence_2[-1]:
-                # initialization of the number decomposition function
-                decomposition=decomp_number(field_2_i[0])      
-                print("Number decomposition is:")    
-                v=1
-                for numb in decomposition:
-                    u=1                        
-                    for i in numb:
-                        if u == len(numb):
-                            print (f'{i}',end='')
-                        else:
-                            u+=1
-                            print (f'{i}ˆ',end='')                              
-                    if v < len(decomposition):
-                        print(f' * ',end='')
-                        v+=1      
-                print("")
+            
         # plot a sequence graph (2)
         plt.title(" Chart Guy Robin sequence no.'2'")
         plt.grid(True)
@@ -435,22 +396,7 @@ def sequence():
                 field_max_3=field_3_i            
         print("Best score in sequence '3' is:")
         print(field_max_3)
-        # initialization of the number decomposition function
-        decomposition=decomp_number(max_3)
-        print("Number decomposition is:")
-        v=1
-        for numb in decomposition:
-            u=1
-            for i in numb:
-                if u == len(numb):
-                    print (f'{i}',end='')
-                else:
-                    u+=1
-                    print (f'{i}ˆ',end='')
-            if v < len(decomposition):
-                print(f' * ',end='')
-                v+=1
-        print("")
+        
         # plot a sequence graph (3)
         plt.title(" Chart Guy Robin sequence no.'3'- ideal numbers")
         plt.grid(True)
