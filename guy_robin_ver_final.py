@@ -192,22 +192,16 @@ def multipl(float_num, number):
 
 # New function calculate sigma, robopol theorem
 def sigma_new(decomposition):
-    sigma_last=1; number=1    
+    # defining the necessary constants.
+    sigma_last=1; decomp_correction=[]     
     for decom in decomposition:
-        number*=decom[0]        
-        sigma_last*=(decom[0]+1)        
-        if decom[1] >1:
-            index=1
-            for i in range(2,decom[1]+1):                                
-                if i==2:
-                    index=decom[0]+1/(1+decom[0])
-                if i>2:
-                    index=index*decom[0]+1/(1+decom[0])
-            if sigma_last >10**300:
-                # correction for multiplication of large numbers
-                sigma_last=multipl(index,int(sigma_last))                
-            else:            
-                sigma_last=int(sigma_last*index)                        
+        number_correction=0
+        for i in range(1,decom[1]+1):
+            number_correction+=int(decom[0]**(i))
+        decomp_correction.append(number_correction)
+    # calculate sigma
+    for numb in decomp_correction:
+        sigma_last*=int(numb+1)                        
                          
     print(f'sigma is: {sigma_last}')
     return sigma_last
