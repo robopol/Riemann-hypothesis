@@ -145,21 +145,25 @@ def sigma_new(decomposition):
 #  function basic sequence primes
 def basic_sequence(count_n):
     # creation of a field of primes
-    k=1
-    field_primes_count_n=[2,3]
-    while len(field_primes_count_n) <= count_n:
+    k=1; index=2
+    field_primes_count_n=[2,3]    
+    while index < count_n:
         divis_1=6*k-1
         divis_2=6*k+1
-        k+=1; t=0; r=0
-        for i in field_primes_count_n:                          
-            if divis_1 % i !=0:
-                t+=1
-                if t==len(field_primes_count_n):
-                    field_primes_count_n.append(divis_1)
-            if divis_2 % i !=0:
-                r+=1
-                if r==len(field_primes_count_n):
-                    field_primes_count_n.append(divis_2)            
+        const_1=1; const_2=1
+        border=round(math.sqrt(divis_2)+1)
+        for i in field_primes_count_n:
+            if divis_1 % i==0:const_1=0
+            if divis_2 % i==0:const_2=0    
+            if i > border:
+                break                          
+        if const_1==1: 
+            field_primes_count_n.append(divis_1)
+            index+=1
+        if const_2==1: 
+            field_primes_count_n.append(divis_2)
+            index+=1   
+        k+=1            
     return field_primes_count_n
 
 #  function sequence (1)
