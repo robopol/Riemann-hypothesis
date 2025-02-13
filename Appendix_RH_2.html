@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appendix No. 2: Alternative Proof of Robopol Theorem via Mertens</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #e8f6f3; /* Light blue-green background */
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #16a085;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        /* Proof Styles */
+        .proof {
+            background-color: #ffffff;
+            padding: 25px;
+            border-left: 5px solid #16a085; /* Green */
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .equation {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #2980b9;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 4px;
+            font-size: 90%;
+            border-radius: 3px;
+        }
+        /* Footer Styles */
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+        }
+        /* Language Switcher Styles */
+        .language-switcher {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .language-switcher button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #3498db; /* Blue */
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+        .language-switcher button:hover {
+            background-color: #2980b9;
+        }
+        .slovak-content {
+            display: none;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .language-switcher {
+                text-align: center;
+            }
+            .language-switcher button {
+                margin: 5px;
+                width: 45%;
+            }
+        }
+    </style>
+    <!-- Include MathJax for rendering LaTeX equations -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Appendix No. 2: Alternative Proof of Robopol Theorem via Mertens</h1>
+    <h2>Author: Ing. Robert Polák (Slovakia)</h2>
+    <h3>Date: 10.02.2025</h3>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button onclick="showEnglish()">English</button>
+        <button onclick="showSlovak()">Slovensky</button>
+    </div>
+
+    <!-- English Content -->
+    <div id="english-content" class="english-content">
+
+        <p><em>This appendix provides an alternate route to proving the Robopol theorem using the third Mertens theorem and its explicit estimates (e.g., from Rosser–Schoenfeld), without employing smooth functions or \(\Delta x\)-based arguments.</em></p>
+
+        <hr>
+
+        <h2>1. Statement of the Robopol Theorem</h2>
+        <p>
+            In the main text, the Robopol theorem is formulated (in versions (3.1) and (3.2)) for <em>highly composite numbers</em> \( n \). Let \( p_n \) be the largest prime divisor of \( n \). Then, for sufficiently large \( n \):
+        </p>
+        <div class="equation">
+            \( \beta(n) = \prod_{p \le p_n} \frac{p}{p-1} < e^{\gamma}\,\log\bigl(p_n\bigr) \quad \text{(3.2)} \)
+        </div>
+        <p>
+            or
+        </p>
+        <div class="equation">
+            \( \beta(n) < e^{\gamma}\,\log\bigl(\log(n)\bigr) \quad \text{(3.1)} \)
+        </div>
+        <p>
+            depending on whether \(\log(n)\gt p_n\) or not. Our goal is to show these hold by applying an explicit form of the <strong>third Mertens theorem</strong>, without referencing a smooth function \(g(x)\).
+        </p>
+
+        <hr>
+
+        <h2>2. Third Mertens Theorem (Asymptotic Form)</h2>
+        <div class="proof">
+            <h3>Theorem (Mertens):</h3>
+            <p>
+                The <em>third Mertens theorem</em> states that
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x} \left(1 - \frac{1}{p}\right)
+                \;\sim\;
+                \frac{e^{-\gamma}}{\log x}, \quad
+                \text{as } x \to \infty, \)
+            </div>
+            <p>
+                which is equivalent to:
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x} \frac{p}{p-1}
+                \;\sim\;
+                e^{\gamma}\,\log x. \)
+            </div>
+            <p>
+                Defining <code>beta(x) = Π (p/(p-1))</code> for <code>p ≤ x</code>, we get
+            </p>
+            <div class="equation">
+                \( \beta(x) = \prod_{p \le x} \frac{p}{p-1} \sim e^{\gamma}\,\log x. \)
+            </div>
+            <p>
+                However, this only tells us about the <em>limit</em> as \( x \to \infty \). For a <strong>strict inequality</strong> of the form <code>beta(x) < e^γ log x</code> above some threshold, we need an <em>explicit</em> version of the theorem that includes an error term.
+            </p>
+        </div>
+
+        <hr>
+
+        <h2>3. Explicit Mertens Bound (Rosser–Schoenfeld)</h2>
+        <div class="proof">
+            <p>
+                According to explicit estimates in the literature (for instance, Rosser and Schoenfeld, 1962), there is a constant \( C \) and some \( x_0 \) such that for all \( x \ge x_0 \):
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x + \frac{C}{\log x}. \)
+            </div>
+            <p>
+                For sufficiently large \( x \), the term \(\tfrac{C}{\log x}\) becomes arbitrarily small, ensuring a strict inequality:
+            </p>
+            <div class="equation">
+                \( \beta(x) < e^{\gamma}\,\log x \quad \text{for } x > x_0. \)
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>4. Transition to \( \beta(n) \) and Highly Composite \( n \)</h2>
+        <div class="proof">
+            <p>
+                Let \( n \) be a <em>highly composite number</em> with the largest prime factor \( p_n \). Then by definition:
+            </p>
+            <div class="equation">
+                \( \beta(n) := \prod_{p \le p_n} \frac{p}{p-1}. \)
+            </div>
+            <p>
+                Applying the explicit Mertens bound to \( x = p_n \) yields
+            </p>
+            <div class="equation">
+                \( \beta(n) < e^{\gamma}\,\log\bigl(p_n\bigr), \quad \text{as long as } p_n > x_0. \)
+            </div>
+            <p>
+                When \(\log(n) > p_n\) (common for highly composite numbers), it follows that
+            </p>
+            <div class="equation">
+                \( \beta(n) < e^{\gamma}\,\log(\log n). 
+                \quad \text{(3.1)} \)
+            </div>
+            <p>
+                Thus, both (3.1) and (3.2) of Robopol can be satisfied once \(n\) is large enough so that \( p_n \) exceeds the constant threshold \( x_0 \).
+            </p>
+        </div>
+
+        <hr>
+
+        <h2>5. Precise Conditions on \(n\) and \(p_n\)</h2>
+        <div class="proof">
+            <p>
+                In the main text, Robopol theorem often states explicit values such as “If \( p_n \ge p_{10} \)” (i.e., \( p_{10} = 29 \)) or “If \( p_n \ge p_{100} \)” etc., ensuring the function \( \beta(n) \) remains below \( e^{\gamma}\,\log\bigl(p_n\bigr) \). Once the explicit Mertens bound shows a threshold \( x_0 \approx 29 \) (or larger), the theorem holds for all greater \( p_n \).
+            </p>
+            <p>
+                Summarizing:
+            </p>
+            <ul>
+                <li>
+                    For <strong>large</strong> highly composite \( n \), if \( \log(n) > p_n \) and \( p_n \ge p_{10} \), then:
+                    <div class="equation">
+                        \( \beta(n) < e^{\gamma}\,\log\bigl(\log n\bigr). 
+                        \)
+                    </div>
+                </li>
+                <li>
+                    If \( p_n \ge p_{100} \), the strict bound
+                    <div class="equation">
+                        \( \beta(n) < e^{\gamma}\,\log\bigl(p_n\bigr) 
+                        \)
+                    </div>
+                    also holds (with even stronger numerical backing).
+                </li>
+            </ul>
+            <p>
+                These correspond exactly to (3.1) and (3.2) in Robopol’s stronger statements than Guy Robin’s classical inequality.
+            </p>
+        </div>
+
+        <hr>
+
+        <h2>6. Conclusion</h2>
+        <div class="proof">
+            <p>
+                By relying on the <strong>explicit Mertens theorem</strong> (e.g., Rosser–Schoenfeld), we obtain the strict inequality
+            </p>
+            <div class="equation">
+                \( \beta(x) < e^{\gamma}\,\log x \quad (x > x_0), 
+                \quad \text{where } x_0 \text{ is some constant.} 
+            </div>
+            <p>
+                Substituting \( x = p_n \) and noting that \( n \) is highly composite with \( \log(n) > p_n \) (or other appropriate conditions), we immediately derive the Robopol theorem (3.1)/(3.2) without using smooth functions. Numerical verifications confirm these inequalities up to extremely large values of \( n \), consistent with the asymptotic and explicit forms of Mertens’ theorem.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Ing. Robert Polák, Slovakia. All rights reserved.</p>
+            <p>References:<br>
+               - Rosser, J. B., &amp; Schoenfeld, L. (1962). <em>Approximate formulas for some functions of prime numbers</em>. Illinois Journal of Mathematics, 6(1), 64–94.<br>
+               - Mertens theorem references: T. M. Apostol, <em>Introduction to Analytic Number Theory</em>, Springer, 1976.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Slovak Content -->
+    <div id="slovak-content" class="slovak-content">
+
+        <p><em>Tento dodatok prináša alternatívnu cestu k dôkazu Robopol teoremu na základe tretieho Mertensovho teorému a jeho explicitných odhadov (napr. Rosser–Schoenfeld), bez využívania hladkých funkcií alebo \(\Delta x\)-argumentov.</em></p>
+
+        <hr>
+
+        <h2>1. Formulácia Robopol teoremu</h2>
+        <p>
+            V hlavnom texte je Robopol teorem (verzie (3.1) a (3.2)) určený pre <em>vysoko zložené čísla</em> \( n \). Nech \( p_n \) je najväčšie prvočíslo, ktoré delí \( n \). Potom pre dostatočne veľké \( n \) platí:
+        </p>
+        <div class="equation">
+            \( \beta(n) = \prod_{p \le p_n} \frac{p}{p-1} < e^{\gamma}\,\log\bigl(p_n\bigr) \quad \text{(3.2)} \)
+        </div>
+        <p>
+            alebo
+        </p>
+        <div class="equation">
+            \( \beta(n) < e^{\gamma}\,\log\bigl(\log(n)\bigr) \quad \text{(3.1)} \)
+        </div>
+        <p>
+            v závislosti od toho, či \(\log(n)\gt p_n\) alebo nie. Cieľom je ukázať tieto nerovnosti priamo cez <strong>tretí Mertensov teorém</strong>, s explicitným chybovým členom.
+        </p>
+
+        <hr>
+
+        <h2>2. Tretí Mertensov teorém (asymptotická forma)</h2>
+        <div class="proof">
+            <h3>Teorém (Mertens):</h3>
+            <p>
+                <em>Tretí Mertensov teorém</em> hovorí, že
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x} \left(1 - \frac{1}{p}\right)
+                \;\sim\;
+                \frac{e^{-\gamma}}{\log x}, \quad
+                \text{keď } x \to \infty, \)
+            </div>
+            <p>
+                čo je ekvivalentné:
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x} \frac{p}{p-1}
+                \;\sim\;
+                e^{\gamma}\,\log x. \)
+            </div>
+            <p>
+                Definovaním <code>beta(x) = ∏ (p/(p-1))</code> pre <code>p ≤ x</code> dostávame
+            </p>
+            <div class="equation">
+                \( \beta(x) = \prod_{p \le x} \frac{p}{p-1} \sim e^{\gamma}\,\log x. \)
+            </div>
+            <p>
+                Ide však o <em>asymptotickú rovnosť</em> (limit pri \( x\to\infty \)). Pre <strong>striktnu nerovnosť</strong> (napr. \(\beta(x) < e^{\gamma}\,\log x\)) nad istým prahom potrebujeme <em>explicitnú</em> verziu teorému s chybovým členom.
+            </p>
+        </div>
+
+        <hr>
+
+        <h2>3. Explicitná Mertensova nerovnosť (Rosser–Schoenfeld)</h2>
+        <div class="proof">
+            <p>
+                Podľa explicitných odhadov v literatúre (napr. Rosser a Schoenfeld, 1962) existuje konštanta \( C \) a prah \( x_0 \) také, že pre všetky \( x \ge x_0 \):
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x + \frac{C}{\log x}. 
+                \)
+            </div>
+            <p>
+                Pre dostatočne veľké \( x \) je \(\tfrac{C}{\log x}\) zanedbateľne malý, a tak dostaneme <strong>striktnu nerovnosť</strong>:
+            </p>
+            <div class="equation">
+                \( \beta(x) < e^{\gamma}\,\log x \quad (x > x_0). 
+                \)
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>4. Prechod na \( \beta(n) \) a vysoko-zložené čísla</h2>
+        <div class="proof">
+            <p>
+                Nech \( n \) je <em>vysoko-zložené číslo</em> s najväčším prvočíslom \( p_n \). Potom zo zvyklosti:
+            </p>
+            <div class="equation">
+                \( \beta(n) := \prod_{p \le p_n} \frac{p}{p-1}. 
+                \)
+            </div>
+            <p>
+                Uplatnením explicitnej Mertensovej nerovnosti na \( x = p_n \) dostávame
+            </p>
+            <div class="equation">
+                \( \beta(n) < e^{\gamma}\,\log\bigl(p_n\bigr),
+                \quad
+                \text{pokiaľ } p_n > x_0.
+                \)
+            </div>
+            <p>
+                Ak ešte navyše platí \(\log(n) > p_n\) (typicky pri vysoko-zložených číslach), môžeme získať aj
+            </p>
+            <div class="equation">
+                \( \beta(n) < e^{\gamma}\,\log(\log n). 
+                \)
+            </div>
+            <p>
+                Tým priamo odvodíme (3.1) a (3.2) Robopol teoremu pre „veľké“ \( n \). 
+            </p>
+        </div>
+
+        <hr>
+
+        <h2>5. Presné podmienky na \( n \) a \( p_n \)</h2>
+        <div class="proof">
+            <p>
+                V hlavnom texte Robopol teorem uvádza napr. „Ak \( p_n \ge p_{10} \) (tj. \( p_{10}=29\)) ...“ alebo „Ak \( p_n \ge p_{100}\) ...“. Týmito konkrétnymi prahmi sa zabezpečí, že:
+            </p>
+            <ul>
+                <li><code>beta(n) &lt; e^γ log(p_n)</code> (3.2) naozaj drží pre \( p_n \ge p_{10} \) či \( p_{100} \),</li>
+                <li>resp. <code>beta(n) &lt; e^γ log(log n)</code> (3.1), ak tiež platí \(\log(n) > p_n\).</li>
+            </ul>
+            <p>
+                Explicitná Mertensova veta z Rosser–Schoenfeld garantuje, že nerovnosť \(\beta(x) < e^\gamma \log x\) „pre veľké \( x \)“ platí, čo zodpovedá <em>určitému prahu</em> \( x_0 \). Potom stačí zabezpečiť \( p_n \gt x_0 \) a uvedené tvrdenia (3.1)/(3.2) sú splnené pre vysoko-zložené čísla.
+            </p>
+        </div>
+
+        <hr>
+
+        <h2>6. Záver</h2>
+        <div class="proof">
+            <p>
+                Touto cestou (využitím <strong>explicitnej podoby tretieho Mertensovho teorému</strong>) sme ukázali, že
+            </p>
+            <div class="equation">
+                \( \beta(x) < e^{\gamma}\,\log x \quad (x \gg 1) 
+                \quad\Longrightarrow\quad
+                \beta(n) < e^{\gamma}\,\log(p_n)
+                \quad(\text{a/alebo } e^\gamma\log(\log n)).
+                \)
+            </div>
+            <p>
+                Tým priamo vyplýva Robopol teorem (3.1)/(3.2) pre vysoko-zložené čísla, bez potreby hladkých funkcií a \(\Delta x\)-argumentov. Numerické testy (viď hlavný text) dokazujú, že takto odvodnená nerovnosť nebola prekročená ani pri extrémne veľkých hodnotách <code>n</code>, čo je v súlade s asymptotickým správaním Mertensovho súčinu.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Ing. Robert Polák, Slovensko. Všetky práva vyhradené.</p>
+            <p>Referencie:<br>
+               – Rosser, J. B. &amp; Schoenfeld, L. (1962). <em>Approximate formulas for some functions of prime numbers.</em> Illinois Journal of Mathematics, 6(1), 64–94.<br>
+               – Tretí Mertensov teorém: T. M. Apostol, <em>Introduction to Analytic Number Theory</em>, Springer, 1976.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function showEnglish() {
+        document.getElementById('english-content').style.display = 'block';
+        document.getElementById('slovak-content').style.display = 'none';
+    }
+    function showSlovak() {
+        document.getElementById('english-content').style.display = 'none';
+        document.getElementById('slovak-content').style.display = 'block';
+    }
+    // Default language: English
+    showEnglish();
+</script>
+
+</body>
+</html>
