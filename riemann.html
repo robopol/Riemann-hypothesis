@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dôkazy ekvivalentných podmienok pre Riemannovu hypotézu / Proofs of Equivalent Conditions for the Riemann Hypothesis</title>
+  <!-- MathJax -->
+  <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .page {
+      background-color: #1e1e1e;
+      width: 21cm;
+      min-height: 29.7cm;
+      padding: 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    h1, h2, h3 {
+      color: #bb86fc;
+    }
+    h1, h2 {
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    h1::after, h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0.3%;
+      width: 99%;
+      height: 2px;
+      background-color: #03dac6;
+    }
+    a {
+      color: #03dac6;
+    }
+    .equation {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 1.0em;
+    }
+    .image {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .image img {
+      max-width: 90%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+    .lang-switch {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .lang-switch button {
+      background-color: #03dac6;
+      border: none;
+      padding: 8px 16px;
+      margin: 0 4px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #121212;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Prepínač jazykov -->
+  <div class="lang-switch">
+    <button id="btn-sk">SK</button>
+    <button id="btn-en">EN</button>
+  </div>
+
+  <!-- Slovenská verzia obsahu -->
+  <div id="content-sk">
+    <h1>Dôkazy ekvivalentných podmienok pre Riemannovu hypotézu</h1>
+    <p>Autor: Ing. Robert Polák (Robopol)</p>
+    <p>Dátum: 17.03.2022</p>
+    <h2>Abstrakt</h2>
+    <p>Hľadanie dôkazov ekvivalentných podmienok pre Riemannovu hypotézu. Ekvivalentné podmienky boli vytvorené v minulosti autormi: Srinivasa Ramanujan, Lagarias, Gronwall, Robin.</p>
+    <h2>Úvod</h2>
+    <p>Táto publikácia je venovaná hľadaniu dôkazov v prospech Riemannovej hypotézy. Nadväzuje priamo na články referencia (7),(8),(9). Články referencia (7),(8),(9) obsahujú postupnosť mojich úvah ako nájsť dôkaz ekvivalentných podmienok pre RH, ako urobil v minulosti Srinivasa Ramanujan (Ramanudžan), Lagarias, Gronwall ,Robin (viď. referencie (1),(2)). Túto publikáciu treba vnímať v kontexte článkov - referencie (7),(8),(9). V publikácii  budem postupne predkladať kroky, postupy, ktoré vedú na dôkaz ekvivalentných podmienok pre RH. 
+        POZNÁMKA: log x=ln x, vo vzťahoch nižšie je log x - prirodzený logaritmus.
+    </p>
+    <p>Referencie (1), (2), (5)</p>
+    <p>Citácia:</p>
+    <p>Funkcia súčtu deliteľov \(\sigma\) je definovaná ako</p>
+    <div class="equation">\[ \sigma(n) := \sum_{d | n} d \]</div>
+    <p>Napríklad, \(\sigma(4) = 7\) a \(\sigma(p^n) = (p + 1)\sigma(n)\), ak \(p\) je prvočíslo nedeliteľné \(n\). V roku 1913 švédsky matematik Thomas Gronwall našiel maximálny poriadok \(\sigma\).</p>
+    <h3>Teorém 1. (Gronwall)</h3>
+    <div class="equation">\[ G(n) := \frac{\sigma(n)}{n \log (\log n)} \]</div>
+    <p>spĺňa \(\lim\limits_{n \to \infty} \sup G(n) = e^{\gamma} = 1.78107...\), kde \(\gamma\) je Euler-Mascheroniho konštanta.</p>
+    <h3>Teorém 2. (Ramanujan)</h3>
+    <p>Ak platí Riemannova hypotéza, potom</p>
+    <div class="equation">\[ G(n) < e^{\gamma} \quad (n \gg 1) \]</div>
+    <p>Kde \(n \gg 1\) znamená pre všetky dostatočne veľké \(n\). V roku 1984 francúzsky matematik Guy Robin dokázal, že silnejšie tvrdenie o funkcii \(G\) je ekvivalentné s RH.</p>
+    <h3>Teorém 3. (Robin)</h3>
+    <p>Riemannova hypotéza platí práve vtedy, ak</p>
+    <div class="equation">\[ G(n) < e^{\gamma} , \quad (n > 5040) \]</div>
+    <h3>Teorém 4. (Lagarias)</h3>
+    <p>Riemannova hypotéza platí práve vtedy, ak</p>
+    <div class="equation">\[ \sigma(n) < H_n + \exp(H_n) \log(H_n) \quad (n > 1) \]</div>
+    <p>kde \(H_n\) označuje \(n\)-té harmonické číslo:</p>
+    <div class="equation">\[ H_n = \sum_{n=1}^{\infty} \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... \]</div>
+    <div class="equation">\[ \sum_{n=1}^{k} \frac{1}{n} = \ln k + \gamma + \epsilon_k \leq \ln k + 1, \quad \epsilon_k \sim \frac{1}{2k} \]</div>
+    <h2>Numerické testy</h2>
+    <p>Numerické testy sú podrobne popísané v článku – referencia (7), a pokročilé testy – referencia (8)</p>
+    <div class="image"><img src="img/figure1.png" alt="Obrázok 1"></div>
+    <div class="image"><img src="img/figure2.png" alt="Obrázok 2"></div>
+    <p>obr.1 Guy Robin test pre menšie a pokročilé testovanie.</p>
+    <h3>Poznámka</h3>
+    <p>Ideálne čísla sú v literatúre nazývané highly composite numbers.</p>
+    <h2>Final verzia Riemann</h2>
+    <p>Referencia (10):</p>
+    <p>Stiahnutie súboru v Pythone – Github: <a href="https://github.com/robopol/Riemann-hypothesis/blob/main/riemann_hypothesis_final.py">riemann_hypothesis_final.py</a></p>
+    <h3>POPIS</h3>
+    <p>Algoritmus obsahuje výpočet Guy Robin rovnice pre rôzne sekvencie, pre preverenie platnosti Riemannovej hypotézy. Optimálne trvá výpočet pre sekvenciu 3: 40000 ideálnych čísel zhruba 1–2 minúty.</p>
+    <h2>Pokročilé testovanie</h2>
+    <h3>Verzia Riemann test (zdrojový kód programu)</h3>
+    <p>Stiahnutie súboru v Pythone – Github: <a href="https://github.com/robopol/Riemann-hypothesis/blob/main/Riemann_test.py">Riemann_test.py</a></p>
+    <h3>Výsledky</h3>
+    <p>Hodnota \(e^\gamma\) nebola prekročená. Test bol vykonaný až pre vysoko-zložené číslo pozostávajúce z prvých 500 tisíc prvočísiel násobených medzi sebou. Číslo "N" malo hodnotu až 3 201 675 číslic.</p>
+    <h2>Výpočet sigma</h2>
+    <p>Vo vzťahoch pre \(G(n)\) v zmysle Gronwall, Robin vystupuje:</p>
+    <div class="equation">\[ G(n): \]</div>
+    <p>Príklad: \( n = 12, \; \sigma(n) = 1 + 2 + 3 + 4 + 6 + 12 = 28 \)</p>
+    <p>Každé číslo je možné rozložiť na prvočíselné činitele:</p>
+    <div class="equation">\[ n = \prod_{i,j} p_i^{j_i} \quad , \; p_i \in \text{prvočísla}, \; j_i \in \mathbb{N} \quad \text{(1.1)} \]</div>
+    <p>Príklad: \( n = 2 \cdot 3 \cdot 5 \cdot 7 \)</p>
+    <p>Definujme jednoduchú postupnosť:</p>
+    <div class="equation">\[ n = \prod_{i} p_i \quad , \; p_i \in \text{prvočísla} \quad \text{(1.2)} \]</div>
+    <p>Potom platí:</p>
+    <div class="equation">\[ \sigma(n) = \prod_{p_i \in \text{prime}} (p_i + 1) \quad \text{(1.3)} \]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = \prod_{p_i \in \text{prime}} \left( 1 + \frac{1}{p_i} \right) \quad \text{(1.4)} \]</div>
+    <p>Príklad: \( n = 2 \cdot 3 \cdot 5 \cdot 7 \cdot 11 \cdot 13 = 30030 \)</p>
+    <p>Pre (1.1) platí:</p>
+    <div class="equation">\[ \sigma(n) = \prod_{p_i \in \text{prime}} \left(1 + p_i + p_i^2 + p_i^3 + \dots + p_i^{j_i} \right) \quad \text{(1.5)}\]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = \prod_{p_i \in \text{prime}} \frac{1 + p_i + p_i^2 + p_i^3 + \dots + p_i^{j_i}}{p_i^{j_i}} \quad \text{(1.6)}\]</div>
+    <p>Príklad: \( n = 2^4 \cdot 3^2 \cdot 5 \cdot 7 = 5040 \)</p>
+    <p>\( \sigma(n) = (1 + 2 + 2^2 + 2^3 + 2^4) \cdot (1 + 3 + 3^2) \cdot (5 + 1) \cdot (7 + 1) = 19344 \)</p>
+    <h2>Vysoko zložené čísla</h2>
+    <p>Definujme postupnosť (3) – vysoko zložené čísla. Vysoko zložené čísla sú také, kde maximalizujeme vzťah \(\sigma(n)/n\).</p>
+    <div class="equation">\[ \sup \frac{\sigma(n)}{n} = \sup \prod_{p_i \in \text{prime}} \frac{(1+p_i + p_i^2 + p_i^3 + \dots+ p_i^{j_i})}{p_i^{j_i}} \quad \text{(1.7)} \]</div>
+    <p>Príklad: \( n = 2^4 \cdot 3^2 \cdot 5 \cdot 7 \cdot 11 \cdot 13 = 720720 \)</p>
+    <p>\( \sigma(n) = 3249792,\quad \sigma(n)/n = 4.509 \)</p>
+    <h3>Úprava rovnice (1.5):</h3>
+    <p>Podľa referencie (2), strana 9:</p>
+    <div class="equation">\[ \sigma(n) = \prod_{p_i \in \text{prime}} \left(1 + p_i + p_i^2 + p_i^3 + \dots+ p_i^{j_i} \right) = \prod_{p_i \in \text{prime}} \frac{p_i^{j_i+1} - 1}{p_i - 1} \quad \text{(1.8)} \]</div>
+    <h3>Dosadenie do rovnice (1.7):</h3>
+    <div class="equation">\[ \sup \frac{\sigma(n)}{n} = \sup \prod_{p_i \in \text{prime}} \frac{p_i^{j_i+1} - 1}{(p_i - 1) p_i^{j_i}} \quad \text{(1.9)} \]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = (2 - 2^{-j_2}) (3/2 - 3^{-j_3}/2) (5/4 - 5^{-j_5}/4) (7/6 - 7^{-j_7}/6) \dots \quad \text{(1.10)} \]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = \prod_{p_i \in \text{prime}} \left(\frac{p_i}{p_i - 1} - \frac{p_i^{-j_i}}{p_i - 1} \right) \quad \text{(2.0)} \]</div>
+    <h3>Definícia \(\beta(n)\):</h3>
+    <div class="equation">\[ \beta(n) := \prod_{p_i \in \text{prime}} \frac{p_i}{p_i - 1} , \quad \beta(n) > \sup \frac{\sigma(n)}{n} \quad \text{(2.1)} \]</div>
+    <h2>Reformulácia podmienok RH</h2>
+    <p>Z empirického testovania s využitím programovacieho jazyka Python je zobrazený priebeh pre sekvenciu (1) a sekvenciu (3). (Viac v článku – referencia (8)).</p>
+    <div class="image"><img src="img/figure3.png" alt="Tabuľka č.1"></div>
+    <p>tab. č.1 sekvencia (1)</p>
+    <div class="image"><img src="img/figure4.png" alt="Tabuľka č.2"></div>
+    <p>tab. č.2 sekvencia (3)</p>
+    <h3>Testovacia sekvencia (1)</h3>
+    <p>Počiatočný test:</p>
+    <div class="equation">\[ n = \prod_{p_1 \in \text{prime}}^{p_{10000}} p_i, \quad \text{posledné prvočíslo} = p_{1000} = 104729 \]</div>
+    <p>Konečný test:</p>
+    <div class="equation">\[ n = \prod_{p_1 \in \text{prime}}^{p_{500000}} p_i, \quad \text{posledné prvočíslo} = p_{500000} = 7368787 \]</div>
+    <h3>Testovacia sekvencia (3) – vysoko zložené čísla</h3>
+    <p>V zmysle rovnice (1.7) a tabuľky č.2, pre vysoko zložené čísla:</p>
+    <p>Počiatočný test:</p>
+    <div class="equation">\[ n = \sup \prod_{p_1 \in \text{prime}}^{p_{10000}} p_i^{j_i}, \quad \text{posledné prvočíslo} = p_{1000} = 104729 \]</div>
+    <p>Konečný test:</p>
+    <div class="equation">\[ n = \sup \prod_{p_1 \in \text{prime}}^{p_{300000}} p_i^{j_i}, \quad \text{posledné prvočíslo} = p_{300000} = 4256233 \]</div>
+    <h3>Výsledky numerických testov</h3>
+    <p><em>Numerické testovanie ukazuje, že nasledujúce tvrdenia zrejme platia:</em></p>
+    <div class="equation">\[ \text{posledné prvočíslo} = p_n, \quad \log(n) \approx p_n \quad \text{(2.2)} \]</div>
+    <p>Pre sekvenciu (1):</p>
+    <div class="equation">\[ \log(n) < \text{posledné prvočíslo}, \quad \text{alebo} \quad \log(n) < p_n \quad \text{(2.3)} \]</div>
+    <p>Pre sekvenciu (3) – vysoko zložené čísla:</p>
+    <div class="equation">\[ \log(n) > \text{posledné prvočíslo}, \quad \text{alebo} \quad \log(n) > p_n \quad \text{(2.4)} \]</div>
+    <p>Dôkazy pre (2.3) a (2.4) sú v dodatku, viď. <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">https://www.poling.sk/Riemann/Appendix_RH.html</a></p>
+    <h2>Lagariasov teorém</h2>
+    <div class="equation">\[ \sigma(n) < \log(n) + \gamma + \varepsilon + e^{\ln(n)+\gamma+\varepsilon} \log(\log(n) + \gamma + \varepsilon) \quad \text{(2.5)} \]</div>
+    <p>Toto vytvára limitu pre Gronwall teorém, pričom pre \(N \to \infty\), \( \varepsilon = 0 \):</p>
+    <div class="equation">\[ \lim_{n \to \infty} \frac{\sigma(n)}{n \log(\log(n))} = \lim_{n \to \infty} \frac{\log(n) + \gamma + n e^{\gamma} e^{\varepsilon} \log(\log(n)+\gamma)}{n \log(\log(n))} = e^{\gamma} \quad \text{(2.7)} \]</div>
+    <h2>Guy Robin teorém</h2>
+    <div class="equation">\[ \frac{\sigma(n)}{n} < e^{\gamma} \log(\log n) \quad \text{pre} \quad n > 5040 \quad \text{(2.8)} \]</div>
+    <p>V tejto stati vznikne silnejší teorém a pokiaľ sa ho podarí preukázať, platia aj zvyšné tvrdenia (Robin, Lagarias). Tento teorém je naviazaný na vysoko–zložené čísla, kde každé číslo \(n\) je práve vysoko–zložené číslo.</p>
+    <h2>Robopol teorém</h2>
+    <p>Pre vysoko zložené čísla v zmysle rovníc (1.7) a (2.1) dostávame:</p>
+    <div class="equation">\[ \beta(n) < e^\gamma \log(\log n) \quad \text{(3.0)} \]</div>
+    <div class="equation">\[ \prod_{p_i \in \text{prime}}^{p_n} \frac{p_i}{p_i - 1} < e^\gamma \log(\log(n)) \quad \text{(3.1)} \]</div>
+    <p>Pre vysoko zložené čísla – \(n\), ak \( p_n \geq p_{10} \).</p>
+    <p>Pre vysoko zložené čísla v zmysle rovnice (2.4), tabuľka č.2 dostávame:</p>
+    <div class="equation">\[ \prod_{p_i \in \text{prime}}^{p_n} \frac{p_i}{p_i - 1} < e^\gamma \log(p_n) \quad \text{(3.2)} \]</div>
+    <p>Pre vysoko zložené čísla – \(n\), ak \( p_n \geq p_{100} \).</p>
+    <h3>Silnejšie tvrdenie ako rovnica (2.8)</h3>
+    <p><strong>Rovnice (3.1) a (3.2) sú silnejším tvrdením ako rovnica (2.8), pretože:</strong></p>
+    <div class="equation">\[ \beta(n) > \sup \frac{\sigma(n)}{n} \quad \text{a} \quad \log(n) > p_n \quad \text{pre vysoko zložené číslo } n \quad \text{(3.3)} \]</div>
+    <h2>Test Robopol teorému</h2>
+    <p>Program (v Pythone) testuje Robopol teorém:</p>
+    <p>Referencia (10)</p>
+    <p>Stiahnutie súboru na GitHub: <a href="https://github.com/robopol/Riemann-hypothesis/blob/main/sigma-max_test.py" target="_blank">sigma-max_test.py</a></p>
+    <p>Tabuľka č.3 ukazuje výsledky testov pre veľmi veľké čísla:</p>
+    <div class="image"><img src="img/figure5.png" alt="Tabuľka č.3"></div>
+    <div class="image"><img src="img/figure6.png" alt="Tabuľka č.3"></div>
+    <p>tab. No. 3 Test robopol teorému pre veľmi veľké čísla.</p>
+    <p>Z tabuľky a grafu je vidieť, že je teorém veľmi tesne splnený a smerom k nekonečnu sa mierne priebehy rozchádzajú. To znamená, že teorém by mohol platiť (ako silnejšie tvrdenie oproti Robin teorému) do nekonečna. Na to však potrebujeme dôkaz. Samozrejme, toto platí v zmysle rovnice (3.2) pre vysoko–zložené čísla, ktoré sú už dostatočne veľké.</p>
+    <h1>Aproximácia \( \pi(x) \)</h1>
+    <div class="image"><img src="img/figure7.png" alt="Graf funkcie \(\pi(x)\)"></div>
+    <p>Obrázok č.2: Hodnoty \(\pi(n)\) pre prvých 60 kladných celých čísel, zdroj: Wikipedia.</p>
+    <h2>Funkcia počítania prvočísel</h2>
+    <div class="equation">\[ \pi(x) \approx \frac{x}{\log x}, \quad \text{rok: 1792} \quad \text{(3.3)} \]</div>
+    <div class="equation">\[ \lim_{x \to \infty} \frac{\pi(x)}{x / \log(x)} = 1 \quad \text{(3.4)} \]</div>
+    <h2>Presnejšia aproximácia \(\pi(x)\)</h2>
+    <div class="equation">\[ \pi(x) \approx \text{Li}(x) := \int_2^x \frac{dt}{\log t} \quad \text{(3.5)} \]</div>
+    <div class="equation">\[ \lim_{x \to \infty} \frac{\text{Li}(x)}{\pi(x)} = 1 \quad \text{(3.6)} \]</div>
+    <div class="image"><img src="img/figure8.png" alt="Porovnanie aproximácií \(\pi(x)\)"></div>
+    <p>Obrázok č.3: Graf ukazujúci pomer funkcie počítania prvočísel \(\pi(x)\) k dvom jej aproximáciám: \(x / \log x\) a \(\text{Li}(x)\). Zdroj: Wikipedia.</p>
+    <h3>Podľa zdroja (3) platí:</h3>
+    <p>V práci Pierrea Dusarta existujú silnejšie verzie tohto typu nerovnosti, ktoré sú platné pre väčšie \(x\). Neskôr v roku 2010 Dusart dokázal:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-1} < \pi(x) < \frac{x}{\log(x)-1.1} \quad \text{(3.7)} \]</div>
+    <p>De la Vallée Poussinov dôkaz naznačuje nasledujúce tvrdenie: Pre každé \(\varepsilon > 0\) existuje \(S\), také že pre všetky \(x > S\) platí:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-(1-\varepsilon)} < \pi(x) < \frac{x}{\log(x)-(1+\varepsilon)} \quad \text{(3.8)} \]</div>
+    <h3><strong>Vzťah (3.8) je veľmi dôležitý pre následné dokazovanie.</strong></h3>
+    <p>Hovorí, že aproximácia \( \frac{x}{\log(x)-1} \) je tá, ktorá by mala byť približne rovná \( \pi(x) \) smerom k nekonečnu. Teda ide o kritickú hranicu (stred, linku). Zapíšme to:</p>
+    <div class="equation">\[ \pi(x) \approx \frac{x}{\log(x)-1} \quad \text{(3.9)} \]</div>
+    <div class="equation">\[ \lim_{x \to \infty} \pi(x) = \lim_{x \to \infty} \frac{x}{\log(x)-1} \quad \text{(3.10)} \]</div>
+    <h3>Príklad</h3>
+    <p>Pre \(x = 10^{25}\):</p>
+    <div class="equation">\[ \pi(10^{25}) = 176846309399143769411680 \]</div>
+    <div class="equation">\[ \frac{10^{25}}{\log(10^{25})-(1+0.019)} \approx \pi(10^{20}) \sim 2.02482 \cdot 10^{18} \]</div>
+    <div class="equation">\[ \frac{10^{25}}{\log(10^{25})-(1+0.019)} > \pi(10^{20}) \]</div>
+    <h2>Robopol teorém súvislosti</h2>
+    <p>V zmysle rovnice (3.2) odvodíme ďalšie súvislosti, ktoré by mali platiť.</p>
+    <div class="image"><img src="img/figure9.png" alt="Robopol teorém súvislosti"></div>
+    <p>Obrázok č.4: Priebeh grafu – Robopolov teorém (pre veľmi veľké čísla).</p>
+    <h2>Tvrdenie (1.0)</h2>
+    <p>Nech platí na celom definičnom obore rovnica (3.2):</p>
+    <div class="equation">\[ \beta(p_{k+1}) - \beta(p_k) \approx e^{\gamma} \log(p_{k+1}) - e^{\gamma} \log(p_k) \quad \text{(4.0)} \]</div>
+    <div class="image"><img src="img/figure10.png" alt="Vyjadrenie rovnice 4.0"></div>
+    <p>Obrázok č.5: Geometrická interpretácia rovnice 4.0.</p>
+    <h2>Modifikácia rovnice (4.0)</h2>
+    <div class="equation">\[ \prod_{p_i \in \text{prime}}^{p_{k+1}} \frac{p_i}{p_i - 1} - \prod_{p_i \in \text{prime}}^{p_k} \frac{p_i}{p_i - 1} \approx e^{\gamma} \log(p_{k+1}) - e^{\gamma} \log(p_k) \quad \text{(4.1)} \]</div>
+    <div class="equation">\[ \varepsilon_k = \prod_{p_i \in \text{prime}}^{p_k} \frac{p_i}{p_i - 1} , \quad \omega_k = \log(p_k) e^{\gamma} \quad \text{(4.2)} \]</div>
+    <h2>Identifikácia počiatočných bodov</h2>
+    <p>V zmysle obrázka č.6 stotožníme počiatočné body v \( p_k \):</p>
+    <div class="equation">\[ p_k^* = \varepsilon_k = \omega_k \]</div>
+    <div class="image"><img src="img/figure11.png" alt="Grafické vyjadrenie rovnice"></div>
+    <p>Obrázok č.6: Grafické znázornenie počiatočných bodov v \( p_k \).</p>
+    <div class="equation">\[ \Delta \varepsilon_k = \varepsilon_k \frac{p_{k+1}}{p_{k+1} - 1} - \varepsilon_k = \varepsilon_k \left(\frac{p_{k+1}}{p_{k+1} - 1} - 1\right) \quad \text{(4.3)} \]</div>
+    <div class="equation">\[ \Delta \omega_k = e^{\gamma} (\log(p_{k+1}) - \log(p_k)) \quad \text{(4.4)} \]</div>
+    <p>V zmysle rovnice (4.1):</p>
+    <div class="equation">\[ \Delta \omega_k \approx \Delta \varepsilon_k, \quad e^{\gamma} (\ln(p_{k+1}) - \ln(p_k)) \approx \varepsilon_k \frac{p_{k+1}}{p_{k+1}-1} - \varepsilon_k \quad \text{(4.5)} \]</div>
+    <p>Po dosadení do rovnice (4.5) \( \varepsilon_k = \omega_k \) dostávame:</p>
+    <div class="equation">\[ e^{\gamma} \log(p_{k+1}) - e^{\gamma} \log(p_k) \approx \log(p_{k+1}) e^{\gamma} \frac{p_{k+1}}{p_{k+1} - 1} - \log(p_k) e^{\gamma} \quad \text{(4.6)} \]</div>
+    <div class="equation">\[ \log(p_{k+1}) \approx \log(p_k) \frac{p_{k+1}}{p_{k+1}-1} \quad \text{(4.7)} \]</div>
+    <h3>Príklad</h3>
+    <p>Pre veľmi veľké prvočísla:</p>
+    <div class="equation">\[ p_{999,999,999} = 22801763477 \]</div>
+    <div class="equation">\[ p_{1,000,000,000} = 22801763489 \]</div>
+    <div class="equation">\[ \log(22801763489) \approx \log(22801763477) \cdot \frac{22801763489}{22801763489-1} \]</div>
+    <h2>Tvrdenie (2.0)</h2>
+    <p>Nech existuje hladká, spojitá funkcia \( g(x) = f(x) \), ktorá aproximuje \( \pi(x) \) tak, že platí smerom k nekonečnu:</p>
+    <div class="equation">\[ \lim_{x \to \infty} g(x) = \lim_{x \to \infty} \pi(x) \quad \text{(4.8)} \]</div>
+    <p>Tvrdeniu (2.0) vyhovuje v zmysle rovníc (3.8) a (3.9):</p>
+    <div class="equation">\[ g(x) = \frac{x}{\log(x)-1} \quad \text{(4.9)} \]</div>
+    <h2>Tvrdenie (3.0)</h2>
+    <p>Nech platí na definičnom obore funkcie \( g(x) \) pre všetky \( x \geq 100 \) v zmysle rovnice (4.7) táto rovnica:</p>
+    <div class="equation">\[ \log(x + \Delta x) \geq \log(x) \frac{x+\Delta x}{x+\Delta x-1} \quad \text{(4.10)} \]</div>
+    <p>Kde \( \Delta x \) predstavuje horizontálnu vzdialenosť podľa obrázka č.7.</p>
+    <div class="image"><img src="img/figure12.png" alt="Horizontálna vzdialenosť v rovnici 4.10"></div>
+    <p>Obrázok č.7: Horizontálna vzdialenosť \( \Delta x \) v zmysle rovnice (4.10).</p>
+    <p>Zadefinujme najskôr rovnicu v zmysle obrázka č.7:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-1} + 1 = \frac{x+\Delta x}{\log(x+\Delta x)-1} \quad \text{(5.0)} \]</div>
+    <p>Alebo alternatívne:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-1} = 1 + \frac{x-\Delta x}{\log(x-\Delta x)-1} \quad \text{(5.1)} \]</div>
+    <h3>Pointa tvrdení (1.0), (2.0) a (3.0)</h3>
+    <p>Pointa tvrdení (1.0), (2.0) a (3.0) je v tom, že ak je splnená rovnica (4.10) na celom definičnom obore \( x > 100 \) - pre všetky \( \Delta x \), ktoré vypočítame z rovnice (5.1) – potom nutne platí aj teorém, tj. rovnice (3.0) a (3.2). Zadefinujeme to do tvrdenia (4.0).</p>
+    <h2>Tvrdenie (4.0)</h2>
+    <p>Ak platí rovnica (4.10) pre všetky \( x > 100 \), pričom \( \Delta x \) vypočítame z rovnice (5.1), potom nutne platí aj teorém - rovnica (3.0) a (3.2).</p>
+    <h3>Vysvetlenie</h3>
+    <p>Rovnica (4.10) je pomerne jednoduchá a intuitívna. Je už spojitá oproti pôvodnej (4.7), ktorá obsahovala iba približné hodnoty, pretože prvočísla v \(x\) vykazujú drobné fluktuácie od strednej hodnoty vyhladenej funkcie, ktorá by ich dokázala dokonale aproximovať (ako hladká krivka bez ozubenia).</p>
+    <div class="equation">\[ \log(p_{k+1}) > \log(p_k) \frac{p_{k+1}}{p_{k+1}-1} \quad \text{(5.2)} \]</div>
+    <p>Teda, aby sme potvrdili platnosť rovníc (3.0) a (3.2), preskúmame (5.2) v ľubovoľnom bode \(p_k\) a jeho suseda \(p_{k+1}\) - a to na vyhladenej funkcii \(g(x)\) pre všetky \(x > 100\). Ak preukážeme platnosť pre všetky \(x\), potom je zrejmé, že aj rovnice (3.0) a (3.2) musia platiť.</p>
+    <p>Niekto by mohol namietať, že \(g(x)\) neaproximuje \(\pi(x)\) dobre pre malé hodnoty, teda pre malé \(x\) platí, že \(g(x) < \pi(x)\). No zároveň vieme, že limitne \(g(x)\) doháňa \(\pi(x)\) (v zmysle rovnice (4.8)). Teda ak limitne \(g(x)\) doháňa \(\pi(x)\), je zjavné, že smerom k nekonečnu – sklon \(g(x)\) rastie viac než sklon \(\pi(x)\).</p>
+    <p>Z numerických testov (tabuľka č. 3) je preukázané, že rovnice (3.0) a (3.2) platia pre veľmi veľké čísla - konkrétne pre vysoko zložené čísla s \(p_n\) uvedenými v tabuľke č. 3. Súčasne vidíme, že krivky sa mierne rozchádzajú, pričom má stále viac navrch \( e^{\log(p_n)} \).</p>
+    <p>V nasledujúcich statiach sa teda pokúsim dokázať, že kľúčové tvrdenie (4.0) naozaj platí.</p>
+    <h2>Upravenie rovnice (4.10)</h2>
+    <p>Upravme rovnicu (4.10) nasledovne:</p>
+    <div class="equation">\[ \log(x + \Delta x) \geq \log(x) \frac{x+\Delta x}{x+\Delta x-1} \]</div>
+    <p>Použijeme substitúciu: \( x + \Delta x = t \).</p>
+    <div class="equation">\[ \log(t) \geq \log(t - \Delta x) \frac{t}{t-1} \]</div>
+    <div class="equation">\[ \log(t - \Delta x) \geq \frac{\log(t) \cdot (t-1)}{t} \]</div>
+    <p>Eliminujeme logaritmus:</p>
+    <div class="equation">\[ t - \Delta x \geq t^{(t-1)/t} \quad \text{(5.3)} \]</div>
+    <div class="equation">\[ \Delta x \geq t - t^{(t-1)/t} \]</div>
+    <h3>Definícia \( \Delta x_{min} \)</h3>
+    <div class="equation">\[ \Delta x_{min} := t - t^{(t-1)/t} \quad \text{(5.4)} \]</div>
+    <div class="equation">\[ \Delta x \geq \Delta x_{min} \quad \text{(5.5)} \]</div>
+    <h3>Derivácia funkcie</h3>
+    <div class="equation">\[ \frac{d}{dt} \Bigl(t - t^{(t-1)/t}\Bigr) = t^{-(t+1)/t} \left( t + \log(t) - 1 \right) \quad \text{(5.6)} \]</div>
+    <h3>Limita funkcie</h3>
+    <div class="equation">\[ \lim_{t \to \infty} t^{-(t+1)/t} \left( t + \log(t) - 1 \right) = 1 \quad \text{(5.7)} \]</div>
+    <h3>Príklad</h3>
+    <p>Pre hodnotu \( t = 1000 \):</p>
+    <div class="equation">\[ \Delta x = 1000 - 1000^{(1000-1)/1000} = 6.883951579\ldots \]</div>
+    <p>Výpočet hodnoty \( x \):</p>
+    <div class="equation">\[ x = t - \Delta x_{min} = 1000 - 6.883951579 = 993.116048420\ldots \]</div>
+    <p>Overenie rovnice:</p>
+    <div class="equation">\[ \log(x + \Delta x_{min}) = \log(x) \frac{x+\Delta x_{min}}{x+\Delta x_{min}-1} \]</div>
+    <p>Po dosadení hodnôt:</p>
+    <div class="equation">\[ \log(1000) = \log(993.116048420) \cdot \frac{993.116048420+6.883951579}{993.116048420+6.883951579-1} \]</div>
+    <p>Výsledok:</p>
+    <div class="equation">\[ 6.907755279\ldots = 6.907755279\ldots \]</div>
+    <h2>Analýza aproximácie \( \pi(x)=x/\log(x) \)</h2>
+    <p>Najskôr preveríme jednoduchší prípad aproximácie \( \pi(x)=\frac{x}{\log(x)} \).</p>
+    <p>V zmysle obrázka č.7 (pre aproximáciu \( \pi(x) = \frac{x}{\log(x)} \)) dostávame rovnicu:</p>
+    <div class="equation">\[ \frac{x}{\log x} = 1 + \frac{x - \Delta x}{\log (x - \Delta x)} \quad \text{(6.0)} \]</div>
+    <h3>Analytické riešenie rovnice</h3>
+    <p>Skutočné analytické riešenie tejto rovnice je:</p>
+    <div class="equation">\[ \Delta x = x - e^{-W_{-1}\Bigl(\frac{\log(x)}{\log(x)-x}\Bigr)} , \quad \Delta x > 0 \quad \text{(6.1)} \]</div>
+    <p>Alternatívne:</p>
+    <div class="equation">\[ \Delta x = x - \frac{\log(x)-x}{\log(x)-1}\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right), \quad \Delta x > 0 \quad \text{(6.2)} \]</div>
+    <p>Kde \(W_{-1}(z)\) je Lambertova funkcia (referencia (4)).</p>
+    <h3>Derivácia funkcie</h3>
+    <div class="equation">\[ \frac{d}{dx} \left( \frac{\log(x)-x}{\log(x)}\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right) \right)
+    = -\frac{(\log(x)-1)\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)^2}{\log^2(x) \Bigl(W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)+1\Bigr)} \quad \text{(6.3)} \]</div>
+    <h3>Limita funkcie</h3>
+    <div class="equation">\[ \lim_{x \to \infty} -\frac{(\log(x)-1)\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)^2}{\log^2(x) \Bigl(W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)+1\Bigr)} \]</div>
+    <p>Z hľadiska štandardných matematických funkcií sa nenašiel žiadny uzavretý výsledok.</p>
+    <p>V zmysle rovnice (5.5) pre \( x > 100 \) musí platiť:</p>
+    <div class="equation">\[ x - \frac{\log(x)-x}{\log(x)}\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-x}\right) \geq x - x^{(x-1)/x} \quad \text{(6.4)} \]</div>
+    <h3>Príklady výpočtov</h3>
+    <p>Príklad 1: \( x = 10^6 \)</p>
+    <div class="equation">\[ \Delta x \approx 14.89353360214\ldots \]</div>
+    <div class="equation">\[ \Delta x_{min} \approx 13.815415124237\ldots \]</div>
+    <div class="equation">\[ \Delta x - \Delta x_{min} \approx 1.078118477907\ldots \]</div>
+    <p>Príklad 2: \( x = 10^{200} \)</p>
+    <div class="equation">\[ \Delta x \approx 461.519194796772488\ldots \]</div>
+    <div class="equation">\[ \Delta x_{min} \approx 460.517018598809\ldots \]</div>
+    <div class="equation">\[ \Delta x - \Delta x_{min} \approx 1.00217\ldots \]</div>
+    <p>Z numerických výpočtov by sme očakávali, že limita:</p>
+    <div class="equation">\[ \lim_{x \to \infty} (\Delta x - \Delta x_{min}) = 1 \]</div>
+    <h3>Úprava rovnice (6.0)</h3>
+    <p>Upravme rovnicu (6.0) na tento požadovaný tvar:</p>
+    <div class="equation">\[ \frac{x}{\log x} - 1 - \frac{x-\Delta x}{\log(x-\Delta x)} = 0 \quad \text{(6.5)} \]</div>
+    <p>Ďalší krok:</p>
+    <div class="equation">\[ \frac{x\,\log(x-\Delta x) - \log(x)\,\log(x-\Delta x) - \log(x)(x-\Delta x)}{\log(x)\,\log(x-\Delta x)} = 0 \]</div>
+    <p>Zjednodušenie:</p>
+    <div class="equation">\[ (x-\log(x))\,\log(x-\Delta x) - \log(x)(x-\Delta x) = 0 \quad \text{(6.6)} \]</div>
+    <h3>Taylorov rozvoj</h3>
+    <p>Urobme Taylorov rozvoj podľa \( x \) a dostaneme:</p>
+    <div class="equation">
+      \[
+      \begin{aligned}
+         & (\Delta x + \Delta x \log(x) - \log^2(x)) - \frac{\Delta x (\Delta x - 2 \log(x))}{2x} \\
+         & + \frac{\Delta x^2 (3 \log(x) - 2 \Delta x)}{6x^2} + O\left(\frac{1}{x^3}\right)
+      \end{aligned}
+      \quad \text{(6.7)}
+      \]
+    </div>
+    <p>Pre \( x \to \infty \) sa rovnica redukuje na:</p>
+    <div class="equation">\[ \Delta x + \Delta x \log(x) - \log^2(x) = 0 \quad \text{(6.8)} \]</div>
+    <h3>Vyjadrenie \( \Delta x \)</h3>
+    <p>Vyjadríme \( \Delta x \) z rovnice:</p>
+    <div class="equation">\[ \Delta x = \frac{\log^2(x)}{\log(x)-1} \quad \text{(6.9)} \]</div>
+    <h3>Výpočet limity</h3>
+    <p>Podľa (6.4) vypočítame limitu:</p>
+    <div class="equation">\[ \lim_{x \to \infty} \Bigl(\Delta x - \Delta x_{min}\Bigr)
+         = \lim_{x \to \infty} \left[\frac{\log^2(x)}{\log(x)-1} - \Bigl(x - x^{(x-1)/x}\Bigr)\right] = 1 \quad \text{(6.10)} \]</div>
+    <h3>Výsledok</h3>
+    <p>Rovnica (6.10) ukázala, že rovnica \( \Delta x \geq \Delta x_{min} \) platí až do nekonečna.</p>
+    <h2>Analýza aproximácie \( \pi(x)=\frac{x}{\log(x)-1} \)</h2>
+    <p>Teraz preveríme aproximáciu \( \pi(x) = \frac{x}{\log(x)-1} \) v zmysle rovníc (3.9) a (3.10).</p>
+    <p>Riešením rovnice (5.1) je:</p>
+    <div class="equation">
+      \[
+      \Delta x = \frac{(x - \log(x) + 1) \cdot W_{-1} \left(-\frac{\sqrt[1+x-\log(x)]{\frac{e^{x+1}}{x} (\log(x)-1)}}{\,x - \log(x) + 1}\right)}{\log(x)-1} + x \quad \text{(7.0)}
+      \]
+    </div>
+    <p>V zmysle rovnice (5.5) pre \( x > 100 \) musí platiť:</p>
+    <div class="equation">\[ \Delta x \geq \Delta x_{min} \]</div>
+    <div class="equation">
+      \[
+      \frac{(x - \log(x) + 1) \cdot W_{-1} \left(-\frac{\sqrt[\,x+1-\log(x)]{\frac{e^{x+1}}{x} - (\log(x)-1)}}{\,x - \log(x) + 1}\right)}{\log(x)-1} + x \geq x - x^{(x-1)/x} \quad \text{(7.1)}
+      \]
+    </div>
+    <h3>Príklad výpočtu</h3>
+    <p>Pre hodnotu \( x = 10^{180} \) máme:</p>
+    <div class="equation">
+      \[
+      \Delta x = \dots = 414.467741185201\ldots
+      \]
+    </div>
+    <p>Minimálna hodnota \( \Delta x \):</p>
+    <div class="equation">
+      \[
+      \Delta x_{min} = 10^{180} - \Bigl(10^{180}\Bigr)^{(10^{180}-1)/10^{180}} = 414.465316\ldots
+      \]
+    </div>
+    <p>Rozdiel medzi \( \Delta x \) a \( \Delta x_{min} \):</p>
+    <div class="equation">
+      \[
+      \Delta x > \Delta x_{min}, \quad \Delta x - \Delta x_{min} \sim 0
+      \]
+    </div>
+    <p>Z numerických výpočtov by sme očakávali, že limita:</p>
+    <div class="equation">
+      \[
+      \lim_{x \to \infty} \Delta x - \Delta x_{min} = 0
+      \]
+    </div>
+    <p>Teraz preveríme aproximáciu \( \pi(x) = \frac{x}{\log(x)-1} \) v zmysle rovníc (3.9) a (3.10).</p>
+    <h3>Úprava rovnice (5.1)</h3>
+    <p>Upravme rovnicu (5.1) na tento požadovaný tvar:</p>
+    <div class="equation">
+      \[
+      \frac{x}{\log x-1} - 1 - \frac{x-\Delta x}{\log (x-\Delta x)-1} = 0 \quad \text{(7.2)}
+      \]
+    </div>
+    <div class="equation">
+      \[
+      \frac{x}{\log(x)-1} - \frac{x}{\log(x-\Delta x)-1} + \frac{\Delta x}{\log(x-\Delta x)-1} - 1 = 0 \quad \text{(7.3)}
+      \]
+    </div>
+    <h3>Rozvoj podľa \( x \)</h3>
+    <p>Puiseuxov rad:</p>
+    <div class="equation">
+      \[
+      -\frac{2 \Delta x - (\Delta x - 2) \log(x) + \log^2(x) + 1}{(\log(x)-1)^2}
+      + \frac{\Delta x^2 (\log(x)-3)}{2 x (\log(x)-1)^3} + O\left(\frac{1}{x^2}\right)
+      \quad \text{(7.4)}
+      \]
+    </div>
+    <p>Pre \( x \to \infty \) sa rovnica redukuje na:</p>
+    <div class="equation">
+      \[
+      -\frac{2 \Delta x - (\Delta x - 2)\log(x) + \log^2(x) + 1}{(\log(x)-1)^2} = 0 \quad \text{(7.5)}
+      \]
+    </div>
+    <h3>Vyjadrenie z rovnice pre \( \Delta x \)</h3>
+    <div class="equation">
+      \[
+      \Delta x = \frac{(\log(x)-1)^2}{\log(x)-2} \quad \text{(7.6)}
+      \]
+    </div>
+    <h3>Výpočet limity</h3>
+    <p>Vypočítame limitu:</p>
+    <div class="equation">
+      \[
+      \lim_{x \to \infty} \Delta x - \Delta x_{min} = \lim_{x \to \infty} \left[\frac{(\log(x)-1)^2}{\log(x)-2} - \Bigl(x - x^{(x-1)/x}\Bigr)\right] = 0 \quad \text{(7.9)}
+      \]
+    </div>
+    <p>Rozvoj série pre \( x \to \infty \):</p>
+    <div class="equation">
+      \[
+      \frac{1}{\log(x)-2} + \frac{\log^2(x)}{2x} + O\left(\frac{1}{x^2}\right)
+      \quad \text{(7.10)}
+      \]
+    </div>
+    <h3>Výsledok</h3>
+    <p><strong>Rovnica (7.9) ukázala, že rovnica \( \Delta x \geq \Delta x_{min} \) platí až do nekonečna.</strong></p>
+    <h2>Analýza aproximácie \( \pi(x)=\frac{x}{\log(x)-\epsilon} \)</h2>
+    <p>Pre aproximáciu platí:</p>
+    <div class="equation">
+      \[
+      \pi(x) = \frac{x}{\log(x)-\epsilon}, \quad \epsilon = 1+\varepsilon, \quad \varepsilon>0 \quad \text{(8.0)}
+      \]
+    </div>
+    <p>Riešením rovnice (8.0) je:</p>
+    <div class="equation">
+      \[
+      \Delta x = \frac{(x+\log(x)+\epsilon) \cdot W_{-1}\!\left(\frac{\left(e^{\frac{\epsilon^2}{x+\epsilon}} \cdot x^{-\frac{\epsilon}{x}}\right)^{\frac{x}{x+\epsilon-\log(x)}} \cdot (\epsilon-\log(x))}{x-\log(x)+\epsilon}\right)}{\log(x)-\epsilon} + x \quad \text{(8.1)}
+      \]
+    </div>
+    <p>V zmysle rovnice (5.5) pre \( x > 100 \) musí platiť:</p>
+    <div class="equation">
+      \[ \Delta x \geq \Delta x_{min} \quad \text{(8.2)} \]
+    </div>
+    <div class="equation">
+      \[
+      \frac{(x+\log(x)+\epsilon) \cdot W_{-1}\!\left(\frac{\left(e^{\frac{\epsilon^2}{x+\epsilon}} \cdot x^{-\frac{\epsilon}{x}}\right)^{\frac{x}{x+\epsilon-\log(x)}} \cdot (\epsilon-\log(x))}{x-\log(x)+\epsilon}\right)}{\log(x)-\epsilon} + x \geq x - x^{(x-1)/x} \quad \text{(8.2)}
+      \]
+    </div>
+    <h3>Príklady</h3>
+    <p><strong>Príklad 1:</strong></p>
+    <div class="equation">
+      \[ x = 10^{15}, \quad \varepsilon = 1.0000000000001 \]
+    </div>
+    <div class="equation">
+      \[ \Delta x = \frac{277}{8} = 34.625 \]
+    </div>
+    <div class="equation">
+      \[ \Delta x_{min} = 10^{15} - (10^{15})^{(10^{15}-1)/10^{15}} = 34.538 \]
+    </div>
+    <p>\( \Delta x > \Delta x_{min} \)</p>
+    <p><strong>Príklad 2:</strong></p>
+    <div class="equation">
+      \[ x = 10^{16}, \quad \varepsilon = 1.0000000000001 \]
+    </div>
+    <div class="equation">
+      \[ \Delta x = 36 \]
+    </div>
+    <div class="equation">
+      \[ \Delta x_{min} = 10^{16} - (10^{16})^{(10^{16}-1)/10^{16}} = 36.841 \]
+    </div>
+    <p>\( \Delta x < \Delta x_{min} \) – teda rovnica (8.2) nie je splnená.</p>
+    <h3>Analýza výsledku</h3>
+    <p>Rovnica (8.2) pre aproximáciu (8.0) nebude všeobecne splnená. Aproximácia (8.0) je však v zmysle rovnice (3.8) <strong>väčšia ako \( \pi(x) \)</strong>.</p>
+    <h2>Referencie / References:</h2>
+    <ul>
+      <li>(1) <a href="https://arxiv.org/pdf/1211.6944.pdf" target="_blank">RAMANUJAN, ROBIN, HIGHLY COMPOSITE NUMBERS, AND THE RIEMANN HYPOTHESIS</a></li>
+      <li>(2) <a href="http://math.colgate.edu/~integers/l33/l33.pdf" target="_blank">http://math.colgate.edu/~integers/l33/l33.pdf</a></li>
+      <li>(3) <a href="https://en.wikipedia.org/wiki/Prime_number_theorem" target="_blank">Prime Number Theorem</a></li>
+      <li>(4) <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1061.1249&rep=rep1&type=pdf" target="_blank">Numerical Evaluation of the Lambert W Function</a></li>
+      <li>(5) <a href="http://zakuski.utsa.edu/~jagy/Robin_1984.pdf" target="_blank">In 1984 Guy Robin</a></li>
+      <li>(6) <a href="https://en.wikipedia.org/wiki/Prime-counting_function" target="_blank">Prime-counting function</a></li>
+      <li>(7) <a href="https://robopol.sk/blog/riemannova-hypotezagoldenpart" target="_blank">https://robopol.sk/blog/riemannova-hypotezagoldenpart</a></li>
+      <li>(8) <a href="https://robopol.sk/blog/riemannova-hypoteza-dodatok" target="_blank">https://robopol.sk/blog/riemannova-hypoteza-dodatok</a></li>
+      <li>(9) <a href="https://robopol.sk/blog/riemannova-hypotezahladanie-dokazu" target="_blank">https://robopol.sk/blog/riemannova-hypotezahladanie-dokazu</a></li>
+      <li>(10) <a href="https://github.com/robopol/Riemann-hypothesis" target="_blank">https://github.com/robopol/Riemann-hypothesis</a></li>
+    </ul>
+  </div>
+  <!-- Koniec SK obsahu -->
+
+  <!-- Anglická verzia obsahu -->
+  <div id="content-en" style="display: none;">
+    <h1>Proofs of Equivalent Conditions for the Riemann Hypothesis</h1>
+    <p>Author: Ing. Robert Polák (Robopol)</p>
+    <p>Date: 17.03.2022</p>
+    <h2>Abstract</h2>
+    <p>Searching for proofs of equivalent conditions for the Riemann Hypothesis. These equivalent conditions were previously established by authors such as Srinivasa Ramanujan, Lagarias, Gronwall, and Robin.</p>
+    <h2>Introduction</h2>
+    <p>This publication is devoted to finding evidence in favor of the Riemann hypothesis. It follows up directly on the articles with the reference (7), (8), (9). Articles with the reference (7), (8), (9) contain a sequence of my thoughts on how to find evidence of equivalent conditions for RH, as Srinivasa Ramanujan (Ramanujan), Lagarias, Gronwall, Robin did in the past (see references (1), (2). )). This publication should be read in the context of the articles - references (7), (8), (9). In the publication, I will gradually present the steps and procedures that lead to the proof of equivalent conditions for RH. 
+        NOTE: log x = ln x, log x - the natural logarithm.
+        </p>
+    <p>References (1), (2), (5)</p>
+    <p>Citation:</p>
+    <p>The sum-of-divisors function \(\sigma\) is defined as</p>
+    <div class="equation">\[ \sigma(n) := \sum_{d | n} d \]</div>
+    <p>For example, \(\sigma(4) = 7\) and \(\sigma(p^n) = (p+1)\sigma(n)\) if \(p\) is a prime that does not divide \(n\). In 1913, the Swedish mathematician Thomas Gronwall determined the maximal order of \(\sigma\).</p>
+    <h3>Theorem 1 (Gronwall)</h3>
+    <div class="equation">\[ G(n) := \frac{\sigma(n)}{n \log (\log n)} \]</div>
+    <p>It satisfies \(\lim_{n \to \infty} \sup G(n) = e^{\gamma} = 1.78107\ldots\), where \(\gamma\) is the Euler–Mascheroni constant.</p>
+    <h3>Theorem 2 (Ramanujan)</h3>
+    <p>If the Riemann Hypothesis holds, then</p>
+    <div class="equation">\[ G(n) < e^{\gamma} \quad (n \gg 1) \]</div>
+    <p>where \(n \gg 1\) means for all sufficiently large \(n\). In 1984, the French mathematician Guy Robin proved that a stronger statement about \(G(n)\) is equivalent to RH.</p>
+    <h3>Theorem 3 (Robin)</h3>
+    <p>The Riemann Hypothesis holds if and only if</p>
+    <div class="equation">\[ G(n) < e^{\gamma}, \quad (n > 5040) \]</div>
+    <h3>Theorem 4 (Lagarias)</h3>
+    <p>The Riemann Hypothesis holds if and only if</p>
+    <div class="equation">\[ \sigma(n) < H_n + \exp(H_n) \log(H_n) \quad (n > 1) \]</div>
+    <p>where \(H_n\) denotes the \(n\)th harmonic number:</p>
+    <div class="equation">\[ H_n = \sum_{n=1}^{\infty} \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \dots \]</div>
+    <div class="equation">\[ \sum_{n=1}^{k} \frac{1}{n} = \ln k + \gamma + \epsilon_k \leq \ln k + 1, \quad \epsilon_k \sim \frac{1}{2k} \]</div>
+    <h2>Numerical Tests</h2>
+    <p>The numerical tests are described in detail in reference (7), and the advanced tests in reference (8).</p>
+    <div class="image"><img src="img/figure1.png" alt="Figure 1"></div>
+    <div class="image"><img src="img/figure2.png" alt="Figure 2"></div>
+    <p>Fig.1: Guy Robin test for basic and advanced testing.</p>
+    <h3>Note</h3>
+    <p>"Ideal numbers" are referred to in the literature as highly composite numbers.</p>
+    <h2>Final Version Riemann</h2>
+    <p>Reference (10):</p>
+    <p>Download the Python file – GitHub: <a href="https://github.com/robopol/Riemann-hypothesis/blob/main/riemann_hypothesis_final.py">riemann_hypothesis_final.py</a></p>
+    <h3>Description</h3>
+    <p>The algorithm computes the Guy Robin formula for various sequences to verify the validity of the Riemann Hypothesis. Optimally, the computation for sequence 3 (about 40,000 ideal numbers) takes around 1–2 minutes.</p>
+    <h2>Advanced Testing</h2>
+    <h3>Version Riemann Test (source code)</h3>
+    <p>Download the Python file – GitHub: <a href="https://github.com/robopol/Riemann-hypothesis/blob/main/Riemann_test.py">Riemann_test.py</a></p>
+    <h3>Results</h3>
+    <p>The value \(e^\gamma\) was not exceeded. The test was performed on a highly composite number obtained by multiplying together the first 500,000 primes. The number "N" had as many as 3,201,675 digits.</p>
+    <h2>Computation of \(\sigma\)</h2>
+    <p>In the formulas for \(G(n)\) in the sense of Gronwall and Robin, we have:</p>
+    <div class="equation">\[ G(n): \]</div>
+    <p>Example: \( n = 12, \; \sigma(n) = 1 + 2 + 3 + 4 + 6 + 12 = 28 \)</p>
+    <p>Every number can be factorized into its prime factors:</p>
+    <div class="equation">\[ n = \prod_{i,j} p_i^{j_i} \quad , \; p_i \in \text{primes}, \; j_i \in \mathbb{N} \quad \text{(1.1)} \]</div>
+    <p>Example: \( n = 2 \cdot 3 \cdot 5 \cdot 7 \)</p>
+    <p>Define the simple sequence:</p>
+    <div class="equation">\[ n = \prod_{i} p_i \quad , \; p_i \in \text{primes} \quad \text{(1.2)} \]</div>
+    <p>Then it holds that:</p>
+    <div class="equation">\[ \sigma(n) = \prod_{p_i \in \text{prime}} (p_i + 1) \quad \text{(1.3)} \]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = \prod_{p_i \in \text{prime}} \left( 1 + \frac{1}{p_i} \right) \quad \text{(1.4)} \]</div>
+    <p>Example: \( n = 2 \cdot 3 \cdot 5 \cdot 7 \cdot 11 \cdot 13 = 30030 \)</p>
+    <p>For (1.1) it holds that:</p>
+    <div class="equation">\[ \sigma(n) = \prod_{p_i \in \text{prime}} \left(1 + p_i + p_i^2 + p_i^3 + \dots + p_i^{j_i}\right) \quad \text{(1.5)} \]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = \prod_{p_i \in \text{prime}} \frac{1 + p_i + p_i^2 + p_i^3 + \dots + p_i^{j_i}}{p_i^{j_i}} \quad \text{(1.6)} \]</div>
+    <p>Example: \( n = 2^4 \cdot 3^2 \cdot 5 \cdot 7 = 5040 \)</p>
+    <p>\( \sigma(n) = (1+2+2^2+2^3+2^4) \cdot (1+3+3^2) \cdot (5+1) \cdot (7+1) = 19344 \)</p>
+    <h2>Highly Composite Numbers</h2>
+    <p>Define sequence (3) – highly composite numbers. These are numbers that maximize the ratio \(\sigma(n)/n\).</p>
+    <div class="equation">\[ \sup \frac{\sigma(n)}{n} = \sup \prod_{p_i \in \text{prime}} \frac{(1+p_i + p_i^2 + p_i^3 + \dots+ p_i^{j_i})}{p_i^{j_i}} \quad \text{(1.7)} \]</div>
+    <p>Example: \( n = 2^4 \cdot 3^2 \cdot 5 \cdot 7 \cdot 11 \cdot 13 = 720720 \)</p>
+    <p>\( \sigma(n) = 3249792,\quad \sigma(n)/n = 4.509 \)</p>
+    <h3>Modification of Equation (1.5):</h3>
+    <p>According to reference (2), page 9:</p>
+    <div class="equation">\[ \sigma(n) = \prod_{p_i \in \text{prime}} \left(1+p_i+p_i^2+p_i^3+\dots+p_i^{j_i}\right)
+        = \prod_{p_i \in \text{prime}} \frac{p_i^{j_i+1}-1}{p_i-1} \quad \text{(1.8)} \]</div>
+    <h3>Substitution into Equation (1.7):</h3>
+    <div class="equation">\[ \sup \frac{\sigma(n)}{n} = \sup \prod_{p_i \in \text{prime}} \frac{p_i^{j_i+1}-1}{(p_i-1)p_i^{j_i}} \quad \text{(1.9)} \]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = (2-2^{-j_2})\,(3/2-3^{-j_3}/2)\,(5/4-5^{-j_5}/4)\,(7/6-7^{-j_7}/6)\dots \quad \text{(1.10)} \]</div>
+    <div class="equation">\[ \frac{\sigma(n)}{n} = \prod_{p_i \in \text{prime}} \left(\frac{p_i}{p_i-1} - \frac{p_i^{-j_i}}{p_i-1}\right) \quad \text{(2.0)} \]</div>
+    <h3>Definition of \(\beta(n)\):</h3>
+    <div class="equation">\[ \beta(n) := \prod_{p_i \in \text{prime}} \frac{p_i}{p_i-1}, \quad \beta(n) > \sup \frac{\sigma(n)}{n} \quad \text{(2.1)} \]</div>
+    <h2>Reformulation of the RH Conditions</h2>
+    <p>Empirical testing using Python shows the behavior for sequence (1) and sequence (3) (see reference (8) for details).</p>
+    <div class="image"><img src="img/figure3.png" alt="Table no.1"></div>
+    <p>Table no.1: sequence (1)</p>
+    <div class="image"><img src="img/figure4.png" alt="Table no.2"></div>
+    <p>Table no.2: sequence (3)</p>
+    <h3>Test Sequence (1)</h3>
+    <p>Initial test:</p>
+    <div class="equation">\[ n = \prod_{p_1 \in \text{prime}}^{p_{10000}} p_i, \quad \text{last prime} = p_{1000} = 104729 \]</div>
+    <p>Final test:</p>
+    <div class="equation">\[ n = \prod_{p_1 \in \text{prime}}^{p_{500000}} p_i, \quad \text{last prime} = p_{500000} = 7368787 \]</div>
+    <h3>Test Sequence (3) – Highly Composite Numbers</h3>
+    <p>In the sense of (1.7) and Table no.2, for highly composite numbers:</p>
+    <p>Initial test:</p>
+    <div class="equation">\[ n = \sup \prod_{p_1 \in \text{prime}}^{p_{10000}} p_i^{j_i}, \quad \text{last prime} = p_{1000} = 104729 \]</div>
+    <p>Final test:</p>
+    <div class="equation">\[ n = \sup \prod_{p_1 \in \text{prime}}^{p_{300000}} p_i^{j_i}, \quad \text{last prime} = p_{300000} = 4256233 \]</div>
+    <h3>Numerical Test Results</h3>
+    <p><em>Numerical experiments suggest that the following statements likely hold:</em></p>
+    <div class="equation">\[ \text{last prime} = p_n, \quad \log(n) \approx p_n \quad \text{(2.2)} \]</div>
+    <p>For sequence (1):</p>
+    <div class="equation">\[ \log(n) < \text{last prime}, \quad \text{or} \quad \log(n) < p_n \quad \text{(2.3)} \]</div>
+    <p>For sequence (3) – highly composite numbers:</p>
+    <div class="equation">\[ \log(n) > \text{last prime}, \quad \text{or} \quad \log(n) > p_n \quad \text{(2.4)} \]</div>
+    <p>Proofs for (2.3) and (2.4) can be found in the appendix, see <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">https://www.poling.sk/Riemann/Appendix_RH.html</a></p>
+    <h2>Lagarias' Theorem</h2>
+    <div class="equation">\[ \sigma(n) < \log(n) + \gamma + \varepsilon + e^{\ln(n)+\gamma+\varepsilon}\log(\log(n)+\gamma+\varepsilon) \quad \text{(2.5)} \]</div>
+    <p>This sets a limit for Gronwall's theorem, and as \( N \to \infty \) with \( \varepsilon = 0 \):</p>
+    <div class="equation">\[ \lim_{n \to \infty} \frac{\sigma(n)}{n \log(\log(n))} = \lim_{n \to \infty} \frac{\log(n) + \gamma + n e^{\gamma} e^{\varepsilon}\log(\log(n)+\gamma)}{n \log(\log(n))} = e^{\gamma} \quad \text{(2.7)} \]</div>
+    <h2>Guy Robin Theorem</h2>
+    <div class="equation">\[ \frac{\sigma(n)}{n} < e^{\gamma} \log(\log n) \quad \text{for } n > 5040 \quad \text{(2.8)} \]</div>
+    <p>In this section, an even stronger theorem emerges; if it can be proven then the other statements (Robin, Lagarias) also hold. This theorem is tied to highly composite numbers, where each number \( n \) is a highly composite number.</p>
+    <h2>Robopol Theorem</h2>
+    <p>For highly composite numbers in the sense of (1.7) and (2.1), we obtain:</p>
+    <div class="equation">\[ \beta(n) < e^\gamma \log(\log n) \quad \text{(3.0)} \]</div>
+    <div class="equation">\[ \prod_{p_i \in \text{prime}}^{p_n} \frac{p_i}{p_i-1} < e^\gamma \log(\log(n)) \quad \text{(3.1)} \]</div>
+    <p>For a highly composite number \( n \), if \( p_n \geq p_{10} \).</p>
+    <p>For highly composite numbers in the sense of (2.4), Table no.2 gives:</p>
+    <div class="equation">\[ \prod_{p_i \in \text{prime}}^{p_n} \frac{p_i}{p_i-1} < e^\gamma \log(p_n) \quad \text{(3.2)} \]</div>
+    <p>For a highly composite number \( n \), if \( p_n \geq p_{100} \).</p>
+    <h3>A Stronger Statement than (2.8)</h3>
+    <p><strong>Equations (3.1) and (3.2) are stronger than (2.8) because:</strong></p>
+    <div class="equation">\[ \beta(n) > \sup \frac{\sigma(n)}{n} \quad \text{and} \quad \log(n) > p_n \quad \text{for a highly composite number } n \quad \text{(3.3)} \]</div>
+    <h2>Robopol Theorem Test</h2>
+    <p>A Python program tests the Robopol theorem:</p>
+    <p>Reference (10)</p>
+    <p>Download from GitHub: <a href="https://github.com/robopol/Riemann-hypothesis/blob/main/sigma-max_test.py" target="_blank">sigma-max_test.py</a></p>
+    <p>Table no.3 shows test results for very large numbers:</p>
+    <div class="image"><img src="img/figure5.png" alt="Table no.3"></div>
+    <div class="image"><img src="img/figure6.png" alt="Table no.3"></div>
+    <p>Table no.3: Test of the Robopol theorem for very large numbers.</p>
+    <p>From the table and graph, it is evident that the theorem is barely satisfied and that as we approach infinity the curves diverge slightly. This suggests that the theorem (as a stronger statement than Robin’s theorem) may hold to infinity. However, a formal proof is needed. Note that this applies in the sense of (3.2) for sufficiently large highly composite numbers.</p>
+    <h1>Approximation of \( \pi(x) \)</h1>
+    <div class="image"><img src="img/figure7.png" alt="Plot of \(\pi(x)\)"></div>
+    <p>Fig.2: Values of \(\pi(n)\) for the first 60 positive integers (source: Wikipedia).</p>
+    <h2>Prime-Counting Function</h2>
+    <div class="equation">\[ \pi(x) \approx \frac{x}{\log x}, \quad \text{year: 1792} \quad \text{(3.3)} \]</div>
+    <div class="equation">\[ \lim_{x \to \infty} \frac{\pi(x)}{x/\log(x)} = 1 \quad \text{(3.4)} \]</div>
+    <h2>More Accurate Approximation of \(\pi(x)\)</h2>
+    <div class="equation">\[ \pi(x) \approx \mathrm{Li}(x) := \int_2^x \frac{dt}{\log t} \quad \text{(3.5)} \]</div>
+    <div class="equation">\[ \lim_{x \to \infty} \frac{\mathrm{Li}(x)}{\pi(x)} = 1 \quad \text{(3.6)} \]</div>
+    <div class="image"><img src="img/figure8.png" alt="Comparison of \(\pi(x)\) approximations"></div>
+    <p>Fig.3: Graph showing the ratio of the prime-counting function \(\pi(x)\) to its two approximations: \(x/\log x\) and \(\mathrm{Li}(x)\). Source: Wikipedia.</p>
+    <h3>According to source (3):</h3>
+    <p>Pierre Dusart’s work provides stronger versions of these inequalities valid for larger \(x\). Later in 2010, Dusart proved:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-1} < \pi(x) < \frac{x}{\log(x)-1.1} \quad \text{(3.7)} \]</div>
+    <p>De la Vallée Poussin’s proof suggests that for every \(\varepsilon > 0\) there exists an \(S\) such that for all \(x > S\) it holds:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-(1-\varepsilon)} < \pi(x) < \frac{x}{\log(x)-(1+\varepsilon)} \quad \text{(3.8)} \]</div>
+    <h3><strong>The relation (3.8) is crucial for the subsequent arguments.</strong></h3>
+    <p>This indicates that the approximation \( \frac{x}{\log(x)-1} \) is the critical boundary for \(\pi(x)\) as \(x \to \infty\). In other words:</p>
+    <div class="equation">\[ \pi(x) \approx \frac{x}{\log(x)-1} \quad \text{(3.9)} \]</div>
+    <div class="equation">\[ \lim_{x \to \infty} \pi(x) = \lim_{x \to \infty} \frac{x}{\log(x)-1} \quad \text{(3.10)} \]</div>
+    <h3>Example</h3>
+    <p>For \( x = 10^{25} \):</p>
+    <div class="equation">\[ \pi(10^{25}) = 176846309399143769411680 \]</div>
+    <div class="equation">\[ \frac{10^{25}}{\log(10^{25})-(1+0.019)} \approx \pi(10^{20}) \sim 2.02482 \cdot 10^{18} \]</div>
+    <div class="equation">\[ \frac{10^{25}}{\log(10^{25})-(1+0.019)} > \pi(10^{20}) \]</div>
+    <h2>Robopol Theorem Connections</h2>
+    <p>From equation (3.2) we derive additional relationships that should hold.</p>
+    <div class="image"><img src="img/figure9.png" alt="Robopol theorem connections"></div>
+    <p>Fig.4: Graphical behavior of the Robopol theorem (for very large numbers).</p>
+    <h2>Statement (1.0)</h2>
+    <p>Assume that equation (3.2) holds over its entire domain:</p>
+    <div class="equation">\[ \beta(p_{k+1}) - \beta(p_k) \approx e^{\gamma}\,\log(p_{k+1}) - e^{\gamma}\,\log(p_k) \quad \text{(4.0)} \]</div>
+    <div class="image"><img src="img/figure10.png" alt="Illustration of equation (4.0)"></div>
+    <p>Fig.5: Geometric interpretation of equation (4.0).</p>
+    <h2>Modification of Equation (4.0)</h2>
+    <div class="equation">\[ \prod_{p_i \in \text{prime}}^{p_{k+1}} \frac{p_i}{p_i-1} - \prod_{p_i \in \text{prime}}^{p_k} \frac{p_i}{p_i-1} \approx e^{\gamma}\,\log(p_{k+1}) - e^{\gamma}\,\log(p_k) \quad \text{(4.1)} \]</div>
+    <div class="equation">\[ \varepsilon_k = \prod_{p_i \in \text{prime}}^{p_k} \frac{p_i}{p_i-1}, \quad \omega_k = e^{\gamma}\,\log(p_k) \quad \text{(4.2)} \]</div>
+    <h2>Identifying Initial Points</h2>
+    <p>In the sense of Fig.6, we identify the initial points at \(p_k\):</p>
+    <div class="equation">\[ p_k^* = \varepsilon_k = \omega_k \]</div>
+    <div class="image"><img src="img/figure11.png" alt="Graphical depiction of initial points"></div>
+    <p>Fig.6: Graphical depiction of the initial points at \(p_k\).</p>
+    <div class="equation">\[ \Delta \varepsilon_k = \varepsilon_k \frac{p_{k+1}}{p_{k+1}-1} - \varepsilon_k = \varepsilon_k \left(\frac{p_{k+1}}{p_{k+1}-1} - 1\right) \quad \text{(4.3)} \]</div>
+    <div class="equation">\[ \Delta \omega_k = e^{\gamma} \Bigl[\log(p_{k+1}) - \log(p_k)\Bigr] \quad \text{(4.4)} \]</div>
+    <p>Thus, from (4.1):</p>
+    <div class="equation">\[ \Delta \omega_k \approx \Delta \varepsilon_k, \quad e^{\gamma}\Bigl[\ln(p_{k+1}) - \ln(p_k)\Bigr] \approx \varepsilon_k\frac{p_{k+1}}{p_{k+1}-1} - \varepsilon_k \quad \text{(4.5)} \]</div>
+    <p>Substituting \(\varepsilon_k = \omega_k\) into (4.5) yields:</p>
+    <div class="equation">\[ e^{\gamma}\,\log(p_{k+1}) - e^{\gamma}\,\log(p_k) \approx e^{\gamma}\,\log(p_{k+1})\frac{p_{k+1}}{p_{k+1}-1} - e^{\gamma}\,\log(p_k) \quad \text{(4.6)} \]</div>
+    <div class="equation">\[ \log(p_{k+1}) \approx \log(p_k)\frac{p_{k+1}}{p_{k+1}-1} \quad \text{(4.7)} \]</div>
+    <h3>Example</h3>
+    <p>For very large primes:</p>
+    <div class="equation">\[ p_{999,999,999} = 22801763477 \]</div>
+    <div class="equation">\[ p_{1,000,000,000} = 22801763489 \]</div>
+    <div class="equation">\[ \log(22801763489) \approx \log(22801763477) \cdot \frac{22801763489}{22801763489-1} \]</div>
+    <h2>Statement (2.0)</h2>
+    <p>Suppose there exists a smooth, continuous function \( g(x) = f(x) \) approximating \(\pi(x)\) such that in the limit it holds:</p>
+    <div class="equation">\[ \lim_{x \to \infty} g(x) = \lim_{x \to \infty} \pi(x) \quad \text{(4.8)} \]</div>
+    <p>An appropriate choice, in view of (3.8) and (3.9), is:</p>
+    <div class="equation">\[ g(x) = \frac{x}{\log(x)-1} \quad \text{(4.9)} \]</div>
+    <h2>Statement (3.0)</h2>
+    <p>Assume that on the domain of \( g(x) \) for all \( x \ge 100 \) the following holds (in the sense of (4.7)):</p>
+    <div class="equation">\[ \log(x + \Delta x) \geq \log(x) \frac{x+\Delta x}{x+\Delta x-1} \quad \text{(4.10)} \]</div>
+    <p>where \( \Delta x \) represents the horizontal distance as shown in Fig.7.</p>
+    <div class="image"><img src="img/figure12.png" alt="Horizontal distance in equation (4.10)"></div>
+    <p>Fig.7: Horizontal distance \( \Delta x \) in equation (4.10).</p>
+    <p>First, define the equation as depicted in Fig.7:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-1} + 1 = \frac{x+\Delta x}{\log(x+\Delta x)-1} \quad \text{(5.0)} \]</div>
+    <p>Alternatively:</p>
+    <div class="equation">\[ \frac{x}{\log(x)-1} = 1 + \frac{x-\Delta x}{\log(x-\Delta x)-1} \quad \text{(5.1)} \]</div>
+    <h3>The Point of Statements (1.0), (2.0) and (3.0)</h3>
+    <p>The point is that if equation (4.10) is satisfied for all \( x > 100 \) – for all \( \Delta x \) computed from (5.1) – then the theorem (i.e. equations (3.0) and (3.2)) necessarily holds. This is our Statement (4.0).</p>
+    <h2>Statement (4.0)</h2>
+    <p>If equation (4.10) holds for all \( x > 100 \), with \( x \) computed from equation (5.1), then the theorem – i.e., equations (3.0) and (3.2) – must necessarily hold.</p>
+    <h3>Explanation</h3>
+    <p>Equation (4.10) is quite simple and intuitive. It is already continuous compared to the original (4.7), which contained only approximate values because the primes in \( x \) exhibit small fluctuations from the average of a smoothed function that would perfectly approximate them (like a smooth curve without serrations).</p>
+    <div class="equation">
+    \[ \log(p_{k+1}) > \log(p_k) \frac{p_{k+1}}{p_{k+1}-1} \quad \text{(5.2)} \]
+    </div>
+    <p>Thus, to confirm the validity of equations (3.0) and (3.2), we examine equation (5.2) at an arbitrary point \( p_k \) and its successor \( p_{k+1} \) – using the smoothed function \( g(x) \) for all \( x > 100 \). If we establish that this holds for all \( x \), then it is evident that equations (3.0) and (3.2) must also hold.</p>
+    <p>One might object that \( g(x) \) does not approximate \(\pi(x)\) well for small values; that is, for small \( x \) we have \( g(x) < \pi(x) \). However, we know that asymptotically \( g(x) \) catches up with \(\pi(x)\) (in the sense of equation (4.8)). Therefore, if asymptotically \( g(x) \) catches up with \(\pi(x)\), it is clear that as \( x \to \infty \) the slope of \( g(x) \) grows faster than the slope of \(\pi(x)\).</p>
+    <p>Numerical tests (Table no. 3) have demonstrated that equations (3.0) and (3.2) hold for very large values – specifically, for highly composite numbers with \( p_n \) as given in Table no. 3. Moreover, we observe that the curves slightly diverge, with the function \( e^{\log(p_n)} \) consistently remaining above (i.e. having higher values).</p>
+    <p>In the following sections, I will attempt to prove that the key Statement (4.0) indeed holds.</p>
+    <h2>Modification of Equation (4.10)</h2>
+    <p>Let us modify equation (4.10) as follows:</p>
+    <div class="equation">\[ \log(x + \Delta x) \geq \log(x) \frac{x+\Delta x}{x+\Delta x-1} \]</div>
+    <p>We use the substitution \( x + \Delta x = t \).</p>
+    <div class="equation">\[ \log(t) \geq \log(t - \Delta x) \frac{t}{t-1} \]</div>
+    <div class="equation">\[ \log(t - \Delta x) \geq \frac{\log(t)(t-1)}{t} \]</div>
+    <p>Eliminate the logarithm:</p>
+    <div class="equation">\[ t - \Delta x \geq t^{(t-1)/t} \quad \text{(5.3)} \]</div>
+    <div class="equation">\[ \Delta x \geq t - t^{(t-1)/t} \]</div>
+    <h3>Definition of \( \Delta x_{min} \)</h3>
+    <div class="equation">\[ \Delta x_{min} := t - t^{(t-1)/t} \quad \text{(5.4)} \]</div>
+    <div class="equation">\[ \Delta x \geq \Delta x_{min} \quad \text{(5.5)} \]</div>
+    <h3>Derivative of the Function</h3>
+    <div class="equation">\[ \frac{d}{dt}\Bigl(t - t^{(t-1)/t}\Bigr) = t^{-(t+1)/t} \Bigl(t + \log(t) - 1\Bigr) \quad \text{(5.6)} \]</div>
+    <h3>Limit of the Function</h3>
+    <div class="equation">\[ \lim_{t \to \infty} t^{-(t+1)/t} \Bigl(t + \log(t) - 1\Bigr) = 1 \quad \text{(5.7)} \]</div>
+    <h3>Example</h3>
+    <p>For \( t = 1000 \):</p>
+    <div class="equation">\[ \Delta x = 1000 - 1000^{(1000-1)/1000} = 6.883951579\ldots \]</div>
+    <p>Then, compute \( x \):</p>
+    <div class="equation">\[ x = t - \Delta x_{min} = 1000 - 6.883951579 = 993.116048420\ldots \]</div>
+    <p>Verification of the equation:</p>
+    <div class="equation">\[ \log(x + \Delta x_{min}) = \log(x) \frac{x+\Delta x_{min}}{x+\Delta x_{min}-1} \]</div>
+    <p>After substitution:</p>
+    <div class="equation">\[ \log(1000) = \log(993.116048420) \cdot \frac{993.116048420+6.883951579}{993.116048420+6.883951579-1} \]</div>
+    <p>Result:</p>
+    <div class="equation">\[ 6.907755279\ldots = 6.907755279\ldots \]</div>
+    <h2>Analysis of the Approximation \( \pi(x)=\frac{x}{\log(x)} \)</h2>
+    <p>First, let us check the simpler approximation \( \pi(x)=\frac{x}{\log(x)} \).</p>
+    <p>According to Fig.7 (for \( \pi(x)=\frac{x}{\log(x)} \)) we have:</p>
+    <div class="equation">\[ \frac{x}{\log x} = 1 + \frac{x - \Delta x}{\log(x - \Delta x)} \quad \text{(6.0)} \]</div>
+    <h3>Analytical Solution of the Equation</h3>
+    <p>The exact analytical solution of this equation is:</p>
+    <div class="equation">\[ \Delta x = x - e^{-W_{-1}\left(\frac{\log(x)}{\log(x)-x}\right)}, \quad \Delta x > 0 \quad \text{(6.1)} \]</div>
+    <p>Alternatively:</p>
+    <div class="equation">\[ \Delta x = x - \frac{\log(x)-x}{\log(x)-1}\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right), \quad \Delta x > 0 \quad \text{(6.2)} \]</div>
+    <p>where \( W_{-1}(z) \) is the Lambert W function (reference (4)).</p>
+    <h3>Derivative</h3>
+    <div class="equation">\[ \frac{d}{dx}\!\left(\frac{\log(x)-x}{\log(x)}\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)\right)
+    = -\frac{(\log(x)-1)\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)^2}{\log^2(x) \Bigl(W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)+1\Bigr)} \quad \text{(6.3)} \]</div>
+    <h3>Limit of the Function</h3>
+    <div class="equation">\[ \lim_{x \to \infty} -\frac{(\log(x)-1)\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)^2}{\log^2(x) \Bigl(W_{-1}\!\left(\frac{\log(x)}{\log(x)-1}\right)+1\Bigr)} \]</div>
+    <p>No simple closed-form result was found in terms of standard functions.</p>
+    <p>In view of (5.5), for \( x > 100 \) it must hold that:</p>
+    <div class="equation">\[ x - \frac{\log(x)-x}{\log(x)}\,W_{-1}\!\left(\frac{\log(x)}{\log(x)-x}\right) \geq x - x^{(x-1)/x} \quad \text{(6.4)} \]</div>
+    <h3>Example Calculations</h3>
+    <p>Example 1: \( x = 10^6 \)</p>
+    <div class="equation">\[ \Delta x \approx 14.89353360214\ldots \]</div>
+    <div class="equation">\[ \Delta x_{min} \approx 13.815415124237\ldots \]</div>
+    <div class="equation">\[ \Delta x - \Delta x_{min} \approx 1.078118477907\ldots \]</div>
+    <p>Example 2: \( x = 10^{200} \)</p>
+    <div class="equation">\[ \Delta x \approx 461.519194796772488\ldots \]</div>
+    <div class="equation">\[ \Delta x_{min} \approx 460.517018598809\ldots \]</div>
+    <div class="equation">\[ \Delta x - \Delta x_{min} \approx 1.00217\ldots \]</div>
+    <p>Thus, numerically we expect that:</p>
+    <div class="equation">\[ \lim_{x \to \infty} \Bigl(\Delta x - \Delta x_{min}\Bigr) = 1 \]</div>
+    <h3>Modification of Equation (6.0)</h3>
+    <p>Rewrite equation (6.0) into the desired form:</p>
+    <div class="equation">\[ \frac{x}{\log x} - 1 - \frac{x-\Delta x}{\log(x-\Delta x)} = 0 \quad \text{(6.5)} \]</div>
+    <p>Next step:</p>
+    <div class="equation">\[ \frac{x\,\log(x-\Delta x) - \log(x)\,\log(x-\Delta x) - \log(x)(x-\Delta x)}{\log(x)\,\log(x-\Delta x)} = 0 \]</div>
+    <p>Simplification:</p>
+    <div class="equation">\[ (x-\log(x))\,\log(x-\Delta x) - \log(x)(x-\Delta x) = 0 \quad \text{(6.6)} \]</div>
+    <h3>Taylor Expansion</h3>
+    <p>Expanding in \( x \) we obtain:</p>
+    <div class="equation">
+      \[
+      \begin{aligned}
+      & \Bigl(\Delta x + \Delta x\,\log(x) - \log^2(x)\Bigr)
+      - \frac{\Delta x\Bigl(\Delta x-2\log(x)\Bigr)}{2x} \\
+      & + \frac{\Delta x^2\Bigl(3\log(x)-2\Delta x\Bigr)}{6x^2} + O\Bigl(\frac{1}{x^3}\Bigr)
+      \end{aligned}
+      \quad \text{(6.7)}
+      \]
+    </div>
+    <p>For \( x \to \infty \) this reduces to:</p>
+    <div class="equation">\[ \Delta x + \Delta x\,\log(x) - \log^2(x) = 0 \quad \text{(6.8)} \]</div>
+    <h3>Solving for \( \Delta x \)</h3>
+    <p>Solve for \( \Delta x \):</p>
+    <div class="equation">\[ \Delta x = \frac{\log^2(x)}{\log(x)-1} \quad \text{(6.9)} \]</div>
+    <h3>Limit Evaluation</h3>
+    <p>Thus, by (6.4):</p>
+    <div class="equation">\[ \lim_{x \to \infty} \Bigl(\Delta x - \Delta x_{min}\Bigr)
+      = \lim_{x \to \infty} \left[\frac{\log^2(x)}{\log(x)-1} - \Bigl(x - x^{(x-1)/x}\Bigr)\right] = 1 \quad \text{(6.10)} \]</div>
+    <h3>Conclusion</h3>
+    <p>Equation (6.10) shows that \( \Delta x \geq \Delta x_{min} \) holds up to infinity.</p>
+    <h2>Analysis of the Approximation \( \pi(x)=\frac{x}{\log(x)-1} \)</h2>
+    <p>Now, let us check the approximation \( \pi(x) = \frac{x}{\log(x)-1} \) in the sense of equations (3.9) and (3.10).</p>
+    <p>Solving equation (5.1) yields:</p>
+    <div class="equation">
+      \[
+      \Delta x = \frac{(x - \log(x) + 1) \cdot W_{-1}\!\left(-\frac{\sqrt[1+x-\log(x)]{\frac{e^{x+1}}{x} (\log(x)-1)}}{\,x - \log(x) + 1}\right)}{\log(x)-1} + x \quad \text{(7.0)}
+      \]
+    </div>
+    <p>According to (5.5), for \( x > 100 \) it must hold that:</p>
+    <div class="equation">\[ \Delta x \geq \Delta x_{min} \]</div>
+    <div class="equation">
+      \[
+      \frac{(x - \log(x) + 1) \cdot W_{-1}\!\left(-\frac{\sqrt[\,x+1-\log(x)]{\frac{e^{x+1}}{x} - (\log(x)-1)}}{\,x - \log(x) + 1}\right)}{\log(x)-1} + x \geq x - x^{(x-1)/x} \quad \text{(7.1)}
+      \]
+    </div>
+    <h3>Example Calculation</h3>
+    <p>For \( x = 10^{180} \) we have:</p>
+    <div class="equation">
+      \[
+      \Delta x = \dots = 414.467741185201\ldots
+      \]
+    </div>
+    <p>The minimum value is:</p>
+    <div class="equation">
+      \[
+      \Delta x_{min} = 10^{180} - \Bigl(10^{180}\Bigr)^{(10^{180}-1)/10^{180}} = 414.465316\ldots
+      \]
+    </div>
+    <p>The difference between \( \Delta x \) and \( \Delta x_{min} \) is:</p>
+    <div class="equation">
+      \[
+      \Delta x > \Delta x_{min}, \quad \Delta x - \Delta x_{min} \sim 0
+      \]
+    </div>
+    <p>Thus, numerically we expect that:</p>
+    <div class="equation">
+      \[
+      \lim_{x \to \infty} \Bigl(\Delta x - \Delta x_{min}\Bigr) = 0
+      \]
+    </div>
+    <p>Now, we reexamine the approximation \( \pi(x) = \frac{x}{\log(x)-1} \) in the sense of (3.9) and (3.10).</p>
+    <h3>Modification of Equation (5.1)</h3>
+    <p>Rewrite equation (5.1) into the desired form:</p>
+    <div class="equation">
+      \[
+      \frac{x}{\log x-1} - 1 - \frac{x-\Delta x}{\log(x-\Delta x)-1} = 0 \quad \text{(7.2)}
+      \]
+    </div>
+    <div class="equation">
+      \[
+      \frac{x}{\log(x)-1} - \frac{x}{\log(x-\Delta x)-1} + \frac{\Delta x}{\log(x-\Delta x)-1} - 1 = 0 \quad \text{(7.3)}
+      \]
+    </div>
+    <h3>Expansion in \( x \)</h3>
+    <p>Using a Puiseux series expansion:</p>
+    <div class="equation">
+      \[
+      -\frac{2\Delta x - (\Delta x-2)\log(x) + \log^2(x) + 1}{(\log(x)-1)^2}
+      + \frac{\Delta x^2(\log(x)-3)}{2x(\log(x)-1)^3} + O\left(\frac{1}{x^2}\right)
+      \quad \text{(7.4)}
+      \]
+    </div>
+    <p>For \( x \to \infty \) this reduces to:</p>
+    <div class="equation">
+      \[
+      -\frac{2\Delta x - (\Delta x-2)\log(x) + \log^2(x) + 1}{(\log(x)-1)^2} = 0 \quad \text{(7.5)}
+      \]
+    </div>
+    <h3>Solving for \( \Delta x \)</h3>
+    <div class="equation">
+      \[
+      \Delta x = \frac{(\log(x)-1)^2}{\log(x)-2} \quad \text{(7.6)}
+      \]
+    </div>
+    <h3>Limit Evaluation</h3>
+    <p>Thus, we compute the limit:</p>
+    <div class="equation">
+      \[
+      \lim_{x \to \infty} \Bigl(\Delta x - \Delta x_{min}\Bigr)
+      = \lim_{x \to \infty} \left[\frac{(\log(x)-1)^2}{\log(x)-2} - \Bigl(x - x^{(x-1)/x}\Bigr)\right] = 0 \quad \text{(7.9)}
+      \]
+    </div>
+    <p>Series expansion for \( x \to \infty \):</p>
+    <div class="equation">
+      \[
+      \frac{1}{\log(x)-2} + \frac{\log^2(x)}{2x} + O\left(\frac{1}{x^2}\right)
+      \quad \text{(7.10)}
+      \]
+    </div>
+    <h3>Conclusion</h3>
+    <p><strong>Equation (7.9) shows that \( \Delta x \geq \Delta x_{min} \) holds up to infinity.</strong></p>
+    <h2>Analysis of the Approximation \( \pi(x)=\frac{x}{\log(x)-\epsilon} \)</h2>
+    <p>For the approximation, it holds that:</p>
+    <div class="equation">
+      \[
+      \pi(x) = \frac{x}{\log(x)-\epsilon}, \quad \epsilon = 1+\varepsilon, \quad \varepsilon > 0 \quad \text{(8.0)}
+      \]
+    </div>
+    <p>The solution of equation (8.0) yields:</p>
+    <div class="equation">
+      \[
+      \Delta x = \frac{(x+\log(x)+\epsilon) \cdot W_{-1}\!\left(\frac{\left(e^{\frac{\epsilon^2}{x+\epsilon}} \cdot x^{-\frac{\epsilon}{x}}\right)^{\frac{x}{x+\epsilon-\log(x)}} \cdot (\epsilon-\log(x))}{x-\log(x)+\epsilon}\right)}{\log(x)-\epsilon} + x \quad \text{(8.1)}
+      \]
+    </div>
+    <p>In view of (5.5) for \( x > 100 \) it must hold that:</p>
+    <div class="equation">\[ \Delta x \geq \Delta x_{min} \quad \text{(8.2)} \]</div>
+    <div class="equation">
+      \[
+      \frac{(x+\log(x)+\epsilon) \cdot W_{-1}\!\left(\frac{\left(e^{\frac{\epsilon^2}{x+\epsilon}} \cdot x^{-\frac{\epsilon}{x}}\right)^{\frac{x}{x+\epsilon-\log(x)}} \cdot (\epsilon-\log(x))}{x-\log(x)+\epsilon}\right)}{\log(x)-\epsilon} + x \geq x - x^{(x-1)/x} \quad \text{(8.2)}
+      \]
+    </div>
+    <h3>Examples</h3>
+    <p><strong>Example 1:</strong></p>
+    <div class="equation">\[ x = 10^{15}, \quad \varepsilon = 1.0000000000001 \]</div>
+    <div class="equation">\[ \Delta x = \frac{277}{8} = 34.625 \]</div>
+    <div class="equation">\[ \Delta x_{min} = 10^{15} - (10^{15})^{(10^{15}-1)/10^{15}} = 34.538 \]</div>
+    <p>\( \Delta x > \Delta x_{min} \)</p>
+    <p><strong>Example 2:</strong></p>
+    <div class="equation">\[ x = 10^{16}, \quad \varepsilon = 1.0000000000001 \]</div>
+    <div class="equation">\[ \Delta x = 36 \]</div>
+    <div class="equation">\[ \Delta x_{min} = 10^{16} - (10^{16})^{(10^{16}-1)/10^{16}} = 36.841 \]</div>
+    <p>\( \Delta x < \Delta x_{min} \) – hence, equation (8.2) is not satisfied.</p>
+    <h3>Result Analysis</h3>
+    <p>Thus, equation (8.2) for the approximation (8.0) will not generally hold. However, in the sense of equation (3.8) the approximation (8.0) is <strong>greater than \( \pi(x) \)</strong>.</p>
+    <h2>References / References:</h2>
+    <ul>
+      <li>(1) <a href="https://arxiv.org/pdf/1211.6944.pdf" target="_blank">RAMANUJAN, ROBIN, HIGHLY COMPOSITE NUMBERS, AND THE RIEMANN HYPOTHESIS</a></li>
+      <li>(2) <a href="http://math.colgate.edu/~integers/l33/l33.pdf" target="_blank">http://math.colgate.edu/~integers/l33/l33.pdf</a></li>
+      <li>(3) <a href="https://en.wikipedia.org/wiki/Prime_number_theorem" target="_blank">Prime Number Theorem</a></li>
+      <li>(4) <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1061.1249&rep=rep1&type=pdf" target="_blank">Numerical Evaluation of the Lambert W Function</a></li>
+      <li>(5) <a href="http://zakuski.utsa.edu/~jagy/Robin_1984.pdf" target="_blank">In 1984 Guy Robin</a></li>
+      <li>(6) <a href="https://en.wikipedia.org/wiki/Prime-counting_function" target="_blank">Prime-counting function</a></li>
+      <li>(7) <a href="https://robopol.sk/blog/riemannova-hypotezagoldenpart" target="_blank">https://robopol.sk/blog/riemannova-hypotezagoldenpart</a></li>
+      <li>(8) <a href="https://robopol.sk/blog/riemannova-hypoteza-dodatok" target="_blank">https://robopol.sk/blog/riemannova-hypoteza-dodatok</a></li>
+      <li>(9) <a href="https://robopol.sk/blog/riemannova-hypotezahladanie-dokazu" target="_blank">https://robopol.sk/blog/riemannova-hypotezahladanie-dokazu</a></li>
+      <li>(10) <a href="https://github.com/robopol/Riemann-hypothesis" target="_blank">https://github.com/robopol/Riemann-hypothesis</a></li>
+    </ul>
+  </div>
+  <!-- Koniec EN obsahu -->
+
+</div><!-- .page -->
+
+<script>
+  const btnSk = document.getElementById('btn-sk');
+  const btnEn = document.getElementById('btn-en');
+  const contentSk = document.getElementById('content-sk');
+  const contentEn = document.getElementById('content-en');
+  btnSk.addEventListener('click', () => {
+    contentSk.style.display = 'block';
+    contentEn.style.display = 'none';
+  });
+  btnEn.addEventListener('click', () => {
+    contentSk.style.display = 'none';
+    contentEn.style.display = 'block';
+  });
+</script>
+</body>
+</html>
