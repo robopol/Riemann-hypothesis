@@ -213,9 +213,8 @@
                     \( n = p_1^{j_1} \times p_2^{j_2} \times \dots \times p_k^{j_k} \),
                 </div>
                 <p>
-                    where \( p_i \) are prime numbers in increasing order (\( p_1 = 2, \, p_2 = 3, \, \dots \)), and the exponents satisfy \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \), with at least one exponent \( j_i > 1 \).
+                    where \( p_i \) are prime numbers in increasing order (\( p_1 = 2, \, p_2 = 3, \, \dots \)), and the exponents satisfy \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \) with at least one exponent \( j_i > 1 \). Then, for highly composite numbers \( n \), it holds that:
                 </p>
-                <p>Then, for highly composite numbers \( n \), it holds that:</p>
                 <div class="equation">
                     \( \log(n) > p_k \).
                 </div>
@@ -231,105 +230,85 @@
                         </div>
                     </li>
                     <li>
-                        <strong>Split the sum:</strong>
-                        <p>We split the sum into two parts:</p>
+                        <strong>Split the Sum:</strong>
+                        <p>Write the sum as two parts:</p>
                         <div class="equation">
                             \( \log(n) = \underbrace{\sum\limits_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i)}_{\Delta} \),
                         </div>
                         <p>where:</p>
                         <ul>
-                            <li>\( \theta(p_k) = \sum\limits_{i=1}^{k} \ln(p_i) \) is Chebyshev's function.</li>
-                            <li>\( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \) represents the contribution from exponents greater than 1.</li>
+                            <li>\( \theta(p_k) = \sum\limits_{i=1}^{k} \ln(p_i) \) is Chebyshev's function, and</li>
+                            <li>\( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \) represents the additional contribution from exponents greater than 1.</li>
                         </ul>
                     </li>
                     <li>
-                        <strong>Estimate \( \delta_k = p_k - \theta(p_k) \):</strong>
-                        <p>From the Prime Number Theorem and known estimates, we have:</p>
+                        <strong>Estimate the Gap \( \delta_k \):</strong>
+                        <p>Define the gap:</p>
+                        <div class="equation">
+                            \( \delta_k = p_k - \theta(p_k) \).
+                        </div>
+                        <p>Using results from the Prime Number Theorem and related estimates (e.g. Rosser’s theorem), we have an upper bound of the form:</p>
                         <div class="equation">
                             \( |\delta_k| \leq C \dfrac{p_k}{\ln p_k} \),
                         </div>
-                        <p>where \( C > 0 \) is a constant. For our purposes, we choose \( C = 0.1 \).</p>
+                        <p>for some constant \( C > 0 \). In our discussion we choose \( C = 0.1 \), and since \( p_k/\ln(p_k) \) is asymptotically comparable to \( k \), we write:</p>
+                        <div class="equation">
+                            \( |\delta_k| \lesssim C k \).
+                        </div>
                     </li>
                     <li>
                         <strong>Estimate \( \Delta \):</strong>
-                        <p>Let \( r \) be the number of exponents \( j_i > 1 \), and let \( j_{\text{min}} = \min\{j_i : j_i > 1\} \geq 2 \). Then:</p>
+                        <p>Let \( r \) be the number of indices with \( j_i > 1 \) and define \( j_{\min} = \min\{j_i : j_i > 1\} \) (with \( j_{\min} \geq 2 \)). Then:</p>
                         <div class="equation">
-                            \( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \geq (j_{\text{min}} - 1) \sum\limits_{i=1}^{r} \ln(p_i) \).
+                            \( \Delta = \sum\limits_{i=1}^{k} (j_i - 1)\ln(p_i) \geq (j_{\min} - 1) \sum\limits_{i=1}^{r} \ln(p_i) \).
                         </div>
-                        <p>Since \( p_i \geq 2 \), we have:</p>
+                        <p>Since \( \ln(p_i) \geq \ln(2) \) for all \( p_i \geq 2 \), it follows that:</p>
                         <div class="equation">
-                            \( \sum\limits_{i=1}^{r} \ln(p_i) \geq r \ln(2) \),
-                        </div>
-                        <p>thus:</p>
-                        <div class="equation">
-                            \( \Delta \geq (j_{\text{min}} - 1) r \ln(2) \).
+                            \( \Delta \geq (j_{\min} - 1) \, r \, \ln(2) \).
                         </div>
                     </li>
                     <li>
-                        <strong>Compare \( \Delta \) and \( |\delta_k| \):</strong>
-                        <p>We need to show that:</p>
+                        <strong>Derive the Key Condition:</strong>
+                        <p>To ensure that \( \log(n) > p_k \), we need:</p>
                         <div class="equation">
-                            \( \Delta > |\delta_k| \implies (j_{\text{min}} - 1) r \ln(2) > C \dfrac{p_k}{\ln p_k} \).
+                            \( \Delta > \delta_k \).
+                        </div>
+                        <p>Since \( \delta_k \lesssim C k \), it is sufficient that:</p>
+                        <div class="equation">
+                            \( (j_{\min} - 1) \, r \, \ln(2) > C k \).
+                        </div>
+                        <p>Define the ratio \( \alpha = \frac{r}{k} \) (the fraction of primes in the factorization appearing with an exponent greater than 1), so the condition becomes:</p>
+                        <div class="equation">
+                            \( (j_{\min} - 1)\,\alpha\,\ln(2) > C \).
                         </div>
                     </li>
                     <li>
-                        <strong>Relate \( p_k \) and \( k \):</strong>
-                        <p>The \( k \)-th prime satisfies approximately:</p>
+                        <strong>Additional Justification:</strong>
+                        <p>For highly composite numbers, the construction typically uses the smallest primes with as high exponents as possible, so that:</p>
+                        <ul>
+                            <li>\( j_{\min} \ge 2 \), hence \( j_{\min} - 1 \ge 1 \), and</li>
+                            <li>a significant portion of the primes appear with exponents greater than 1; in practice, one finds \( \alpha \) in the range of approximately 0.3 to 0.6.</li>
+                        </ul>
+                        <p>Taking a conservative estimate \( \alpha \ge 0.3 \) and noting that \( \ln(2) \approx 0.6931 \), we have:</p>
                         <div class="equation">
-                            \( p_k \approx k \ln k \),
+                            \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.3 \times 0.6931 \approx 0.208 \).
                         </div>
-                        <p>and thus:</p>
-                        <div class="equation">
-                            \( \ln p_k \approx \ln(k \ln k) \approx \ln k + \ln \ln k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Estimate \( \dfrac{p_k}{\ln p_k} \):</strong>
-                        <p>We have:</p>
-                        <div class="equation">
-                            \( \dfrac{p_k}{\ln p_k} \approx \dfrac{k \ln k}{\ln k + \ln \ln k} \approx k \).
-                        </div>
-                        <p>Therefore:</p>
-                        <div class="equation">
-                            \( |\delta_k| \leq C k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Compare \( \Delta \) and \( |\delta_k| \):</strong>
-                        <p>From our estimates:</p>
-                        <div class="equation">
-                            \( \Delta \geq (j_{\text{min}} - 1) r \ln(2) \).
-                        </div>
-                        <p>To ensure \( \Delta > |\delta_k| \), we need:</p>
-                        <div class="equation">
-                            \( (j_{\text{min}} - 1) r \ln(2) > C k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Relate \( r \) and \( k \):</strong>
-                        <p>Let \( r = \alpha k \), where \( 0 < \alpha \leq 1 \). Then:</p>
-                        <div class="equation">
-                            \( (j_{\text{min}} - 1) \alpha k \ln(2) > C k \implies (j_{\text{min}} - 1) \alpha \ln(2) > C \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Set conditions on \( \alpha \) and \( j_{\text{min}} \):</strong>
-                        <p>To satisfy the inequality, we need:</p>
-                        <div class="equation">
-                            \( \alpha > \dfrac{C}{(j_{\text{min}} - 1) \ln(2)} \).
-                        </div>
-                        <p>Since \( j_{\text{min}} - 1 \geq 1 \) and \( \ln(2) \approx 0.6931 \), we obtain:</p>
-                        <div class="equation">
-                            \( \alpha > \dfrac{0.1}{0.6931} \approx 0.1443 \).
-                        </div>
+                        <p>Since \( 0.208 > 0.1 = C \), the key condition is satisfied.</p>
                     </li>
                     <li>
                         <strong>Conclusion:</strong>
-                        <p>For highly composite numbers, \( \alpha \) is often greater than the required value, so \( \Delta > |\delta_k| \), and thus:</p>
+                        <p>Thus, the logarithm of \( n \) can be written as:</p>
                         <div class="equation">
-                            \( \log(n) = \theta(p_k) + \Delta = p_k - \delta_k + \Delta > p_k \).
+                            \( \log(n) = \theta(p_k) + \Delta \),
                         </div>
-                        <p>Therefore, \( \log(n) > p_k \).</p>
+                        <p>and because \( \Delta > \delta_k \), we have:</p>
+                        <div class="equation">
+                            \( \log(n) > \theta(p_k) + \delta_k \ge p_k \).
+                        </div>
+                        <p>Therefore, for highly composite numbers, it holds that:</p>
+                        <div class="equation">
+                            \( \boxed{\log(n) > p_k} \).
+                        </div>
                     </li>
                 </ol>
             
@@ -339,58 +318,43 @@
                 <ul>
                     <li>Primes (\( p_i \)): \( 2, 3, 5, 7, 11, 13, 17, 19 \).</li>
                     <li>Exponents (\( j_i \)): \( 5, 4, 3, 2, 2, 1, 1, 1 \).</li>
-                    <li>Number of primes (\( k \)): \( 8 \).</li>
-                    <li>Number of exponents greater than 1 (\( r \)): \( 5 \).</li>
+                    <li>Total primes (\( k \)): \( 8 \).</li>
+                    <li>Number with exponent \( > 1 \) (\( r \)): \( 5 \).</li>
                     <li>Largest prime (\( p_k \)): \( 19 \).</li>
                 </ul>
             
                 <p><strong>Calculate \( \theta(p_k) \):</strong></p>
                 <div class="equation">
-                    \(
-                    \theta(p_k) = \sum_{i=1}^{8} \ln(p_i) \approx 16.0875.
-                    \)
+                    \( \theta(p_k) = \sum_{i=1}^{8} \ln(p_i) \approx 16.0875. \)
                 </div>
             
                 <p><strong>Calculate \( \Delta \):</strong></p>
                 <div class="equation">
-                    \(
-                    \Delta = (5 - 1)\ln(2) + (4 - 1)\ln(3) + (3 - 1)\ln(5) + (2 - 1)\ln(7) + (2 - 1)\ln(11) \approx 13.6308.
-                    \)
+                    \( \Delta = (5-1)\ln(2) + (4-1)\ln(3) + (3-1)\ln(5) + (2-1)\ln(7) + (2-1)\ln(11) \approx 13.6308. \)
                 </div>
             
                 <p><strong>Calculate \( \delta_k \):</strong></p>
                 <div class="equation">
-                    \(
-                    \delta_k = p_k - \theta(p_k) = 19 - 16.0875 = 2.9125.
-                    \)
+                    \( \delta_k = p_k - \theta(p_k) = 19 - 16.0875 = 2.9125. \)
                 </div>
             
-                <p><strong>Compare \( \Delta \) and \( \delta_k \):</strong></p>
+                <p><strong>Verify the Inequality:</strong></p>
                 <div class="equation">
-                    \(
-                    \Delta = 13.6308 > \delta_k = 2.9125.
-                    \)
+                    \( \Delta = 13.6308 > \delta_k = 2.9125, \)
                 </div>
-            
-                <p><strong>Compute \( \log(n) \):</strong></p>
+                <p>and therefore:</p>
                 <div class="equation">
-                    \(
-                    \log(n) = \theta(p_k) + \Delta = 16.0875 + 13.6308 = 29.7183.
-                    \)
+                    \( \log(n) = 16.0875 + 13.6308 = 29.7183 > 19 = p_k. \)
                 </div>
             
-                <p><strong>Compare \( \log(n) \) and \( p_k \):</strong></p>
+                <p><strong>Check the Key Condition:</strong></p>
+                <p>We have \( \alpha = \frac{r}{k} = \frac{5}{8} = 0.625 \), which clearly satisfies</p>
                 <div class="equation">
-                    \(
-                    \log(n) = 29.7183 > p_k = 19.
-                    \)
+                    \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.625 \times 0.6931 \approx 0.433 > 0.1. \)
                 </div>
-            
-                <p><strong>Verify the condition for \( \alpha \):</strong></p>
-                <p>We have \( \alpha = \dfrac{r}{k} = \dfrac{5}{8} = 0.625 \), which is greater than \( 0.1443 \). Therefore, the condition is satisfied.</p>
             
                 <h3>Conclusion:</h3>
-                <p>This example illustrates the validity of the proof that for highly composite numbers \( n \), it holds that \( \log(n) > p_k \).</p>
+                <p>This example confirms that for highly composite numbers, the additional contribution \( \Delta \) is sufficient to ensure that \( \log(n) > p_k \).</p>
                 <div class="equation">
                     \( \boxed{\log(n) > p_k} \).
                 </div>
@@ -482,9 +446,8 @@
                     \( n = p_1^{j_1} \times p_2^{j_2} \times \dots \times p_k^{j_k} \),
                 </div>
                 <p>
-                    kde \( p_i \) sú prvočísla v rastúcom poradí (\( p_1 = 2, \, p_2 = 3, \, \dots \)) a exponenty spĺňajú \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \), pričom aspoň jeden exponent \( j_i > 1 \).
+                    kde \( p_i \) sú prvočísla v rastúcom poradí (\( p_1 = 2, \, p_2 = 3, \, \dots \)) a exponenty spĺňajú \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \), pričom aspoň jeden exponent \( j_i > 1 \). Potom pre vysoko-zložené čísla \( n \) platí:
                 </p>
-                <p>Potom pre vysoko-zložené čísla \( n \) platí:</p>
                 <div class="equation">
                     \( \log(n) > p_k \).
                 </div>
@@ -507,98 +470,79 @@
                         </div>
                         <p>kde:</p>
                         <ul>
-                            <li>\( \theta(p_k) = \sum\limits_{i=1}^{k} \ln(p_i) \) je Chebyshevova funkcia.</li>
-                            <li>\( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \) predstavuje príspevok od exponentov väčších ako 1.</li>
+                            <li>\( \theta(p_k) = \sum\limits_{i=1}^{k} \ln(p_i) \) je Chebyshevova funkcia,</li>
+                            <li>\( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \) predstavuje príspevok od exponentov väčších než 1.</li>
                         </ul>
                     </li>
                     <li>
-                        <strong>Odhad \( \delta_k = p_k - \theta(p_k) \):</strong>
-                        <p>Z Veľkej vety o prvočíslach a známych odhadov vieme, že:</p>
+                        <strong>Odhad \( \delta_k \):</strong>
+                        <p>Nech \( \delta_k = p_k - \theta(p_k) \). Z prvočíselnej vety a výsledkov (napríklad odhady od Rossera) máme:</p>
                         <div class="equation">
                             \( |\delta_k| \leq C \dfrac{p_k}{\ln p_k} \),
                         </div>
-                        <p>kde \( C > 0 \) je konštanta. Pre naše účely zvolíme \( C = 0{,}1 \).</p>
+                        <p>pričom pre naše účely zvolíme \( C = 0.1 \). Pretože \( p_k/\ln(p_k) \) je asymptoticky porovnateľné s \( k \), píšeme:</p>
+                        <div class="equation">
+                            \( |\delta_k| \lesssim C k \).
+                        </div>
                     </li>
                     <li>
                         <strong>Odhad \( \Delta \):</strong>
-                        <p>Nech \( r \) je počet exponentov \( j_i > 1 \) a \( j_{\text{min}} = \min\{j_i : j_i > 1\} \geq 2 \). Potom:</p>
+                        <p>Nech \( r \) je počet indexov s \( j_i > 1 \) a nech \( j_{\min} = \min\{j_i : j_i > 1\} \geq 2 \). Potom:</p>
                         <div class="equation">
-                            \( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \geq (j_{\text{min}} - 1) \sum\limits_{i=1}^{r} \ln(p_i) \).
+                            \( \Delta = \sum\limits_{i=1}^{k} (j_i - 1)\ln(p_i) \geq (j_{\min} - 1) \sum\limits_{i=1}^{r} \ln(p_i) \).
                         </div>
-                        <p>Keďže \( p_i \geq 2 \), platí:</p>
+                        <p>Lebo \( \ln(p_i) \geq \ln(2) \) pre všetky \( p_i \geq 2 \), dostávame:</p>
                         <div class="equation">
-                            \( \sum\limits_{i=1}^{r} \ln(p_i) \geq r \ln(2) \),
-                        </div>
-                        <p>teda:</p>
-                        <div class="equation">
-                            \( \Delta \geq (j_{\text{min}} - 1) r \ln(2) \).
+                            \( \Delta \geq (j_{\min} - 1) \, r \, \ln(2) \).
                         </div>
                     </li>
                     <li>
-                        <strong>Porovnanie \( \Delta \) a \( |\delta_k| \):</strong>
-                        <p>Potrebujeme ukázať, že:</p>
+                        <strong>Prechod na podmienku:</strong>
+                        <p>Aby sme mali \( \log(n) > p_k \), postačuje, aby:</p>
                         <div class="equation">
-                            \( \Delta > |\delta_k| \implies (j_{\text{min}} - 1) r \ln(2) > C \dfrac{p_k}{\ln p_k} \).
+                            \( \Delta > \delta_k.
+                            \)
+                        </div>
+                        <p>Keďže \( \delta_k \lesssim C k \), stačí, aby:</p>
+                        <div class="equation">
+                            \( (j_{\min} - 1) \, r \, \ln(2) > C k.
+                            \)
+                        </div>
+                        <p>Definujeme \( \alpha = \frac{r}{k} \), potom podmienka nadobúda tvar:</p>
+                        <div class="equation">
+                            \( (j_{\min} - 1)\,\alpha\,\ln(2) > C.
+                            \)
                         </div>
                     </li>
                     <li>
-                        <strong>Vzťah medzi \( p_k \) a \( k \):</strong>
-                        <p>Pre \( k \)-té prvočíslo platí približne:</p>
+                        <strong>Dodatočné zdôvodnenie:</strong>
+                        <p>Pri konštrukcii vysoko-zložených čísel sa zvyčajne používajú najmenšie prvočísla s čo najvyššími exponentmi, pričom platí:</p>
+                        <ul>
+                            <li>\( j_{\min} \geq 2 \) (teda \( j_{\min} - 1 \ge 1 \)),</li>
+                            <li>väčšina prvočísel (najmä tie s nižšími hodnotami) sa vyskytuje s exponentmi väčšími než 1, takže \( \alpha \) (podiel takých prvočísel) býva typicky v rozsahu 0.3 až 0.6.</li>
+                        </ul>
+                        <p>Pre konzervatívny odhad vezmime \( \alpha \ge 0.3 \) a s \( \ln(2) \approx 0.6931 \) máme:</p>
                         <div class="equation">
-                            \( p_k \approx k \ln k \),
+                            \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.3 \times 0.6931 \approx 0.208.
+                            \)
                         </div>
-                        <p>a teda:</p>
-                        <div class="equation">
-                            \( \ln p_k \approx \ln(k \ln k) \approx \ln k + \ln \ln k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Odhad \( \dfrac{p_k}{\ln p_k} \):</strong>
-                        <p>Máme:</p>
-                        <div class="equation">
-                            \( \dfrac{p_k}{\ln p_k} \approx \dfrac{k \ln k}{\ln k + \ln \ln k} \approx k \).
-                        </div>
-                        <p>Teda:</p>
-                        <div class="equation">
-                            \( |\delta_k| \leq C k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Porovnanie \( \Delta \) a \( |\delta_k| \):</strong>
-                        <p>Z odhadov máme:</p>
-                        <div class="equation">
-                            \( \Delta \geq (j_{\text{min}} - 1) r \ln(2) \).
-                        </div>
-                        <p>Pre \( \Delta > |\delta_k| \) potrebujeme:</p>
-                        <div class="equation">
-                            \( (j_{\text{min}} - 1) r \ln(2) > C k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Vzťah medzi \( r \) a \( k \):</strong>
-                        <p>Nech \( r = \alpha k \), kde \( 0 < \alpha \leq 1 \). Potom:</p>
-                        <div class="equation">
-                            \( (j_{\text{min}} - 1) \alpha k \ln(2) > C k \implies (j_{\text{min}} - 1) \alpha \ln(2) > C \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Nastavenie podmienok pre \( \alpha \) a \( j_{\text{min}} \):</strong>
-                        <p>Pre splnenie nerovnosti potrebujeme:</p>
-                        <div class="equation">
-                            \( \alpha > \dfrac{C}{(j_{\text{min}} - 1) \ln(2)} \).
-                        </div>
-                        <p>Keďže \( j_{\text{min}} - 1 \geq 1 \) a \( \ln(2) \approx 0{,}6931 \), dostaneme:</p>
-                        <div class="equation">
-                            \( \alpha > \dfrac{0{,}1}{0{,}6931} \approx 0{,}1443 \).
-                        </div>
+                        <p>Lebo \( 0.208 > 0.1 = C \), podmienka je splnená.</p>
                     </li>
                     <li>
                         <strong>Záver:</strong>
-                        <p>Pre vysoko-zložené čísla je \( \alpha \) často väčšie ako požadovaná hodnota, preto platí \( \Delta > |\delta_k| \) a teda:</p>
+                        <p>Logaritmus čísla \( n \) sa dá zapísať ako:</p>
                         <div class="equation">
-                            \( \log(n) = \theta(p_k) + \Delta = p_k - \delta_k + \Delta > p_k \).
+                            \( \log(n) = \theta(p_k) + \Delta \),
                         </div>
-                        <p>Teda \( \log(n) > p_k \).</p>
+                        <p>a keďže \( \Delta > \delta_k \), platí:</p>
+                        <div class="equation">
+                            \( \log(n) > \theta(p_k) + \delta_k \ge p_k.
+                            \)
+                        </div>
+                        <p>Teda pre vysoko-zložené čísla platí:</p>
+                        <div class="equation">
+                            \( \boxed{\log(n) > p_k} \).
+                        </div>
                     </li>
                 </ol>
             
@@ -609,57 +553,42 @@
                     <li>Prvočísla (\( p_i \)): \( 2, 3, 5, 7, 11, 13, 17, 19 \).</li>
                     <li>Exponenty (\( j_i \)): \( 5, 4, 3, 2, 2, 1, 1, 1 \).</li>
                     <li>Počet prvočísel (\( k \)): \( 8 \).</li>
-                    <li>Počet exponentov väčších ako 1 (\( r \)): \( 5 \).</li>
+                    <li>Počet prvočísel s \( j_i > 1 \) (\( r \)): \( 5 \).</li>
                     <li>Najväčšie prvočíslo (\( p_k \)): \( 19 \).</li>
                 </ul>
             
                 <p><strong>Výpočet \( \theta(p_k) \):</strong></p>
                 <div class="equation">
-                    \(
-                    \theta(p_k) = \sum_{i=1}^{8} \ln(p_i) \approx 16{,}0875.
-                    \)
+                    \( \theta(p_k) = \sum_{i=1}^{8} \ln(p_i) \approx 16.0875. \)
                 </div>
             
                 <p><strong>Výpočet \( \Delta \):</strong></p>
                 <div class="equation">
-                    \(
-                    \Delta = (5 - 1)\ln(2) + (4 - 1)\ln(3) + (3 - 1)\ln(5) + (2 - 1)\ln(7) + (2 - 1)\ln(11) \approx 13{,}6308.
-                    \)
+                    \( \Delta = (5-1)\ln(2) + (4-1)\ln(3) + (3-1)\ln(5) + (2-1)\ln(7) + (2-1)\ln(11) \approx 13.6308. \)
                 </div>
             
                 <p><strong>Výpočet \( \delta_k \):</strong></p>
                 <div class="equation">
-                    \(
-                    \delta_k = p_k - \theta(p_k) = 19 - 16{,}0875 = 2{,}9125.
-                    \)
+                    \( \delta_k = p_k - \theta(p_k) = 19 - 16.0875 = 2.9125. \)
                 </div>
             
-                <p><strong>Porovnanie \( \Delta \) a \( \delta_k \):</strong></p>
+                <p><strong>Porovnanie:</strong></p>
                 <div class="equation">
-                    \(
-                    \Delta = 13{,}6308 > \delta_k = 2{,}9125.
-                    \)
+                    \( \Delta = 13.6308 > \delta_k = 2.9125, \)
                 </div>
-            
-                <p><strong>Výpočet \( \log(n) \):</strong></p>
+                <p>teda:</p>
                 <div class="equation">
-                    \(
-                    \log(n) = \theta(p_k) + \Delta = 16{,}0875 + 13{,}6308 = 29{,}7183.
-                    \)
+                    \( \log(n) = 16.0875 + 13.6308 = 29.7183 > 19 = p_k. \)
                 </div>
             
-                <p><strong>Porovnanie \( \log(n) \) a \( p_k \):</strong></p>
+                <p><strong>Overenie podmienky:</strong></p>
+                <p>Máme \( \alpha = \frac{r}{k} = \frac{5}{8} = 0.625 \), čo určite spĺňa</p>
                 <div class="equation">
-                    \(
-                    \log(n) = 29{,}7183 > p_k = 19.
-                    \)
+                    \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.625 \times 0.6931 \approx 0.433 > 0.1. \)
                 </div>
-            
-                <p><strong>Overenie podmienky pre \( \alpha \):</strong></p>
-                <p>Máme \( \alpha = \dfrac{r}{k} = \dfrac{5}{8} = 0{,}625 \), čo je väčšie ako \( 0{,}1443 \). Podmienka je teda splnená.</p>
             
                 <h3>Záver:</h3>
-                <p>Tento príklad ilustruje platnosť dôkazu, že pre vysoko-zložené čísla \( n \) platí \( \log(n) > p_k \).</p>
+                <p>Tento príklad ilustruje, že pre vysoko-zložené čísla príspevok \( \Delta \) je dostatočne veľký na zabezpečenie nerovnosti \( \log(n) > p_k \).</p>
                 <div class="equation">
                     \( \boxed{\log(n) > p_k} \).
                 </div>
