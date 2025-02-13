@@ -134,9 +134,7 @@
     <div id="english-content" class="english-content">
 
         <p><em>This appendix provides an alternate route to proving the Robopol theorem using the third Mertens theorem and its explicit estimates (e.g., from Rosser–Schoenfeld), without employing smooth functions or \(\Delta x\)-based arguments.</em></p>
-
         <hr>
-
         <h2>1. Statement of the Robopol Theorem</h2>
         <p>
             In the main text, the Robopol theorem is formulated (in versions (3.1) and (3.2)) for <em>highly composite numbers</em> \( n \). Let \( p_n \) be the largest prime divisor of \( n \). Then, for sufficiently large \( n \):
@@ -153,9 +151,7 @@
         <p>
             depending on whether \(\log(n)\gt p_n\) or not. Our goal is to show these hold by applying an explicit form of the <strong>third Mertens theorem</strong>, without referencing a smooth function \(g(x)\).
         </p>
-
         <hr>
-
         <h2>2. Third Mertens Theorem (Asymptotic Form)</h2>
         <div class="proof">
             <h3>Theorem (Mertens):</h3>
@@ -188,7 +184,6 @@
         </div>
 
         <hr>
-
         <h2>3. Explicit Mertens Bound (Rosser–Schoenfeld)</h2>
         <div class="proof">
             <p>
@@ -204,9 +199,7 @@
                 \( \beta(x) < e^{\gamma}\,\log x \quad \text{for } x > x_0. \)
             </div>
         </div>
-
         <hr>
-
         <h2>4. Transition to \( \beta(n) \) and Highly Composite \( n \)</h2>
         <div class="proof">
             <p>
@@ -234,7 +227,6 @@
         </div>
 
         <hr>
-
         <h2>5. Precise Conditions on \(n\) and \(p_n\)</h2>
         <div class="proof">
             <p>
@@ -263,18 +255,23 @@
             <p>
                 These correspond exactly to (3.1) and (3.2) in Robopol’s stronger statements than Guy Robin’s classical inequality.
             </p>
+            <p>
+                Note: The proof of the condition \( \log(n) > p_n \) can be found in the Appendix: <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">Evidence of Equivalent Conditions for the Riemann Hypothesis</a>.
+            </p>
         </div>
 
         <hr>
-
         <h2>6. Conclusion</h2>
         <div class="proof">
             <p>
                 By relying on the <strong>explicit Mertens theorem</strong> (e.g., Rosser–Schoenfeld), we obtain the strict inequality
             </p>
             <div class="equation">
-                \( \beta(x) < e^{\gamma}\,\log x \quad (x > x_0), 
-                \quad \text{where } x_0 \text{ is some constant.} 
+                \( \beta(x) < e^{\gamma}\,\log x \quad (x \gg 1) 
+                \quad\Longrightarrow\quad
+                \beta(n) < e^{\gamma}\,\log(p_n)
+                \quad(\text{a/alebo } e^\gamma\log(\log n)).
+                \) 
             </div>
             <p>
                 Substituting \( x = p_n \) and noting that \( n \) is highly composite with \( \log(n) > p_n \) (or other appropriate conditions), we immediately derive the Robopol theorem (3.1)/(3.2) without using smooth functions. Numerical verifications confirm these inequalities up to extremely large values of \( n \), consistent with the asymptotic and explicit forms of Mertens’ theorem.
@@ -293,11 +290,8 @@
 
     <!-- Slovak Content -->
     <div id="slovak-content" class="slovak-content">
-
         <p><em>Tento dodatok prináša alternatívnu cestu k dôkazu Robopol teoremu na základe tretieho Mertensovho teorému a jeho explicitných odhadov (napr. Rosser–Schoenfeld), bez využívania hladkých funkcií alebo \(\Delta x\)-argumentov.</em></p>
-
         <hr>
-
         <h2>1. Formulácia Robopol teoremu</h2>
         <p>
             V hlavnom texte je Robopol teorem (verzie (3.1) a (3.2)) určený pre <em>vysoko zložené čísla</em> \( n \). Nech \( p_n \) je najväčšie prvočíslo, ktoré delí \( n \). Potom pre dostatočne veľké \( n \) platí:
@@ -314,9 +308,7 @@
         <p>
             v závislosti od toho, či \(\log(n)\gt p_n\) alebo nie. Cieľom je ukázať tieto nerovnosti priamo cez <strong>tretí Mertensov teorém</strong>, s explicitným chybovým členom.
         </p>
-
         <hr>
-
         <h2>2. Tretí Mertensov teorém (asymptotická forma)</h2>
         <div class="proof">
             <h3>Teorém (Mertens):</h3>
@@ -349,7 +341,6 @@
         </div>
 
         <hr>
-
         <h2>3. Explicitná Mertensova nerovnosť (Rosser–Schoenfeld)</h2>
         <div class="proof">
             <p>
@@ -367,9 +358,7 @@
                 \)
             </div>
         </div>
-
         <hr>
-
         <h2>4. Prechod na \( \beta(n) \) a vysoko-zložené čísla</h2>
         <div class="proof">
             <p>
@@ -401,7 +390,6 @@
         </div>
 
         <hr>
-
         <h2>5. Presné podmienky na \( n \) a \( p_n \)</h2>
         <div class="proof">
             <p>
@@ -415,9 +403,7 @@
                 Explicitná Mertensova veta z Rosser–Schoenfeld garantuje, že nerovnosť \(\beta(x) < e^\gamma \log x\) „pre veľké \( x \)“ platí, čo zodpovedá <em>určitému prahu</em> \( x_0 \). Potom stačí zabezpečiť \( p_n \gt x_0 \) a uvedené tvrdenia (3.1)/(3.2) sú splnené pre vysoko-zložené čísla.
             </p>
         </div>
-
         <hr>
-
         <h2>6. Záver</h2>
         <div class="proof">
             <p>
@@ -433,6 +419,7 @@
             <p>
                 Tým priamo vyplýva Robopol teorem (3.1)/(3.2) pre vysoko-zložené čísla, bez potreby hladkých funkcií a \(\Delta x\)-argumentov. Numerické testy (viď hlavný text) dokazujú, že takto odvodnená nerovnosť nebola prekročená ani pri extrémne veľkých hodnotách <code>n</code>, čo je v súlade s asymptotickým správaním Mertensovho súčinu.
             </p>
+            <p> Poznámka: Dôkaz podmienky \( \log(n) > p_n \) možno nájsť v prílohe: <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">Dôkazy ekvivalentných podmienok Riemannovej hypotézy</a>. </p>
         </div>
 
         <div class="footer">
@@ -442,9 +429,7 @@
                – Tretí Mertensov teorém: T. M. Apostol, <em>Introduction to Analytic Number Theory</em>, Springer, 1976.
             </p>
         </div>
-
     </div>
-
 </div>
 
 <script>
@@ -459,6 +444,5 @@
     // Default language: English
     showEnglish();
 </script>
-
 </body>
 </html>
