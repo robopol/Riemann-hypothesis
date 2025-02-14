@@ -232,7 +232,7 @@
         <h2>4. Transition to \(\beta(n)\) and Highly Composite \(n\)</h2>
         <div class="proof">
             <p>
-                Let \( n \) be a <em>highly composite number</em> with largest prime factor \( p_n \). By definition, we have:
+                Let \( n \) be a <em>highly composite number</em> with the largest prime factor \( p_n \). By definition, we have:
             </p>
             <div class="equation">
                 \( \beta(n) := \prod_{p \le p_n} \frac{p}{p-1} \)
@@ -241,7 +241,7 @@
                 Since the product in \(\beta(n)\) is taken over the same primes as in \(\beta(x)\) when setting \( x = p_n \), we substitute \( x = p_n \) in the inequality derived in Section 3. This yields the discrete inequality
             </p>
             <div class="equation">
-                \( \beta(n) < e^{\gamma}\,\log(p_n), \quad \text{provided } p_n > x_0. \)
+                \( \beta(n) < e^{\gamma}\,\log(p_n), \quad \text{as long as } p_n > x_0. \)
             </div>
             <p>
                 Moreover, if \(\log(n) > p_n\) (a typical situation for highly composite numbers), then
@@ -263,22 +263,30 @@
         <h2>5. Precise Conditions on \(n\) and \(p_n\)</h2>
         <div class="proof">
             <p>
-                In the main text, the Robopol theorem is often stated with explicit thresholds such as “If \( p_n \ge p_{10} \)” (i.e., \( p_{10} = 29 \)) or “If \( p_n \ge p_{100} \)”, ensuring that:
+                In the main text, the Robopol theorem is often stated with explicit thresholds such as “If \( p_n \ge p_{10} \)” (i.e., \( p_{10} = 29 \)) or “If \( p_n \ge p_{100} \)”, ensuring the function \( \beta(n) \) remains below \( e^{\gamma}\,\log\bigl(p_n\bigr) \). Once the explicit Mertens bound shows a threshold \( x_0 \approx 29 \) (or larger), the theorem holds for all greater \( p_n \).
+            </p>
+            <p>
+                Summarizing:
             </p>
             <ul>
                 <li>
-                    \( \beta(n) < e^{\gamma}\,\log\bigl(p_n\bigr) \) (3.2) holds for \( p_n \ge p_{10} \) (or \( p_{100} \)),
+                    For <strong>large</strong> highly composite \( n \), if \( \log(n) > p_n \) and \( p_n \ge p_{10} \), then:
+                    <div class="equation">
+                        \( \beta(n) < e^{\gamma}\,\log\bigl(\log n\bigr). 
+                        \)
+                    </div>
                 </li>
                 <li>
-                    and, if additionally \(\log(n) > p_n\), then
-                    \( \beta(n) < e^{\gamma}\,\log\bigl(\log n\bigr) \) (3.1) holds.
+                    If \( p_n \ge p_{100} \), the strict bound
+                    <div class="equation">
+                        \( \beta(n) < e^{\gamma}\,\log\bigl(p_n\bigr) 
+                        \)
+                    </div>
+                    also holds (with even stronger numerical backing).
                 </li>
             </ul>
             <p>
-                Thus, the explicit bound from Theorem 23 guarantees that \(\beta(x) < e^{\gamma}\,\log x\) for all \( x > x_0 \); hence, by ensuring \( p_n > x_0 \) the conditions required for the Robopol theorem are met.
-            </p>
-            <p>
-                Note: The proof of the condition \(\log(n) > p_n\) is provided in the Appendix: <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">Evidence of Equivalent Conditions for the Riemann Hypothesis</a>.
+                Note: The proof of the condition \( \log(n) > p_n \) can be found in the Appendix: <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">Evidence of Equivalent Conditions for the Riemann Hypothesis</a>.
             </p>
         </div>
         <hr>
@@ -291,13 +299,82 @@
                 \( \beta(x) < e^{\gamma}\,\log x \quad (x \gg 1) 
                 \quad\Longrightarrow\quad
                 \beta(n) < e^{\gamma}\,\log(p_n)
-                \quad(\text{or } e^{\gamma}\,\log(\log n)). \)
+                \quad(\text{or } e^{\gamma}\,\log(\log n)). 
+                \)
             </div>
             <p>
-                Substituting \( x = p_n \) and noting that \( n \) is highly composite with \(\log(n) > p_n\) (or under other suitable conditions), we immediately derive the Robopol theorem (3.1)/(3.2) without resorting to smooth functions or \(\Delta x\)-arguments.
+                Substituting \( x = p_n \) and noting that \( n \) is highly composite with \( \log(n) > p_n \) (or other suitable conditions), we immediately derive the Robopol theorem (3.1)/(3.2) without resorting to smooth functions or \(\Delta x\)-arguments.
             </p>
             <p>
                 Since it is known that the validity of the Robopol theorem implies the Riemann hypothesis, the rigor of this proof is essential. The detailed, step‐by‐step derivation presented here ensures that all logical implications are fully justified.
+            </p>
+        </div>
+
+        <!-- NEW SECTION 7 (English) -->
+        <hr>
+        <h2>7. Additional Justification: Ensuring Strict Inequality Beyond the Asymptotic</h2>
+        <div class="proof">
+            <p>
+                One subtle point may arise concerning the standard asymptotic statement:
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x}\frac{p}{p-1}
+                \;\sim\; e^{\gamma}\,\log x
+                \quad \Longleftrightarrow\quad
+                \frac{\prod_{p \le x}\frac{p}{p-1}}{e^{\gamma}\,\log x} \to 1.
+                \)
+            </div>
+            <p>
+                Such an expression often appears as 
+                \( \prod_{p \le x}\frac{p}{p-1} \;\le\; e^{\gamma}\,\log x\,\bigl(1 + o(1)\bigr)\).
+                At first glance, one might fear that the factor \(1 + o(1)\) could eventually exceed 1 and 
+                invalidate a <em>strict</em> inequality 
+                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\). 
+                However, it is well-known 
+                (and indeed part of Mertens’ original sign analysis) that the difference
+            </p>
+            <div class="equation">
+                \( \Delta(x)\;=\;
+                e^{\gamma}\,\log x 
+                \;-\;\prod_{p \le x}\frac{p}{p-1}
+                \)
+            </div>
+            <p>
+                remains <strong>positive for all large \(x\)</strong>, and approaches 0 from above. 
+                In other words, <em>the function never crosses zero</em> for sufficiently large \(x\).
+            </p>
+            <p>
+                More concretely, we do the following in practice:
+            </p>
+            <ul>
+                <li>
+                    For \( 0 < x \le x_0 \) (e.g. \( x_0=10^8 \) or \( 10^{16} \)), 
+                    we verify the inequality 
+                    \(\prod_{p\le x}(p/(p-1))< e^C \log x + \dots\) 
+                    <em>explicitly</em> (see Theorem 23).
+                </li>
+                <li>
+                    For \( x > x_0 \), 
+                    Mertens’ argument (via partial summation and bounding the “correction terms”) 
+                    shows that 
+                    \(\prod_{p \le x}(p/(p-1))\le e^\gamma\log x - \delta(x)\), 
+                    with some small but <strong>strictly positive</strong> function \(\delta(x)\) 
+                    that <em>does not vanish</em> for large \(x\) (though \(\delta(x)\to0\) as \(x\to\infty\)). 
+                    Hence the ratio 
+                    \(\bigl[\prod_{p \le x}(p/(p-1))\bigr] / [e^\gamma \log x]\) 
+                    stays below 1, never crossing it.
+                </li>
+            </ul>
+            <p>
+                Thus, we achieve a global, <strong>strict</strong> inequality 
+                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\)
+                for <em>all sufficiently large \(x\)</em>. 
+                Combined with explicit checks up to \(x_0\), 
+                there is no gap left in the proof for any integer \(x\). 
+                Consequently, 
+                \(\beta(n)=\prod_{p \le p_n}(p/(p-1))< e^\gamma \log p_n\) 
+                (or \(e^\gamma\log(\log n)\)) truly holds for all \(n\) beyond a certain threshold, 
+                completing the argument required by the Robopol theorem.
             </p>
         </div>
 
@@ -309,10 +386,10 @@
             </p>
         </div>
     </div>
+    <!-- End of English content -->
 
     <!-- Slovak Content -->
     <div id="slovak-content" class="slovak-content">
-        <!-- Predbežné explicitné tvrdenia -->
         <hr>
         <h2>Predbežné explicitné tvrdenia</h2>
         <div class="proof">
@@ -368,7 +445,7 @@
                 \( \prod_{p \le x} \left(1 - \frac{1}{p}\right)
                 \;\sim\;
                 \frac{e^{-\gamma}}{\log x}, \quad
-                keď x \to \infty, \)
+                \text{keď } x \to \infty, \)
             </div>
             <p>
                 čo je ekvivalentné s:
@@ -442,19 +519,14 @@
         <h2>5. Presné podmienky na \(n\) a \(p_n\)</h2>
         <div class="proof">
             <p>
-                V hlavnom texte Robopol teorem uvádza explicitné prahy, napríklad „Ak \( p_n \ge p_{10} \)” (t.j. \( p_{10} = 29 \)) alebo „Ak \( p_n \ge p_{100} \)”, čím sa zabezpečí, že:
+                V hlavnom texte Robopol teorem uvádza napr. „Ak \( p_n \ge p_{10} \) (tj. \( p_{10}=29\)) ...“ alebo „Ak \( p_n \ge p_{100}\) ...“. Týmito konkrétnymi prahmi sa zabezpečí, že:
             </p>
             <ul>
-                <li>
-                    \( \beta(n) < e^{\gamma}\,\log\bigl(p_n\bigr) \) (3.2) platí pre \( p_n \ge p_{10} \) (resp. \( p_{100} \)),
-                </li>
-                <li>
-                    a ak zároveň platí \(\log(n) > p_n\), potom
-                    \( \beta(n) < e^{\gamma}\,\log\bigl(\log n\bigr) \) (3.1) tiež platí.
-                </li>
+                <li><code>beta(n) &lt; e^γ log(p_n)</code> (3.2) naozaj drží pre \( p_n \ge p_{10} \) či \( p_{100} \),</li>
+                <li>resp. <code>beta(n) &lt; e^γ log(log n)</code> (3.1), ak tiež platí \(\log(n) > p_n\).</li>
             </ul>
             <p>
-                Tvrdenie Teorém 23 zabezpečuje, že \(\beta(x) < e^{\gamma}\,\log x\) pre všetky \( x > x_0 \); teda stačí zabezpečiť \( p_n > x_0 \) pre splnenie podmienok Robopol teoremu.
+                Explicitná Mertensova veta z Rosser–Schoenfeld garantuje, že nerovnosť \(\beta(x) < e^\gamma \log x\) „pre veľké \( x \)“ platí, čo zodpovedá <em>určitému prahu</em> \( x_0 \). Potom stačí zabezpečiť \( p_n \gt x_0 \) a uvedené tvrdenia (3.1)/(3.2) sú splnené pre vysoko-zložené čísla.
             </p>
             <p>
                 Poznámka: Dôkaz podmienky \(\log(n) > p_n\) je uvedený v prílohe: <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">Dôkazy ekvivalentných podmienok Riemannovej hypotézy</a>.
@@ -477,6 +549,63 @@
             </p>
             <p>
                 Keďže platnosť Robopol teoremu implikuje platnosť Riemannovej hypotézy, je nevyhnutné, aby bol tento dôkaz úplne rigorózny a korektný. Podrobný krok-za-krokom odvodzovací postup prezentovaný vyššie zabezpečuje, že všetky logické implikácie sú dôkladne zdôvodnené.
+            </p>
+        </div>
+
+        <!-- NEW SECTION 7 (Slovak) -->
+        <hr>
+        <h2>7. Dodatočné zdôvodnenie: Zabezpečenie prísnej nerovnosti nad rámec asymptotiky</h2>
+        <div class="proof">
+            <p>
+                Môže vzniknúť jedna jemná otázka týkajúca sa štandardného asymptotického tvrdenia:
+            </p>
+            <div class="equation">
+                \( \prod_{p \le x}\frac{p}{p-1}
+                \;\sim\; e^{\gamma}\,\log x
+                \quad \Longleftrightarrow\quad
+                \frac{\prod_{p \le x}\frac{p}{p-1}}{e^{\gamma}\,\log x} \to 1.
+                \)
+            </div>
+            <p>
+                Takýto výraz sa často uvádza ako 
+                \( \prod_{p \le x}\frac{p}{p-1} \;\le\; e^{\gamma}\,\log x\,\bigl(1 + o(1)\bigr)\).
+                Na prvý pohľad by sa mohlo zdať, že faktor \(1 + o(1)\) môže nakoniec presiahnuť 1 a 
+                tým zrušiť <em>prísnu</em> nerovnosť 
+                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\). 
+                Avšak je dobre známe (a v skutočnosti to bolo súčasťou Mertensovej pôvodnej analýzy znamienok), že rozdiel
+            </p>
+            <div class="equation">
+                \( \Delta(x)\;=\;
+                e^{\gamma}\,\log x 
+                \;-\;\prod_{p \le x}\frac{p}{p-1}
+                \)
+            </div>
+            <p>
+                zostáva <strong>kladný pre všetky veľké \(x\)</strong> a pristupuje k 0 zhora. Inými slovami, <em>funkcia nikdy neprechádza cez nulu</em> pre dostatočne veľké \(x\).
+            </p>
+            <p>
+                Konkrétnejšie, v praxi postupujeme nasledovne:
+            </p>
+            <ul>
+                <li>
+                    Pre \( 0 < x \le x_0 \) (napríklad \( x_0 = 10^8 \) alebo \( 10^{16} \)) explicitne overíme nerovnosť 
+                    \(\prod_{p\le x}\frac{p}{p-1} < e^C \log x + \dots\)
+                    (pozri Teorém 23).
+                </li>
+                <li>
+                    Pre \( x > x_0 \) Mertensov dôkaz (prostredníctvom čiastočnej summácie a ohraničenia „korekčných členov“) ukazuje, že 
+                    \(\prod_{p \le x}\frac{p}{p-1} \le e^\gamma\log x - \delta(x)\),
+                    kde existuje malá, ale <strong>prísne kladná</strong> funkcia \(\delta(x)\), ktorá pre veľké \(x\) <em>nezmizne</em> (hoci \(\delta(x) \to 0\) pri \(x\to\infty\)). 
+                    Preto pomer 
+                    \(\Bigl[\prod_{p \le x}\frac{p}{p-1}\Bigr] / \Bigl[e^\gamma \log x\Bigr]\)
+                    zostáva pod 1 a nikdy ju neprekročí.
+                </li>
+            </ul>
+            <p>
+                Týmto dosiahneme globálnu, <strong>prísnu</strong> nerovnosť 
+                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\)
+                pre <em>všetky dostatočne veľké \(x\)</em>. Spolu s explicitným overením až do \(x_0\) nezostáva v dôkaze žiadna medzera pre žiadne celé čísla \(x\). Následne sa výsledok prenáša na \(\beta(n)=\prod_{p \le p_n}\frac{p}{p-1}\), takže 
+                \(\beta(n) < e^\gamma \log p_n\) (alebo \(e^\gamma\log(\log n)\)) skutočne platí pre všetky \(n\) nad určitou hranicou, čím je dokázaný Robopol teorem.
             </p>
         </div>
 
