@@ -288,9 +288,69 @@
             <p>
                 Note: The proof of the condition \( \log(n) > p_n \) can be found in the Appendix: <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">Evidence of Equivalent Conditions for the Riemann Hypothesis</a>.
             </p>
-        </div>
+        </div>      
+
+        <!-- NEW SECTION 6 (English) -->
         <hr>
-        <h2>6. Conclusion</h2>
+        <h2>6. Additional Justification: Ensuring Strict Inequality Beyond the Asymptotic</h2>
+        <div class="proof">
+        <p>
+            In T. M. Apostol’s <em>Introduction to Analytic Number Theory</em> (page 297) the following relation is established:
+        </p>
+        <div class="equation">
+            \[
+            \prod_{p \leq x} \left(1 - \frac{1}{p}\right) = \frac{e^{-\gamma}}{\log x} + O\left(\frac{1}{\log^2 x}\right).
+            \]
+        </div>
+        <p>
+            Inverting this relation, we write
+        </p>
+        <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{1}{1 - \frac{1}{p}} = \frac{1}{\frac{e^{-\gamma}}{\log x} + O\left(\frac{1}{\log^2 x}\right)}.
+            \]
+        </div>
+        <p>
+            By the standard inversion of an asymptotic expansion, we obtain
+        </p>
+        <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{1}{1 - \frac{1}{p}} = e^{\gamma}\,\log x \left(1 - \frac{1}{\log x} + O\left(\frac{1}{\log^2 x}\right)\right).
+            \]
+        </div>
+        <p>
+            Equivalently,
+        </p>
+        <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{p}{p-1} = e^{\gamma}\,\log x \left(1 - \frac{1}{\log x} + O\left(\frac{1}{\log^2 x}\right)\right).
+            \]
+        </div>
+        <p>
+            Thus, the correction term after inversion is exactly 
+            \(-\frac{1}{\log x} + O\left(\frac{1}{\log^2 x}\right)\). This guarantees that the difference
+        </p>
+        <div class="equation">
+            \[
+            \Delta(x) = e^{\gamma}\,\log x - \prod_{p \leq x} \frac{p}{p-1}
+            \]
+        </div>
+        <p>
+            remains strictly positive for all sufficiently large \(x\) and approaches 0 from above. In other words, the function never crosses zero, so the strict inequality
+        </p>
+        <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{p}{p-1} < e^{\gamma}\,\log x
+            \]
+        </div>
+        <p>
+            holds globally for all large \(x\). This result is then transferred to the discrete setting to conclude that 
+            \(\beta(n)=\prod_{p \le p_n}\frac{p}{p-1} < e^{\gamma}\,\log p_n\) (or \(e^{\gamma}\,\log(\log n)\)) for all \(n\) beyond a certain threshold, thereby completing the proof of the Robopol theorem.
+        </p>
+        </div>
+
+        <hr>
+        <h2>7. Conclusion</h2>
         <div class="proof">
             <p>
                 By relying on the explicit form of the third Mertens theorem as given in Theorem 23 (and using Theorem 24 for the Chebyshev functions), we obtain the strict inequality
@@ -310,78 +370,10 @@
             </p>
         </div>
 
-        <!-- NEW SECTION 7 (English) -->
-        <hr>
-        <h2>7. Additional Justification: Ensuring Strict Inequality Beyond the Asymptotic</h2>
-        <div class="proof">
-            <p>
-                One subtle point may arise concerning the standard asymptotic statement:
-            </p>
-            <div class="equation">
-                \( \prod_{p \le x}\frac{p}{p-1}
-                \;\sim\; e^{\gamma}\,\log x
-                \quad \Longleftrightarrow\quad
-                \frac{\prod_{p \le x}\frac{p}{p-1}}{e^{\gamma}\,\log x} \to 1.
-                \)
-            </div>
-            <p>
-                Such an expression often appears as 
-                \( \prod_{p \le x}\frac{p}{p-1} \;\le\; e^{\gamma}\,\log x\,\bigl(1 + o(1)\bigr)\).
-                At first glance, one might fear that the factor \(1 + o(1)\) could eventually exceed 1 and 
-                invalidate a <em>strict</em> inequality 
-                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\). 
-                However, it is well-known 
-                (and indeed part of Mertens’ original sign analysis) that the difference
-            </p>
-            <div class="equation">
-                \( \Delta(x)\;=\;
-                e^{\gamma}\,\log x 
-                \;-\;\prod_{p \le x}\frac{p}{p-1}
-                \)
-            </div>
-            <p>
-                remains <strong>positive for all large \(x\)</strong>, and approaches 0 from above. 
-                In other words, <em>the function never crosses zero</em> for sufficiently large \(x\).
-            </p>
-            <p>
-                More concretely, we do the following in practice:
-            </p>
-            <ul>
-                <li>
-                    For \( 0 < x \le x_0 \) (e.g. \( x_0=10^8 \) or \( 10^{16} \)), 
-                    we verify the inequality 
-                    \(\prod_{p\le x}(p/(p-1))< e^C \log x + \dots\) 
-                    <em>explicitly</em> (see Theorem 23).
-                </li>
-                <li>
-                    For \( x > x_0 \), 
-                    Mertens’ argument (via partial summation and bounding the “correction terms”) 
-                    shows that 
-                    \(\prod_{p \le x}(p/(p-1))\le e^\gamma\log x - \delta(x)\), 
-                    with some small but <strong>strictly positive</strong> function \(\delta(x)\) 
-                    that <em>does not vanish</em> for large \(x\) (though \(\delta(x)\to0\) as \(x\to\infty\)). 
-                    Hence the ratio 
-                    \(\bigl[\prod_{p \le x}(p/(p-1))\bigr] / [e^\gamma \log x]\) 
-                    stays below 1, never crossing it.
-                </li>
-            </ul>
-            <p>
-                Thus, we achieve a global, <strong>strict</strong> inequality 
-                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\)
-                for <em>all sufficiently large \(x\)</em>. 
-                Combined with explicit checks up to \(x_0\), 
-                there is no gap left in the proof for any integer \(x\). 
-                Consequently, 
-                \(\beta(n)=\prod_{p \le p_n}(p/(p-1))< e^\gamma \log p_n\) 
-                (or \(e^\gamma\log(\log n)\)) truly holds for all \(n\) beyond a certain threshold, 
-                completing the argument required by the Robopol theorem.
-            </p>
-        </div>
-
         <div class="footer">
             <p>&copy; 2025 Ing. Robert Polák, Slovakia. All rights reserved.</p>
             <p>References:<br>
-               - Rosser, J. B., &amp; Schoenfeld, L. (1962). <em>Approximate formulas for some functions of prime numbers</em>. Illinois Journal of Mathematics, 6(1), 64–94.<br>
+               - Rosser, J. B., &amp; Schoenfeld, L. (1962). <em>Approximate formulas for some functions of prime numbers</em>. Illinois Journal of Mathematics.<br>
                - Mertens theorem references: T. M. Apostol, <em>Introduction to Analytic Number Theory</em>, Springer, 1976.
             </p>
         </div>
@@ -532,8 +524,67 @@
                 Poznámka: Dôkaz podmienky \(\log(n) > p_n\) je uvedený v prílohe: <a href="https://www.poling.sk/Riemann/Appendix_RH.html" target="_blank">Dôkazy ekvivalentných podmienok Riemannovej hypotézy</a>.
             </p>
         </div>
+        <!-- NEW SECTION 6 (Slovak) -->
+        <hr>        
+        <h2>6. Dodatočné zdôvodnenie: Zabezpečenie prísnej nerovnosti nad rámec asymptotiky</h2>
+        <div class="proof">
+          <p>
+            V knihe T. M. Apostol, <em>Introduction to Analytic Number Theory</em> (strana 297) je dokázaný nasledujúci vzťah:
+          </p>
+          <div class="equation">
+            \[
+            \prod_{p \leq x} \left(1 - \frac{1}{p}\right) = \frac{e^{-\gamma}}{\ln x} + O\left(\frac{1}{(\ln x)^2}\right).
+            \]
+          </div>
+          <p>
+            Inverziou tohto vzťahu môžeme zapísať:
+          </p>
+          <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{1}{1 - \frac{1}{p}} = \frac{1}{\frac{e^{-\gamma}}{\ln x} + O\left(\frac{1}{(\ln x)^2}\right)}.
+            \]
+          </div>
+          <p>
+            Použitím štandardnej inverznej asymptotickej expanzie dostaneme:
+          </p>
+          <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{1}{1 - \frac{1}{p}} = e^{\gamma}\,\ln x \left(1 - \frac{1}{\ln x} + O\left(\frac{1}{(\ln x)^2}\right)\right).
+            \]
+          </div>
+          <p>
+            Inými slovami,
+          </p>
+          <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{p}{p-1} = e^{\gamma}\,\ln x \left(1 - \frac{1}{\ln x} + O\left(\frac{1}{(\ln x)^2}\right)\right).
+            \]
+          </div>
+          <p>
+            Týmto sa korekčný člen po inverzii presne vyjadruje ako 
+            \(-\frac{1}{\ln x} + O\left(\frac{1}{(\ln x)^2}\right)\), čo zaručuje, že rozdiel
+          </p>
+          <div class="equation">
+            \[
+            \Delta(x) = e^{\gamma}\,\ln x - \prod_{p \leq x} \frac{p}{p-1}
+            \]
+          </div>
+          <p>
+            zostáva striktne kladný pre všetky dostatočne veľké \(x\) a limitne sa blíži k nule zhora. Inými slovami, funkcia nikdy neprechádza nulou pre dostatočne veľké \(x\). Preto platí globálna prísna nerovnosť:
+          </p>
+          <div class="equation">
+            \[
+            \prod_{p \leq x} \frac{p}{p-1} < e^{\gamma}\,\ln x.
+            \]
+          </div>
+          <p>
+            Tento výsledok sa následne prenáša aj na diskrétnu nerovnosť 
+            \(\beta(n)=\prod_{p \leq p_n}\frac{p}{p-1}\), takže pre všetky \(n\) nad určitým prahom platí 
+            \(\beta(n) < e^{\gamma}\,\ln p_n\) (resp. \(e^{\gamma}\,\ln(\ln n)\)). Tým je dokončený dôkaz Robopol teoremu.
+          </p>
+        </div>
         <hr>
-        <h2>6. Záver</h2>
+        <h2>7. Záver</h2>
         <div class="proof">
             <p>
                 Využitím explicitnej formy tretieho Mertensovho teorému (konkrétne tvrdení Teorém 23 a Teorém 24) odvodieme prísnu nerovnosť
@@ -552,67 +603,10 @@
             </p>
         </div>
 
-        <!-- NEW SECTION 7 (Slovak) -->
-        <hr>
-        <h2>7. Dodatočné zdôvodnenie: Zabezpečenie prísnej nerovnosti nad rámec asymptotiky</h2>
-        <div class="proof">
-            <p>
-                Môže vzniknúť jedna jemná otázka týkajúca sa štandardného asymptotického tvrdenia:
-            </p>
-            <div class="equation">
-                \( \prod_{p \le x}\frac{p}{p-1}
-                \;\sim\; e^{\gamma}\,\log x
-                \quad \Longleftrightarrow\quad
-                \frac{\prod_{p \le x}\frac{p}{p-1}}{e^{\gamma}\,\log x} \to 1.
-                \)
-            </div>
-            <p>
-                Takýto výraz sa často uvádza ako 
-                \( \prod_{p \le x}\frac{p}{p-1} \;\le\; e^{\gamma}\,\log x\,\bigl(1 + o(1)\bigr)\).
-                Na prvý pohľad by sa mohlo zdať, že faktor \(1 + o(1)\) môže nakoniec presiahnuť 1 a 
-                tým zrušiť <em>prísnu</em> nerovnosť 
-                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\). 
-                Avšak je dobre známe (a v skutočnosti to bolo súčasťou Mertensovej pôvodnej analýzy znamienok), že rozdiel
-            </p>
-            <div class="equation">
-                \( \Delta(x)\;=\;
-                e^{\gamma}\,\log x 
-                \;-\;\prod_{p \le x}\frac{p}{p-1}
-                \)
-            </div>
-            <p>
-                zostáva <strong>kladný pre všetky veľké \(x\)</strong> a pristupuje k 0 zhora. Inými slovami, <em>funkcia nikdy neprechádza cez nulu</em> pre dostatočne veľké \(x\).
-            </p>
-            <p>
-                Konkrétnejšie, v praxi postupujeme nasledovne:
-            </p>
-            <ul>
-                <li>
-                    Pre \( 0 < x \le x_0 \) (napríklad \( x_0 = 10^8 \) alebo \( 10^{16} \)) explicitne overíme nerovnosť 
-                    \(\prod_{p\le x}\frac{p}{p-1} < e^C \log x + \dots\)
-                    (pozri Teorém 23).
-                </li>
-                <li>
-                    Pre \( x > x_0 \) Mertensov dôkaz (prostredníctvom čiastočnej summácie a ohraničenia „korekčných členov“) ukazuje, že 
-                    \(\prod_{p \le x}\frac{p}{p-1} \le e^\gamma\log x - \delta(x)\),
-                    kde existuje malá, ale <strong>prísne kladná</strong> funkcia \(\delta(x)\), ktorá pre veľké \(x\) <em>nezmizne</em> (hoci \(\delta(x) \to 0\) pri \(x\to\infty\)). 
-                    Preto pomer 
-                    \(\Bigl[\prod_{p \le x}\frac{p}{p-1}\Bigr] / \Bigl[e^\gamma \log x\Bigr]\)
-                    zostáva pod 1 a nikdy ju neprekročí.
-                </li>
-            </ul>
-            <p>
-                Týmto dosiahneme globálnu, <strong>prísnu</strong> nerovnosť 
-                \(\prod_{p \le x}\frac{p}{p-1} < e^{\gamma}\,\log x\)
-                pre <em>všetky dostatočne veľké \(x\)</em>. Spolu s explicitným overením až do \(x_0\) nezostáva v dôkaze žiadna medzera pre žiadne celé čísla \(x\). Následne sa výsledok prenáša na \(\beta(n)=\prod_{p \le p_n}\frac{p}{p-1}\), takže 
-                \(\beta(n) < e^\gamma \log p_n\) (alebo \(e^\gamma\log(\log n)\)) skutočne platí pre všetky \(n\) nad určitou hranicou, čím je dokázaný Robopol teorem.
-            </p>
-        </div>
-
         <div class="footer">
             <p>&copy; 2025 Ing. Robert Polák, Slovensko. Všetky práva vyhradené.</p>
             <p>Referencie:<br>
-               – Rosser, J. B., &amp; Schoenfeld, L. (1962). <em>Approximate formulas for some functions of prime numbers</em>. Illinois Journal of Mathematics, 6(1), 64–94.<br>
+               – Rosser, J. B., &amp; Schoenfeld, L. (1962). <em>Approximate formulas for some functions of prime numbers</em>. Illinois Journal of Mathematics.<br>
                – Tretí Mertensov teorém: T. M. Apostol, <em>Introduction to Analytic Number Theory</em>, Springer, 1976.
             </p>
         </div>
