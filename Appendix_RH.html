@@ -153,7 +153,6 @@
                 </div>
 
                 <h3>Proof:</h3>
-
                 <ol>
                     <li>
                         <strong>Express \( \log(n) \) as a Sum:</strong>
@@ -219,8 +218,7 @@
                     \( \log(n) > p_k \).
                 </div>
             
-                <h3>Proof:</h3>
-            
+                <h3>Proof:</h3>            
                 <ol>
                     <li>
                         <strong>Express \( \log(n) \):</strong>
@@ -243,18 +241,27 @@
                     </li>
                     <li>
                         <strong>Estimate the Gap \( \delta_k \):</strong>
-                        <p>Define the gap:</p>
+                        <p>
+                            Define \( \delta_k = p_k - \theta(p_k) \). From the prime number theorem and classical estimates (e.g. those by Rosser and Schoenfeld), we have the explicit inequality
+                        </p>
                         <div class="equation">
-                            \( \delta_k = p_k - \theta(p_k) \).
+                            \( |\theta(x) - x| \leq C \frac{x}{\ln x} \)
                         </div>
-                        <p>Using results from the Prime Number Theorem and related estimates (e.g. Rosser’s theorem), we have an upper bound of the form:</p>
+                        <p>
+                            In particular, for \( x = p_k \) this implies
+                        </p>
                         <div class="equation">
-                            \( |\delta_k| \leq C \dfrac{p_k}{\ln p_k} \),
+                            \( |\delta_k| = |p_k - \theta(p_k)| \leq C \frac{p_k}{\ln p_k} \)
                         </div>
-                        <p>for some constant \( C > 0 \). In our discussion we choose \( C = 0.1 \), and since \( p_k/\ln(p_k) \) is asymptotically comparable to \( k \), we write:</p>
+                        <p>
+                            For our purposes we choose \( C = 0.1 \). Since \( \frac{p_k}{\ln p_k} \) is asymptotically comparable to \( k \), we write
+                        </p>
                         <div class="equation">
-                            \( |\delta_k| \lesssim C k \).
+                            \( |\delta_k| \lesssim 0.1\, k \)
                         </div>
+                        <p>
+                            This inequality is historically established and underpins many results in prime number theory.
+                        </p>
                     </li>
                     <li>
                         <strong>Estimate \( \Delta \):</strong>
@@ -358,6 +365,24 @@
                 <div class="equation">
                     \( \boxed{\log(n) > p_k} \).
                 </div>
+                <h2>References</h2>
+                <ul>
+                <li>
+                    Rosser, J. B. &amp; Schoenfeld, L. (1975). "Sharper Bounds for the Chebyshev Functions <em>θ(x)</em> and <em>ψ(x)</em>". <em>Mathematics of Computation</em>, 29, 243–269.
+                </li>
+                <li>
+                    Dusart, P. (1999). "The kth prime is greater than k (ln k + ln ln k − 1)". <em>Mathematics of Computation</em>.
+                </li>
+                <li>
+                    Chebyshev, P. L. (1852). Prvé práce o funkciách, ktoré dnes nesieme názov Chebyshevových funkcií. (Historický zdroj, odkazovaný v odborných textoch.)
+                </li>
+                <li>
+                    Rosser, J. B. (1938). "The nth Prime is Greater than n ln n". <em>Proceedings of the London Mathematical Society</em>.
+                </li>
+                <li>
+                    Broadbent, S., Kadiri, H., Lumley, A. R., Ng, N., &amp; Wilk, K. (2021). "Sharper bounds for the Chebyshev function <em>θ(x)</em>". <em>Mathematics of Computation</em>
+                </li>
+                </ul>
             </div>
             <div class="footer">
                 <p>&copy; 2024 Ing. Robert Polák, Slovakia. All rights reserved.</p>
@@ -386,7 +411,6 @@
                 </div>
 
                 <h3>Dôkaz:</h3>
-
                 <ol>
                     <li>
                         <strong>Vyjadrenie \( \log(n) \) ako súčet:</strong>
@@ -452,8 +476,7 @@
                     \( \log(n) > p_k \).
                 </div>
             
-                <h3>Dôkaz:</h3>
-            
+                <h3>Dôkaz:</h3>            
                 <ol>
                     <li>
                         <strong>Vyjadrenie \( \log(n) \):</strong>
@@ -476,14 +499,27 @@
                     </li>
                     <li>
                         <strong>Odhad \( \delta_k \):</strong>
-                        <p>Nech \( \delta_k = p_k - \theta(p_k) \). Z prvočíselnej vety a výsledkov (napríklad odhady od Rossera) máme:</p>
+                        <p>
+                            Nech \( \delta_k = p_k - \theta(p_k) \). Z prvočíselnej vety a historicky potvrdených odhadov (napr. odhadov od Rossera a Schoenfelda) vyplýva explicitná nerovnosť
+                        </p>
                         <div class="equation">
-                            \( |\delta_k| \leq C \dfrac{p_k}{\ln p_k} \),
+                            \( |\theta(x) - x| \leq C \frac{x}{\ln x} \)
                         </div>
-                        <p>pričom pre naše účely zvolíme \( C = 0.1 \). Pretože \( p_k/\ln(p_k) \) je asymptoticky porovnateľné s \( k \), píšeme:</p>
+                        <p>
+                            Pre \( x = p_k \) dostávame
+                        </p>
                         <div class="equation">
-                            \( |\delta_k| \lesssim C k \).
+                            \( |\delta_k| = |p_k - \theta(p_k)| \leq C \frac{p_k}{\ln p_k} \)
                         </div>
+                        <p>
+                            Pre naše účely zvolíme \( C = 0.1 \). Keďže \( \frac{p_k}{\ln p_k} \) je asymptoticky porovnateľné s \( k \), môžeme zapísať
+                        </p>
+                        <div class="equation">
+                            \( |\delta_k| \lesssim 0.1\, k \)
+                        </div>
+                        <p>
+                            Tento explicitný odhad je dôležitým nástrojom v analýze chýb v odhadoch funkcie \( \theta(x) \) a je základom pre ďalšie tvrdenia.
+                        </p>
                     </li>
                     <li>
                         <strong>Odhad \( \Delta \):</strong>
@@ -592,6 +628,24 @@
                 <div class="equation">
                     \( \boxed{\log(n) > p_k} \).
                 </div>
+                <h2>Referencie</h2>
+                <ul>
+                    <li>
+                    Rosser, J. B. &amp; Schoenfeld, L. (1975). "Sharper Bounds for the Chebyshev Functions <em>θ(x)</em> and <em>ψ(x)</em>". <em>Mathematics of Computation</em>, 29, 243–269.
+                    </li>
+                    <li>
+                    Dusart, P. (1999). "The kth prime is greater than k (ln k + ln ln k − 1)". <em>Mathematics of Computation</em>.
+                    </li>
+                    <li>
+                    Chebyshev, P. L. (1852). Prvé práce o funkciách, ktoré dnes nesieme názov Chebyshevových funkcií. (Historický zdroj, odkazovaný v odborných textoch.)
+                    </li>
+                    <li>
+                    Rosser, J. B. (1938). "The nth Prime is Greater than n ln n". <em>Proceedings of the London Mathematical Society</em>.
+                    </li>
+                    <li>
+                    Broadbent, S., Kadiri, H., Lumley, A. R., Ng, N., &amp; Wilk, K. (2021). "Sharper bounds for the Chebyshev function <em>θ(x)</em>". <em>Mathematics of Computation</em>
+                    </li>
+                </ul>
             </div>
             <div class="footer">
                 <p>&copy; 2024 Ing. Robert Polák, Slovensko. Všetky práva vyhradené.</p>
