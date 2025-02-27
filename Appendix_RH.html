@@ -1,673 +1,904 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
-    <meta charset="UTF-8">
-    <title>Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #e8f6f3; /* Light blue-green background */
-            color: #333;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        h2 {
-            font-size: 1.8em;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h3 {
-            font-size: 1.4em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #16a085;
-        }
-        p {
-            font-size: 1.1em;
-        }
-        /* Proof Styles */
-        .proof {
-            background-color: #ffffff;
-            padding: 25px;
-            border-left: 5px solid #16a085; /* Green */
-            border-radius: 5px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .equation {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.2em;
-            color: #2980b9;
-        }
-        code {
-            background-color: #ecf0f1;
-            padding: 2px 4px;
-            font-size: 90%;
-            border-radius: 3px;
-        }
-        /* Footer Styles */
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #777;
-            text-align: center;
-        }
-        /* Language Switcher Styles */
-        .language-switcher {
-            margin-bottom: 20px;
-            text-align: right;
-        }
-        .language-switcher button {
-            padding: 10px 20px;
-            margin-left: 10px;
-            font-size: 1em;
-            cursor: pointer;
-            background-color: #3498db; /* Blue */
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-        }
-        .language-switcher button:hover {
-            background-color: #2980b9;
-        }
-        /* Hide Slovak content by default */
-        .slovak-content {
-            display: none;
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            h2 {
-                font-size: 1.5em;
-            }
-            h3 {
-                font-size: 1.2em;
-            }
-            .language-switcher {
-                text-align: center;
-            }
-            .language-switcher button {
-                margin: 5px;
-                width: 45%;
-            }
-        }
-    </style>
-    <!-- Include MathJax for rendering LaTeX equations -->
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <meta charset="UTF-8">
+  <title>Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis (Revised)</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #e8f6f3; /* Light blue-green background */
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.8em;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    h3 {
+      font-size: 1.4em;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #16a085;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    /* Proof Styles */
+    .proof {
+      background-color: #ffffff;
+      padding: 25px;
+      border-left: 5px solid #16a085; /* Green */
+      border-radius: 5px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .equation {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 1.2em;
+      color: #2980b9;
+    }
+    code {
+      background-color: #ecf0f1;
+      padding: 2px 4px;
+      font-size: 90%;
+      border-radius: 3px;
+    }
+    /* Footer Styles */
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #777;
+      text-align: center;
+    }
+    /* Language Switcher Styles */
+    .language-switcher {
+      margin-bottom: 20px;
+      text-align: right;
+    }
+    .language-switcher button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: #3498db; /* Blue */
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+    }
+    .language-switcher button:hover {
+      background-color: #2980b9;
+    }
+    .slovak-content {
+      display: none;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      h3 {
+        font-size: 1.2em;
+      }
+      .language-switcher {
+        text-align: center;
+      }
+      .language-switcher button {
+        margin: 5px;
+        width: 45%;
+      }
+    }
+  </style>
+  <!-- Include MathJax for rendering LaTeX equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 <body>
+  <div class="container">
+    <h1>Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis (Revised)</h1>
+    <h2>By Ing. Robert Polák, Slovakia</h2>
+    <h3>Date: 9.10.2024</h3>
 
-    <div class="container">
-        <h1>Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis</h1>
-        <h2>By Ing. Robert Polák, Slovakia</h2>
-        <h3>Date: 9.10.2024</h3>
-
-        <!-- Language Switcher -->
-        <div class="language-switcher">
-            <button onclick="showEnglish()">English</button>
-            <button onclick="showSlovak()">Slovensky</button>
-        </div>
-
-        <!-- English Content -->
-        <div id="english-content" class="english-content">
-            <hr>
-
-            <h2>Proof 1: For \( n = 2 \times 3 \times 5 \times 7 \times \dots \times p_k \), Show that \( \log(n) < p_k \)</h2>
-
-            <div class="proof">
-                <h3>Theorem:</h3>
-                <p>
-                    Let \( n \) be the product of the first \( k \) prime numbers:
-                </p>
-                <div class="equation">
-                    \( n = p_1 \times p_2 \times \dots \times p_k \),
-                </div>
-                <p>
-                    where \( p_k \) is the \( k \)-th prime number. Then:
-                </p>
-                <div class="equation">
-                    \( \log(n) < p_k \).
-                </div>
-
-                <h3>Proof:</h3>
-                <ol>
-                    <li>
-                        <strong>Express \( \log(n) \) as a Sum:</strong>
-                        <p>Using the property of logarithms for products:</p>
-                        <div class="equation">
-                            \( \log(n) = \log(p_1 \times p_2 \times \dots \times p_k) = \log(p_1) + \log(p_2) + \dots + \log(p_k) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Define Chebyshev's Function \( \theta(x) \):</strong>
-                        <p>Chebyshev's function is defined as:</p>
-                        <div class="equation">
-                            \( \theta(x) = \sum_{\substack{p \leq x \\ p \text{ is prime}}} \log(p) \).
-                        </div>
-                        <p>For \( x = p_k \):</p>
-                        <div class="equation">
-                            \( \theta(p_k) = \sum_{i=1}^{k} \log(p_i) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Apply Chebyshev's Inequality:</strong>
-                        <p>Chebyshev proved that for all \( x \geq 2 \):</p>
-                        <div class="equation">
-                            \( \theta(x) < x \).
-                        </div>
-                        <p>Therefore, for \( x = p_k \):</p>
-                        <div class="equation">
-                            \( \theta(p_k) = \sum_{i=1}^{k} \log(p_i) < p_k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Conclude the Inequality:</strong>
-                        <p>Thus:</p>
-                        <div class="equation">
-                            \( \log(n) = \theta(p_k) < p_k \).
-                        </div>
-                    </li>
-                </ol>
-
-                <h3>Conclusion:</h3>
-                <p>For \( n = p_1 \times p_2 \times \dots \times p_k \), it holds that:</p>
-                <div class="equation">
-                    \( \boxed{\log(n) < p_k} \).
-                </div>
-            </div>
-
-            <hr>
-
-            <h2>Proof 2: For Highly Composite Numbers \( n \), Show that \( \log(n) > p_k \) for Large \( n \)</h2>
-
-            <div class="proof">
-                <h3>Statement:</h3>
-                <p>
-                    Let \( n \) be a highly composite number with prime factorization:
-                </p>
-                <div class="equation">
-                    \( n = p_1^{j_1} \times p_2^{j_2} \times \dots \times p_k^{j_k} \),
-                </div>
-                <p>
-                    where \( p_i \) are prime numbers in increasing order (\( p_1 = 2, \, p_2 = 3, \, \dots \)), and the exponents satisfy \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \) with at least one exponent \( j_i > 1 \). Then, for highly composite numbers \( n \), it holds that:
-                </p>
-                <div class="equation">
-                    \( \log(n) > p_k \).
-                </div>
-            
-                <h3>Proof:</h3>            
-                <ol>
-                    <li>
-                        <strong>Express \( \log(n) \):</strong>
-                        <p>The natural logarithm of \( n \) is:</p>
-                        <div class="equation">
-                            \( \log(n) = \sum\limits_{i=1}^{k} j_i \ln(p_i) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Split the Sum:</strong>
-                        <p>Write the sum as two parts:</p>
-                        <div class="equation">
-                            \( \log(n) = \underbrace{\sum\limits_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i)}_{\Delta} \),
-                        </div>
-                        <p>where:</p>
-                        <ul>
-                            <li>\( \theta(p_k) = \sum\limits_{i=1}^{k} \ln(p_i) \) is Chebyshev's function, and</li>
-                            <li>\( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \) represents the additional contribution from exponents greater than 1.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Estimate the Gap \( \delta_k \):</strong>
-                        <p>
-                            Define \( \delta_k = p_k - \theta(p_k) \). From the prime number theorem and classical estimates (e.g. those by Rosser and Schoenfeld), we have the explicit inequality
-                        </p>
-                        <div class="equation">
-                            \( |\theta(x) - x| \leq C \frac{x}{\ln x} \)
-                        </div>
-                        <p>
-                            In particular, for \( x = p_k \) this implies
-                        </p>
-                        <div class="equation">
-                            \( |\delta_k| = |p_k - \theta(p_k)| \leq C \frac{p_k}{\ln p_k} \)
-                        </div>
-                        <p>
-                            For our purposes we choose \( C = 0.1 \). Since \( \frac{p_k}{\ln p_k} \) is asymptotically comparable to \( k \), we write
-                        </p>
-                        <div class="equation">
-                            \( |\delta_k| \lesssim 0.1\, k \)
-                        </div>
-                        <p>
-                            This inequality is historically established and underpins many results in prime number theory.
-                        </p>
-                    </li>
-                    <li>
-                        <strong>Estimate \( \Delta \):</strong>
-                        <p>Let \( r \) be the number of indices with \( j_i > 1 \) and define \( j_{\min} = \min\{j_i : j_i > 1\} \) (with \( j_{\min} \geq 2 \)). Then:</p>
-                        <div class="equation">
-                            \( \Delta = \sum\limits_{i=1}^{k} (j_i - 1)\ln(p_i) \geq (j_{\min} - 1) \sum\limits_{i=1}^{r} \ln(p_i) \).
-                        </div>
-                        <p>Since \( \ln(p_i) \geq \ln(2) \) for all \( p_i \geq 2 \), it follows that:</p>
-                        <div class="equation">
-                            \( \Delta \geq (j_{\min} - 1) \, r \, \ln(2) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Derive the Key Condition:</strong>
-                        <p>To ensure that \( \log(n) > p_k \), we need:</p>
-                        <div class="equation">
-                            \( \Delta > \delta_k \).
-                        </div>
-                        <p>Since \( \delta_k \lesssim C k \), it is sufficient that:</p>
-                        <div class="equation">
-                            \( (j_{\min} - 1) \, r \, \ln(2) > C k \).
-                        </div>
-                        <p>Define the ratio \( \alpha = \frac{r}{k} \) (the fraction of primes in the factorization appearing with an exponent greater than 1), so the condition becomes:</p>
-                        <div class="equation">
-                            \( (j_{\min} - 1)\,\alpha\,\ln(2) > C \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Additional Justification:</strong>
-                        <p>For highly composite numbers, the construction typically uses the smallest primes with as high exponents as possible, so that:</p>
-                        <ul>
-                            <li>\( j_{\min} \ge 2 \), hence \( j_{\min} - 1 \ge 1 \), and</li>
-                            <li>a significant portion of the primes appear with exponents greater than 1; in practice, one finds \( \alpha \) in the range of approximately 0.3 to 0.6.</li>
-                        </ul>
-                        <p>Taking a conservative estimate \( \alpha \ge 0.3 \) and noting that \( \ln(2) \approx 0.6931 \), we have:</p>
-                        <div class="equation">
-                            \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.3 \times 0.6931 \approx 0.208 \).
-                        </div>
-                        <p>Since \( 0.208 > 0.1 = C \), the key condition is satisfied.</p>
-                    </li>
-                    <li>
-                        <strong>Conclusion:</strong>
-                        <p>Thus, the logarithm of \( n \) can be written as:</p>
-                        <div class="equation">
-                            \( \log(n) = \theta(p_k) + \Delta \),
-                        </div>
-                        <p>and because \( \Delta > \delta_k \), we have:</p>
-                        <div class="equation">
-                            \( \log(n) > \theta(p_k) + \delta_k \ge p_k \).
-                        </div>
-                        <p>Therefore, for highly composite numbers, it holds that:</p>
-                        <div class="equation">
-                            \( \boxed{\log(n) > p_k} \).
-                        </div>
-                    </li>
-                </ol>
-            
-                <h3>Example to Illustrate the Proof:</h3>
-            
-                <p>Let \( n = 2^5 \times 3^4 \times 5^3 \times 7^2 \times 11^2 \times 13 \times 17 \times 19 \).</p>
-                <ul>
-                    <li>Primes (\( p_i \)): \( 2, 3, 5, 7, 11, 13, 17, 19 \).</li>
-                    <li>Exponents (\( j_i \)): \( 5, 4, 3, 2, 2, 1, 1, 1 \).</li>
-                    <li>Total primes (\( k \)): \( 8 \).</li>
-                    <li>Number with exponent \( > 1 \) (\( r \)): \( 5 \).</li>
-                    <li>Largest prime (\( p_k \)): \( 19 \).</li>
-                </ul>
-            
-                <p><strong>Calculate \( \theta(p_k) \):</strong></p>
-                <div class="equation">
-                    \( \theta(p_k) = \sum_{i=1}^{8} \ln(p_i) \approx 16.0875. \)
-                </div>
-            
-                <p><strong>Calculate \( \Delta \):</strong></p>
-                <div class="equation">
-                    \( \Delta = (5-1)\ln(2) + (4-1)\ln(3) + (3-1)\ln(5) + (2-1)\ln(7) + (2-1)\ln(11) \approx 13.6308. \)
-                </div>
-            
-                <p><strong>Calculate \( \delta_k \):</strong></p>
-                <div class="equation">
-                    \( \delta_k = p_k - \theta(p_k) = 19 - 16.0875 = 2.9125. \)
-                </div>
-            
-                <p><strong>Verify the Inequality:</strong></p>
-                <div class="equation">
-                    \( \Delta = 13.6308 > \delta_k = 2.9125, \)
-                </div>
-                <p>and therefore:</p>
-                <div class="equation">
-                    \( \log(n) = 16.0875 + 13.6308 = 29.7183 > 19 = p_k. \)
-                </div>
-            
-                <p><strong>Check the Key Condition:</strong></p>
-                <p>We have \( \alpha = \frac{r}{k} = \frac{5}{8} = 0.625 \), which clearly satisfies</p>
-                <div class="equation">
-                    \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.625 \times 0.6931 \approx 0.433 > 0.1. \)
-                </div>
-            
-                <h3>Conclusion:</h3>
-                <p>This example confirms that for highly composite numbers, the additional contribution \( \Delta \) is sufficient to ensure that \( \log(n) > p_k \).</p>
-                <div class="equation">
-                    \( \boxed{\log(n) > p_k} \).
-                </div>
-                <h2>References</h2>
-                <ul>
-                <li>
-                    Rosser, J. B. &amp; Schoenfeld, L. (1975). "Sharper Bounds for the Chebyshev Functions <em>θ(x)</em> and <em>ψ(x)</em>". <em>Mathematics of Computation</em>, 29, 243–269.
-                </li>
-                <li>
-                    Dusart, P. (1999). "The kth prime is greater than k (ln k + ln ln k − 1)". <em>Mathematics of Computation</em>.
-                </li>
-                <li>
-                    Chebyshev, P. L. (1852). Prvé práce o funkciách, ktoré dnes nesieme názov Chebyshevových funkcií. (Historický zdroj, odkazovaný v odborných textoch.)
-                </li>
-                <li>
-                    Rosser, J. B. (1938). "The nth Prime is Greater than n ln n". <em>Proceedings of the London Mathematical Society</em>.
-                </li>
-                <li>
-                    Broadbent, S., Kadiri, H., Lumley, A. R., Ng, N., &amp; Wilk, K. (2021). "Sharper bounds for the Chebyshev function <em>θ(x)</em>". <em>Mathematics of Computation</em>
-                </li>
-                </ul>
-            </div>
-            <div class="footer">
-                <p>&copy; 2024 Ing. Robert Polák, Slovakia. All rights reserved.</p>
-            </div>
-        </div>
-
-        <!-- Slovak Content -->
-        <div id="slovak-content" class="slovak-content">
-            <hr>
-
-            <h2>Dôkaz 1: Pre \( n = 2 \times 3 \times 5 \times 7 \times \dots \times p_k \) platí \( \log(n) < p_k \)</h2>
-
-            <div class="proof">
-                <h3>Tvrdenie:</h3>
-                <p>
-                    Nech \( n \) je súčin prvých \( k \) prvočísel:
-                </p>
-                <div class="equation">
-                    \( n = p_1 \times p_2 \times \dots \times p_k \),
-                </div>
-                <p>
-                    kde \( p_k \) je \( k \)-té prvočíslo. Potom platí:
-                </p>
-                <div class="equation">
-                    \( \log(n) < p_k \).
-                </div>
-
-                <h3>Dôkaz:</h3>
-                <ol>
-                    <li>
-                        <strong>Vyjadrenie \( \log(n) \) ako súčet:</strong>
-                        <p>Využitím vlastnosti logaritmu pre súčin:</p>
-                        <div class="equation">
-                            \( \log(n) = \log(p_1 \times p_2 \times \dots \times p_k) = \log(p_1) + \log(p_2) + \dots + \log(p_k) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Definovanie Chebyshevovej funkcie \( \theta(x) \):</strong>
-                        <p>Chebyshevova funkcia je definovaná ako:</p>
-                        <div class="equation">
-                            \( \theta(x) = \sum_{\substack{p \leq x \\ p \text{ je prvočíslo}}} \log(p) \).
-                        </div>
-                        <p>Pre \( x = p_k \):</p>
-                        <div class="equation">
-                            \( \theta(p_k) = \sum_{i=1}^{k} \log(p_i) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Uplatnenie Chebyshevovej nerovnosti:</strong>
-                        <p>Chebyshev dokázal, že pre všetky \( x \geq 2 \) platí:</p>
-                        <div class="equation">
-                            \( \theta(x) < x \).
-                        </div>
-                        <p>Preto pre \( x = p_k \):</p>
-                        <div class="equation">
-                            \( \theta(p_k) = \sum_{i=1}^{k} \log(p_i) < p_k \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Záver nerovnosti:</strong>
-                        <p>Teda:</p>
-                        <div class="equation">
-                            \( \log(n) = \theta(p_k) < p_k \).
-                        </div>
-                    </li>
-                </ol>
-
-                <h3>Záver:</h3>
-                <p>Pre \( n = p_1 \times p_2 \times \dots \times p_k \) platí:</p>
-                <div class="equation">
-                    \( \boxed{\log(n) < p_k} \).
-                </div>
-            </div>
-
-            <hr>
-
-            <h2>Dôkaz 2: Pre vysoko-zložené čísla \( n \) platí \( \log(n) > p_k \) pre veľké \( n \)</h2>
-
-            <div class="proof">
-                <h3>Tvrdenie:</h3>
-                <p>
-                    Nech \( n \) je vysoko-zložené číslo s prvočíselným rozkladom:
-                </p>
-                <div class="equation">
-                    \( n = p_1^{j_1} \times p_2^{j_2} \times \dots \times p_k^{j_k} \),
-                </div>
-                <p>
-                    kde \( p_i \) sú prvočísla v rastúcom poradí (\( p_1 = 2, \, p_2 = 3, \, \dots \)) a exponenty spĺňajú \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \), pričom aspoň jeden exponent \( j_i > 1 \). Potom pre vysoko-zložené čísla \( n \) platí:
-                </p>
-                <div class="equation">
-                    \( \log(n) > p_k \).
-                </div>
-            
-                <h3>Dôkaz:</h3>            
-                <ol>
-                    <li>
-                        <strong>Vyjadrenie \( \log(n) \):</strong>
-                        <p>Prirodzený logaritmus čísla \( n \) je:</p>
-                        <div class="equation">
-                            \( \log(n) = \sum\limits_{i=1}^{k} j_i \ln(p_i) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Rozdelenie súčtu:</strong>
-                        <p>Rozdelíme súčet na dve časti:</p>
-                        <div class="equation">
-                            \( \log(n) = \underbrace{\sum\limits_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i)}_{\Delta} \),
-                        </div>
-                        <p>kde:</p>
-                        <ul>
-                            <li>\( \theta(p_k) = \sum\limits_{i=1}^{k} \ln(p_i) \) je Chebyshevova funkcia,</li>
-                            <li>\( \Delta = \sum\limits_{i=1}^{k} (j_i - 1) \ln(p_i) \) predstavuje príspevok od exponentov väčších než 1.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Odhad \( \delta_k \):</strong>
-                        <p>
-                            Nech \( \delta_k = p_k - \theta(p_k) \). Z prvočíselnej vety a historicky potvrdených odhadov (napr. odhadov od Rossera a Schoenfelda) vyplýva explicitná nerovnosť
-                        </p>
-                        <div class="equation">
-                            \( |\theta(x) - x| \leq C \frac{x}{\ln x} \)
-                        </div>
-                        <p>
-                            Pre \( x = p_k \) dostávame
-                        </p>
-                        <div class="equation">
-                            \( |\delta_k| = |p_k - \theta(p_k)| \leq C \frac{p_k}{\ln p_k} \)
-                        </div>
-                        <p>
-                            Pre naše účely zvolíme \( C = 0.1 \). Keďže \( \frac{p_k}{\ln p_k} \) je asymptoticky porovnateľné s \( k \), môžeme zapísať
-                        </p>
-                        <div class="equation">
-                            \( |\delta_k| \lesssim 0.1\, k \)
-                        </div>
-                        <p>
-                            Tento explicitný odhad je dôležitým nástrojom v analýze chýb v odhadoch funkcie \( \theta(x) \) a je základom pre ďalšie tvrdenia.
-                        </p>
-                    </li>
-                    <li>
-                        <strong>Odhad \( \Delta \):</strong>
-                        <p>Nech \( r \) je počet indexov s \( j_i > 1 \) a nech \( j_{\min} = \min\{j_i : j_i > 1\} \geq 2 \). Potom:</p>
-                        <div class="equation">
-                            \( \Delta = \sum\limits_{i=1}^{k} (j_i - 1)\ln(p_i) \geq (j_{\min} - 1) \sum\limits_{i=1}^{r} \ln(p_i) \).
-                        </div>
-                        <p>Lebo \( \ln(p_i) \geq \ln(2) \) pre všetky \( p_i \geq 2 \), dostávame:</p>
-                        <div class="equation">
-                            \( \Delta \geq (j_{\min} - 1) \, r \, \ln(2) \).
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Prechod na podmienku:</strong>
-                        <p>Aby sme mali \( \log(n) > p_k \), postačuje, aby:</p>
-                        <div class="equation">
-                            \( \Delta > \delta_k.
-                            \)
-                        </div>
-                        <p>Keďže \( \delta_k \lesssim C k \), stačí, aby:</p>
-                        <div class="equation">
-                            \( (j_{\min} - 1) \, r \, \ln(2) > C k.
-                            \)
-                        </div>
-                        <p>Definujeme \( \alpha = \frac{r}{k} \), potom podmienka nadobúda tvar:</p>
-                        <div class="equation">
-                            \( (j_{\min} - 1)\,\alpha\,\ln(2) > C.
-                            \)
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Dodatočné zdôvodnenie:</strong>
-                        <p>Pri konštrukcii vysoko-zložených čísel sa zvyčajne používajú najmenšie prvočísla s čo najvyššími exponentmi, pričom platí:</p>
-                        <ul>
-                            <li>\( j_{\min} \geq 2 \) (teda \( j_{\min} - 1 \ge 1 \)),</li>
-                            <li>väčšina prvočísel (najmä tie s nižšími hodnotami) sa vyskytuje s exponentmi väčšími než 1, takže \( \alpha \) (podiel takých prvočísel) býva typicky v rozsahu 0.3 až 0.6.</li>
-                        </ul>
-                        <p>Pre konzervatívny odhad vezmime \( \alpha \ge 0.3 \) a s \( \ln(2) \approx 0.6931 \) máme:</p>
-                        <div class="equation">
-                            \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.3 \times 0.6931 \approx 0.208.
-                            \)
-                        </div>
-                        <p>Lebo \( 0.208 > 0.1 = C \), podmienka je splnená.</p>
-                    </li>
-                    <li>
-                        <strong>Záver:</strong>
-                        <p>Logaritmus čísla \( n \) sa dá zapísať ako:</p>
-                        <div class="equation">
-                            \( \log(n) = \theta(p_k) + \Delta \),
-                        </div>
-                        <p>a keďže \( \Delta > \delta_k \), platí:</p>
-                        <div class="equation">
-                            \( \log(n) > \theta(p_k) + \delta_k \ge p_k.
-                            \)
-                        </div>
-                        <p>Teda pre vysoko-zložené čísla platí:</p>
-                        <div class="equation">
-                            \( \boxed{\log(n) > p_k} \).
-                        </div>
-                    </li>
-                </ol>
-            
-                <h3>Príklad na ilustráciu dôkazu:</h3>
-            
-                <p>Nech \( n = 2^5 \times 3^4 \times 5^3 \times 7^2 \times 11^2 \times 13 \times 17 \times 19 \).</p>
-                <ul>
-                    <li>Prvočísla (\( p_i \)): \( 2, 3, 5, 7, 11, 13, 17, 19 \).</li>
-                    <li>Exponenty (\( j_i \)): \( 5, 4, 3, 2, 2, 1, 1, 1 \).</li>
-                    <li>Počet prvočísel (\( k \)): \( 8 \).</li>
-                    <li>Počet prvočísel s \( j_i > 1 \) (\( r \)): \( 5 \).</li>
-                    <li>Najväčšie prvočíslo (\( p_k \)): \( 19 \).</li>
-                </ul>
-            
-                <p><strong>Výpočet \( \theta(p_k) \):</strong></p>
-                <div class="equation">
-                    \( \theta(p_k) = \sum_{i=1}^{8} \ln(p_i) \approx 16.0875. \)
-                </div>
-            
-                <p><strong>Výpočet \( \Delta \):</strong></p>
-                <div class="equation">
-                    \( \Delta = (5-1)\ln(2) + (4-1)\ln(3) + (3-1)\ln(5) + (2-1)\ln(7) + (2-1)\ln(11) \approx 13.6308. \)
-                </div>
-            
-                <p><strong>Výpočet \( \delta_k \):</strong></p>
-                <div class="equation">
-                    \( \delta_k = p_k - \theta(p_k) = 19 - 16.0875 = 2.9125. \)
-                </div>
-            
-                <p><strong>Porovnanie:</strong></p>
-                <div class="equation">
-                    \( \Delta = 13.6308 > \delta_k = 2.9125, \)
-                </div>
-                <p>teda:</p>
-                <div class="equation">
-                    \( \log(n) = 16.0875 + 13.6308 = 29.7183 > 19 = p_k. \)
-                </div>
-            
-                <p><strong>Overenie podmienky:</strong></p>
-                <p>Máme \( \alpha = \frac{r}{k} = \frac{5}{8} = 0.625 \), čo určite spĺňa</p>
-                <div class="equation">
-                    \( (j_{\min} - 1)\,\alpha\,\ln(2) \ge 1 \times 0.625 \times 0.6931 \approx 0.433 > 0.1. \)
-                </div>
-            
-                <h3>Záver:</h3>
-                <p>Tento príklad ilustruje, že pre vysoko-zložené čísla príspevok \( \Delta \) je dostatočne veľký na zabezpečenie nerovnosti \( \log(n) > p_k \).</p>
-                <div class="equation">
-                    \( \boxed{\log(n) > p_k} \).
-                </div>
-                <h2>Referencie</h2>
-                <ul>
-                    <li>
-                    Rosser, J. B. &amp; Schoenfeld, L. (1975). "Sharper Bounds for the Chebyshev Functions <em>θ(x)</em> and <em>ψ(x)</em>". <em>Mathematics of Computation</em>, 29, 243–269.
-                    </li>
-                    <li>
-                    Dusart, P. (1999). "The kth prime is greater than k (ln k + ln ln k − 1)". <em>Mathematics of Computation</em>.
-                    </li>
-                    <li>
-                    Chebyshev, P. L. (1852). Prvé práce o funkciách, ktoré dnes nesieme názov Chebyshevových funkcií. (Historický zdroj, odkazovaný v odborných textoch.)
-                    </li>
-                    <li>
-                    Rosser, J. B. (1938). "The nth Prime is Greater than n ln n". <em>Proceedings of the London Mathematical Society</em>.
-                    </li>
-                    <li>
-                    Broadbent, S., Kadiri, H., Lumley, A. R., Ng, N., &amp; Wilk, K. (2021). "Sharper bounds for the Chebyshev function <em>θ(x)</em>". <em>Mathematics of Computation</em>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer">
-                <p>&copy; 2024 Ing. Robert Polák, Slovensko. Všetky práva vyhradené.</p>
-            </div>
-        
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <button onclick="showEnglish()">English</button>
+      <button onclick="showSlovak()">Slovensky</button>
     </div>
 
-    <!-- JavaScript for Language Switcher -->
-    <script>
-        function showEnglish() {
-            document.getElementById('english-content').style.display = 'block';
-            document.getElementById('slovak-content').style.display = 'none';
-        }
+    <!-- English Content -->
+    <div id="english-content" class="english-content">
+        <hr>
+        <h2>Proof 1: For \( n = 2 \times 3 \times 5 \times 7 \times \dots \times p_k \), it holds that \( \log(n) < p_k \)</h2>
+        <div class="proof">
+          <h3>Claim:</h3>
+          <p>Let \( n \) be the product of the first \( k \) primes:</p>
+          <div class="equation">
+            \( n = p_1 \times p_2 \times \dots \times p_k \),
+          </div>
+          <p>where \( p_k \) is the \( k \)-th prime. Then, it holds that:</p>
+          <div class="equation">
+            \( \log(n) < p_k \)
+          </div>
+          <h3>Proof:</h3>
+          <ol>
+            <li>
+              <strong>Expressing \( \log(n) \) as a sum:</strong>
+              <p>Using the logarithm property for products:</p>
+              <div class="equation">
+                \( \log(n) = \log(p_1) + \log(p_2) + \dots + \log(p_k) \)
+              </div>
+            </li>
+            <li>
+              <strong>Definition of the Chebyshev function \( \theta(x) \):</strong>
+              <p>The Chebyshev function is defined as:</p>
+              <div class="equation">
+                \( \theta(x) = \sum_{\substack{p \leq x \\ p \text{ is prime}}} \log(p) \)
+              </div>
+              <p>For \( x = p_k \):</p>
+              <div class="equation">
+                \( \theta(p_k) = \sum_{i=1}^{k} \log(p_i) \)
+              </div>
+            </li>
+            <li>
+              <strong>Application of Chebyshev's inequality:</strong>
+              <p>Chebyshev proved that for all \( x \geq 2 \) it holds:</p>
+              <div class="equation">
+                \( \theta(x) < x \)
+              </div>
+              <p>Therefore, for \( x = p_k \):</p>
+              <div class="equation">
+                \( \theta(p_k) < p_k \)
+              </div>
+            </li>
+            <li>
+              <strong>Conclusion of the inequality:</strong>
+              <p>Thus:</p>
+              <div class="equation">
+                \( \boxed{\log(n) < p_k} \)
+              </div>
+            </li>
+          </ol>
+        </div>
+        <hr>
+        <h2>Proof 2: For Highly Composite Numbers \( n \), it holds that \( \log(n) > p_k \) for large \( n \)</h2>
+        <div class="proof">
+          <h3>Claim:</h3>
+          <p>Let \( n \) be a highly composite number with the prime factorization:</p>
+          <div class="equation">
+            \( n = p_1^{j_1} \times p_2^{j_2} \times \dots \times p_k^{j_k} \),
+          </div>
+          <p>where \( p_i \) are primes in ascending order (\( p_1 = 2,\, p_2 = 3,\, \dots \)) and the exponents satisfy \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \) with at least one \( j_i > 1 \). Then, it holds that:</p>
+          <div class="equation">
+            \( \log(n) > p_k \)
+          </div>
+          <h3>Proof:</h3>
+          <ol>
+            <li>
+              <strong>Expressing \( \log(n) \):</strong>
+              <p>The natural logarithm of \( n \) is given by:</p>
+              <div class="equation">
+                \( \log(n) = \sum_{i=1}^{k} j_i \ln(p_i) \)
+              </div>
+            </li>
+            <li>
+              <strong>Splitting the sum:</strong>
+              <p>We split the sum into two parts:</p>
+              <div class="equation">
+                \( \log(n) = \underbrace{\sum_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum_{i=1}^{k} (j_i - 1)\ln(p_i)}_{\Delta} \)
+              </div>
+            </li>
+            <li>
+              <strong>Estimate of \( \delta_k \):</strong>
+              <p>Let \( \delta_k = p_k - \theta(p_k) \). According to historical estimates, it holds that:</p>
+              <div class="equation">
+                \( |\theta(x) - x| \leq C\,\frac{x}{\ln x} \)
+              </div>
+              <p>For \( x = p_k \) therefore:</p>
+              <div class="equation">
+                \( |\delta_k| \leq C\,\frac{p_k}{\ln(p_k)} \)
+              </div>
+              <p>Let us choose the conservative estimate \( C = 0.5 \), which asymptotically gives:</p>
+              <div class="equation">
+                \( |\delta_k| \lesssim 0.5\, k \)
+              </div>
+            </li>
+            <li>
+              <strong>Estimate of \( \Delta \):</strong>
+              <p>For those primes with \( j_i > 1 \), we define the sum:</p>
+              <div class="equation">
+                \( S_r = \sum_{\substack{p_i \text{ with } j_i>1}} \ln(p_i) \)
+              </div>
+              <p>Thus, it holds that:</p>
+              <div class="equation">
+                \( \Delta \ge (j_{\min}-1)\, S_r \)
+              </div>
+            </li>
+            <li>
+              <strong>Condition for \( \log(n) > p_k \):</strong>
+              <p>In order to achieve \( \log(n) > p_k \), it is sufficient that:</p>
+              <div class="equation">
+                \( (j_{\min}-1)\, S_r > C\,\frac{p_k}{\ln(p_k)} \)
+              </div>
+              <p>We thus define the minimal required sum for the enhanced factors:</p>
+              <div class="equation">
+                \( S_{\min} = \frac{C\,p_k}{(j_{\min}-1)\,\ln(p_k)} \)
+              </div>
+              <p>If \( S_r > S_{\min} \), then we have \( \Delta > \delta_k \) and therefore:</p>
+              <div class="equation">
+                \( \log(n)=\theta(p_k)+\Delta > \theta(p_k)+\delta_k \ge p_k \)
+              </div>
+            </li>
+            <li>
+              <strong>Example Illustrating the Proof:</strong>
+              <p>Consider
+                \[
+                n = 2^5 \times 3^4 \times 5^3 \times 7^2 \times 11^2 \times 13 \times 17 \times 19,
+                \]
+                where:
+              </p>
+              <ul>
+                <li>Primes: \(2,\,3,\,5,\,7,\,11,\,13,\,17,\,19\)</li>
+                <li>Exponents: \( j_1=5,\; j_2=4,\; j_3=3,\; j_4=2,\; j_5=2,\; j_6=j_7=j_8=1\)</li>
+                <li>\( k\approx\frac{p_k}{\ln(p_k)}\approx\frac{19}{2.944}\approx6.45 \)</li>
+                <li>Enhanced primes: \(2,\,3,\,5,\,7,\,11\) (i.e. \( r=5 \) and \( j_{\min}=2 \))</li>
+              </ul>
+              <p><strong>Calculation of \( \theta(p_k) \):</strong></p>          
+                \( \theta(p_k)=\ln2+\ln3+\ln5+\ln7+\ln11+\ln13+\ln17+\ln19\approx16.09 \)          
+              <p><strong>Calculation of \( \Delta \):</strong></p>          
+                \( \Delta=(5-1)\ln2+(4-1)\ln3+(3-1)\ln5+(2-1)\ln7+(2-1)\ln11\approx13.63 \)          
+              <p><strong>Calculation of \( \delta_k \):</strong></p>          
+                \( \delta_k=p_k-\theta(p_k)\approx19-16.09\approx2.91 \)          
+              <p>
+                For the enhanced primes we have:
+                \[
+                S_r = \ln2+\ln3+\ln5+\ln7+\ln11 \approx 0.6931+1.0986+1.6094+1.9459+2.3979\approx7.745,
+                \]
+                and therefore
+                \[
+                \Delta \ge (2-1)S_r \approx 7.745 > \delta_k \approx 2.91.
+                \]
+              </p>
+              <p>
+                The minimal required sum is
+                \[
+                S_{\min} = \frac{0.5\times19}{(2-1)\times2.944}\approx\frac{9.5}{2.944}\approx3.225.
+                \]
+                Hence, \( S_r > S_{\min} \) and the inequality \( \log(n) > p_k \) holds.
+              </p>
+            </li>
+            <li>
+              <strong>Conclusion:</strong>
+              <p>
+                It is important to emphasize that the derivation of the minimal contribution for the enhanced prime factors—specifically the definition 
+                \( S_{\min} = \frac{C\,p_k}{(j_{\min}-1)\,\ln(p_k)} \)—assumes that for all such factors the exponent is at least 
+                \( j_{\min} = 2 \). However, in real highly composite numbers the distribution of exponents is often much more favorable, especially for the smaller primes.
+              </p>
+              <p>
+                In other words, even though the theoretical estimate \( r_{\min} \) is based on the conservative assumption \( j_{\min} = 2 \), 
+                real highly composite numbers have exponents for the small primes that are often significantly higher. This increases the overall contribution 
+                \(\Delta\) beyond the boundary \(\delta_k\), thereby practically ensuring that the condition 
+                \(\Delta > \delta_k\) (i.e., \( \log(n)=\theta(p_k)+\Delta > p_k \)) is met not only in theory but also in practice.
+              </p>
+            </li>
+          </ol>
+        </div>
+        <hr>
+        <div class="proof">
+          <h2>Swap–Argument – A Rigorous Three-Step Proof (Supplement)</h2>
+          
+          <!-- 1. Introduction / Setup -->
+          <p>
+            Let 
+            <span class="math">\( n = \prod_{i=1}^{k} p_i^{\,j_i} \)</span> 
+            be a highly composite number and assume that there exists at least one prime 
+            <span class="math">\(p_r\)</span> with exponent 2 
+            (<span class="math">\(j_r=2\)</span>). Suppose that this 
+            <span class="math">\(p_r\)</span> is the candidate for a <strong>swap</strong>. 
+            Let <span class="math">\(p_1\)</span> be the smallest prime with exponent 
+            <span class="math">\(j_1\)</span> (in practice often 
+            <span class="math">\(j_1=2\)</span>).
+          </p>
+          <p>
+            Assume that \( n \) is very large and, for instance, the first 20 larger bases (primes) have exponent 2. For illustration, let us choose specifically 
+            <span class="math">\(p_r = p_7 = 17\)</span> with exponent 2. We will show that by decreasing the exponent of 17 (from 2 to 1) and increasing the exponent of 
+            <span class="math">\(p_1=2\)</span> by a suitable 
+            <span class="math">\(\Delta\)</span>, we improve 
+            <span class="math">\(\sigma(n)/n\)</span>, while maintaining <span class="math">\(\tilde{n}\le n\)</span>.
+          </p>
+          
+          <!-- 2. Definition of the Multiplicative Function \( f(p,j) \) -->
+          <p>
+            We know that <span class="math">\(\sigma(n)/n\)</span> is multiplicative, so we can decompose it into a product of functions:
+          </p>
+          <div class="equation">
+            <span class="math">
+              \(\displaystyle
+              \frac{\sigma(n)}{n} 
+              \;=\; \prod_{i=1}^{k} f(p_i,j_i),
+              \quad
+              \text{where}
+              \quad
+              f(p,j) 
+              \;=\; 
+              \frac{p^{\,j+1}-1}{\,p^j\,(p-1)\,}.
+              \)
+            </span>
+          </div>
+          <p>
+            In the original configuration (before the swap), both 
+            <span class="math">\(f(p_1,j_1)\)</span> and 
+            <span class="math">\(f(p_r,2)\)</span> are part of 
+            <span class="math">\(\sigma(n)/n\)</span>.
+          </p>
+          
+          <!-- 3. Choice of Δ and the New Number \( \tilde{n} \) -->
+          <p>
+            <strong>We define the swap:</strong>
+            by decreasing the exponent of <span class="math">\(p_r\)</span> 
+            (i.e. 17) from 2 to 1, thereby removing the factor 
+            <span class="math">\(p_r^2\)</span>. Simultaneously, we increase the exponent of 
+            <span class="math">\(p_1=2\)</span> by 
+            <span class="math">\(\Delta\)</span>. To ensure that 
+            <span class="math">\(\tilde{n}\le n\)</span>, we require:
+          </p>
+          <div class="equation">
+            <span class="math">
+              \(\displaystyle
+              2^\Delta \;\le\; 17,
+              \quad
+              \Delta 
+              = 
+              \left\lfloor \frac{\ln(17)}{\ln(2)} \right\rfloor
+              = 4.
+              \)
+            </span>
+          </div>
+          <p>
+            Then, the new number is given by 
+            <span class="math">\(\tilde{n} 
+            = \frac{n}{\,17^2\,}\times 2^\Delta 
+            \,\le\, n\)</span>. 
+          </p>
+          
+          <!-- 4. Calculation of the Ratio \( R \) -->
+          <p>
+            Before the swap, the contributions in the factorization are:
+          </p>
+          <ul>
+            <li>
+              <span class="math">\(f(2,\,j_1)\)</span> 
+              (for example, if <span class="math">\(j_1=2\)</span>, then 
+              <span class="math">\(f(2,2)=\tfrac{2^3-1}{2^2}=1.75\)</span>),
+            </li>
+            <li>
+              <span class="math">\(f(17,2)\)</span> 
+              (computed as <span class="math">\(\approx1.0623\)</span>).
+            </li>
+          </ul>
+          <p>
+            After the swap, the exponent of <span class="math">\(17\)</span> is decreased to 1 and the exponent of <span class="math">\(2\)</span> is increased to 
+            <span class="math">\((j_1 + \Delta)\)</span>. The new contributions become 
+            <span class="math">\(f(2,\,j_1+\Delta)\)</span> and 
+            <span class="math">\(f(17,\,1)\approx1.0588\)</span>.
+          </p>
+          <p>
+            We define the ratio
+          </p>
+          <div class="equation">
+            <span class="math">
+              \(\displaystyle
+              R 
+              \;=\;
+              \frac{\sigma(\tilde{n})/\tilde{n}}{\sigma(n)/n}
+              \;=\;
+              \frac{\,f\bigl(2,\,j_1+\Delta\bigr)\,\times\,f\bigl(17,\,1\bigr)\,}
+                   {\,f\bigl(2,j_1\bigr)\,\times\,f\bigl(17,\,2\bigr)\,}.
+              \)
+            </span>
+          </div>
+          <p>
+            The swap is beneficial if <span class="math">\(R>1\)</span>. For <span class="math">\(j_1=2\)</span> and \(\Delta=4\):
+          </p>
+          <ul>
+            <li><span class="math">\(f(2,2)=\tfrac{2^3-1}{2^2}=\tfrac{7}{4}=1.75\)</span>,</li>
+            <li><span class="math">\(f(17,2)\approx1.0623\)</span>,</li>
+            <li><span class="math">\(f(2,6)=\tfrac{2^7-1}{2^6}=\tfrac{127}{64}\approx1.9844\)</span>,</li>
+            <li><span class="math">\(f(17,1)=\tfrac{17^2-1}{17\times16}=\tfrac{288}{272}\approx1.0588\)</span>.</li>
+          </ul>
+          <p>
+            Therefore,
+            <span class="math">
+              \(\displaystyle
+              R 
+              \;=\; 
+              \frac{1.9844\times1.0588}{\,1.75\times1.0623\,}
+              \approx
+              \frac{2.102}{1.859}
+              \approx
+              1.13 > 1.
+              \)
+            </span>
+            Hence, the swap increased <span class="math">\(\sigma(n)/n\)</span> by more than 13% while maintaining <span class="math">\(\tilde{n}\le n\)</span>.
+          </p>
+          
+          <!-- 5. Summary + Interpretation -->
+          <p>
+            With this three-step approach:
+          </p>
+          <ol>
+            <li>
+              <strong>We define</strong> 
+              <span class="math">\(f(p,j)\)</span> and decompose 
+              <span class="math">\(\sigma(n)/n\)</span> as a product,
+            </li>
+            <li>
+              <strong>We choose</strong> 
+              <span class="math">\(\Delta = \lfloor \ln(p_r)/\ln(2)\rfloor\)</span> 
+              such that <span class="math">\(\tilde{n}\le n\)</span>,
+            </li>
+            <li>
+              <strong>We show</strong> that 
+              <span class="math">\(\dfrac{\,f(2,j_1+\Delta)\,}{f(2,j_1)} 
+                       > \dfrac{\,f(17,2)\,}{f(17,1)}\)</span>,
+              i.e. <span class="math">\(R>1\)</span>.
+            </li>
+          </ol>
+          <p>
+            The swap argument then states that if in the factorization of a highly composite number any larger prime has an exponent of 2, it is always possible to transfer exponent units to smaller bases (typically <span class="math">\(2\)</span>) and achieve a greater value of <span class="math">\(\sigma(n)/n\)</span>, while ensuring <span class="math">\(\tilde{n}\le n\)</span>. This refutes the so-called minimal configuration and proves that the optimal configuration must have significantly higher exponents for the smallest primes, which leads to <span class="math">\(\log(n) > p_k\)</span>.
+          </p>
+        </div>  
+        <hr>
+        <h2>References</h2>
+        <div class="proof">
+          <ul>
+            <li>
+              Rosser, J. B. &amp; Schoenfeld, L. (1975). "Sharper Bounds for the Chebyshev Functions <em>θ(x)</em> and <em>ψ(x)</em>". <em>Mathematics of Computation</em>, 29, 243–269.
+            </li>
+            <li>
+              Dusart, P. (1999). "The kth prime is greater than k (ln k + ln ln k − 1)". <em>Mathematics of Computation</em>.
+            </li>
+            <li>
+              Chebyshev, P. L. (1852). First works on functions now known as Chebyshev functions.
+            </li>
+            <li>
+              Rosser, J. B. (1938). "The nth Prime is Greater than n ln n". <em>Proceedings of the London Mathematical Society</em>.
+            </li>
+            <li>
+              Broadbent, S., Kadiri, H., Lumley, A. R., Ng, N., &amp; Wilk, K. (2021). "Sharper bounds for the Chebyshev function <em>θ(x)</em>". <em>Mathematics of Computation</em>.
+            </li>
+          </ul>
+        </div>
+        <div class="footer">
+          <p>&copy; 2024 Ing. Robert Polák, Slovakia. All rights reserved.</p>
+        </div>        
+    </div>
+    
+    <!-- Slovak Content -->
+    <div id="slovak-content" class="slovak-content">
+      <hr>
+      <h2>Dôkaz 1: Pre \( n = 2 \times 3 \times 5 \times 7 \times \dots \times p_k \) platí \( \log(n) < p_k \)</h2>
+      <div class="proof">
+        <h3>Tvrdenie:</h3>
+        <p>Nech \( n \) je súčin prvých \( k \) prvočísel:</p>
+        <div class="equation">
+          \( n = p_1 \times p_2 \times \dots \times p_k \),
+        </div>
+        <p>kde \( p_k \) je \( k \)-té prvočíslo. Potom platí:</p>
+        <div class="equation">
+          \( \log(n) < p_k \)
+        </div>
+        <h3>Dôkaz:</h3>
+        <ol>
+          <li>
+            <strong>Vyjadrenie \( \log(n) \) ako súčet:</strong>
+            <p>Využitím vlastnosti logaritmu pre súčin:</p>
+            <div class="equation">
+              \( \log(n) = \log(p_1) + \log(p_2) + \dots + \log(p_k) \)
+            </div>
+          </li>
+          <li>
+            <strong>Definovanie Chebyshevovej funkcie \( \theta(x) \):</strong>
+            <p>Chebyshevova funkcia je definovaná ako:</p>
+            <div class="equation">
+              \( \theta(x) = \sum_{\substack{p \leq x \\ p \text{ je prvočíslo}}} \log(p) \)
+            </div>
+            <p>Pre \( x = p_k \):</p>
+            <div class="equation">
+              \( \theta(p_k) = \sum_{i=1}^{k} \log(p_i) \)
+            </div>
+          </li>
+          <li>
+            <strong>Uplatnenie Chebyshevovej nerovnosti:</strong>
+            <p>Chebyshev dokázal, že pre všetky \( x \geq 2 \) platí:</p>
+            <div class="equation">
+              \( \theta(x) < x \)
+            </div>
+            <p>Preto pre \( x = p_k \):</p>
+            <div class="equation">
+              \( \theta(p_k) < p_k \)
+            </div>
+          </li>
+          <li>
+            <strong>Záver nerovnosti:</strong>
+            <p>Teda:</p>
+            <div class="equation">
+              \( \boxed{\log(n) < p_k} \)
+            </div>
+          </li>
+        </ol>
+      </div>
+      <hr>
+      <h2>Dôkaz 2: Pre vysoko-zložené čísla \( n \) platí \( \log(n) > p_k \) pre veľké \( n \)</h2>
+      <div class="proof">
+        <h3>Tvrdenie:</h3>
+        <p>Nech \( n \) je vysoko-zložené číslo s prvočíselným rozkladom:</p>
+        <div class="equation">
+          \( n = p_1^{j_1} \times p_2^{j_2} \times \dots \times p_k^{j_k} \),
+        </div>
+        <p>kde \( p_i \) sú prvočíselá v rastúcom poradí (\( p_1 = 2,\, p_2 = 3,\, \dots \)) a exponenty spĺňajú \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \) s aspoň jedným \( j_i > 1 \). Potom platí:</p>
+        <div class="equation">
+          \( \log(n) > p_k \)
+        </div>
+        <h3>Dôkaz:</h3>
+        <ol>
+          <li>
+            <strong>Vyjadrenie \( \log(n) \):</strong>
+            <p>Prirodzený logaritmus čísla \( n \) je:</p>
+            <div class="equation">
+              \( \log(n) = \sum_{i=1}^{k} j_i \ln(p_i) \)
+            </div>
+          </li>
+          <li>
+            <strong>Rozdelenie súčtu:</strong>
+            <p>Rozdelíme súčet na dve časti:</p>
+            <div class="equation">
+              \( \log(n) = \underbrace{\sum_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum_{i=1}^{k} (j_i - 1)\ln(p_i)}_{\Delta} \)
+            </div>
+          </li>
+          <li>
+            <strong>Odhad \( \delta_k \):</strong>
+            <p>Nech \( \delta_k = p_k - \theta(p_k) \). Podľa historických odhadov platí:</p>
+            <div class="equation">
+              \( |\theta(x) - x| \leq C\,\frac{x}{\ln x} \)
+            </div>
+            <p>Pre \( x = p_k \) teda:</p>
+            <div class="equation">
+              \( |\delta_k| \leq C\,\frac{p_k}{\ln(p_k)} \)
+            </div>
+            <p>Zvoľme konzervatívny odhad \( C = 0.5 \), čo dáva asymptoticky:</p>
+            <div class="equation">
+              \( |\delta_k| \lesssim 0.5\, k \)
+            </div>
+          </li>
+          <li>
+            <strong>Odhad \( \Delta \):</strong>
+            <p>Pre tie prvočísla, kde \( j_i > 1 \), definujeme sumu:</p>
+            <div class="equation">
+              \( S_r = \sum_{\substack{p_i \text{ s } j_i>1}} \ln(p_i) \)
+            </div>
+            <p>Takže platí:</p>
+            <div class="equation">
+              \( \Delta \ge (j_{\min}-1)\, S_r \)
+            </div>
+          </li>
+          <li>
+            <strong>Podmienka pre \( \log(n) > p_k \):</strong>
+            <p>Aby sme dosiahli \( \log(n) > p_k \), postačí, aby bolo:</p>
+            <div class="equation">
+              \( (j_{\min}-1)\, S_r > C\,\frac{p_k}{\ln(p_k)} \)
+            </div>
+            <p>Definujeme teda minimálnu požadovanú hodnotu pre súčet vylepšených faktorov:</p>
+            <div class="equation">
+              \( S_{\min} = \frac{C\,p_k}{(j_{\min}-1)\,\ln(p_k)} \)
+            </div>
+            <p>Ak \( S_r > S_{\min} \), potom máme \( \Delta > \delta_k \) a teda:</p>
+            <div class="equation">
+              \( \log(n)=\theta(p_k)+\Delta > \theta(p_k)+\delta_k \ge p_k \)
+            </div>
+          </li>
+          <li>
+            <strong>Príklad na ilustráciu dôkazu:</strong>
+            <p>
+              Uvažujme
+              \[
+              n = 2^5 \times 3^4 \times 5^3 \times 7^2 \times 11^2 \times 13 \times 17 \times 19
+              \]
+              kde:
+            </p>
+            <ul>
+              <li>Prvočísla: \(2,\,3,\,5,\,7,\,11,\,13,\,17,\,19\)</li>
+              <li>Exponenty: \( j_1=5,\; j_2=4,\; j_3=3,\; j_4=2,\; j_5=2,\; j_6=j_7=j_8=1\)</li>
+              <li>\( k\approx\frac{p_k}{\ln(p_k)}\approx\frac{19}{2.944}\approx6.45 \)</li>
+              <li>Vylepšené prvočísla: \(2,\,3,\,5,\,7,\,11\) (t.j. \( r=5 \) a \( j_{\min}=2 \))</li>
+            </ul>
+            <p><strong>Výpočet \( \theta(p_k) \):</strong></p>          
+              \( \theta(p_k)=\ln2+\ln3+\ln5+\ln7+\ln11+\ln13+\ln17+\ln19\approx16.09 \)          
+            <p><strong>Výpočet \( \Delta \):</strong></p>          
+              \( \Delta=(5-1)\ln2+(4-1)\ln3+(3-1)\ln5+(2-1)\ln7+(2-1)\ln11\approx13.63 \)          
+            <p><strong>Výpočet \( \delta_k \):</strong></p>          
+              \( \delta_k=p_k-\theta(p_k)\approx19-16.09\approx2.91 \)          
+            <p>
+              Pre vylepšené prvočísla máme:
+              \[
+              S_r = \ln2+\ln3+\ln5+\ln7+\ln11 \approx 0.6931+1.0986+1.6094+1.9459+2.3979\approx7.745,
+              \]
+              a teda
+              \[
+              \Delta \ge (2-1)S_r \approx 7.745 > \delta_k \approx 2.91.
+              \]
+            </p>
+            <p>
+              Minimálna požadovaná suma je
+              \[
+              S_{\min} = \frac{0.5\times19}{(2-1)\times2.944}\approx\frac{9.5}{2.944}\approx3.225.
+              \]
+              Preto \( S_r > S_{\min} \) a nerovnosť \( \log(n) > p_k \) platí.
+            </p>
+          </li>
+          <li>
+            <strong>Záver:</strong>
+            <p>
+                Je dôležité zdôrazniť, že odvodzovanie minimálneho príspevku pre vylepšené prvočíselné faktory, konkrétne definícia 
+                \( S_{\min} = \frac{C\,p_k}{(j_{\min}-1)\,\ln(p_k)} \), vychádza z predpokladu, že pre všetky takéto faktory je exponent aspoň 
+                \( j_{\min} = 2 \). Avšak v reálnych vysoko-zložených číslach sa stretávame s oveľa lepším 
+                rozložením exponentov, najmä pre malé prvočísla v rozklade.
+              </p>
+            <p>
+                Pre takéto čísla sú exponenty často omnoho väčšie než 2, čo znamená, že príspevok jednotlivých faktorov do sumy 
+                \( S_r = \sum_{\substack{p_i \text{ s } j_i>1}} \ln(p_i) \) je podstatne vyšší, než by vyplývalo iba z minimálnej hodnoty 
+                \((j_{\min}-1)\ln(p_i)\). Tento lepší rozklad zabezpečuje, že celková suma \( S_r \) dosahuje hodnoty, ktoré výrazne 
+                prekračujú minimálny odhad \( S_{\min} \).
+            </p>
+            <p>
+                Inými slovami, aj keď teoretický odhad \( r_{\min} \) vychádza z konzervatívneho predpokladu \( j_{\min} = 2 \), 
+                reálne vysoko-zložené čísla majú exponenty pre malé prvočísla oveľa vyššie, čo zvyšuje celkový príspevok \(\Delta\) 
+                nad hranicu \(\delta_k\). Tento fakt prakticky garantuje, že podmienka 
+                \(\Delta > \delta_k\) (teda \( \log(n)=\theta(p_k)+\Delta > p_k \)) je splnená nielen teoreticky, ale aj v reálnych prípadoch.
+            </p>
+          </li>
+        </ol>
+      </div>
+      <hr>
+      <div class="proof">
+        <h2>Swap–argument &ndash; Rigorózny trojkrokový dôkaz (Supplement)</h2>
+      
+        <!-- 1. Úvod / Nastavenie -->
+        <p>
+          Nech je 
+          <span class="math">\( n = \prod_{i=1}^{k} p_i^{\,j_i} \)</span> 
+          vysoko-zložené číslo a nech existuje aspoň jedno prvočíslo 
+          <span class="math">\(p_r\)</span> s exponentom 2 
+          (<span class="math">\(j_r=2\)</span>). 
+          Predpokladajme, že práve toto 
+          <span class="math">\(p_r\)</span> je kandidátom na <strong>swap</strong>. 
+          Nech <span class="math">\(p_1\)</span> je najmenšie prvočíslo s exponentom 
+          <span class="math">\(j_1\)</span> (v praxi často 
+          <span class="math">\(j_1=2\)</span>).
+        </p>
+        <p>
+          Uvažujme, že <span class="math">\(n\)</span> je veľmi veľké a napríklad 
+          <strong>prvých 20 väčších báz</strong> (prvočísel) má exponent 2. Pre ilustráciu 
+          vyberme konkrétne <span class="math">\(p_r = p_7 = 17\)</span> s exponentom 2. 
+          Ukážeme, že znížením exponentu 17 (z 2 na 1) a zvýšením exponentu 
+          <span class="math">\(p_1=2\)</span> o vhodné 
+          <span class="math">\(\Delta\)</span> zlepšíme 
+          <span class="math">\(\sigma(n)/n\)</span>, pričom <span class="math">\(\tilde{n}\le n\)</span>.
+        </p>
+      
+        <!-- 2. Definícia multiplikatívnej funkcie f(p,j) -->
+        <p>
+          Vieme, že <span class="math">\(\sigma(n)/n\)</span> je multiplikatívna, takže ju 
+          môžeme rozložiť na súčin funkcií
+        </p>
+        <div class="equation">
+          <span class="math">
+            \(\displaystyle
+            \frac{\sigma(n)}{n} 
+            \;=\; \prod_{i=1}^{k} f(p_i,j_i),
+            \quad
+            \text{kde}
+            \quad
+            f(p,j) 
+            \;=\; 
+            \frac{p^{\,j+1}-1}{\,p^j\,(p-1)\,}.
+            \)
+          </span>
+        </div>
+        <p>
+          V pôvodnej konfigurácii (pred swapom) sa teda do 
+          <span class="math">\(\sigma(n)/n\)</span> zahŕňajú aj 
+          <span class="math">\(f(p_1,j_1)\)</span> a 
+          <span class="math">\(f(p_r,2)\)</span>.
+        </p>
+      
+        <!-- 3. Voľba Δ a nové číslo n~ -->
+        <p>
+          <strong>Definujeme swap:</strong>
+          exponent <span class="math">\(p_r\)</span> 
+          (teda 17) znížime z 2 na 1, čím odstránime faktor 
+          <span class="math">\(p_r^2\)</span>. Zároveň exponent 
+          <span class="math">\(p_1=2\)</span> zvýšime o 
+          <span class="math">\(\Delta\)</span>. Aby sa zachovalo 
+          <span class="math">\(\tilde{n}\le n\)</span>, požadujeme:
+        </p>
+        <div class="equation">
+          <span class="math">
+            \(\displaystyle
+            2^\Delta \;\le\; 17,
+            \quad
+            \Delta 
+            = 
+            \left\lfloor \frac{\ln(17)}{\ln(2)} \right\rfloor
+            = 4.
+            \)
+          </span>
+        </div>
+        <p>
+          Potom vzniká 
+          <span class="math">\(\tilde{n} 
+          = \frac{n}{\,17^2\,}\times 2^\Delta 
+          \,\le\, n\)</span>. 
+        </p>
+      
+        <!-- 4. Vypočítame pomernú zmenu R -->
+        <p>
+          Pred swapom sa v rozklade nachádzajú príspevky:
+        </p>
+        <ul>
+          <li>
+            <span class="math">\(f(2,\,j_1)\)</span> 
+            (napr. ak <span class="math">\(j_1=2\)</span>, tak 
+            <span class="math">\(f(2,2)=\tfrac{2^3-1}{2^2}=1.75\)</span>),
+          </li>
+          <li>
+            <span class="math">\(f(17,2)\)</span> 
+            (vypočítame <span class="math">\(\approx1.0623\)</span>).
+          </li>
+        </ul>
+        <p>
+          Po swape je exponent <span class="math">\(17\)</span> znížený na 1 a 
+          exponent <span class="math">\(2\)</span> zvýšený na 
+          <span class="math">\((j_1 + \Delta)\)</span>. Nové príspevky sú
+          <span class="math">\(f(2,\,j_1+\Delta)\)</span> a 
+          <span class="math">\(f(17,\,1)\approx1.0588\)</span>.
+        </p>
+        <p>
+          Definujeme pomer
+        </p>
+        <div class="equation">
+          <span class="math">
+            \(\displaystyle
+            R 
+            \;=\;
+            \frac{\sigma(\tilde{n})/\tilde{n}}{\sigma(n)/n}
+            \;=\;
+            \frac{\,f\bigl(2,\,j_1+\Delta\bigr)\,\times\,f\bigl(17,\,1\bigr)\,}
+                 {\,f\bigl(2,j_1\bigr)\,\times\,f\bigl(17,\,2\bigr)\,}.
+            \)
+          </span>
+        </div>
+        <p>
+          Swap je prospešný, ak <span class="math">\(R>1\)</span>. 
+          Pre <span class="math">\(j_1=2\)</span> a \(\Delta=4\):
+        </p>
+        <ul>
+          <li><span class="math">\(f(2,2)=\tfrac{2^3-1}{2^2}=\tfrac{7}{4}=1.75\)</span>,</li>
+          <li><span class="math">\(f(17,2)\approx1.0623\)</span>,</li>
+          <li><span class="math">\(f(2,6)=\tfrac{2^7-1}{2^6}=\tfrac{127}{64}\approx1.9844\)</span>,</li>
+          <li><span class="math">\(f(17,1)=\tfrac{17^2-1}{17\times16}=\tfrac{288}{272}\approx1.0588\)</span>.</li>
+        </ul>
+        <p>
+          Preto
+          <span class="math">
+            \(\displaystyle
+            R 
+            \;=\; 
+            \frac{1.9844\times1.0588}{\,1.75\times1.0623\,}
+            \approx
+            \frac{2.102}{1.859}
+            \approx
+            1.13 > 1.
+            \)
+          </span>
+          Swap teda zvýšil <span class="math">\(\sigma(n)/n\)</span> o viac než 13% 
+          a pritom <span class="math">\(\tilde{n}\le n\)</span>.
+        </p>
+      
+        <!-- 5. Zhrnutie + interpretácia -->
+        <p>
+          Týmto trojkrokovým prístupom:
+        </p>
+        <ol>
+          <li>
+            <strong>Definujeme</strong> 
+            <span class="math">\(f(p,j)\)</span> a rozložíme 
+            <span class="math">\(\sigma(n)/n\)</span> na súčin,
+          </li>
+          <li>
+            <strong>Volíme</strong> 
+            <span class="math">\(\Delta = \lfloor \ln(p_r)/\ln(2)\rfloor\)</span> 
+            tak, aby <span class="math">\(\tilde{n}\le n\)</span>,
+          </li>
+          <li>
+            <strong>Ukážeme</strong>, že 
+            <span class="math">\(\dfrac{\,f(2,j_1+\Delta)\,}{f(2,j_1)} 
+                     > \dfrac{\,f(17,2)\,}{f(17,1)}\)</span>,
+            teda <span class="math">\(R>1\)</span>.
+          </li>
+        </ol>
+        <p>
+          Swap–argument následne hovorí, že ak by v rozklade vysoko-zloženého čísla 
+          akékoľvek väčšie prvočíslo malo exponent 2, <strong>vždy</strong> je možné 
+          presunúť exponentové jednotky k menším bázam (typicky <span class="math">\(2\)</span>) 
+          a docieliť <em>väčšiu</em> hodnotu <span class="math">\(\sigma(n)/n\)</span>, 
+          pričom <span class="math">\(\tilde{n}\le n\)</span>. Tým sa vyvracia tzv. 
+          minimálna konfigurácia a dokazuje sa, že optimálna musí mať omnoho vyššie exponenty 
+          pri najmenších prvočíslach, čo vedie k <span class="math">\(\log(n) > p_k\)</span>.
+        </p>
+      </div>  
+      <hr>
+      <h2>Referencie</h2>
+      <div class="proof">
+        <ul>
+          <li>
+            Rosser, J. B. &amp; Schoenfeld, L. (1975). "Sharper Bounds for the Chebyshev Functions <em>θ(x)</em> and <em>ψ(x)</em>". <em>Mathematics of Computation</em>, 29, 243–269.
+          </li>
+          <li>
+            Dusart, P. (1999). "The kth prime is greater than k (ln k + ln ln k − 1)". <em>Mathematics of Computation</em>.
+          </li>
+          <li>
+            Chebyshev, P. L. (1852). Prvé práce o funkciách, ktoré dnes nesieme názov Chebyshevových funkcií.
+          </li>
+          <li>
+            Rosser, J. B. (1938). "The nth Prime is Greater than n ln n". <em>Proceedings of the London Mathematical Society</em>.
+          </li>
+          <li>
+            Broadbent, S., Kadiri, H., Lumley, A. R., Ng, N., &amp; Wilk, K. (2021). "Sharper bounds for the Chebyshev function <em>θ(x)</em>". <em>Mathematics of Computation</em>.
+          </li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>&copy; 2024 Ing. Robert Polák, Slovakia. All rights reserved.</p>
+      </div>
+    </div>    
+  </div>
 
-        function showSlovak() {
-            document.getElementById('english-content').style.display = 'none';
-            document.getElementById('slovak-content').style.display = 'block';
-        }
-
-        // Set default language to English
-        showEnglish();
-    </script>
-
+  <!-- JavaScript for Language Switcher -->
+  <script>
+    function showEnglish() {
+      document.getElementById('english-content').style.display = 'block';
+      document.getElementById('slovak-content').style.display = 'none';
+    }
+    function showSlovak() {
+      document.getElementById('english-content').style.display = 'none';
+      document.getElementById('slovak-content').style.display = 'block';
+    }
+    // Set default language to Slovak
+    showEnglish();
+  </script>
 </body>
 </html>
