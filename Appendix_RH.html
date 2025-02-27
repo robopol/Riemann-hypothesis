@@ -470,6 +470,22 @@
           <p>
             The swap argument then states that if in the factorization of a highly composite number any larger prime has an exponent of 2, it is always possible to transfer exponent units to smaller bases (typically <span class="math">\(2\)</span>) and achieve a greater value of <span class="math">\(\sigma(n)/n\)</span>, while ensuring <span class="math">\(\tilde{n}\le n\)</span>. This refutes the so-called minimal configuration and proves that the optimal configuration must have significantly higher exponents for the smallest primes, which leads to <span class="math">\(\log(n) > p_k\)</span>.
           </p>
+          <h3>Explicit Bridge Between Swap Argument and Highly Composite Numbers</h3>
+          <p>
+            As demonstrated in the swap argument, if for some number \( n \) in the <em>r</em>-minimal configuration it holds that \( \log(n) = p_k \), 
+            we could perform an exchange of exponents to obtain a number \( \tilde{n} \leq n \) with a larger value of \( \sigma(\tilde{n})/\tilde{n} \). 
+            This implies that the <em>r</em>-minimal configuration is not optimal for maximizing \( \sigma(n)/n \).
+          </p>
+          <p>
+            However, highly composite numbers are defined as those that maximize the number of divisors for their size, and thus also \( \sigma(n)/n \). 
+            If for a highly composite number \( n \) it were true that \( \log(n) \leq p_k \), it would mean that its exponent configuration resembles 
+            the <em>r</em>-minimal configuration, which, as shown, is not optimal. Consequently, there would exist a number \( \tilde{n} \leq n \) with 
+            a larger \( \sigma(\tilde{n})/\tilde{n} \), contradicting the fact that \( n \) is highly composite.
+          </p>
+          <p>
+            Therefore, for all highly composite numbers, it must hold that \( \log(n) > p_k \), as only then is their exponent configuration truly optimal 
+            and cannot be improved by any exchange of exponents.
+          </p>
         </div>  
         <hr>
         <h2>References</h2>
@@ -858,6 +874,22 @@
           pričom <span class="math">\(\tilde{n}\le n\)</span>. Tým sa vyvracia tzv. 
           minimálna konfigurácia a dokazuje sa, že optimálna musí mať omnoho vyššie exponenty 
           pri najmenších prvočíslach, čo vedie k <span class="math">\(\log(n) > p_k\)</span>.
+        </p>
+        <h3>Explicitné premostenie swap argumentu a vysoko-zložených čísel</h3>
+        <p>
+          Ako sme videli v swap argumente, ak by pre nejaké číslo \( n \) v <em>r</em>-minimálnej konfigurácii platilo \( \log(n) = p_k \), 
+          mohli by sme vykonať výmenu exponentov a získať číslo \( \tilde{n} \leq n \) s väčšou hodnotou \( \sigma(\tilde{n})/\tilde{n} \). 
+          To znamená, že <em>r</em>-minimálna konfigurácia nie je optimálna pre maximalizáciu \( \sigma(n)/n \).
+        </p>
+        <p>
+          Vysoko-zložené čísla sú však definované ako tie, ktoré maximalizujú počet deliteľov pre danú veľkosť, a teda aj \( \sigma(n)/n \). 
+          Ak by pre vysoko-zložené číslo \( n \) platilo \( \log(n) \leq p_k \), znamenalo by to, že jeho konfigurácia exponentov pripomína 
+          <em>r</em>-minimálnu konfiguráciu, ktorá, ako sme ukázali, nie je optimálna. Tým by existovalo číslo \( \tilde{n} \leq n \) s väčším 
+          \( \sigma(\tilde{n})/\tilde{n} \), čo je v rozpore s tým, že \( n \) je vysoko-zložené.
+        </p>
+        <p>
+          Z toho vyplýva, že pre všetky vysoko-zložené čísla musí platiť \( \log(n) > p_k \), pretože len tak je ich konfigurácia exponentov 
+          skutočne optimálna a nemôže byť zlepšená žiadnou výmenou exponentov.
         </p>
       </div>  
       <hr>
