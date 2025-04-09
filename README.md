@@ -1,6 +1,7 @@
 # Riemann Hypothesis – Tests and Proof Attempts
 
 This repository contains various resources, experiments, and discussions related to the Riemann Hypothesis (RH). It includes numerical tests, theoretical explorations, and HTML files with proposed proofs or partial arguments, along with attached images and references.
+![Riemann hypothesis](assets/riemann-hypothesis.jpg)
 
 ## Contents
 
