@@ -1,116 +1,301 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis (Revised)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis, focusing on the relationship between highly composite numbers and logarithmic inequalities.">
+  <meta name="keywords" content="Riemann hypothesis, highly composite numbers, proofs, prime numbers, Chebyshev function, swap-argument">
+  <meta name="author" content="Ing. Robert Polák">
+  <meta property="og:title" content="Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis">
+  <meta property="og:description" content="Mathematical publication containing proofs of equivalent conditions for the Riemann Hypothesis using Chebyshev function and swap-argument.">
+  <meta property="og:url" content="https://www.poling.sk/Riemann/Appendix_RH.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.poling.sk/Riemann/img/figure1.png">
+  <link rel="canonical" href="https://www.poling.sk/Riemann/Appendix_RH.html">
+  <title>Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis | Ing. Robert Polák</title>
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Appendix: Evidence of Equivalent Conditions for the Riemann Hypothesis",
+    "author": {
+      "@type": "Person",
+      "name": "Ing. Robert Polák"
+    },
+    "datePublished": "2024-10-09",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ing. Robert Polák"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Riemann Hypothesis"
+    },
+    "keywords": "Riemann hypothesis, highly composite numbers, prime numbers, Chebyshev function, swap-argument"
+  }
+  </script>
   <style>
     /* General Styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #e8f6f3; /* Light blue-green background */
+      word-wrap: break-word;
+    }
+    
+    body {
+      background-color: #f5f5f7;
       color: #333;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
     }
+    
     .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
+      background-color: #ffffff;
+      width: 90%;
+      max-width: 1000px;
+      min-height: auto;
+      padding: 40px;
+      margin: 20px auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow-x: hidden;
     }
+    
     h1, h2, h3 {
-      color: #2c3e50;
+      color: #2c5282;
+      font-weight: 600;
+      width: 100%;
+      word-wrap: break-word;
     }
+    
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      font-size: 2.2em;
       text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #4299e1;
     }
+    
     h2 {
-      font-size: 1.8em;
+      font-size: 1.7em;
       margin-top: 40px;
       margin-bottom: 20px;
-      border-bottom: 2px solid #3498db;
       padding-bottom: 10px;
+      border-bottom: 2px solid #90cdf4;
     }
+    
     h3 {
       font-size: 1.4em;
-      margin-top: 30px;
-      margin-bottom: 15px;
-      color: #16a085;
+      color: #3182ce;
+      margin-top: 25px;
     }
-    p {
+    
+    a {
+      color: #3182ce;
+      text-decoration: none;
+      transition: color 0.2s;
+      word-break: break-all;
+    }
+    
+    a:hover {
+      color: #2b6cb0;
+      text-decoration: underline;
+    }
+    
+    .equation {
+      text-align: center;
+      margin: 25px 0;
       font-size: 1.1em;
+      background-color: #f8fafc;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      max-width: 100%;
     }
-    /* Proof Styles */
+    
     .proof {
       background-color: #ffffff;
       padding: 25px;
-      border-left: 5px solid #16a085; /* Green */
+      border-left: 5px solid #16a085;
       border-radius: 5px;
       margin-bottom: 30px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow-x: hidden;
     }
-    .equation {
-      text-align: center;
-      margin: 20px 0;
-      font-size: 1.2em;
-      color: #2980b9;
-    }
+    
     code {
       background-color: #ecf0f1;
       padding: 2px 4px;
       font-size: 90%;
       border-radius: 3px;
+      word-wrap: break-word;
+      word-break: break-all;
     }
+    
     /* Footer Styles */
     .footer {
       margin-top: 50px;
       font-size: 0.9em;
       color: #777;
       text-align: center;
+      width: 100%;
     }
+    
     /* Language Switcher Styles */
     .language-switcher {
-      margin-bottom: 20px;
-      text-align: right;
+      text-align: center;
+      margin-bottom: 30px;
+      position: sticky;
+      top: 0;
+      background-color: #ffffff;
+      padding: 10px 0;
+      z-index: 100;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 100%;
     }
+    
     .language-switcher button {
-      padding: 10px 20px;
-      margin-left: 10px;
-      font-size: 1em;
-      cursor: pointer;
-      background-color: #3498db; /* Blue */
-      color: #fff;
+      background-color: #4299e1;
+      color: white;
       border: none;
-      border-radius: 3px;
+      padding: 10px 25px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background-color 0.3s, transform 0.2s;
     }
+    
     .language-switcher button:hover {
-      background-color: #2980b9;
+      background-color: #2b6cb0;
+      transform: translateY(-2px);
     }
-    .slovak-content {
-      display: none;
+    
+    .language-switcher button:active {
+      transform: translateY(0);
     }
-    /* Responsive Design */
-    @media (max-width: 768px) {
+    
+    .slovak-content, .english-content {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
+    p {
+      margin-bottom: 1.2em;
+      text-align: justify;
+      width: 100%;
+      word-wrap: break-word;
+    }
+    
+    ul, ol {
+      padding-left: 25px;
+      width: 100%;
+      margin-bottom: 1.2em;
+    }
+    
+    li {
+      margin-bottom: 8px;
+      word-wrap: break-word;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 1024px) {
       .container {
-        padding: 10px;
+        width: 95%;
+        padding: 30px;
       }
       h1 {
         font-size: 2em;
       }
+      .equation {
+        font-size: 1.05em;
+        padding: 12px 8px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+      }
+      .container {
+        width: 100%;
+        padding: 25px 15px;
+        margin: 0;
+        border-radius: 0;
+      }
+      h1 {
+        font-size: 1.8em;
+        padding-bottom: 10px;
+      }
       h2 {
         font-size: 1.5em;
+        margin-top: 30px;
+      }
+      h3 {
+        font-size: 1.3em;
+      }
+      .equation {
+        font-size: 1em;
+        margin: 20px 0;
+        padding: 10px 5px;
+        overflow-x: auto;
+      }
+      .proof {
+        padding: 15px 10px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px 10px;
+      }
+      h1 {
+        font-size: 1.6em;
+      }
+      h2 {
+        font-size: 1.4em;
+        margin-top: 25px;
       }
       h3 {
         font-size: 1.2em;
       }
+      p, li {
+        font-size: 0.95em;
+      }
       .language-switcher {
-        text-align: center;
+        margin-bottom: 20px;
       }
       .language-switcher button {
-        margin: 5px;
-        width: 45%;
+        padding: 8px 16px;
+        width: 40%;
+        font-size: 0.9em;
+      }
+      .equation {
+        padding: 8px 3px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        margin: 15px 0;
+        overflow-x: scroll;
+      }
+    }
+    
+    /* Vylepšenia pre MathJax na mobiloch */
+    @media (max-width: 480px) {
+      .MathJax {
+        font-size: 90% !important;
+        max-width: 100% !important;
+      }
+      
+      .MathJax_Display {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
       }
     }
   </style>
@@ -131,6 +316,15 @@
 
     <!-- English Content -->
     <div id="english-content" class="english-content">
+        <hr>
+        <div class="proof">
+          <h3>Abbreviations</h3>
+          <ul>
+            <li><strong>HCN</strong>: Highly Composite Numbers (maximize the divisor function <code>d(n)</code>).</li>
+            <li><strong>SA</strong>: Superabundant numbers (Alaoglu–Erdős): <code>σ(m)/m < σ(n)/n</code> for all <code>m < n</code>.</li>
+            <li><strong>CA</strong>: Colossally abundant numbers (Erdős–Nicolas–Rankin): ∃ <code>ε>0</code> with <code>σ(n)/n^ε ≥ σ(m)/m^ε</code> for all <code>m≥1</code>.</li>
+          </ul>
+        </div>
         <hr>
         <h2>Proof 1: For \( n = 2 \times 3 \times 5 \times 7 \times \dots \times p_k \), it holds that \( \log(n) < p_k \)</h2>
         <div class="proof">
@@ -212,19 +406,8 @@
               </div>
             </li>
             <li>
-              <strong>Estimate of \( \delta_k \):</strong>
-              <p>Let \( \delta_k = p_k - \theta(p_k) \). According to historical estimates, it holds that:</p>
-              <div class="equation">
-                \( |\theta(x) - x| \leq C\,\frac{x}{\ln x} \)
-              </div>
-              <p>For \( x = p_k \) therefore:</p>
-              <div class="equation">
-                \( |\delta_k| \leq C\,\frac{p_k}{\ln(p_k)} \)
-              </div>
-              <p>Let us choose the conservative estimate \( C = 0.5 \), which asymptotically gives:</p>
-              <div class="equation">
-                \( |\delta_k| \lesssim 0.5\, k \)
-              </div>
+              <strong>Remark on \( \delta_k \):</strong>
+              <p>Let \( \delta_k = p_k - \theta(p_k) \). There exist explicit bounds for \( |\theta(x)-x| \), but no fixed ad-hoc constant is needed here; the swap step below compares \(\Delta\) directly to \(\delta_k\) without relying on a specific numerical value.</p>
             </li>
             <li>
               <strong>Estimate of \( \Delta \):</strong>
@@ -238,19 +421,8 @@
               </div>
             </li>
             <li>
-              <strong>Condition for \( \log(n) > p_k \):</strong>
-              <p>In order to achieve \( \log(n) > p_k \), it is sufficient that:</p>
-              <div class="equation">
-                \( (j_{\min}-1)\, S_r > C\,\frac{p_k}{\ln(p_k)} \)
-              </div>
-              <p>We thus define the minimal required sum for the enhanced factors:</p>
-              <div class="equation">
-                \( S_{\min} = \frac{C\,p_k}{(j_{\min}-1)\,\ln(p_k)} \)
-              </div>
-              <p>If \( S_r > S_{\min} \), then we have \( \Delta > \delta_k \) and therefore:</p>
-              <div class="equation">
-                \( \log(n)=\theta(p_k)+\Delta > \theta(p_k)+\delta_k \ge p_k \)
-              </div>
+              <strong>Conclusion of the swap step:</strong>
+              <p>The swap argument shows that configurations with relatively larger exponents on larger primes are suboptimal. Transferring exponent mass to smaller primes increases \(\sigma(n)/n\) while keeping \(\tilde n\le n\), which forces \(\Delta>\delta_k\) in the optimal patterns considered, hence \(\log n=\theta(p_k)+\Delta>p_k\).</p>
             </li>
             <li>
               <strong>Example Illustrating the Proof:</strong>
@@ -305,7 +477,7 @@
               </p>
             </li>
           </ol>
-        </div>
+        </div>  
         <hr>
         <div class="proof">
           <h2>Swap–Argument – A Rigorous Three-Step Proof (Supplement)</h2>
@@ -326,7 +498,7 @@
             Assume that \( n \) is very large and, for instance, the first 20 larger bases (primes) have exponent 2. For illustration, let us choose specifically 
             <span class="math">\(p_r = p_7 = 17\)</span> with exponent 2. We will show that by decreasing the exponent of 17 (from 2 to 1) and increasing the exponent of 
             <span class="math">\(p_1=2\)</span> by a suitable 
-            <span class="math">\(\Delta\)</span>, we improve 
+            <span class="math">\(\Delta\)</span>, we zlepšíme 
             <span class="math">\(\sigma(n)/n\)</span>, while maintaining <span class="math">\(\tilde{n}\le n\)</span>.
           </p>
           
@@ -476,16 +648,12 @@
             we could perform an exchange of exponents to obtain a number \( \tilde{n} \leq n \) with a larger value of \( \sigma(\tilde{n})/\tilde{n} \). 
             This implies that the <em>r</em>-minimal configuration is not optimal for maximizing \( \sigma(n)/n \).
           </p>
-          <p>
-            However, highly composite numbers are defined as those that maximize the number of divisors for their size, and thus also \( \sigma(n)/n \). 
-            If for a highly composite number \( n \) it were true that \( \log(n) \leq p_k \), it would mean that its exponent configuration resembles 
-            the <em>r</em>-minimal configuration, which, as shown, is not optimal. Consequently, there would exist a number \( \tilde{n} \leq n \) with 
-            a larger \( \sigma(\tilde{n})/\tilde{n} \), contradicting the fact that \( n \) is highly composite.
-          </p>
-          <p>
-            Therefore, for all highly composite numbers, it must hold that \( \log(n) > p_k \), as only then is their exponent configuration truly optimal 
-            and cannot be improved by any exchange of exponents.
-          </p>
+            <p>
+              Highly composite numbers maximize the number of divisors \(d(n)\), not necessarily \(\sigma(n)/n\). The swap discussion is used here to motivate the structural pattern (nonincreasing exponents on consecutive primes) and the inequality \(\log n>p_k\) for the candidate families; the rigorous use appears in the main text.
+            </p>
+            <p>
+              In summary, the swap mechanism supports \( \log(n) > p_k \) for the structured candidate families (HCN/SA/CA) used in the main argument, without claiming that HCN maximize \(\sigma(n)/n\).
+            </p>
         </div>  
         <hr>
         <h2>References</h2>
@@ -515,6 +683,15 @@
     
     <!-- Slovak Content -->
     <div id="slovak-content" class="slovak-content">
+      <hr>
+      <div class="proof">
+        <h3>Skratky</h3>
+        <ul>
+          <li><strong>HCN</strong>: vysoko-zložené čísla (maximalizujú počet deliteľov <code>d(n)</code>).</li>
+          <li><strong>SA</strong>: superabundantné čísla (Alaoglu–Erdős): <code>σ(m)/m < σ(n)/n</code> pre všetky <code>m < n</code>.</li>
+          <li><strong>CA</strong>: kolosálne abundantné čísla (Erdős–Nicolas–Rankin): ∃ <code>ε>0</code> tak, že <code>σ(n)/n^ε ≥ σ(m)/m^ε</code> pre všetky <code>m≥1</code>.</li>
+        </ul>
+      </div>
       <hr>
       <h2>Dôkaz 1: Pre \( n = 2 \times 3 \times 5 \times 7 \times \dots \times p_k \) platí \( \log(n) < p_k \)</h2>
       <div class="proof">
@@ -595,21 +772,10 @@
               \( \log(n) = \underbrace{\sum_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum_{i=1}^{k} (j_i - 1)\ln(p_i)}_{\Delta} \)
             </div>
           </li>
-          <li>
-            <strong>Odhad \( \delta_k \):</strong>
-            <p>Nech \( \delta_k = p_k - \theta(p_k) \). Podľa historických odhadov platí:</p>
-            <div class="equation">
-              \( |\theta(x) - x| \leq C\,\frac{x}{\ln x} \)
-            </div>
-            <p>Pre \( x = p_k \) teda:</p>
-            <div class="equation">
-              \( |\delta_k| \leq C\,\frac{p_k}{\ln(p_k)} \)
-            </div>
-            <p>Zvoľme konzervatívny odhad \( C = 0.5 \), čo dáva asymptoticky:</p>
-            <div class="equation">
-              \( |\delta_k| \lesssim 0.5\, k \)
-            </div>
-          </li>
+            <li>
+              <strong>Poznámka k \( \delta_k \):</strong>
+              <p>Nech \( \delta_k = p_k - \theta(p_k) \). Existujú explicitné odhady pre \( |\theta(x)-x| \), no v tomto kroku ich konkrétna numerická hodnota nie je potrebná; swap priamo vedie k \(\Delta>\delta_k\) pre uvažované vzory.</p>
+            </li>
           <li>
             <strong>Odhad \( \Delta \):</strong>
             <p>Pre tie prvočísla, kde \( j_i > 1 \), definujeme sumu:</p>
@@ -621,21 +787,10 @@
               \( \Delta \ge (j_{\min}-1)\, S_r \)
             </div>
           </li>
-          <li>
-            <strong>Podmienka pre \( \log(n) > p_k \):</strong>
-            <p>Aby sme dosiahli \( \log(n) > p_k \), postačí, aby bolo:</p>
-            <div class="equation">
-              \( (j_{\min}-1)\, S_r > C\,\frac{p_k}{\ln(p_k)} \)
-            </div>
-            <p>Definujeme teda minimálnu požadovanú hodnotu pre súčet vylepšených faktorov:</p>
-            <div class="equation">
-              \( S_{\min} = \frac{C\,p_k}{(j_{\min}-1)\,\ln(p_k)} \)
-            </div>
-            <p>Ak \( S_r > S_{\min} \), potom máme \( \Delta > \delta_k \) a teda:</p>
-            <div class="equation">
-              \( \log(n)=\theta(p_k)+\Delta > \theta(p_k)+\delta_k \ge p_k \)
-            </div>
-          </li>
+            <li>
+              <strong>Záver swap-kroku:</strong>
+              <p>Swap ukazuje, že rozloženia s relatívne vyššími exponentmi na väčších prvočíslach sú neoptimálne. Presun časti exponentov k menším bázam zvýši \(\sigma(n)/n\) pri zachovaní \(\tilde n\le n\), čo v optimálnych vzoroch vedie k \(\Delta>\delta_k\) a teda \(\log n>p_k\).</p>
+            </li>
           <li>
             <strong>Príklad na ilustráciu dôkazu:</strong>
             <p>
@@ -721,7 +876,7 @@
           vyberme konkrétne <span class="math">\(p_r = p_7 = 17\)</span> s exponentom 2. 
           Ukážeme, že znížením exponentu 17 (z 2 na 1) a zvýšením exponentu 
           <span class="math">\(p_1=2\)</span> o vhodné 
-          <span class="math">\(\Delta\)</span> zlepšíme 
+          <span class="math">\(\Delta\)</span>, zlepšíme 
           <span class="math">\(\sigma(n)/n\)</span>, pričom <span class="math">\(\tilde{n}\le n\)</span>.
         </p>
       
@@ -872,7 +1027,7 @@
           presunúť exponentové jednotky k menším bázam (typicky <span class="math">\(2\)</span>) 
           a docieliť <em>väčšiu</em> hodnotu <span class="math">\(\sigma(n)/n\)</span>, 
           pričom <span class="math">\(\tilde{n}\le n\)</span>. Tým sa vyvracia tzv. 
-          minimálna konfigurácia a dokazuje sa, že optimálna musí mať omnoho vyššie exponenty 
+          minimálna konfigurácia a dokazuje sa, že optimálna musí mať omnoho vyššie exponenty 
           pri najmenších prvočíslach, čo vedie k <span class="math">\(\log(n) > p_k\)</span>.
         </p>
         <h3>Explicitné premostenie swap argumentu a vysoko-zložených čísel</h3>
@@ -881,16 +1036,12 @@
           mohli by sme vykonať výmenu exponentov a získať číslo \( \tilde{n} \leq n \) s väčšou hodnotou \( \sigma(\tilde{n})/\tilde{n} \). 
           To znamená, že <em>r</em>-minimálna konfigurácia nie je optimálna pre maximalizáciu \( \sigma(n)/n \).
         </p>
-        <p>
-          Vysoko-zložené čísla sú však definované ako tie, ktoré maximalizujú počet deliteľov pre danú veľkosť, a teda aj \( \sigma(n)/n \). 
-          Ak by pre vysoko-zložené číslo \( n \) platilo \( \log(n) \leq p_k \), znamenalo by to, že jeho konfigurácia exponentov pripomína 
-          <em>r</em>-minimálnu konfiguráciu, ktorá, ako sme ukázali, nie je optimálna. Tým by existovalo číslo \( \tilde{n} \leq n \) s väčším 
-          \( \sigma(\tilde{n})/\tilde{n} \), čo je v rozpore s tým, že \( n \) je vysoko-zložené.
-        </p>
-        <p>
-          Z toho vyplýva, že pre všetky vysoko-zložené čísla musí platiť \( \log(n) > p_k \), pretože len tak je ich konfigurácia exponentov 
-          skutočne optimálna a nemôže byť zlepšená žiadnou výmenou exponentov.
-        </p>
+            <p>
+              Vysoko-zložené čísla maximalizujú počet deliteľov \(d(n)\), nie nevyhnutne \(\sigma(n)/n\). Swap tu slúži na motiváciu štruktúrneho vzoru (neklesajúce exponenty na počiatočnom segmente prvočísel) a nerovnosti \(\log n>p_k\) pre kandidátov; formálne použitie je v hlavnom texte.
+            </p>
+            <p>
+              Stručne: swap mechanizmus podporuje \(\log(n) > p_k\) pre štruktúrované kandidátne triedy (HCN/SA/CA) použité v hlavnom dôkaze, bez tvrdenia, že HCN maximalizujú \(\sigma(n)/n\).
+            </p>
       </div>  
       <hr>
       <h2>Referencie</h2>
