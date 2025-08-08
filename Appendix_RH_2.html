@@ -426,7 +426,9 @@
                 Define the threshold \(T:=\log\!\bigl(1+ C/(\log p_n)^2\bigr)\). Pick the <em>minimal discrete tail</em> of primes above some \(y<p_n\) such that \(\sum_{y<p\le p_n}1/p^2\ge T\). This always exists (the total prime‑square sum is positive, while \(T\to0\)).
             </p>
             <p>
-                Let \(r\) be the last prime with exponent \(\ge2\). For the factor contributions \(f(p,j)=\tfrac{p}{p-1}(1-p^{-(j+1)})\) define the increment \(\alpha_p(j)=f(p,j+1)/f(p,j)=1+\frac{p^{-(j+1)}}{1-p^{-(j+1)}}\). Then \(\alpha_2(1)=7/6\) and \(\alpha_r(1)=1+1/(r^2-1)\le 9/8\) for all \(r\ge3\). Hence \(\alpha_2(1)/\alpha_r(1) \ge 28/27>1\).
+                Let \(r\) be the last prime with exponent \(\ge2\). For the factor contributions \(f(p,j)=\tfrac{p}{p-1}(1-p^{-(j+1)})\) define the increment
+                \(\alpha_p(j)=\dfrac{f(p,j+1)}{f(p,j)}=\dfrac{1-p^{-(j+2)}}{1-p^{-(j+1)}}=1+\dfrac{(1-1/p)\,p^{-(j+1)}}{1-p^{-(j+1)}}\).
+                Then \(\alpha_2(1)=7/6\) and \(\alpha_r(1)=1+1/(r^2-1)\le 9/8\) for all \(r\ge3\). Hence \(\alpha_2(1)/\alpha_r(1) \ge 28/27>1\).
             </p>
             <p>
                 If \(r>y\), perform a swap: decrease the exponent of \(r\) from 2 to 1 and increase the exponent of 2 by 1. The ratio \(\sigma(\tilde n)/\tilde n\) to \(\sigma(n)/n\) equals \(\alpha_2(1)/\alpha_r(1)>1\), and the j=1 tail gains \(r\), increasing \(\sum_{p\in J_1(n)}1/p^2\) by at least \(1/r^2\). Iterating while \(r>y\) strictly increases \(\sigma/n\), contradicting extremality. Therefore any extremal profile must satisfy \(r\le y\) and thus \(\sum_{p\in J_1(n)}1/p^2\ge T\).
@@ -572,7 +574,8 @@
                 Definujme prah \(T:=\log\!\bigl(1+ C/(\log p_n)^2\bigr)\). Zvoľme <em>minimálny diskrétny chvost</em> prvočísel nad \(y<p_n\) tak, aby \(\sum_{y<p\le p_n}1/p^2\ge T\). Taký chvost vždy existuje (celkový súčet je kladný, kým \(T\to0\)).
             </p>
             <p>
-                Nech \(r\) je posledné prvočíslo s exponentom \(\ge2\). Pre \(f(p,j)=\tfrac{p}{p-1}(1-p^{-(j+1)})\) nech \(\alpha_p(j)=f(p,j+1)/f(p,j)=1+\tfrac{p^{-(j+1)}}{1-p^{-(j+1)}}\). Potom \(\alpha_2(1)=7/6\) a \(\alpha_r(1)=1+1/(r^2-1)\le 9/8\) pre všetky \(r\ge3\), teda \(\alpha_2(1)/\alpha_r(1)\ge28/27>1\).
+                Nech \(r\) je posledné prvočíslo s exponentom \(\ge2\). Pre \(f(p,j)=\tfrac{p}{p-1}(1-p^{-(j+1)})\) nech \(\alpha_p(j)=\dfrac{f(p,j+1)}{f(p,j)}=\dfrac{1-p^{-(j+2)}}{1-p^{-(j+1)}}=1+\dfrac{(1-1/p)\,p^{-(j+1)}}{1-p^{-(j+1)}}\).
+                Potom \(\alpha_2(1)=7/6\) a \(\alpha_r(1)=1+1/(r^2-1)\le 9/8\) pre všetky \(r\ge3\), teda \(\alpha_2(1)/\alpha_r(1)\ge28/27>1\).
             </p>
             <p>
                 Ak \(r>y\), výmena „zníž r: 2\(\to\)1 a zvýš 2 o +1“ zväčší \(\sigma/n\) o faktor \(\alpha_2(1)/\alpha_r(1)>1\) a rozšíri J1 o \(r\) (prírastok aspoň \(1/r^2\)). Iterovaním, kým \(r>y\), dostaneme rozpor s extrémnosťou. Preto \(r\le y\) a teda \(\sum_{p\in J_1(n)}1/p^2\ge T\).
