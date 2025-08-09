@@ -400,7 +400,31 @@
                 \( \frac{\sigma(n)}{n}=\prod f(p,j)=\Bigl(\prod_{p\le p_n}\frac{p}{p-1}\Bigr)\,\prod_{p^j\parallel n}(1-p^{-(j+1)})=\beta(n)\,\prod_{p^j\parallel n}(1-p^{-(j+1)}). \)
             </div>
             <p>
-                Let \(J_1(n)=\{p\le p_n: p^1\parallel n\}\). Since \(1-p^{-(j+1)}\le1\) for \(j\ge2\), dropping those factors yields the strict, universal upper bound
+                Introducing the deficit more explicitly, we may rewrite
+            </p>
+            <div class="equation">
+                \( \displaystyle
+                \frac{\sigma(n)}{n}
+                \,=\, \beta(n)\,\exp\bigl(-S(n)\bigr)\,\Xi(n),\quad
+                S(n):=\sum_{p^j\parallel n} p^{-(j+1)},\quad
+                \Xi(n):=\exp\Bigl(\sum_{r\ge2}\frac{(-1)^{r-1}}{r}\sum_{p^j\parallel n}p^{-r(j+1)}\Bigr)\le1.
+                \)
+            </div>
+            <p>
+                In particular we always have the universal inequality
+                \( \frac{\sigma(n)}{n}\le \beta(n)\,e^{-S(n)}. \)
+            </p>
+            <p>
+                A simple bound useful later is
+            </p>
+            <div class="equation">
+                \( \displaystyle S(n)\;\le\; \sum_{p\le p_n}\frac{1}{p^2}, \)
+            </div>
+            <p>
+                since each term satisfies \(p^{-(j+1)}\le p^{-2}\) for \(j\ge1\).
+            </p>
+            <p>
+                We now pass to a stricter universal bound that keeps only the unit exponents.
             </p>
             <div class="equation">
                 \( \frac{\sigma(n)}{n} \le \beta(n)\,\prod_{p\in J_1(n)}\Bigl(1-\frac{1}{p^2}\Bigr). \)
@@ -417,6 +441,11 @@
             <div class="equation">
                 \( \sum_{p\in J_1(n)} \frac{1}{p^2} \;\ge\; \log\!\Bigl(1+\frac{C}{(\log p_n)^2}\Bigr). \)
             </div>
+            <p><strong>Auxiliary bound&nbsp;B(n).</strong>  Define
+                \(B(n):=\beta(n)\prod_{p\in J_1(n)}\bigl(1-1/p^{2}\bigr).\)
+                From the previous inequality we already have&nbsp;\(\sigma(n)/n\le B(n)<\beta(n)\).  Whenever the j&nbsp;= 1 tail is non–empty we get
+                \(\beta(n)-B(n)=\beta(n)\Bigl(1-\prod_{p\in J_1(n)}(1-1/p^{2})\Bigr)\ge \beta(n)\sum_{p\in J_1(n)}\frac{1}{p^{2}},\)
+                so condition (above) ensures \(\beta(n)-B(n)\ge C/\log p_n\). In words: the unit-exponent tail by itself cancels the explicit Rosser–Schoenfeld surplus \(C/\log p_n\); the upcoming swap lemma is needed only to guarantee that this tail is indeed present in every near-extremal profile.</p>
         </div>
 
         <hr>
@@ -434,20 +463,12 @@
                 If \(r>y\), perform a swap: decrease the exponent of \(r\) from 2 to 1 and increase the exponent of 2 by 1. The ratio \(\sigma(\tilde n)/\tilde n\) to \(\sigma(n)/n\) equals \(\alpha_2(1)/\alpha_r(1)>1\), and the j=1 tail gains \(r\), increasing \(\sum_{p\in J_1(n)}1/p^2\) by at least \(1/r^2\). Iterating while \(r>y\) strictly increases \(\sigma/n\), contradicting extremality. Therefore any extremal profile must satisfy \(r\le y\) and thus \(\sum_{p\in J_1(n)}1/p^2\ge T\).
             </p>
             <p>
-                Combining this with the explicit Mertens bound yields \(\sigma(n)/n\le e^{\gamma}\,\log p_n\). Using \(p_n<\log n\) (Appendix RH) we obtain \(\sigma(n)/n<e^{\gamma}\,\log\!\log n\).
+                Combining this with the explicit Mertens bound yields \( \frac{\sigma(n)}{n} \le e^{\gamma}\,\log p_n \).Using \( p_n < \log n \) (Appendix RH) we obtain \( \frac{\sigma(n)}{n} < e^{\gamma}\,\log\!\log n \).
             </p>
         </div>
 
         <hr>
-        <h2>6. Remarks</h2>
-        <div class="proof">
-            <p>
-                The discrete‑tail step is what the proof actually needs and is also what we verify numerically. Integrals can be used as heuristics but are not required.
-            </p>
-        </div>
-
-        <hr>
-        <h2>7. Conclusion</h2>
+        <h2>6. Conclusion</h2>
         <div class="proof">
             <p>
                 Using the <strong>explicit Mertens bound</strong>, the strict upper bound via the j=1 tail, the <strong>discrete‑tail lower bound</strong> and the <strong>sharp swap lemma</strong>, we obtain
@@ -548,6 +569,33 @@
         <h2>4. Prechod na \( \sigma(n)/n \): prísna horná hranica cez j=1 chvost</h2>
         <div class="proof">
             <p>
+                Rozklad cez tzv. deficit:
+            </p>
+            <div class="equation">
+                \( \displaystyle
+                \frac{\sigma(n)}{n}
+                \,=\, \beta(n)\,\exp\bigl(-S(n)\bigr)\,\Xi(n),\quad
+                S(n):=\sum_{p^j\parallel n} p^{-(j+1)},\quad
+                \Xi(n):=\exp\Bigl(\sum_{r\ge2}\frac{(-1)^{r-1}}{r}\sum_{p^j\parallel n}p^{-r(j+1)}\Bigr)\le1.
+                \)
+            </div>
+            <p>
+                Z toho ihneď plynie univerzálna nerovnosť
+                \( \frac{\sigma(n)}{n}\le \beta(n)\,e^{-S(n)}. \)
+            </p>
+            <p>
+                Použijeme aj jednoduchú hornú hranicu
+            </p>
+            <div class="equation">
+                \( \displaystyle S(n)\;\le\; \sum_{p\le p_n}\frac{1}{p^2}, \)
+            </div>
+            <p>
+                lebo pre každý člen \(p^{-(j+1)}\le p^{-2}\) pri \(j\ge1\).
+            </p>
+            <p>
+                Teraz prejdeme k prísnej univerzálnej hranici, ktorá ponechá len jednotkové exponenty.
+            </p>
+            <p>
                 Pre \( n=\prod p^j \) definujme \(J_1(n)=\{p\le p_n:\;p^1\parallel n\}\). Keďže pre \(j\ge2\) je \(1-p^{-(j+1)}\le1\), platí prísna horná hranica
             </p>
             <div class="equation">
@@ -581,17 +629,12 @@
                 Ak \(r>y\), výmena „zníž r: 2\(\to\)1 a zvýš 2 o +1“ zväčší \(\sigma/n\) o faktor \(\alpha_2(1)/\alpha_r(1)>1\) a rozšíri J1 o \(r\) (prírastok aspoň \(1/r^2\)). Iterovaním, kým \(r>y\), dostaneme rozpor s extrémnosťou. Preto \(r\le y\) a teda \(\sum_{p\in J_1(n)}1/p^2\ge T\).
             </p>
             <p>
-                V spojení s explicitným Mertensom dostaneme \(\sigma(n)/n\le e^{\gamma}\,\log p_n\). Použitím \(p_n<\log n\) (Appendix RH) vyplýva \(\sigma(n)/n<e^{\gamma}\,\log\!\log n\).
+                V kombinácii s explicitnou Mertensovou hranicou dostávame\( \frac{\sigma(n)}{n} \le e^{\gamma}\,\log p_n \).Keďže \( p_n < \log n \) (Appendix RH), vyplýva\( \frac{\sigma(n)}{n} < e^{\gamma}\,\log\!\log n \).
             </p>
         </div>
 
         <hr>
-        <h2>6. Poznámky</h2>
-        <div class="proof">
-            <p>Diskrétny chvost je presne to, čo dôkaz potrebuje a čo aj numericky overujeme; integrály môžu slúžiť len ako heuristika.</p>
-        </div>
-        <hr>
-        <h2>7. Záver</h2>
+        <h2>6. Záver</h2>
         <div class="proof">
             <p>
                 Spojením <strong>explicitného Mertensa</strong>, prísnej hornej hranice cez j=1, <strong>diskrétneho chvosta</strong> a <strong>ostrej swap‑lemy</strong> dostávame
