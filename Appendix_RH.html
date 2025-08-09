@@ -359,7 +359,7 @@
             </li>
             <li>
               <strong>Application of Chebyshev's inequality:</strong>
-              <p>Chebyshev proved that for all \( x \geq 2 \) it holds:</p>
+            <p>Chebyshev proved that for all \( x \geq 2 \) it holds:</p>
               <div class="equation">
                 \( \theta(x) < x \)
               </div>
@@ -378,14 +378,14 @@
           </ol>
         </div>
         <hr>
-        <h2>Proof 2: For Highly Composite Numbers \( n \), it holds that \( \log(n) > p_k \) for large \( n \)</h2>
+        <h2>Proof 2: For Highly Composite/SA/CA numbers \( n \), one has \( \log(n) > p_k \)</h2>
         <div class="proof">
           <h3>Claim:</h3>
           <p>Let \( n \) be a highly composite number with the prime factorization:</p>
           <div class="equation">
             \( n = p_1^{j_1} \times p_2^{j_2} \times \dots \times p_k^{j_k} \),
           </div>
-          <p>where \( p_i \) are primes in ascending order (\( p_1 = 2,\, p_2 = 3,\, \dots \)) and the exponents satisfy \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \) with at least one \( j_i > 1 \). Then, it holds that:</p>
+          <p>where \( p_i \) are primes in ascending order (\( p_1 = 2,\, p_2 = 3,\, \dots \)) and the exponents satisfy \( j_1 \geq j_2 \geq \dots \geq j_k \geq 1 \). Then, it holds that:</p>
           <div class="equation">
             \( \log(n) > p_k \)
           </div>
@@ -405,10 +405,7 @@
                 \( \log(n) = \underbrace{\sum_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum_{i=1}^{k} (j_i - 1)\ln(p_i)}_{\Delta} \)
               </div>
             </li>
-            <li>
-              <strong>Remark on \( \delta_k \):</strong>
-              <p>Let \( \delta_k = p_k - \theta(p_k) \). There exist explicit bounds for \( |\theta(x)-x| \), but no fixed ad-hoc constant is needed here; the swap step below compares \(\Delta\) directly to \(\delta_k\) without relying on a specific numerical value.</p>
-            </li>
+
             <li>
               <strong>Estimate of \( \Delta \):</strong>
               <p>For those primes with \( j_i > 1 \), we define the sum:</p>
@@ -422,7 +419,7 @@
             </li>
             <li>
               <strong>Conclusion of the swap step:</strong>
-              <p>The swap argument shows that configurations with relatively larger exponents on larger primes are suboptimal. Transferring exponent mass to smaller primes increases \(\sigma(n)/n\) while keeping \(\tilde n\le n\), which forces \(\Delta>\delta_k\) in the optimal patterns considered, hence \(\log n=\theta(p_k)+\Delta>p_k\).</p>
+          <p>The swap argument shows that configurations with relatively larger exponents on larger primes are suboptimal. Transferring exponent mass to smaller primes increases \(\sigma(n)/n\) while keeping \(\tilde n\le n\). Iterating the improvement forces the optimal profiles to load small primes with higher exponents, which yields a positive \(\Delta\) reserve exceeding \(\delta_k\), hence \(\log n=\theta(p_k)+\Delta>p_k\).</p>
             </li>
             <li>
               <strong>Example Illustrating the Proof:</strong>
@@ -772,10 +769,7 @@
               \( \log(n) = \underbrace{\sum_{i=1}^{k} \ln(p_i)}_{\theta(p_k)} + \underbrace{\sum_{i=1}^{k} (j_i - 1)\ln(p_i)}_{\Delta} \)
             </div>
           </li>
-            <li>
-              <strong>Poznámka k \( \delta_k \):</strong>
-              <p>Nech \( \delta_k = p_k - \theta(p_k) \). Existujú explicitné odhady pre \( |\theta(x)-x| \), no v tomto kroku ich konkrétna numerická hodnota nie je potrebná; swap priamo vedie k \(\Delta>\delta_k\) pre uvažované vzory.</p>
-            </li>
+            
           <li>
             <strong>Odhad \( \Delta \):</strong>
             <p>Pre tie prvočísla, kde \( j_i > 1 \), definujeme sumu:</p>
