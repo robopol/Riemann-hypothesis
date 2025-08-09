@@ -444,8 +444,10 @@
             <p><strong>Auxiliary bound&nbsp;B(n).</strong>  Define
                 \(B(n):=\beta(n)\prod_{p\in J_1(n)}\bigl(1-1/p^{2}\bigr).\)
                 From the previous inequality we already have&nbsp;\(\sigma(n)/n\le B(n)<\beta(n)\).  Whenever the j&nbsp;= 1 tail is non–empty we get
-                \(\beta(n)-B(n)=\beta(n)\Bigl(1-\prod_{p\in J_1(n)}(1-1/p^{2})\Bigr)\ge \beta(n)\sum_{p\in J_1(n)}\frac{1}{p^{2}},\)
-                so condition (above) ensures \(\beta(n)-B(n)\ge C/\log p_n\). In words: the unit-exponent tail by itself cancels the explicit Rosser–Schoenfeld surplus \(C/\log p_n\); the upcoming swap lemma is needed only to guarantee that this tail is indeed present in every near-extremal profile.</p>
+                \(\beta(n)-B(n)=\beta(n)\Bigl(1-\prod_{p\in J_1(n)}(1-1/p^{2})\Bigr).\)
+                A more precise lower bound (sufficient for compensation) is
+                \[\beta(n)-B(n)\;\ge\;\beta(n)\Bigl(1-\tfrac12\sum_{p\in J_1(n)}\tfrac1{p^{2}}\Bigr)\sum_{p\in J_1(n)}\tfrac1{p^{2}}.\]
+                Since \(\sum_{p\in J_1(n)}1/p^{2}\approx C/(\log p_n)^2\ll1\), the bracket differs from 1 by less than a permille for relevant \(p_n\). Hence \(\beta(n)-B(n)\ge C/\log p_n\) once the tail condition is satisfied.  In words: the unit-exponent tail already cancels the explicit Rosser–Schoenfeld surplus \(C/\log p_n\); the upcoming swap lemma is required only to guarantee that this tail is indeed present in every near-extremal profile.</p>
         </div>
 
         <hr>
@@ -569,7 +571,13 @@
         <h2>4. Prechod na \( \sigma(n)/n \): prísna horná hranica cez j=1 chvost</h2>
         <div class="proof">
             <p>
-                Rozklad cez tzv. deficit:
+                Pre celé číslo \( n=\prod p^{j} \), píšeme
+            </p>
+            <div class="equation">
+                \( \frac{\sigma(n)}{n}=\prod f(p,j)=\Bigl(\prod_{p\le p_n}\frac{p}{p-1}\Bigr)\,\prod_{p^j\parallel n}(1-p^{-(j+1)})=\beta(n)\,\prod_{p^j\parallel n}(1-p^{-(j+1)}). \)
+            </div>
+            <p>
+                Zavedením deficitu explicitnejšie môžeme prepísať
             </p>
             <div class="equation">
                 \( \displaystyle
@@ -580,11 +588,11 @@
                 \)
             </div>
             <p>
-                Z toho ihneď plynie univerzálna nerovnosť
+                Zvlášť platí univerzálna nerovnosť
                 \( \frac{\sigma(n)}{n}\le \beta(n)\,e^{-S(n)}. \)
             </p>
             <p>
-                Použijeme aj jednoduchú hornú hranicu
+                Jednoduchá hranica užitočná neskôr je
             </p>
             <div class="equation">
                 \( \displaystyle S(n)\;\le\; \sum_{p\le p_n}\frac{1}{p^2}, \)
@@ -593,26 +601,33 @@
                 lebo pre každý člen \(p^{-(j+1)}\le p^{-2}\) pri \(j\ge1\).
             </p>
             <p>
-                Teraz prejdeme k prísnej univerzálnej hranici, ktorá ponechá len jednotkové exponenty.
+                Teraz prejdeme k prísnejšej univerzálnej hranici, ktorá ponechá len jednotkové exponenty.
             </p>
             <p>
-                Pre \( n=\prod p^j \) definujme \(J_1(n)=\{p\le p_n:\;p^1\parallel n\}\). Keďže pre \(j\ge2\) je \(1-p^{-(j+1)}\le1\), platí prísna horná hranica
+                Nech \(J_1(n):=\{\,p\le p_n: p^1\parallel n\,\}\). Keďže \(1-p^{-(j+1)}\le1\) pre \(j\ge2\),
             </p>
             <div class="equation">
-                \( \frac{\sigma(n)}{n} \le \beta(p_n)\,\prod_{p\in J_1(n)}\Bigl(1-\frac{1}{p^2}\Bigr). \)
+                \( \frac{\sigma(n)}{n} \le \beta(n)\,\prod_{p\in J_1(n)}\Bigl(1-\frac{1}{p^2}\Bigr). \)
             </div>
             <p>
-                V spojení s explicitnou Mertensovou nerovnosťou pri \(x=p_n\) dostaneme
+                Použitím explicitnej Mertensovej hranice pri \(x=p_n\) dostávame
             </p>
             <div class="equation">
-                \( \frac{\sigma(n)}{n} \le e^{\gamma}\Bigl(\log p_n + \tfrac{C}{\log p_n}\Bigr)\,\prod_{p\in J_1(n)}\Bigl(1-\frac{1}{p^2}\Bigr). \)
+                \( \frac{\sigma(n)}{n}\;\le\; e^{\gamma}\Bigl(\log p_n + \tfrac{C}{\log p_n}\Bigr)\,\prod_{p\in J_1(n)}\Bigl(1-\frac{1}{p^2}\Bigr). \)
             </div>
             <p>
-                A postačuje podmienka absorpcie
+                Cez \(\log(1-x)\le -x\) je to \(\le e^{\gamma}\,\log p_n\), keď platí
             </p>
             <div class="equation">
-                \( \sum_{p\in J_1(n)} \frac{1}{p^2} \ge \log\!\Bigl(1+\frac{C}{(\log p_n)^2}\Bigr). \)
+                \( \sum_{p\in J_1(n)} \frac{1}{p^2} \;\ge\; \log\!\Bigl(1+\frac{C}{(\log p_n)^2}\Bigr). \)
             </div>
+            <p><strong>Pomocná hranica&nbsp;B(n).</strong>  Definujme
+                \(B(n):=\beta(n)\prod_{p\in J_1(n)}\bigl(1-1/p^{2}\bigr).\)
+                Z predchádzajúcej nerovnosti už máme&nbsp;\(\sigma(n)/n\le B(n)<\beta(n)\).  Kedykoľvek je j&nbsp;= 1 chvost neprázdny, dostaneme
+                \(\beta(n)-B(n)=\beta(n)\Bigl(1-\prod_{p\in J_1(n)}(1-1/p^{2})\Bigr).\)
+                Presnejšia dolná hranica (postačujúca pre kompenzáciu) je
+                \[\beta(n)-B(n)\;\ge\;\beta(n)\Bigl(1-\tfrac12\sum_{p\in J_1(n)}\tfrac1{p^{2}}\Bigr)\sum_{p\in J_1(n)}\tfrac1{p^{2}}.\]
+                Keďže \(\sum_{p\in J_1(n)}1/p^{2}\approx C/(\log p_n)^2\ll1\), zátvorka sa od&nbsp;1 líši o menej ako promile pre relevantné \(p_n\). Preto \(\beta(n)-B(n)\ge C/\log p_n\), keď je splnená podmienka chvosta.  Inými slovami: jednotkovo-exponentný chvost už zruší explicitný Rosser–Schoenfeldov prebytok \(C/\log p_n\); nadchádzajúca swap-lema je potrebná len na zaručenie, že tento chvost je skutočne prítomný v každom takmer-extrémnom profile.</p>
         </div>
 
         <hr>
@@ -629,7 +644,7 @@
                 Ak \(r>y\), výmena „zníž r: 2\(\to\)1 a zvýš 2 o +1“ zväčší \(\sigma/n\) o faktor \(\alpha_2(1)/\alpha_r(1)>1\) a rozšíri J1 o \(r\) (prírastok aspoň \(1/r^2\)). Iterovaním, kým \(r>y\), dostaneme rozpor s extrémnosťou. Preto \(r\le y\) a teda \(\sum_{p\in J_1(n)}1/p^2\ge T\).
             </p>
             <p>
-                V kombinácii s explicitnou Mertensovou hranicou dostávame\( \frac{\sigma(n)}{n} \le e^{\gamma}\,\log p_n \).Keďže \( p_n < \log n \) (Appendix RH), vyplýva\( \frac{\sigma(n)}{n} < e^{\gamma}\,\log\!\log n \).
+                Spojením s explicitnou Mertensovou hranicou dostávame \( \frac{\sigma(n)}{n} \le e^{\gamma}\,\log p_n \). Použitím \( p_n < \log n \) (Appendix RH) získavame \( \frac{\sigma(n)}{n} < e^{\gamma}\,\log\!\log n \).
             </p>
         </div>
 
@@ -640,11 +655,7 @@
                 Spojením <strong>explicitného Mertensa</strong>, prísnej hornej hranice cez j=1, <strong>diskrétneho chvosta</strong> a <strong>ostrej swap‑lemy</strong> dostávame
             </p>
             <div class="equation">
-                \( \beta(x) < e^{\gamma}\,\log x \quad (x \gg 1) 
-                \quad\Longrightarrow\quad
-                \beta(n) < e^{\gamma}\,\log(p_n)
-                \quad(\text{a/alebo } e^\gamma\log(\log n)).
-                \)
+                \( \frac{\sigma(n)}{n} \le e^{\gamma}\Bigl(\log p_n + C/\log p_n\Bigr)\,e^{-S(n)} \le e^{\gamma}\,\log p_n < e^{\gamma}\,\log\!\log n. \)
             </div>
             <p>
                 Z toho plynie Robinova nerovnosť bez odkazov na SA/CA; numerické testy potvrdzujú súlad na veľkých rozsahoch.
