@@ -1,0 +1,83 @@
+{
+  "notes": [
+    "This tests a direct certificate for the centred first moment M1.",
+    "Each block is split geometrically. On every subblock the negative constant coefficient uses an S0 lower bound and the positive reciprocal coefficient uses an S1 upper bound.",
+    "The higher Taylor contribution is kept exact in this diagnostic, so any remaining loss is the M1 certificate loss.",
+    "The current implementation still fixes mu from the exact finite block count; a proof version needs a mu-interval certificate."
+  ],
+  "args": {
+    "theta_csv": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\ca_theta_cancellation_rows.csv",
+    "max_prime": 120000000,
+    "min_prime": 3329267,
+    "partitions": 64,
+    "endpoint_mode": "exact",
+    "theta_c": 0.006788,
+    "theta_power": 1
+  },
+  "rows": [
+    {
+      "y_prime": 3329267,
+      "x_prime": 6382007,
+      "partitions": 64,
+      "endpoint_mode": "exact",
+      "exact_m1": -2.898671922914805e-05,
+      "certified_m1_upper": 0.06277003870273208,
+      "exact_q": -2.8986874516266636e-05,
+      "q_upper_m1_plus_exact_tail": 0.06277003854082802,
+      "delta_rho_lower": -5.942099885519518e-06,
+      "w_upper_m1_plus_exact_tail": 0.06277598064071355,
+      "exact_w_block": -2.3044774630747118e-05,
+      "exact_c_step": 2.0520780238793437,
+      "c_step_certified": null,
+      "certificate_margin": 0.0627990254153443
+    },
+    {
+      "y_prime": 6382007,
+      "x_prime": 12253883,
+      "partitions": 64,
+      "endpoint_mode": "exact",
+      "exact_m1": -2.3893557548496763e-06,
+      "certified_m1_upper": 0.05742280580250799,
+      "exact_q": -2.3894253374234786e-06,
+      "q_upper_m1_plus_exact_tail": 0.05742280572080948,
+      "delta_rho_lower": 1.3466707210697423e-05,
+      "w_upper_m1_plus_exact_tail": 0.057409339013598785,
+      "exact_w_block": -1.58561325481209e-05,
+      "exact_c_step": 2.043328652360521,
+      "c_step_certified": null,
+      "certificate_margin": 0.057425195146146905
+    },
+    {
+      "y_prime": 12253883,
+      "x_prime": 29093377,
+      "partitions": 64,
+      "endpoint_mode": "exact",
+      "exact_m1": -8.06511271134934e-06,
+      "certified_m1_upper": 0.05203091567187332,
+      "exact_q": -8.065251933905837e-06,
+      "q_upper_m1_plus_exact_tail": 0.052030915586920155,
+      "delta_rho_lower": 5.4837535491591845e-06,
+      "w_upper_m1_plus_exact_tail": 0.052025431833370994,
+      "exact_w_block": -1.3549005483065022e-05,
+      "exact_c_step": 2.017689649171813,
+      "c_step_certified": null,
+      "certificate_margin": 0.05203898083885406
+    },
+    {
+      "y_prime": 29093377,
+      "x_prime": 56048351,
+      "partitions": 64,
+      "endpoint_mode": "exact",
+      "exact_m1": -3.7953687581884996e-06,
+      "certified_m1_upper": 0.04731871831765715,
+      "exact_q": -3.7953758520378744e-06,
+      "q_upper_m1_plus_exact_tail": 0.047318718301072045,
+      "delta_rho_lower": 2.718319588168675e-06,
+      "w_upper_m1_plus_exact_tail": 0.04731599998148388,
+      "exact_w_block": -6.513695440206549e-06,
+      "exact_c_step": 1.9731783508015872,
+      "c_step_certified": null,
+      "certificate_margin": 0.04732251367692408
+    }
+  ]
+}

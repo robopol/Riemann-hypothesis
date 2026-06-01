@@ -1,0 +1,70 @@
+{
+  "notes": [
+    "The exact target is integral_Y^x (theta(t)-t) omega(t) dt + S2(Y,x) <= -C_W(F(Y)-F(x)).",
+    "The corrected W block is exactly the left side.",
+    "average_k_from_integral is the weighted average in t-theta(t) ~= K sqrt(t) units.",
+    "required_k_for_c_* is the weighted K sufficient for the selected C_W."
+  ],
+  "rows": [
+    {
+      "y_prime": 3329267,
+      "x_prime": 6382007,
+      "f_gap": 1.1229969992652718e-05,
+      "s2_block": 4.689674787880302e-09,
+      "corrected_w_block_exact": -2.3044774630747118e-05,
+      "chebyshev_integral": -2.3049464305534998e-05,
+      "c_max_exact": 2.0520780238793437,
+      "c_max_m1": 2.052062912574717,
+      "sqrt_weight_integral": 2.1163284783679247e-05,
+      "average_k_from_integral": 1.089125083423266,
+      "required_k_for_c_190": 1.0084272304120925,
+      "required_k_for_c_200": 1.061490684915682,
+      "required_k_for_c_205": 1.0880224121674766
+    },
+    {
+      "y_prime": 6382007,
+      "x_prime": 12253883,
+      "f_gap": 7.759952139761448e-06,
+      "s2_block": 2.3524894361476346e-09,
+      "corrected_w_block_exact": -1.58561325481209e-05,
+      "chebyshev_integral": -1.585848503755705e-05,
+      "c_max_exact": 2.043328652360521,
+      "c_max_m1": 2.0433160685272798,
+      "sqrt_weight_integral": 1.4656395231433586e-05,
+      "average_k_from_integral": 1.0820181079413949,
+      "required_k_for_c_190": 1.0061315434068383,
+      "required_k_for_c_200": 1.0590773873011043,
+      "required_k_for_c_205": 1.085550309248237
+    },
+    {
+      "y_prime": 12253883,
+      "x_prime": 29093377,
+      "f_gap": 6.715108782277981e-06,
+      "s2_block": 1.4149585198338106e-09,
+      "corrected_w_block_exact": -1.3549005483065022e-05,
+      "chebyshev_integral": -1.3550420441584855e-05,
+      "c_max_exact": 2.017689649171813,
+      "c_max_m1": 2.0176865376155253,
+      "sqrt_weight_integral": 1.271261020852473e-05,
+      "average_k_from_integral": 1.0659038717712206,
+      "required_k_for_c_190": 1.0037373470549271,
+      "required_k_for_c_200": 1.056559770397814,
+      "required_k_for_c_205": 1.0829709820692572
+    },
+    {
+      "y_prime": 29093377,
+      "x_prime": 56048351,
+      "f_gap": 3.3011184404898904e-06,
+      "s2_block": 4.729005743625015e-10,
+      "corrected_w_block_exact": -6.513695440206549e-06,
+      "chebyshev_integral": -6.514168340780912e-06,
+      "c_max_exact": 1.9731783508015872,
+      "c_max_m1": 1.9732099638838332,
+      "sqrt_weight_integral": 6.263520352390973e-06,
+      "average_k_from_integral": 1.0400171108718852,
+      "required_k_for_c_190": 1.0014492784573958,
+      "required_k_for_c_200": 1.0541531614938702,
+      "required_k_for_c_205": 1.0805051030121071
+    }
+  ]
+}

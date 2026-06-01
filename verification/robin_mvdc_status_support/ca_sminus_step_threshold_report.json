@@ -1,0 +1,84 @@
+{
+  "notes": [
+    "The checked threshold is S_{-1}(Y,x) <= nu*(exp(mu)-1) + exp(mu)*(R_i-U_{i-1}).",
+    "It is algebraically equivalent to M1(Y,x) <= R_i-U_{i-1}.",
+    "The final column verifies that the S-margin equals exp(mu) times the M1-margin up to floating-point noise."
+  ],
+  "rows": [
+    {
+      "y_prime": 3329267,
+      "x_prime": 6382007,
+      "block_prime_count": 198412,
+      "h_log": 0.04241682799770283,
+      "mu": 2.1378156561953322e-07,
+      "actual_s_minus1": 0.04238784581286206,
+      "threshold_s_minus1": 0.04240785861234717,
+      "margin_s_minus1": 2.0012799485109867e-05,
+      "moment_1": -2.8986704816769127e-05,
+      "m1_step_threshold": -8.973917405467183e-06,
+      "m1_step_margin": 2.0012787411301944e-05,
+      "s_margin_from_m1_margin": 2.0012791689667427e-05,
+      "margin_difference": 7.795442439619774e-12
+    },
+    {
+      "y_prime": 6382007,
+      "x_prime": 12253883,
+      "block_prime_count": 366319,
+      "h_log": 0.04079047347188573,
+      "mu": 1.1135232808531835e-07,
+      "actual_s_minus1": 0.040788086399037936,
+      "threshold_s_minus1": 0.040801959560594375,
+      "margin_s_minus1": 1.3873161556439417e-05,
+      "moment_1": -2.389327687479792e-06,
+      "m1_step_threshold": 1.148381637271796e-05,
+      "m1_step_margin": 1.3873144060197752e-05,
+      "s_margin_from_m1_margin": 1.3873145605004727e-05,
+      "margin_difference": 1.5951434690478542e-11
+    },
+    {
+      "y_prime": 12253883,
+      "x_prime": 29093377,
+      "block_prime_count": 1001501,
+      "h_log": 0.051622050807542,
+      "mu": 5.154468223950051e-08,
+      "actual_s_minus1": 0.05161398697056667,
+      "threshold_s_minus1": 0.051622548146829844,
+      "margin_s_minus1": 8.561176263174874e-06,
+      "moment_1": -8.06523103946688e-06,
+      "m1_step_threshold": 4.960088411488078e-07,
+      "m1_step_margin": 8.561239880615688e-06,
+      "s_margin_from_m1_margin": 8.56124032190209e-06,
+      "margin_difference": -6.405872721512587e-11
+    },
+    {
+      "y_prime": 29093377,
+      "x_prime": 56048351,
+      "block_prime_count": 1535924,
+      "h_log": 0.03744350406550147,
+      "mu": 2.4378487519891262e-08,
+      "actual_s_minus1": 0.03743970916255001,
+      "threshold_s_minus1": 0.03744554569023103,
+      "margin_s_minus1": 5.836527681019055e-06,
+      "moment_1": -3.7954802105666374e-06,
+      "m1_step_threshold": 2.0411682718054214e-06,
+      "m1_step_margin": 5.836648482372059e-06,
+      "s_margin_from_m1_margin": 5.836648624660723e-06,
+      "margin_difference": -1.2094364166860143e-10
+    },
+    {
+      "y_prime": 56048351,
+      "x_prime": 99999989,
+      "block_prime_count": 2420442,
+      "h_log": 0.03193414957404445,
+      "mu": 1.3193519850525009e-08,
+      "actual_s_minus1": 0.03193296302256007,
+      "threshold_s_minus1": 0.03193728007712805,
+      "margin_s_minus1": 4.317054567985756e-06,
+      "moment_1": -1.186499412053621e-06,
+      "m1_step_threshold": 3.130292380384017e-06,
+      "m1_step_margin": 4.316791792437638e-06,
+      "s_margin_from_m1_margin": 4.316791849391316e-06,
+      "margin_difference": 2.627185944404067e-10
+    }
+  ]
+}
