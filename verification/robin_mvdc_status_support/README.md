@@ -31,7 +31,9 @@ https://github.com/robopol/Riemann-hypothesis
 - First-moment reciprocal-prime route:
   `test_ca_sminus_step_threshold.py`,
   `test_ca_cumulative_mvdc_envelope.py`,
-  `test_ca_successive_mvdc_blocks.py`.
+  `test_ca_successive_mvdc_blocks.py`,
+  `test_c2_shortfall_trend.py`,
+  `test_theta_route_prime_harmonic_threshold.py`.
 
 - Input/audit generators used by the scripts:
   `test_w_corrected_blocks.py`,
