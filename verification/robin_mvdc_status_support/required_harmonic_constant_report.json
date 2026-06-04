@@ -1,0 +1,55 @@
+{
+  "notes": [
+    "This rescales the required A(x) upper envelope as A(x) <= B + C/(sqrt(x) log x).",
+    "The Rosser-Schoenfeld finite-range diagnostic corresponds to C=2.",
+    "Positive rosser_excess means C=2 is too loose compared with the step requirement.",
+    "Positive constant_headroom is the real numerical gap between exact A(x) and the required envelope."
+  ],
+  "max_actual_constant": 0.9761660390897731,
+  "max_required_constant": 1.7687950367168854,
+  "min_required_constant": 1.4772740345589301,
+  "min_constant_headroom": 0.7796094199829692,
+  "min_rosser_excess": 0.23120496328311457,
+  "rows": [
+    {
+      "x_prime": 6382007,
+      "actual_constant": 0.7709932827865524,
+      "required_constant": 1.5631810605906664,
+      "constant_headroom": 0.792187777804114,
+      "rosser_constant": 2.0,
+      "rosser_excess": 0.4368189394093336
+    },
+    {
+      "x_prime": 12253883,
+      "actual_constant": 0.9761660390897731,
+      "required_constant": 1.7687950367168854,
+      "constant_headroom": 0.7926289976271124,
+      "rosser_constant": 2.0,
+      "rosser_excess": 0.23120496328311457
+    },
+    {
+      "x_prime": 29093377,
+      "actual_constant": 0.8360425509574038,
+      "required_constant": 1.629640230532069,
+      "constant_headroom": 0.7935976795746652,
+      "rosser_constant": 2.0,
+      "rosser_excess": 0.37035976946793103
+    },
+    {
+      "x_prime": 56048351,
+      "actual_constant": 0.697664614575961,
+      "required_constant": 1.4772740345589301,
+      "constant_headroom": 0.7796094199829692,
+      "rosser_constant": 2.0,
+      "rosser_excess": 0.5227259654410699
+    },
+    {
+      "x_prime": 99999989,
+      "actual_constant": 0.7434801223637875,
+      "required_constant": 1.5387724532035814,
+      "constant_headroom": 0.7952923308397939,
+      "rosser_constant": 2.0,
+      "rosser_excess": 0.46122754679641864
+    }
+  ]
+}

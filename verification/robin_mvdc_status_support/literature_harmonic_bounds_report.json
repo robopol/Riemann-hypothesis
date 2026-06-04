@@ -1,0 +1,93 @@
+{
+  "notes": [
+    "All bounds are converted to the common scale A(x)-B <= C/(sqrt(x)log x).",
+    "Positive margin means the bound is strong enough for the required ledger constant at that endpoint.",
+    "Dusart 2010 Theorem 6.10 is rigorous but much too large in this scale.",
+    "The 0.2/log^3 entry is Dusart's later reciprocal-prime bound, not an analytic closure by itself.",
+    "Axler 2018 gives a sharper upper bound from x >= 46,909,074 and can close some finite endpoints.",
+    "The RH-conditional (3log(x)+4)/(8pi sqrt(x)) bound is also too large in this scale.",
+    "The Rosser-Schoenfeld C=2 entry is a finite-window benchmark, not a global all-range replacement."
+  ],
+  "rows": [
+    {
+      "x_prime": 6382007,
+      "actual_constant": 0.7709932827865524,
+      "required_constant": 1.5631810605906664,
+      "target_constant_1_margin": 0.5631810605906664,
+      "rosser_schoenfeld_constant": 2.0,
+      "rosser_schoenfeld_margin": -0.4368189394093336,
+      "dusart_theorem_6_10_constant": 18.866572052511394,
+      "dusart_margin": -17.30339099192073,
+      "optimistic_0_2_log3_constant": 2.05791034602006,
+      "optimistic_0_2_log3_margin": -0.49472928542939343,
+      "axler_2018_constant": null,
+      "axler_2018_margin": null,
+      "rh_reciprocal_constant_3_over_8pi": 31.800272303428383,
+      "rh_reciprocal_margin": -30.237091242837717
+    },
+    {
+      "x_prime": 12253883,
+      "actual_constant": 0.9761660390897731,
+      "required_constant": 1.7687950367168854,
+      "target_constant_1_margin": 0.7687950367168854,
+      "rosser_schoenfeld_constant": 2.0,
+      "rosser_schoenfeld_margin": -0.23120496328311457,
+      "dusart_theorem_6_10_constant": 24.951933767972136,
+      "dusart_margin": -23.18313873125525,
+      "optimistic_0_2_log3_constant": 2.628176465835656,
+      "optimistic_0_2_log3_margin": -0.8593814291187707,
+      "axler_2018_constant": null,
+      "axler_2018_margin": null,
+      "rh_reciprocal_constant_3_over_8pi": 34.395179524394095,
+      "rh_reciprocal_margin": -32.62638448767721
+    },
+    {
+      "x_prime": 29093377,
+      "actual_constant": 0.8360425509574038,
+      "required_constant": 1.629640230532069,
+      "target_constant_1_margin": 0.629640230532069,
+      "rosser_schoenfeld_constant": 2.0,
+      "rosser_schoenfeld_margin": -0.37035976946793103,
+      "dusart_theorem_6_10_constant": 36.25481538412328,
+      "dusart_margin": -34.625175153591215,
+      "optimistic_0_2_log3_constant": 3.6523835753427147,
+      "optimistic_0_2_log3_margin": -2.022743344810646,
+      "axler_2018_constant": null,
+      "axler_2018_margin": null,
+      "rh_reciprocal_constant_3_over_8pi": 37.9911622340286,
+      "rh_reciprocal_margin": -36.36152200349653
+    },
+    {
+      "x_prime": 56048351,
+      "actual_constant": 0.697664614575961,
+      "required_constant": 1.4772740345589301,
+      "target_constant_1_margin": 0.47727403455893014,
+      "rosser_schoenfeld_constant": 2.0,
+      "rosser_schoenfeld_margin": -0.5227259654410699,
+      "dusart_theorem_6_10_constant": 48.232451090202936,
+      "dusart_margin": -46.755177055644005,
+      "optimistic_0_2_log3_constant": 4.703679469305283,
+      "optimistic_0_2_log3_margin": -3.2264054347463524,
+      "axler_2018_constant": 1.4230764304707015,
+      "axler_2018_margin": 0.0541976040882286,
+      "rh_reciprocal_constant_3_over_8pi": 40.837104693269,
+      "rh_reciprocal_margin": -39.35983065871007
+    },
+    {
+      "x_prime": 99999989,
+      "actual_constant": 0.7434801223637875,
+      "required_constant": 1.5387724532035814,
+      "target_constant_1_margin": 0.5387724532035814,
+      "rosser_schoenfeld_constant": 2.0,
+      "rosser_schoenfeld_margin": -0.46122754679641864,
+      "dusart_theorem_6_10_constant": 62.14562794674896,
+      "dusart_margin": -60.606855493545375,
+      "optimistic_0_2_log3_constant": 5.894115277830575,
+      "optimistic_0_2_log3_margin": -4.355342824626994,
+      "axler_2018_constant": 1.7735032440063936,
+      "axler_2018_margin": -0.23473079080281223,
+      "rh_reciprocal_constant_3_over_8pi": 43.43525991277955,
+      "rh_reciprocal_margin": -41.896487459575965
+    }
+  ]
+}

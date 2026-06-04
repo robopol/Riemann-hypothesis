@@ -1,0 +1,80 @@
+{
+  "notes": [
+    "This script computes the exact A(x) upper envelope required for the step M1 <= R_i-U_{i-1}.",
+    "For a block (Y,x], the required condition is A(x) <= A(Y)-C2(Y,x)+exp(mu)*(threshold+D).",
+    "The Rosser-Schoenfeld finite-range bound B+2/(sqrt(x) log x) is compared against that required upper envelope.",
+    "Positive actual_margin means the exact block passes; positive rosser_minus_required means the RS finite bound is too loose for this step."
+  ],
+  "rows": [
+    {
+      "y_prime": 3329267,
+      "x_prime": 6382007,
+      "block_prime_count": 198412,
+      "h_log": 0.04241682799770283,
+      "mu": 2.1378156561953322e-07,
+      "actual_a_x": 0.26151669024232005,
+      "required_a_upper": 0.26153670306778987,
+      "actual_margin": 2.0012825469817308e-05,
+      "rosser_schoenfeld_finite_a_upper": 0.26154773830645583,
+      "rosser_minus_required": 1.103523866596845e-05,
+      "exact_moment_1": -2.8986716642975807e-05,
+      "m1_step_threshold": -8.973917405467183e-06
+    },
+    {
+      "y_prime": 6382007,
+      "x_prime": 12253883,
+      "block_prime_count": 366319,
+      "h_log": 0.04079047347188573,
+      "mu": 1.1135232808531835e-07,
+      "actual_a_x": 0.26151429846440033,
+      "required_a_upper": 0.26152817167320097,
+      "actual_margin": 1.3873208800641024e-05,
+      "rosser_schoenfeld_finite_a_upper": 0.2615322184021763,
+      "rosser_minus_required": 4.046728975304337e-06,
+      "exact_moment_1": -2.38930806517601e-06,
+      "m1_step_threshold": 1.148381637271796e-05
+    },
+    {
+      "y_prime": 12253883,
+      "x_prime": 29093377,
+      "block_prime_count": 1001501,
+      "h_log": 0.051622050807542,
+      "mu": 5.154468223950051e-08,
+      "actual_a_x": 0.2615062317975214,
+      "required_a_upper": 0.2615147928661987,
+      "actual_margin": 8.561068677304107e-06,
+      "rosser_schoenfeld_finite_a_upper": 0.2615187881846117,
+      "rosser_minus_required": 3.995318412997051e-06,
+      "exact_moment_1": -8.065137080848217e-06,
+      "m1_step_threshold": 4.960088411488078e-07
+    },
+    {
+      "y_prime": 29093377,
+      "x_prime": 56048351,
+      "block_prime_count": 1535924,
+      "h_log": 0.03744350406550147,
+      "mu": 2.4378487519891262e-08,
+      "actual_a_x": 0.2615024359486937,
+      "required_a_upper": 0.2615082725336312,
+      "actual_margin": 5.836584937468636e-06,
+      "rosser_schoenfeld_finite_a_upper": 0.26151218594773074,
+      "rosser_minus_required": 3.91341409955448e-06,
+      "exact_moment_1": -3.795372322201729e-06,
+      "m1_step_threshold": 2.0411682718054214e-06
+    },
+    {
+      "y_prime": 56048351,
+      "x_prime": 99999989,
+      "block_prime_count": 2420442,
+      "h_log": 0.03193414957404445,
+      "mu": 1.3193519850525009e-08,
+      "actual_a_x": 0.2615012489643207,
+      "required_a_upper": 0.26150556635296873,
+      "actual_margin": 4.317388648034104e-06,
+      "rosser_schoenfeld_finite_a_upper": 0.26150807021035233,
+      "rosser_minus_required": 2.503857383595598e-06,
+      "exact_moment_1": -1.1869706213474274e-06,
+      "m1_step_threshold": 3.130292380384017e-06
+    }
+  ]
+}
