@@ -1,0 +1,493 @@
+{
+  "claim": {
+    "quantity": "sqrt(x) log(x) D_*(x), where D_*(x)=R_*(x)-C_pp(x)",
+    "range": "every prime support 3299 <= x <= 56048351",
+    "strict_target": "0.7825",
+    "optimizer": "R_*(x) is the minimum of R_core=A+H/(x log x) over all full-support exponent vectors a_p>=1 for p<=x"
+  },
+  "status": "PASS",
+  "status_counts": {
+    "support_count": 3340551,
+    "pass": 3340551,
+    "fail": 0,
+    "inconclusive": 0
+  },
+  "minimum": {
+    "support_prime": 56048351,
+    "scaled_buffer": {
+      "lower": "0.7825999188377564057191055633151903716957",
+      "upper": "0.7825999188383871968385017282689044371810"
+    },
+    "lower_margin_over_target": "0.0000999188377564057191055633151903716957",
+    "a_minus_t": {
+      "lower": "0.0000026780152385128926721604380671375630",
+      "upper": "0.0000026780152385176151214431020241509238"
+    },
+    "h_minus_l": {
+      "lower": "3180.955932213886584873591091562459508693",
+      "upper": "3180.955932213886584873591091562459510305"
+    },
+    "sqrt_x": {
+      "lower": "7486.544663594814886676793425455029132384",
+      "upper": "7486.544663594814886676793425455029132386"
+    },
+    "log_x": {
+      "lower": "17.84172528688909069011275954936227510967",
+      "upper": "17.84172528688909069011275954936227510969"
+    },
+    "active_optimizer_events": 1475,
+    "processed_prime_power_events": 1102,
+    "classification": "PASS"
+  },
+  "maximum_interval_width": "6.307911193961649537140654853E-13",
+  "checkpoints": [
+    {
+      "support_prime": 3299,
+      "scaled_buffer": {
+        "lower": "0.9008355393490772050632807184903663651702",
+        "upper": "0.9008355393490793975742999974593288976802"
+      },
+      "lower_margin_over_target": "0.1183355393490772050632807184903663651702",
+      "a_minus_t": {
+        "lower": "0.0008171411977285932454915067519573432469",
+        "upper": "0.0008171411977285979573464189232899721972"
+      },
+      "h_minus_l": {
+        "lower": "29.90194939923030546936457851451864727001",
+        "upper": "29.90194939923030546936457851451864727060"
+      },
+      "active_optimizer_events": 48,
+      "processed_prime_power_events": 37,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 5297,
+      "scaled_buffer": {
+        "lower": "0.8885125509432667333439636817223865706651",
+        "upper": "0.8885125509432696799849033426373744187565"
+      },
+      "lower_margin_over_target": "0.1060125509432667333439636817223865706651",
+      "a_minus_t": {
+        "lower": "0.0005924012535356999260736753760237723224",
+        "upper": "0.0005924012535357046476104386817453596664"
+      },
+      "h_minus_l": {
+        "lower": "37.75879071748701758338385441967908574905",
+        "upper": "37.75879071748701758338385441967908574980"
+      },
+      "active_optimizer_events": 57,
+      "processed_prime_power_events": 43,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 5303,
+      "scaled_buffer": {
+        "lower": "0.8884770036367998196353617515073754762312",
+        "upper": "0.8884770036368027683386058416995776092968"
+      },
+      "lower_margin_over_target": "0.1059770036367998196353617515073754762312",
+      "a_minus_t": {
+        "lower": "0.0005771598927791074564869132330660939295",
+        "upper": "0.0005771598927791121780311706302108030628"
+      },
+      "h_minus_l": {
+        "lower": "38.45193789804696289280108654113726231712",
+        "upper": "38.45193789804696289280108654113726231788"
+      },
+      "active_optimizer_events": 58,
+      "processed_prime_power_events": 43,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 10007,
+      "scaled_buffer": {
+        "lower": "0.8672909196476561992694460834588870677321",
+        "upper": "0.8672909196476605506265581808238578898057"
+      },
+      "lower_margin_over_target": "0.0847909196476561992694460834588870677321",
+      "a_minus_t": {
+        "lower": "0.0003851332095714155348193211563274680263",
+        "upper": "0.0003851332095714202572338109278337452877"
+      },
+      "h_minus_l": {
+        "lower": "51.25983501814691877857202172536972699628",
+        "upper": "51.25983501814691877857202172536972699723"
+      },
+      "active_optimizer_events": 68,
+      "processed_prime_power_events": 51,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 3329267,
+      "scaled_buffer": {
+        "lower": "0.7958700834991559706380369095594088182549",
+        "upper": "0.7958700834992853786939060536823155281133"
+      },
+      "lower_margin_over_target": "0.0133700834991559706380369095594088182549",
+      "a_minus_t": {
+        "lower": "0.0000138745611035754682877724138936544716",
+        "upper": "0.0000138745611035801907370550778506624104"
+      },
+      "h_minus_l": {
+        "lower": "758.4413949777316042308886837974316700029",
+        "upper": "758.4413949777316042308886837974316700714"
+      },
+      "active_optimizer_events": 480,
+      "processed_prime_power_events": 368,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 6382007,
+      "scaled_buffer": {
+        "lower": "0.7936708510775204139342435734314520052623",
+        "upper": "0.7936708510777073473889258394323921451548"
+      },
+      "lower_margin_over_target": "0.0111708510775204139342435734314520052623",
+      "a_minus_t": {
+        "lower": "0.0000093640050752530691016592605775068348",
+        "upper": "0.0000093640050752577915509419245345199341"
+      },
+      "h_minus_l": {
+        "lower": "1068.624671158570302573562469374953901194",
+        "upper": "1068.624671158570302573562469374953901317"
+      },
+      "active_optimizer_events": 619,
+      "processed_prime_power_events": 469,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 12253883,
+      "scaled_buffer": {
+        "lower": "0.7877326765977096576686311744967087962725",
+        "upper": "0.7877326765979794690940232476613778133336"
+      },
+      "lower_margin_over_target": "0.0052326765977096576686311744967087962725",
+      "a_minus_t": {
+        "lower": "0.0000063986049308356265791897383370592661",
+        "upper": "0.0000063986049308403490284724022940725698"
+      },
+      "h_minus_l": {
+        "lower": "1477.780600124734422115101563762225370218",
+        "upper": "1477.780600124734422115101563762225370653"
+      },
+      "active_optimizer_events": 798,
+      "processed_prime_power_events": 602,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 29093377,
+      "scaled_buffer": {
+        "lower": "0.7855184413900396657776872436175902378770",
+        "upper": "0.7855184413904774294417688780329271523274"
+      },
+      "lower_margin_over_target": "0.0030184413900396657776872436175902378770",
+      "a_minus_t": {
+        "lower": "0.0000039940670499494180988637461012873429",
+        "upper": "0.0000039940670499541405481464100583006782"
+      },
+      "h_minus_l": {
+        "lower": "2239.920015374957477258083853511336325880",
+        "upper": "2239.920015374957477258083853511336326885"
+      },
+      "active_optimizer_events": 1123,
+      "processed_prime_power_events": 847,
+      "classification": "PASS"
+    },
+    {
+      "support_prime": 56048351,
+      "scaled_buffer": {
+        "lower": "0.7825999188377564057191055633151903716957",
+        "upper": "0.7825999188383871968385017282689044371810"
+      },
+      "lower_margin_over_target": "0.0000999188377564057191055633151903716957",
+      "a_minus_t": {
+        "lower": "0.0000026780152385128926721604380671375630",
+        "upper": "0.0000026780152385176151214431020241509238"
+      },
+      "h_minus_l": {
+        "lower": "3180.955932213886584873591091562459508693",
+        "upper": "3180.955932213886584873591091562459510305"
+      },
+      "active_optimizer_events": 1475,
+      "processed_prime_power_events": 1102,
+      "classification": "PASS"
+    }
+  ],
+  "optimizer_event_certificate": {
+    "candidate_prime_cutoff": 10587,
+    "candidate_primes_checked": 1290,
+    "event_count_through_max": 1475,
+    "threshold_endpoint_overlap_count": 0,
+    "minimum_certified_active_side_gap": "9.80828583221170412656831367392E-19",
+    "minimum_certified_inactive_side_gap": "1.405150648896977505240793596308E-18",
+    "activation_stream_sha256": "13029b3981920de17d1b4641cfc99806d45b56a13aa12bcb35a78d0faf5f712b",
+    "control_cache_size_during_event_location": 16196,
+    "events_active_at_first_support": 48,
+    "events_activating_inside_target_range": 1427,
+    "maximum_simultaneous_activation_bucket": 2,
+    "tie_rule": "At tau_s(p)=1/(x log x), the adjacent exponents give exactly the same R_core contribution; excluding the event is tie-safe.",
+    "minimum_argument": "R_core is separable over primes. Raising an exponent from s-1 to s changes it by log(p)*(1/(x log x)-tau_s(p)). Therefore the transition is used exactly when tau_s(p)>1/(x log x); at equality either adjacent exponent is minimizing.",
+    "exact_optimizer_formula": "a_p=1+#{s>=2: tau_s(p)>1/(x log x)} for p<=x; equality may be included or excluded"
+  },
+  "correction_audit": {
+    "superseded_condition": "tau_s(p)>tau_1(x)",
+    "superseded_scope": "This gives the minimum only inside the family of CA profiles having exact support x. It is not the full-support R_* optimizer.",
+    "correct_condition": "tau_s(p)>1/(x log x)",
+    "effect": "The report and PASS status use only the corrected full-support optimizer stream. No result from the superseded full run is used."
+  },
+  "prime_power_certificate": {
+    "event_count": 1102,
+    "event_stream_sha256": "3d9bb5ac5f737e8925a372812e36f6f318216c992cba78491c37ec3a5b95bf3f",
+    "identity": "C_pp=(psi-theta)/(x log x)+sum_{p<=x,m>=2,p^m>x}1/(m p^m)"
+  },
+  "combined_stream_identity": {
+    "state": [
+      "A_minus_T=A-T",
+      "H_minus_L=H-(psi-theta)"
+    ],
+    "scaled_buffer": "(A-T)sqrt(x)log(x)+(H-(psi-theta))/sqrt(x)",
+    "prime_insertion": "1/p-log(1+1/p), bounded by exact logarithms for small p and alternating S5/S6 series for large p",
+    "optimizer_transition": "A changes by log(1-p^-s)-log(1-p^(-s-1)); H changes by log p",
+    "prime_power_transition": "A-T changes by 1/(m p^m); H-(psi-theta) changes by -log p"
+  },
+  "series_certificate": {
+    "exact_log_cutoff": 1000,
+    "fixed_scale_decimal_digits": 70,
+    "large_prime_lower_partial_sum": "1/(2p^2)-1/(3p^3)+1/(4p^4)-1/(5p^5)",
+    "large_prime_upper_partial_sum": "lower+1/(6p^6)",
+    "final_large_prime_sum_interval": {
+      "lower": "0.00006347199590872143835898333373786324322785",
+      "upper": "0.00006347199590872616080826599769487631238259"
+    }
+  },
+  "direct_reconstruction_checks": [
+    {
+      "support_prime": 3299,
+      "direct_a_minus_t": {
+        "lower": "0.000817141197728597953947266932553477833182",
+        "upper": "0.000817141197728597953947266932553477880652"
+      },
+      "direct_h_minus_l": {
+        "lower": "29.90194939923030546936457851451864726996",
+        "upper": "29.90194939923030546936457851451864727066"
+      },
+      "direct_scaled_buffer": {
+        "lower": "0.9008355393490793959926133082867542256036",
+        "upper": "0.9008355393490793959926133082867542477052"
+      },
+      "profile_max_exponent": 14,
+      "stream_checkpoint": {
+        "support_prime": 3299,
+        "scaled_buffer": {
+          "lower": "0.9008355393490772050632807184903663651702",
+          "upper": "0.9008355393490793975742999974593288976802"
+        },
+        "lower_margin_over_target": "0.1183355393490772050632807184903663651702",
+        "a_minus_t": {
+          "lower": "0.0008171411977285932454915067519573432469",
+          "upper": "0.0008171411977285979573464189232899721972"
+        },
+        "h_minus_l": {
+          "lower": "29.90194939923030546936457851451864727001",
+          "upper": "29.90194939923030546936457851451864727060"
+        },
+        "active_optimizer_events": 48,
+        "processed_prime_power_events": 37,
+        "classification": "PASS"
+      },
+      "interval_overlap_checks": {
+        "direct_a_minus_t": true,
+        "direct_h_minus_l": true,
+        "direct_scaled_buffer": true
+      }
+    },
+    {
+      "support_prime": 5297,
+      "direct_a_minus_t": {
+        "lower": "0.000592401253535704644209093263673457191234",
+        "upper": "0.000592401253535704644209093263673457263074"
+      },
+      "direct_h_minus_l": {
+        "lower": "37.75879071748701758338385441967908574887",
+        "upper": "37.75879071748701758338385441967908575022"
+      },
+      "direct_scaled_buffer": {
+        "lower": "0.8885125509432696778621742056515624280782",
+        "upper": "0.8885125509432696778621742056515624729316"
+      },
+      "profile_max_exponent": 14,
+      "stream_checkpoint": {
+        "support_prime": 5297,
+        "scaled_buffer": {
+          "lower": "0.8885125509432667333439636817223865706651",
+          "upper": "0.8885125509432696799849033426373744187565"
+        },
+        "lower_margin_over_target": "0.1060125509432667333439636817223865706651",
+        "a_minus_t": {
+          "lower": "0.0005924012535356999260736753760237723224",
+          "upper": "0.0005924012535357046476104386817453596664"
+        },
+        "h_minus_l": {
+          "lower": "37.75879071748701758338385441967908574905",
+          "upper": "37.75879071748701758338385441967908574980"
+        },
+        "active_optimizer_events": 57,
+        "processed_prime_power_events": 43,
+        "classification": "PASS"
+      },
+      "interval_overlap_checks": {
+        "direct_a_minus_t": true,
+        "direct_h_minus_l": true,
+        "direct_scaled_buffer": true
+      }
+    },
+    {
+      "support_prime": 5303,
+      "direct_a_minus_t": {
+        "lower": "0.000577159892779112174629824001063257274975",
+        "upper": "0.000577159892779112174629824001063257346915"
+      },
+      "direct_h_minus_l": {
+        "lower": "38.45193789804696289280108654113726231697",
+        "upper": "38.45193789804696289280108654113726231832"
+      },
+      "direct_scaled_buffer": {
+        "lower": "0.8884770036368027662143936575334537309112",
+        "upper": "0.8884770036368027662143936575334537758582"
+      },
+      "profile_max_exponent": 15,
+      "stream_checkpoint": {
+        "support_prime": 5303,
+        "scaled_buffer": {
+          "lower": "0.8884770036367998196353617515073754762312",
+          "upper": "0.8884770036368027683386058416995776092968"
+        },
+        "lower_margin_over_target": "0.1059770036367998196353617515073754762312",
+        "a_minus_t": {
+          "lower": "0.0005771598927791074564869132330660939295",
+          "upper": "0.0005771598927791121780311706302108030628"
+        },
+        "h_minus_l": {
+          "lower": "38.45193789804696289280108654113726231712",
+          "upper": "38.45193789804696289280108654113726231788"
+        },
+        "active_optimizer_events": 58,
+        "processed_prime_power_events": 43,
+        "classification": "PASS"
+      },
+      "interval_overlap_checks": {
+        "direct_a_minus_t": true,
+        "direct_h_minus_l": true,
+        "direct_scaled_buffer": true
+      }
+    },
+    {
+      "support_prime": 10007,
+      "direct_a_minus_t": {
+        "lower": "0.000385133209571420253832344400737128898513",
+        "upper": "0.000385133209571420253832344400737129024182"
+      },
+      "direct_h_minus_l": {
+        "lower": "51.2598350181469187785720217253697269955",
+        "upper": "51.2598350181469187785720217253697269982"
+      },
+      "direct_scaled_buffer": {
+        "lower": "0.8672909196476605474923573188916535126689",
+        "upper": "0.8672909196476605474923573188916536284926"
+      },
+      "profile_max_exponent": 16,
+      "stream_checkpoint": {
+        "support_prime": 10007,
+        "scaled_buffer": {
+          "lower": "0.8672909196476561992694460834588870677321",
+          "upper": "0.8672909196476605506265581808238578898057"
+        },
+        "lower_margin_over_target": "0.0847909196476561992694460834588870677321",
+        "a_minus_t": {
+          "lower": "0.0003851332095714155348193211563274680263",
+          "upper": "0.0003851332095714202572338109278337452877"
+        },
+        "h_minus_l": {
+          "lower": "51.25983501814691877857202172536972699628",
+          "upper": "51.25983501814691877857202172536972699723"
+        },
+        "active_optimizer_events": 68,
+        "processed_prime_power_events": 51,
+        "classification": "PASS"
+      },
+      "interval_overlap_checks": {
+        "direct_a_minus_t": true,
+        "direct_h_minus_l": true,
+        "direct_scaled_buffer": true
+      }
+    }
+  ],
+  "coverage": {
+    "first_support": 3299,
+    "last_support": 56048351,
+    "prime_count_through_max": 3341013,
+    "prime_stream_sha256_little_endian_uint64": "9438df02de33467c1ed4307c0a801c2c57777e00bb7413b17ce955a117c8b2c9"
+  },
+  "rigor_scope": {
+    "analytic_lemmas_used": [
+      "1/(x log x) is strictly decreasing for x>1",
+      "tau_s(p) is strictly decreasing in p and in s",
+      "events with p>sqrt(2*max_prime) are inactive: p^2>2X and log(p)>log(X)/2 imply p^2 log(p)>X log(X), hence tau_s(p)<=tau_2(p)<1/(p^2 log(p))<1/(X log(X)); the control is still larger for every x<X",
+      "the alternating logarithm terms decrease for 0<1/p<1, so S5 is a lower bound and S6 is an upper bound"
+    ],
+    "computational_assumptions": [
+      "CPython Decimal ln and sqrt obey their documented correct-rounding semantics; one ulp is added on both sides",
+      "directed Decimal arithmetic has the requested IEEE rounding mode",
+      "the deterministic Eratosthenes sieve implementation is correct",
+      "Python arbitrary-precision integer arithmetic is exact"
+    ],
+    "formalization_gap": "This is an executable interval certificate, not a proof-assistant formalization. The four elementary analytic lemmas and the runtime semantics above remain trusted inputs."
+  },
+  "parameters": {
+    "min_prime": 3299,
+    "max_prime": 56048351,
+    "target": "0.7825",
+    "precision": 40,
+    "series_cutoff": 1000,
+    "fixed_scale_digits": 70,
+    "direct_check_primes": [
+      5297,
+      5303,
+      10007
+    ]
+  },
+  "timing_seconds": {
+    "sieve": 1.7765378999974928,
+    "event_construction": 1.2267261999986658,
+    "support_scan": 248.87820060000013,
+    "total_before_report_serialization": 252.05770940000002
+  },
+  "runtime_environment": {
+    "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "decimal_module": "C:\\Users\\robop\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\decimal.py",
+    "libmpdec_version": "4.0.0",
+    "argv": [
+      "current_support/robin_mvdc_status_support/test_ca_exact_buffer_interval_certifier.py",
+      "--min-prime",
+      "3299",
+      "--max-prime",
+      "56048351",
+      "--target",
+      "0.7825",
+      "--precision",
+      "40",
+      "--series-cutoff",
+      "1000",
+      "--fixed-scale-digits",
+      "70",
+      "--direct-check-primes",
+      "5297,5303,10007",
+      "--progress-every",
+      "500000",
+      "--report",
+      "current_support/robin_mvdc_status_support/ca_exact_buffer_interval_certificate_report.json"
+    ],
+    "certifier_script_sha256": "add8f04a2e02b606491c1bdf6aab4fcb23f5d10e2db202326fded0c5035d5ef2"
+  }
+}

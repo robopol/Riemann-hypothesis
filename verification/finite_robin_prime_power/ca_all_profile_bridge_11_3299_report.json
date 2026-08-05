@@ -1,0 +1,794 @@
+{
+  "certificate_status": "PASS",
+  "claim_certified": "For every prime support x in the configured inclusive range, the exact logarithmic Robin gap G(n)=gamma+log(log(log(n)))-log(sigma(n)/n) is positive for every CA exponent profile compatible with exact support x, including both exponent choices at every higher-layer transition tie.",
+  "method": {
+    "ca_profile_partition": "The CA objective is additive over prime exponents.  Adding the s-th factor of p has gain log((1-p^(-s-1))/(1-p^(-s)))-epsilon*log(p), so its threshold is tau_s(p).  The sweep adds first layers at consecutive prime-support boundaries and all strictly interlaced higher-layer events in decreasing threshold order.  Each event's pre- and post-state are the two CA profiles at the exact tie.",
+    "tie_completeness": "Interval comparisons certify that every active higher event lies strictly inside one support interval, that adjacent active events are distinct, and hence every tie group has size one in this run. At a first-layer boundary, exact support forces the old next prime to be absent and the new support prime to be present; both forced states are evaluated by the adjacent sweep rows.",
+    "higher_event_exhaustion": "For fixed p, tau_s decreases with s because the exact gain ratio is 1+(p-1)/(p*(p^s-1)).  For s>=2 and p beyond the search limit, tau_s(p)<=tau_2(p)<1/(p*(p+1)*log(p)); the reported outward interval upper bound is below the global lower epsilon boundary.",
+    "gap_arithmetic": "log(n) and log(sigma(n)/n) are maintained incrementally with separate outward-rounded Decimal intervals.  After a direct Decimal initialization, log(log(n)) and G are updated exactly through two positive log1p increments.  Each log1p is enclosed by the explicit alternating-series parity bracket S_(2m)<=log1p<=S_(2m+1), using m=1 for z<=1e-5 and m=2 otherwise.  The lower endpoint of the streamed G interval is checked at every numerical profile."
+  },
+  "soundness_notes": [
+    "CPython Decimal ln and sqrt are correctly rounded under ROUND_HALF_EVEN; one ulp is subtracted/added after every transcendental call.",
+    "All rational operations and accumulated sums use directed ROUND_FLOOR/ROUND_CEILING contexts.",
+    "Euler's constant is enclosed using 1/(2N+1)<H_N-log(N)-gamma<1/(2N).",
+    "For primes above the series cutoff, z-z^2/2<=log(1+z)<=z-z^2/2+z^3/3 with z=1/p.",
+    "Every streamed log1p argument is checked to lie in [0,1), and an explicit consecutive even/odd partial-sum remainder bracket is applied."
+  ],
+  "configuration": {
+    "min_support_prime": 11,
+    "max_support_prime": 3299,
+    "next_prime_after_max_support": 3301,
+    "precision_decimal_digits": 44,
+    "gamma_harmonic_terms": 200000,
+    "large_prime_series_cutoff": 20000,
+    "higher_prime_search_limit": 3000,
+    "summary_block_size": 250000,
+    "sieve_limit": 4299,
+    "endpoint_crosscheck_report": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\ca_endpoint_interval_certificate_report.json"
+  },
+  "runtime_environment": {
+    "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "decimal_module_version": "1.70",
+    "libmpdec_version": "4.0.0",
+    "argv": [
+      "current_support/robin_mvdc_status_support/test_ca_all_profile_interval_certificate.py",
+      "--min-support",
+      "11",
+      "--max-support",
+      "3299",
+      "--precision",
+      "44",
+      "--higher-search-limit",
+      "3000",
+      "--sieve-padding",
+      "1000",
+      "--progress-every",
+      "0",
+      "--report",
+      "current_support/robin_mvdc_status_support/ca_all_profile_bridge_11_3299_report.json"
+    ],
+    "script_sha256": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077"
+  },
+  "euler_gamma_interval": {
+    "lower": "0.577215664899449527273183965082402368944434",
+    "upper": "0.57721566490569951164822302748474636327328565"
+  },
+  "higher_transition_coverage": {
+    "global_upper_tau1_min_support": {
+      "lower": "0.036286562627101941014640249293279751307208580",
+      "upper": "0.036286562627101941014640249293279751307208623"
+    },
+    "global_lower_tau1_next_after_max_support": {
+      "lower": "0.000037385009530999447467178776482864830281990026",
+      "upper": "0.000037385009530999447467178776482864830282002369"
+    },
+    "higher_prime_search_limit": 3000,
+    "primes_examined_for_higher_layers": 430,
+    "largest_layer_examined_including_first_below_range": 15,
+    "certified_layer_stop_count": 430,
+    "tail_tau_upper_bound": {
+      "lower": "1.3873218469813255356899150592945900160819021E-8",
+      "upper": "1.3873218469813255356899150592945900160819022E-8"
+    },
+    "all_higher_events_beyond_search_limit_excluded": true
+  },
+  "classification": {
+    "status": "PASS",
+    "initial_higher_events_strictly_above_range": 4,
+    "active_higher_transition_ties": 44,
+    "unresolved_transition_relations": [],
+    "simultaneous_higher_tie_groups": 0,
+    "every_active_tie_has_two_positive_branches": true,
+    "higher_event_stream_sha256": "20035953bf9caf76263c0efbf8494b1f5ce7885f5c6438eb7c35e4fe92804346",
+    "higher_event_structure_sha256": "20ab1754644919ea8fb9c6f76db0895c8ffa9801ca8a2beb1da7f4a02dc9402b"
+  },
+  "profile_coverage": {
+    "prime_support_count": 459,
+    "evaluated_distinct_numerical_profile_count": 503,
+    "expected_count_supports_plus_higher_events": 503,
+    "count_identity_pass": true,
+    "positive_profile_count": 503,
+    "nonpositive_or_unresolved_profile_count": 0,
+    "higher_transition_tie_branch_incidence_count": 88,
+    "first_layer_internal_boundary_count": 458
+  },
+  "global_uniform_lower_bound": {
+    "support_prime": 3271,
+    "support_prime_index_zero_based": 461,
+    "profile_kind": "after_forced_first_layer",
+    "triggering_higher_event": null,
+    "gap_lower": "0.0017778846593017166388711029874594038474678295",
+    "streamed_gap_interval_at_minimum_lower_bound_profile": {
+      "lower": "0.0017778846593017166388711029874594038474678295",
+      "upper": "0.0019228637381958147642064344180299480959674466"
+    },
+    "direct_decimal_gap_interval_at_same_profile": {
+      "lower": "0.0018604221749320390389586654190665906317989",
+      "upper": "0.0018604221811820234139977278214105849607534"
+    },
+    "streamed_scaled_gap_interval_sqrt_x_log_x": {
+      "lower": "0.82289685149644657863071564128229206136538649",
+      "upper": "0.89000065765767739144635768901103943906590353"
+    },
+    "direct_scaled_gap_interval_sqrt_x_log_x": {
+      "lower": "0.86109947695203001793956438538769122422154436",
+      "upper": "0.86109947984484561045479302087890333925156779"
+    }
+  },
+  "interval_width_audit": {
+    "status": "PASS",
+    "criterion": "The maximum streamed G interval width over every evaluated support/event profile is strictly smaller than the certified global positive lower bound.",
+    "maximum_widths_over_all_evaluated_profiles": {
+      "log_n": {
+        "width": "3.28E-38",
+        "support_prime": 3299,
+        "profile_kind": "after_forced_first_layer",
+        "triggering_higher_event": null
+      },
+      "log_sigma_over_n": {
+        "width": "1.016E-40",
+        "support_prime": 3299,
+        "profile_kind": "after_forced_first_layer",
+        "triggering_higher_event": null
+      },
+      "log_log_n": {
+        "width": "0.0002155225713568922129083085651163463840859",
+        "support_prime": 3299,
+        "profile_kind": "after_forced_first_layer",
+        "triggering_higher_event": null
+      },
+      "gap": {
+        "width": "0.0001449871623129092377808318044856829052510618",
+        "support_prime": 3299,
+        "profile_kind": "after_forced_first_layer",
+        "triggering_higher_event": null
+      }
+    },
+    "maximum_gap_width": "0.0001449871623129092377808318044856829052510618",
+    "global_positive_lower_bound": "0.0017778846593017166388711029874594038474678295",
+    "streamed_log1p_even_order_call_counts": {
+      "2": 0,
+      "4": 1004
+    }
+  },
+  "current_support_checkpoints": {
+    "status": "PASS",
+    "range_starts_at_exact_prime": 3329267,
+    "existing_endpoint_certificate_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\ca_endpoint_interval_certificate_report.json",
+    "existing_endpoint_certificate_available": true,
+    "existing_endpoint_certificate_sha256": "f7f15b8bae55424ed5b0838b23a79a0ab8a55e53e27aebb983cf42c381e8900f",
+    "rows": []
+  },
+  "support_block_summaries": [
+    {
+      "first_support_prime": 11,
+      "last_support_prime": 3299,
+      "support_count": 459,
+      "minimum_profile_gap_lower": "0.0017778846593017166388711029874594038474678295",
+      "minimum_at_support_prime": 3271,
+      "minimum_profile_kind": "after_forced_first_layer",
+      "minimum_triggering_higher_event": null
+    }
+  ],
+  "higher_transition_ties": [
+    {
+      "support_prime": 13,
+      "event_prime": 2,
+      "event_layer": 5,
+      "event_tau_interval": {
+        "lower": "0.023083613113041261543323605951909402611633026",
+        "upper": "0.023083613113041261543323605951909402611633172"
+      },
+      "tie_branch_exponent_before": 4,
+      "tie_branch_exponent_after": 5,
+      "gap_lower_before_branch": "0.027271703050824861852932004248164896012693913",
+      "gap_lower_after_branch": "0.030348890906290580320247869175893677421367387",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 13,
+      "event_prime": 3,
+      "event_layer": 3,
+      "event_tau_interval": {
+        "lower": "0.023045261959506785116019343462394463344922673",
+        "upper": "0.023045261959506785116019343462394463344922769"
+      },
+      "tie_branch_exponent_before": 2,
+      "tie_branch_exponent_after": 3,
+      "gap_lower_before_branch": "0.030348890906290580320247869175893677421367387",
+      "gap_lower_after_branch": "0.032778545563638019086517089039539185718724886",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 13,
+      "event_prime": 5,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.020373462417944298337358615060597215481672226",
+        "upper": "0.020373462417944298337358615060597215481672291"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.032778545563638019086517089039539185718724886",
+      "gap_lower_after_branch": "0.036058881452221467998535519056897591694668305",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 23,
+      "event_prime": 2,
+      "event_layer": 6,
+      "event_tau_interval": {
+        "lower": "0.011404763272249382930556687174238943520909194",
+        "upper": "0.011404763272249382930556687174238943520909338"
+      },
+      "tie_branch_exponent_before": 5,
+      "tie_branch_exponent_after": 6,
+      "gap_lower_before_branch": "0.024727369174981918178708978483812432125490300",
+      "gap_lower_after_branch": "0.024944552176126961154468914852587027195445596",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 31,
+      "event_prime": 7,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.0090957833320277318768467603398648457458268275",
+        "upper": "0.0090957833320277318768467603398648457458268805"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.026691897981990921263194491932528633295912565",
+      "gap_lower_after_branch": "0.025064829708881399416516301088008912456628865",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 31,
+      "event_prime": 3,
+      "event_layer": 4,
+      "event_tau_interval": {
+        "lower": "0.0075538958559766836023390787569348878792337321",
+        "upper": "0.0075538958559766836023390787569348878792338240"
+      },
+      "tie_branch_exponent_before": 3,
+      "tie_branch_exponent_after": 4,
+      "gap_lower_before_branch": "0.025064829708881399416516301088008912456628865",
+      "gap_lower_after_branch": "0.025346252826429884659483004225778886421221950",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 43,
+      "event_prime": 2,
+      "event_layer": 7,
+      "event_tau_interval": {
+        "lower": "0.0056687500866920842981204919459082689543484303",
+        "upper": "0.0056687500866920842981204919459082689543485745"
+      },
+      "tie_branch_exponent_before": 6,
+      "tie_branch_exponent_after": 7,
+      "gap_lower_before_branch": "0.023071915696540867269520398175782421290398050",
+      "gap_lower_after_branch": "0.022895221463196711181547213566577227967182397",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 59,
+      "event_prime": 5,
+      "event_layer": 3,
+      "event_tau_interval": {
+        "lower": "0.0039957368225310420684351882335204194794716378",
+        "upper": "0.0039957368225310420684351882335204194794717003"
+      },
+      "tie_branch_exponent_before": 2,
+      "tie_branch_exponent_after": 3,
+      "gap_lower_before_branch": "0.021811745836848633197467223836094889897422667",
+      "gap_lower_after_branch": "0.021822747528761122823975134202184487963155132",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 73,
+      "event_prime": 11,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.0031474292146942837994782894544174722957393601",
+        "upper": "0.0031474292146942837994782894544174722957394019"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.020203870170648099143298348427250101412921285",
+      "gap_lower_after_branch": "0.019529625599653736172010936915522611449280010",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 79,
+      "event_prime": 2,
+      "event_layer": 8,
+      "event_tau_interval": {
+        "lower": "0.0028260440787633997278621011440612382895032832",
+        "upper": "0.0028260440787633997278621011440612382895034276"
+      },
+      "tie_branch_exponent_before": 7,
+      "tie_branch_exponent_after": 8,
+      "gap_lower_before_branch": "0.018854200834762562752304176869045625198358630",
+      "gap_lower_after_branch": "0.018714867122393816525465250313308150630968715",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 83,
+      "event_prime": 3,
+      "event_layer": 5,
+      "event_tau_interval": {
+        "lower": "0.0025040984888536655486241135486500754414861234",
+        "upper": "0.0025040984888536655486241135486500754414862149"
+      },
+      "tie_branch_exponent_before": 4,
+      "tie_branch_exponent_after": 5,
+      "gap_lower_before_branch": "0.017931140636407040559312846197394971607132533",
+      "gap_lower_after_branch": "0.017859189826283415887239597564652625243830007",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 97,
+      "event_prime": 13,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.0021362861409663360607958119501986779194101206",
+        "upper": "0.0021362861409663360607958119501986779194101597"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.017133046620527691814378444698989632406699005",
+      "gap_lower_after_branch": "0.017102755368410466338504808093187644578018404",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 139,
+      "event_prime": 2,
+      "event_layer": 9,
+      "event_tau_interval": {
+        "lower": "0.0014109488077073091532391044574916140866517761",
+        "upper": "0.0014109488077073091532391044574916140866519204"
+      },
+      "tie_branch_exponent_before": 8,
+      "tie_branch_exponent_after": 9,
+      "gap_lower_before_branch": "0.012839423089121443208265805613467290563603781",
+      "gap_lower_after_branch": "0.012811218157372432670277617184525036440387570",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 151,
+      "event_prime": 7,
+      "event_layer": 3,
+      "event_tau_interval": {
+        "lower": "0.0012863544698267452448332849525629212873049991",
+        "upper": "0.0012863544698267452448332849525629212873050506"
+      },
+      "tie_branch_exponent_before": 2,
+      "tie_branch_exponent_after": 3,
+      "gap_lower_before_branch": "0.012679896700275947126287375137585941328413505",
+      "gap_lower_after_branch": "0.012614963903083593336433439900515307254561985",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 167,
+      "event_prime": 17,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.0011515707568090729517358781533406936669332390",
+        "upper": "0.0011515707568090729517358781533406936669332745"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.012147874372196519806456980351975910219404389",
+      "gap_lower_after_branch": "0.012012213338418816337029931154777564424689635",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 199,
+      "event_prime": 19,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00089257153055809718728016649692335809221786295",
+        "upper": "0.00089257153055809718728016649692335809221789698"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.010445026929586483085283194667953491727526529",
+      "gap_lower_after_branch": "0.010368590113686905620482146559573903502506560",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 211,
+      "event_prime": 3,
+      "event_layer": 6,
+      "event_tau_interval": {
+        "lower": "0.00083317097499237117087626916391060463522278249",
+        "upper": "0.00083317097499237117087626916391060463522287360"
+      },
+      "tie_branch_exponent_before": 5,
+      "tie_branch_exponent_after": 6,
+      "gap_lower_before_branch": "0.010174653930586068630030097740107245398815301",
+      "gap_lower_after_branch": "0.010174044074574739085099874254350615658351825",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 229,
+      "event_prime": 5,
+      "event_layer": 4,
+      "event_tau_interval": {
+        "lower": "0.00079607305516422362988644163416797682743462467",
+        "upper": "0.00079607305516422362988644163416797682743468691"
+      },
+      "tie_branch_exponent_before": 3,
+      "tie_branch_exponent_after": 4,
+      "gap_lower_before_branch": "0.0098960794549233881472141888510545807137991258",
+      "gap_lower_after_branch": "0.0098391785449188461435526819606738091383443671",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 251,
+      "event_prime": 2,
+      "event_layer": 10,
+      "event_tau_interval": {
+        "lower": "0.00070495727808198079920280005358075532485402420",
+        "upper": "0.00070495727808198079920280005358075532485416846"
+      },
+      "tie_branch_exponent_before": 9,
+      "tie_branch_exponent_after": 10,
+      "gap_lower_before_branch": "0.0090469542116524393730922333597941227305884126",
+      "gap_lower_after_branch": "0.0090313724663640882476923924189569057768158376",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 293,
+      "event_prime": 23,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00057724719632536134997113281855807328380314259",
+        "upper": "0.00057724719632536134997113281855807328380317453"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0077304235575670081561509726498285386987079510",
+      "gap_lower_after_branch": "0.0076850772051326761655924950436026675308062169",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 461,
+      "event_prime": 2,
+      "event_layer": 11,
+      "event_tau_interval": {
+        "lower": "0.00035234950496035135815089897080408931700072666",
+        "upper": "0.00035234950496035135815089897080408931700087095"
+      },
+      "tie_branch_exponent_before": 10,
+      "tie_branch_exponent_after": 11,
+      "gap_lower_before_branch": "0.0063159730630218803781227364591092382936534434",
+      "gap_lower_after_branch": "0.0063101538822652797082531943862452813391815068",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 467,
+      "event_prime": 29,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00034115363243211320753167051801753113350165569",
+        "upper": "0.00034115363243211320753167051801753113350168542"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0061725660688653829906682248178576496558435480",
+      "gap_lower_after_branch": "0.0061424975217226935141605992991105352847265961",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 541,
+      "event_prime": 31,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00029340725526985794094839995508302074860324399",
+        "upper": "0.00029340725526985794094839995508302074860327316"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0057447193795520001729959056075972170458463147",
+      "gap_lower_after_branch": "0.0057352240836782006193378233794103167901131764",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 547,
+      "event_prime": 11,
+      "event_layer": 3,
+      "event_tau_interval": {
+        "lower": "0.00028495552282195714101150699631098436851198541",
+        "upper": "0.00028495552282195714101150699631098436851202713"
+      },
+      "tie_branch_exponent_before": 2,
+      "tie_branch_exponent_after": 3,
+      "gap_lower_before_branch": "0.0057223417421195743866900428785690980075245013",
+      "gap_lower_after_branch": "0.0057225843894761043277443421789696655131397092",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 563,
+      "event_prime": 3,
+      "event_layer": 7,
+      "event_tau_interval": {
+        "lower": "0.00027755427159005832670568004281313797505280537",
+        "upper": "0.00027755427159005832670568004281313797505289645"
+      },
+      "tie_branch_exponent_before": 6,
+      "tie_branch_exponent_after": 7,
+      "gap_lower_before_branch": "0.0057062248363110444891215505592692843796672603",
+      "gap_lower_after_branch": "0.0057053141350089647337841239066844296109051657",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 761,
+      "event_prime": 37,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00019689861718794882259843508998412869469341067",
+        "upper": "0.00019689861718794882259843508998412869469343838"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0047369868173742745055847861476525879418829102",
+      "gap_lower_after_branch": "0.0047216133030279143047902210426697681523879507",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 811,
+      "event_prime": 7,
+      "event_layer": 4,
+      "event_tau_interval": {
+        "lower": "0.00018350235594720775165204666429153888798775261",
+        "upper": "0.00018350235594720775165204666429153888798780402"
+      },
+      "tie_branch_exponent_before": 3,
+      "tie_branch_exponent_after": 4,
+      "gap_lower_before_branch": "0.0046118175024825612846097263180782368811563929",
+      "gap_lower_after_branch": "0.0046072526994646385671546567550311787229554635",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 839,
+      "event_prime": 2,
+      "event_layer": 12,
+      "event_tau_interval": {
+        "lower": "0.00017614248735499732615096227312882981819277989",
+        "upper": "0.00017614248735499732615096227312882981819292419"
+      },
+      "tie_branch_exponent_before": 11,
+      "tie_branch_exponent_after": 12,
+      "gap_lower_before_branch": "0.0045095213728946495982960715634970297463235360",
+      "gap_lower_after_branch": "0.0045071415522298167899207919390211910624827342",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 887,
+      "event_prime": 13,
+      "event_layer": 3,
+      "event_tau_interval": {
+        "lower": "0.00016384587139709429408773359595748060763194139",
+        "upper": "0.00016384587139709429408773359595748060763198039"
+      },
+      "tie_branch_exponent_before": 2,
+      "tie_branch_exponent_after": 3,
+      "gap_lower_before_branch": "0.0043384347946479788212223432354322002797666960",
+      "gap_lower_after_branch": "0.0043302627103540981614356820966218121551689237",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 919,
+      "event_prime": 5,
+      "event_layer": 5,
+      "event_tau_interval": {
+        "lower": "0.00015909228983593200423400298574181292878032168",
+        "upper": "0.00015909228983593200423400298574181292878038384"
+      },
+      "tie_branch_exponent_before": 4,
+      "tie_branch_exponent_after": 5,
+      "gap_lower_before_branch": "0.0042821891802692878604995944534915522873814252",
+      "gap_lower_after_branch": "0.0042775846345314341775000773451852039741521782",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 929,
+      "event_prime": 41,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00015633237482011092142942697231494659414288007",
+        "upper": "0.00015633237482011092142942697231494659414290701"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0042639494450334059538802799403858836492254774",
+      "gap_lower_after_branch": "0.0042568993343795371496148747185508416300290324",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 1021,
+      "event_prime": 43,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00014048749900185128928126012167502676377491327",
+        "upper": "0.00014048749900185128928126012167502676377493986"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0040231005488311006955715185613066720258352906",
+      "gap_lower_after_branch": "0.0040122851292859163655860747435194552617999497",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 1217,
+      "event_prime": 47,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.00011510317147045065690910486465711121087809427",
+        "upper": "0.00011510317147045065690910486465711121087812025"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0034354936716253881271986330404202168294221096",
+      "gap_lower_after_branch": "0.0034288217163075260989205903751749006091221792",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 1471,
+      "event_prime": 3,
+      "event_layer": 8,
+      "event_tau_interval": {
+        "lower": "0.000092499286358432880056746125109876569607261212",
+        "upper": "0.000092499286358432880056746125109876569607352263"
+      },
+      "tie_branch_exponent_before": 7,
+      "tie_branch_exponent_after": 8,
+      "gap_lower_before_branch": "0.0030608816710511541831396576095407865173174620",
+      "gap_lower_after_branch": "0.0030604880436852770297099988777299291996972971",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 1543,
+      "event_prime": 2,
+      "event_layer": 13,
+      "event_tau_interval": {
+        "lower": "0.000088063179693997675154225570909144937558202476",
+        "upper": "0.000088063179693997675154225570909144937558346743"
+      },
+      "tie_branch_exponent_before": 12,
+      "tie_branch_exponent_after": 13,
+      "gap_lower_before_branch": "0.0029684221570692695302698228699940497410724472",
+      "gap_lower_after_branch": "0.0029678144228700479292838572460959663663004855",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 1543,
+      "event_prime": 53,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.000087989747183673144397587664832747507184696558",
+        "upper": "0.000087989747183673144397587664832747507184721748"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0029678144228700479292838572460959663663004855",
+      "gap_lower_after_branch": "0.0029640383053856808885166324654242804468126641",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 1907,
+      "event_prime": 59,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.000069268765270504390941128696698944564309929126",
+        "upper": "0.000069268765270504390941128696698944564309953653"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0024851853664230708507819666276551868988611617",
+      "gap_lower_after_branch": "0.0024817904458886096363456382881189764326350088",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 1951,
+      "event_prime": 17,
+      "event_layer": 3,
+      "event_tau_interval": {
+        "lower": "0.000067622593149613544904197969545626397657788555",
+        "upper": "0.000067622593149613544904197969545626397657823856"
+      },
+      "tie_branch_exponent_before": 2,
+      "tie_branch_exponent_after": 3,
+      "gap_lower_before_branch": "0.0024571651162763086853422810843331134721918017",
+      "gap_lower_after_branch": "0.0024548816482054868006121627649193141182801543",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 2039,
+      "event_prime": 61,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.000064311244606774343382576397757898705486902469",
+        "upper": "0.000064311244606774343382576397757898705486926797"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0024062451813255281191886189465857827116384924",
+      "gap_lower_after_branch": "0.0024023508740229520992668309454214272802512139",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 2447,
+      "event_prime": 67,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.000052195657727193791430560335973110904649167300",
+        "upper": "0.000052195657727193791430560335973110904649191087"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0021442835922063145313606477562971725629946312",
+      "gap_lower_after_branch": "0.0021409179913822286870906557273144513477950657",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 2693,
+      "event_prime": 19,
+      "event_layer": 3,
+      "event_tau_interval": {
+        "lower": "0.000046912531588523402879281690651412576640333157",
+        "upper": "0.000046912531588523402879281690651412576640367127"
+      },
+      "tie_branch_exponent_before": 2,
+      "tie_branch_exponent_after": 3,
+      "gap_lower_before_branch": "0.0020771117063689160445081420009894111465541939",
+      "gap_lower_after_branch": "0.0020758728411169931875165019819097570110112588",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 2749,
+      "event_prime": 71,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.000045886397353458212074189498997908937569354791",
+        "upper": "0.000045886397353458212074189498997908937569378254"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0020296555502417287051341888315135294119322231",
+      "gap_lower_after_branch": "0.0020262733732543263307181945451549753439131783",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 2851,
+      "event_prime": 2,
+      "event_layer": 14,
+      "event_tau_interval": {
+        "lower": "0.000044029574138249173109724160734530339921795803",
+        "upper": "0.000044029574138249173109724160734530339921940074"
+      },
+      "tie_branch_exponent_before": 13,
+      "tie_branch_exponent_after": 14,
+      "gap_lower_before_branch": "0.0019472849993509462758031164712130081974602764",
+      "gap_lower_after_branch": "0.0019467428933894809434430489254205850030320752",
+      "both_tie_branches_certified_positive": true
+    },
+    {
+      "support_prime": 2903,
+      "event_prime": 73,
+      "event_layer": 2,
+      "event_tau_interval": {
+        "lower": "0.000043142114275608427733145579917159831669876059",
+        "upper": "0.000043142114275608427733145579917159831669899369"
+      },
+      "tie_branch_exponent_before": 1,
+      "tie_branch_exponent_after": 2,
+      "gap_lower_before_branch": "0.0019119554884899303780793892541975279724529399",
+      "gap_lower_after_branch": "0.0019088528395444613045694209018290970660397822",
+      "both_tie_branches_certified_positive": true
+    }
+  ],
+  "failure_examples": [],
+  "prime_stream_sha256_little_endian_uint64_through_max_support": "a49ee2be94f3237057467fe5206d693ae505233ea1cc4d51645ddeb46affffd7",
+  "timing_seconds": "0.45572700000047917"
+}

@@ -1,0 +1,54 @@
+{
+  "certificate_status": "PASS",
+  "claim_certified": "For every integer n in the configured inclusive range, the strict logarithmic Robin gap gamma+log(log(log(n)))-log(sigma(n)/n) is positive.",
+  "configuration": {
+    "start": 5041,
+    "end": 55440,
+    "precision_decimal_digits": 44,
+    "gamma_harmonic_terms": 200000
+  },
+  "method": {
+    "sigma_values": "Exact Python integers from a divisor-sum sieve, independently cross-checked by SPF factorization and prime-power geometric sums.",
+    "strict_gap": "For n>e^e, positivity of gamma+log(log(log(n)))-log(sigma(n)/n) is exactly equivalent to sigma(n)<exp(gamma)*n*log(log(n)).",
+    "directed_arithmetic": "Every arithmetic operation is outward-rounded. Decimal ln is evaluated in the ROUND_HALF_EVEN context and padded by one ulp on each side. Euler's constant is enclosed from harmonic-number inequalities."
+  },
+  "coverage": {
+    "integer_count": 50400,
+    "positive_gap_count": 50400,
+    "exact_sigma_crosscheck_count": 50400,
+    "failure_count": 0
+  },
+  "euler_gamma_interval": {
+    "lower": "0.577215664899449527273183965082402368944434",
+    "upper": "0.57721566490569951164822302748474636327328565"
+  },
+  "minimum_gap": {
+    "n": 10080,
+    "sigma_n": 39312,
+    "factorization": "2^5 3^2 5^1 7^1",
+    "gap_interval": {
+      "lower": "0.0142829048176893415566571677337979398782215",
+      "upper": "0.0142829048239393259316962301361419342070735"
+    }
+  },
+  "interval_width_audit": {
+    "maximum_gap_interval_width": "6.2499843750390624023439943288523E-12",
+    "maximum_width_at_n": 22272,
+    "maximum_width_is_below_uniform_positive_lower_bound": true
+  },
+  "failure_examples": [],
+  "runtime_environment": {
+    "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "python_implementation": "CPython",
+    "decimal_module_version": "1.70",
+    "libmpdec_version": "4.0.0",
+    "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_robin_base_5041_55440_interval.py",
+    "script_sha256": "ee296aa4a9e57e576da69a114e5983d9dad172d89e35d1498c83a1cff211c1aa",
+    "interval_backend_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_all_profile_interval_certificate.py",
+    "interval_backend_sha256": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+    "argv": [
+      "current_support/robin_mvdc_status_support/test_robin_base_5041_55440_interval.py"
+    ]
+  },
+  "timing_seconds": "13.084398099999817"
+}

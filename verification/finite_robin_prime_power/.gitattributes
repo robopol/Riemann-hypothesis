@@ -1,0 +1,7 @@
+# Keep archived textual certificate inputs byte-stable across platforms.
+.gitattributes text eol=lf
+*.py text eol=lf
+*.json -text diff
+*.csv text eol=lf
+*.md text eol=lf
+*.txt text eol=lf

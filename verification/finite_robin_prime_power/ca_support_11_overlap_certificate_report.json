@@ -1,0 +1,125 @@
+{
+  "certificate_status": "PASS",
+  "claim_certified": "At the first-layer CA threshold tau_1(11), the old profile is 5040 and exact support 11 forces the new profile 2^4*3^2*5*7*11=55440. Thus the support-11 CA bridge overlaps the direct integer base at 55440.",
+  "support_11_boundary_tau_interval": {
+    "lower": "0.0362865626271019410146402492932797513072086175962093359149989",
+    "upper": "0.0362865626271019410146402492932797513072086175962093359150032"
+  },
+  "support_13_boundary_tau_interval": {
+    "lower": "0.0288925673866187359664395792403466016072959773987624394037686",
+    "upper": "0.0288925673866187359664395792403466016072959773987624394037726"
+  },
+  "support_13_boundary_is_strictly_lower": true,
+  "higher_layer_comparisons": [
+    {
+      "prime": 2,
+      "layer": 2,
+      "tau_interval": {
+        "lower": "0.222392421336447925988230373284014299881212218273659723221528",
+        "upper": "0.222392421336447925988230373284014299881212218273659723221546"
+      },
+      "relation": "strictly_above_support_11_boundary"
+    },
+    {
+      "prime": 2,
+      "layer": 3,
+      "tau_interval": {
+        "lower": "0.0995356735509144218820890562053758759836191747509208888332055",
+        "upper": "0.0995356735509144218820890562053758759836191747509208888332196"
+      },
+      "relation": "strictly_above_support_11_boundary"
+    },
+    {
+      "prime": 2,
+      "layer": 4,
+      "tau_interval": {
+        "lower": "0.0473057147783566794820652257383477389243765208793189963567847",
+        "upper": "0.0473057147783566794820652257383477389243765208793189963567993"
+      },
+      "relation": "strictly_above_support_11_boundary"
+    },
+    {
+      "prime": 2,
+      "layer": 5,
+      "tau_interval": {
+        "lower": "0.0230836131130412615433236059519094026116331197547222357214917",
+        "upper": "0.0230836131130412615433236059519094026116331197547222357215063"
+      },
+      "relation": "strictly_below_support_11_boundary"
+    },
+    {
+      "prime": 3,
+      "layer": 2,
+      "tau_interval": {
+        "lower": "0.0728580123298778191805481785590067872625953064610704906979110",
+        "upper": "0.0728580123298778191805481785590067872625953064610704906979210"
+      },
+      "relation": "strictly_above_support_11_boundary"
+    },
+    {
+      "prime": 3,
+      "layer": 3,
+      "tau_interval": {
+        "lower": "0.0230452619595067851160193434623944633449227003368596262256299",
+        "upper": "0.0230452619595067851160193434623944633449227003368596262256394"
+      },
+      "relation": "strictly_below_support_11_boundary"
+    },
+    {
+      "prime": 5,
+      "layer": 2,
+      "tau_interval": {
+        "lower": "0.0203734624179442983373586150605972154816722485949864026306469",
+        "upper": "0.0203734624179442983373586150605972154816722485949864026306534"
+      },
+      "relation": "strictly_below_support_11_boundary"
+    },
+    {
+      "prime": 7,
+      "layer": 2,
+      "tau_interval": {
+        "lower": "0.00909578333202773187684676033986484574582685024948722653115966",
+        "upper": "0.00909578333202773187684676033986484574582685024948722653116490"
+      },
+      "relation": "strictly_below_support_11_boundary"
+    }
+  ],
+  "unresolved_comparisons": [],
+  "old_tie_profile": {
+    "integer": 5040,
+    "factorization": "2^4 3^2 5^1 7^1",
+    "largest_prime_factor": 7
+  },
+  "forced_exact_support_11_profile": {
+    "integer": 55440,
+    "factorization": "2^4 3^2 5^1 7^1 11^1",
+    "largest_prime_factor": 11,
+    "exponents": {
+      "2": 4,
+      "3": 2,
+      "5": 1,
+      "7": 1,
+      "11": 1
+    }
+  },
+  "method": [
+    "The CA objective is additive over prime-exponent layers; layer s of p is active above its threshold tau_s(p).",
+    "Every displayed higher-layer threshold is interval-separated from tau_1(11).",
+    "At the first-layer tie, the old profile excludes 11 and the exact-support-11 profile includes it. No numerical ordering assumption is used at the tie.",
+    "The first-layer threshold tau_1(p) decreases with p, and tau_1(13)<tau_1(11), so primes above 11 are absent on the support-11 side."
+  ],
+  "runtime_environment": {
+    "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "python_implementation": "CPython",
+    "decimal_module_version": "1.70",
+    "libmpdec_version": "4.0.0",
+    "precision_decimal_digits": 60,
+    "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_support_11_overlap_certificate.py",
+    "script_sha256": "660420eba61fa0ad61df16ed6117dfd76ac84adb78cff2892c44e0b500de29a9",
+    "interval_backend_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_all_profile_interval_certificate.py",
+    "interval_backend_sha256": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+    "argv": [
+      "current_support/robin_mvdc_status_support/test_ca_support_11_overlap_certificate.py"
+    ]
+  }
+}
