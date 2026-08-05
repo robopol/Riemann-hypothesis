@@ -1,0 +1,412 @@
+{
+  "certificate_status": "PASS",
+  "claim_certified_with_stated_external_theorems": "Robin's inequality holds for every integer n with 5041 <= n <= 10^71000000000000000000000.",
+  "ca_endpoint_definition": "Dusart supplies a prime q in (floor(0.999X),X). Choose a generic CA parameter epsilon_0 strictly inside q's first-layer cell and outside the finite higher-layer threshold set. The resulting unique CA profile C_q has exact support q<X=164967000000000000000000.",
+  "parametric_corollary": "For any hash-validated certified support endpoint X in the same certificate chain, put y=floor(999X/1000). If y>=3275 and 1/(2log(y)^2)<1/999, then there is a unique generic CA profile C_q of support q<X that exceeds exp(y*(1-3.965/log(y)^2)); a directed lower decimal exponent may be rounded down to state an ordinary-integer cutoff.",
+  "logical_chain": [
+    "The directed base certificate proves Robin for every integer 5041<=n<=55440.",
+    "The support-11 overlap certificate proves that the first exact-support-11 CA profile is 2^4*3^2*5*7*11=55440 (the old first-layer tie profile is 5040), so the base and CA chain meet at an identical endpoint.",
+    "The bridge, direct, and analytic CA certificates prove strict Robin for every CA profile with exact prime support 11<=P(C)<=164967000000000000000000, including all certified transition-tie branches.",
+    "Put y=floor(0.999X). Dusart's short-prime interval gives a prime q with y<q<=y*(1+1/(2log(y)^2)). The directed check proves 1/(2log(y)^2)<1/999, so q<X.",
+    "Choose epsilon_0 strictly inside q's first-layer cell and outside the finite set of higher-layer thresholds in that cell. The multiplicative CA rule then gives a unique profile C_q of exact support q.",
+    "If epsilon_1>epsilon_2 and C_1,C_2 maximize sigma(n)/n^(1+epsilon_j), adding their two optimality inequalities gives (epsilon_1-epsilon_2)(log(C_2)-log(C_1))>=0. Hence CA size is nondecreasing as the parameter decreases. Since C_q is unique, every CA number below C_q belongs to a larger parameter and has support at most q<X.",
+    "Robin 1984, Section 3, Proposition 1, gives f(n)<=max(f(C),f(C')) between consecutive CA numbers C<C', where f(n)=sigma(n)/(n log log n). Consequently the base and the complete preceding CA chain prove Robin through C_q.",
+    "The profile C_q has full support, so log(C_q)>=theta(q)>theta(y).",
+    "Dusart 1999, Theorem 4, gives theta(y)>y*(1-3.965/log(y)^2) for y>=2. The directed numeric check divides this lower expression by log(10), rounds its integer lower bound down to 2 significant digits, and verifies a strict positive margin.",
+    "Therefore C_q>10^71000000000000000000000, and the integer theorem follows."
+  ],
+  "external_theorem_inputs_not_reproved_by_this_script": [
+    {
+      "theorem": "Robin consecutive-CA interpolation",
+      "citation": "G. Robin, Grandes valeurs de la fonction somme des diviseurs et hypothese de Riemann, J. Math. Pures Appl. (9) 63 (1984), 187-213, Section 3, Proposition 1, p. 192, MR0774171."
+    },
+    {
+      "theorem": "Explicit theta estimate",
+      "citation": "P. Dusart, Inegalites explicites pour psi(x), theta(x), pi(x) et les nombres premiers, C. R. Math. Rep. Acad. Sci. Canada 21 (1999), 53-59, Theorem 4."
+    },
+    {
+      "theorem": "Dusart short-prime interval",
+      "citation": "P. Dusart, The kth prime is greater than k(ln k+ln ln k-1) for k>=2, Math. Comp. 68 (1999), 411-415, DOI 10.1090/S0025-5718-99-01037-6: for y>=3275 there is a prime y<p<=y(1+1/(2log(y)^2))."
+    },
+    {
+      "theorem": "CA threshold structure and full support",
+      "citation": "L. Alaoglu and P. Erdos, On highly composite and similar numbers, Trans. Amer. Math. Soc. 56 (1944), 448-469; also recorded in Robin 1984, Section 2."
+    }
+  ],
+  "numeric_cutoff": {
+    "X": "164967000000000000000000",
+    "y_equals_floor_999X_over_1000": "164802033000000000000000",
+    "support_fraction": "999/1000",
+    "log_y_interval": {
+      "lower": "53.4590319064392893742049483790691978398532821661721106069162",
+      "upper": "53.4590319064392893742049483790691978398532821661721106069164"
+    },
+    "short_prime_relative_increment_interval": {
+      "lower": "0.000174955590614649037530798602360803603514352994311534060278824",
+      "upper": "0.000174955590614649037530798602360803603514352994311534060278827"
+    },
+    "required_short_prime_increment_upper_bound": "1/999",
+    "short_prime_increment_check_status": "PASS",
+    "short_prime_interval_upper_endpoint": {
+      "lower": "164830866037018009880966.568909782619033372891318142178248481",
+      "upper": "164830866037018009880966.568909782619033372891318142178248483"
+    },
+    "short_prime_upper_endpoint_is_below_X": "PASS",
+    "dusart_relative_error_interval": {
+      "lower": "0.00138739783357416686761923291672117257586881924489046509801107",
+      "upper": "0.00138739783357416686761923291672117257586881924489046509801110"
+    },
+    "theta_y_lower_expression_interval": {
+      "lower": "164573387016447181643935.108545423831065352971847132526489532",
+      "upper": "164573387016447181643935.108545423831065352971847132526489533"
+    },
+    "directed_decimal_exponent_interval": {
+      "lower": "71473313849371279821308.0122027620624382996790306899329287454",
+      "upper": "71473313849371279821308.0122027620624382996790306899329287466"
+    },
+    "raw_floor_of_directed_lower_decimal_exponent": "71473313849371279821308",
+    "clean_significant_digits": 2,
+    "clean_decimal_exponent_K": "71000000000000000000000",
+    "K_log_10_interval": {
+      "lower": "163483541602577243565277.393282589858739678205692642881298365",
+      "upper": "163483541602577243565277.393282589858739678205692642881298368"
+    },
+    "strict_lower_margin_theta_expression_minus_K_log_10": "1089845413869938078657.715262833972325674766154489645191164",
+    "status": "PASS"
+  },
+  "dependency_certificates": [
+    {
+      "name": "integer_base_5041_55440",
+      "status": "PASS",
+      "report_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\robin_base_5041_55440_interval_report.json",
+      "report_sha256": "161381cb69f55030f2f6bb0c57c6518383aa66a7d65165cf98e1686aa013cf45",
+      "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_robin_base_5041_55440_interval.py",
+      "script_sha256": "ee296aa4a9e57e576da69a114e5983d9dad172d89e35d1498c83a1cff211c1aa",
+      "transitive_files_checked": [
+        {
+          "name": "embedded interval backend hash",
+          "path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_all_profile_interval_certificate.py",
+          "sha256": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077"
+        }
+      ],
+      "checks": [
+        {
+          "name": "certificate status",
+          "status": "PASS",
+          "observed": "PASS",
+          "expected": "PASS"
+        },
+        {
+          "name": "base start",
+          "status": "PASS",
+          "observed": 5041,
+          "expected": 5041
+        },
+        {
+          "name": "base end",
+          "status": "PASS",
+          "observed": 55440,
+          "expected": 55440
+        },
+        {
+          "name": "integer count",
+          "status": "PASS",
+          "observed": 50400,
+          "expected": 50400
+        },
+        {
+          "name": "failure count",
+          "status": "PASS",
+          "observed": 0,
+          "expected": 0
+        },
+        {
+          "name": "embedded interval backend hash",
+          "status": "PASS",
+          "observed": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+          "expected": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077"
+        },
+        {
+          "name": "embedded source hash",
+          "status": "PASS",
+          "observed": "ee296aa4a9e57e576da69a114e5983d9dad172d89e35d1498c83a1cff211c1aa",
+          "expected": "ee296aa4a9e57e576da69a114e5983d9dad172d89e35d1498c83a1cff211c1aa"
+        }
+      ]
+    },
+    {
+      "name": "ca_support_11_overlap_at_55440",
+      "status": "PASS",
+      "report_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\ca_support_11_overlap_certificate_report.json",
+      "report_sha256": "af903d574499c2b9450b9afed9b4799d3d01a668eb30097306d61ba97da1a0bd",
+      "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_support_11_overlap_certificate.py",
+      "script_sha256": "660420eba61fa0ad61df16ed6117dfd76ac84adb78cff2892c44e0b500de29a9",
+      "transitive_files_checked": [
+        {
+          "name": "embedded interval backend hash",
+          "path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_all_profile_interval_certificate.py",
+          "sha256": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077"
+        }
+      ],
+      "checks": [
+        {
+          "name": "certificate status",
+          "status": "PASS",
+          "observed": "PASS",
+          "expected": "PASS"
+        },
+        {
+          "name": "old tie profile",
+          "status": "PASS",
+          "observed": 5040,
+          "expected": 5040
+        },
+        {
+          "name": "forced support-11 profile",
+          "status": "PASS",
+          "observed": 55440,
+          "expected": 55440
+        },
+        {
+          "name": "forced largest prime",
+          "status": "PASS",
+          "observed": 11,
+          "expected": 11
+        },
+        {
+          "name": "unresolved comparisons",
+          "status": "PASS",
+          "observed": [],
+          "expected": []
+        },
+        {
+          "name": "embedded interval backend hash",
+          "status": "PASS",
+          "observed": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+          "expected": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077"
+        },
+        {
+          "name": "embedded source hash",
+          "status": "PASS",
+          "observed": "660420eba61fa0ad61df16ed6117dfd76ac84adb78cff2892c44e0b500de29a9",
+          "expected": "660420eba61fa0ad61df16ed6117dfd76ac84adb78cff2892c44e0b500de29a9"
+        }
+      ]
+    },
+    {
+      "name": "ca_bridge_support_11_3299",
+      "status": "PASS",
+      "report_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\ca_all_profile_bridge_11_3299_report.json",
+      "report_sha256": "e29d66dde12af0e773d86827b0237ed323f62abfd19bc7fe028a7e065782e5ca",
+      "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_all_profile_interval_certificate.py",
+      "script_sha256": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+      "transitive_files_checked": [],
+      "checks": [
+        {
+          "name": "certificate status",
+          "status": "PASS",
+          "observed": "PASS",
+          "expected": "PASS"
+        },
+        {
+          "name": "minimum support",
+          "status": "PASS",
+          "observed": 11,
+          "expected": 11
+        },
+        {
+          "name": "maximum support",
+          "status": "PASS",
+          "observed": 3299,
+          "expected": 3299
+        },
+        {
+          "name": "nonpositive profiles",
+          "status": "PASS",
+          "observed": 0,
+          "expected": 0
+        },
+        {
+          "name": "classification status",
+          "status": "PASS",
+          "observed": "PASS",
+          "expected": "PASS"
+        },
+        {
+          "name": "all tie branches positive",
+          "status": "PASS",
+          "observed": true,
+          "expected": true
+        },
+        {
+          "name": "embedded source hash",
+          "status": "PASS",
+          "observed": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+          "expected": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077"
+        }
+      ]
+    },
+    {
+      "name": "ca_direct_support_3299_56048351",
+      "status": "PASS",
+      "report_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\ca_all_profile_interval_certificate_report.json",
+      "report_sha256": "8ac1ee276df64cc91d93b483b501d34f8a9b69408d2fb0650d4bab8f43304f83",
+      "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_all_profile_interval_certificate.py",
+      "script_sha256": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+      "transitive_files_checked": [],
+      "checks": [
+        {
+          "name": "certificate status",
+          "status": "PASS",
+          "observed": "PASS",
+          "expected": "PASS"
+        },
+        {
+          "name": "minimum support",
+          "status": "PASS",
+          "observed": 3299,
+          "expected": 3299
+        },
+        {
+          "name": "maximum support",
+          "status": "PASS",
+          "observed": 56048351,
+          "expected": 56048351
+        },
+        {
+          "name": "nonpositive profiles",
+          "status": "PASS",
+          "observed": 0,
+          "expected": 0
+        },
+        {
+          "name": "classification status",
+          "status": "PASS",
+          "observed": "PASS",
+          "expected": "PASS"
+        },
+        {
+          "name": "all tie branches positive",
+          "status": "PASS",
+          "observed": true,
+          "expected": true
+        },
+        {
+          "name": "embedded source hash",
+          "status": "PASS",
+          "observed": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077",
+          "expected": "8da8ad3d63b6dec8ffd4838b968a0added4c26eb5810fa2969dadb917f691077"
+        }
+      ]
+    },
+    {
+      "name": "ca_analytic_support_56048351_to_X",
+      "status": "PASS",
+      "report_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\ca_residual_upward_extended_certificate_report.json",
+      "report_sha256": "938713a1e1443196e349269d9f88f429d3859aa262fbf11042733c6ef1278263",
+      "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_residual_upward_extended_certificate.py",
+      "script_sha256": "165f7a069c93ede79709ed559fdd1a9908e41230fd4b520844931789a97d3e95",
+      "transitive_files_checked": [
+        {
+          "name": "embedded residual interval backend hash",
+          "path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_residual_finite_certificate.py",
+          "sha256": "8c6e296103eadd2eb3f8dbf511c0bdd678c62ef3fdc597927d02fc7e87a70c62"
+        },
+        {
+          "name": "embedded previous upward certifier hash",
+          "path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_residual_upward_1e21_certificate.py",
+          "sha256": "6936862d9af7cf696eed0388eb79999557c24e72fb934a2ea2f44a5b02c9f77c"
+        },
+        {
+          "name": "embedded D-star certifier hash",
+          "path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_asymptotic_dstar_lower_bound.py",
+          "sha256": "c7981a2fdec34211e07434d82931c2ac534a20e384fdace31b4ee6d79a8211b5"
+        },
+        {
+          "name": "embedded D-star report hash",
+          "path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\asymptotic_dstar_lower_bound_report.json",
+          "sha256": "ea33332d7acade20b35409131a6a5acac00d722cf3439d9b36cb7992d296fa18"
+        }
+      ],
+      "checks": [
+        {
+          "name": "certificate status",
+          "status": "PASS",
+          "observed": "PASS",
+          "expected": "PASS"
+        },
+        {
+          "name": "support range",
+          "status": "PASS",
+          "observed": "56048351 <= x <= 164967000000000000000000",
+          "expected": "56048351 <= x <= 164967000000000000000000"
+        },
+        {
+          "name": "profile scope",
+          "status": "PASS",
+          "observed": "every CA exponent profile with exact prime support x",
+          "expected": "every CA exponent profile with exact prime support x"
+        },
+        {
+          "name": "positive combined clearance",
+          "status": "PASS",
+          "observed": {
+            "name": "minimum segmented combined clearance",
+            "status": "PASS",
+            "lower": "2.15407342621730411658803647483231024826020838258587925E-7",
+            "target": "2E-7",
+            "margin": "1.540734262173041165880364748E-8"
+          },
+          "expected": "lower > 2e-7"
+        },
+        {
+          "name": "embedded residual interval backend hash",
+          "status": "PASS",
+          "observed": "8c6e296103eadd2eb3f8dbf511c0bdd678c62ef3fdc597927d02fc7e87a70c62",
+          "expected": "8c6e296103eadd2eb3f8dbf511c0bdd678c62ef3fdc597927d02fc7e87a70c62"
+        },
+        {
+          "name": "embedded previous upward certifier hash",
+          "status": "PASS",
+          "observed": "6936862d9af7cf696eed0388eb79999557c24e72fb934a2ea2f44a5b02c9f77c",
+          "expected": "6936862d9af7cf696eed0388eb79999557c24e72fb934a2ea2f44a5b02c9f77c"
+        },
+        {
+          "name": "embedded D-star certifier hash",
+          "status": "PASS",
+          "observed": "c7981a2fdec34211e07434d82931c2ac534a20e384fdace31b4ee6d79a8211b5",
+          "expected": "c7981a2fdec34211e07434d82931c2ac534a20e384fdace31b4ee6d79a8211b5"
+        },
+        {
+          "name": "embedded D-star report hash",
+          "status": "PASS",
+          "observed": "ea33332d7acade20b35409131a6a5acac00d722cf3439d9b36cb7992d296fa18",
+          "expected": "ea33332d7acade20b35409131a6a5acac00d722cf3439d9b36cb7992d296fa18"
+        },
+        {
+          "name": "embedded source hash",
+          "status": "PASS",
+          "observed": "165f7a069c93ede79709ed559fdd1a9908e41230fd4b520844931789a97d3e95",
+          "expected": "165f7a069c93ede79709ed559fdd1a9908e41230fd4b520844931789a97d3e95"
+        }
+      ]
+    }
+  ],
+  "rigor_boundary": [
+    "This script validates the directed arithmetic and hashes the executable dependency chain; it does not reprove the cited external theorems.",
+    "The upper endpoint is an ordinary-integer cutoff derived below the generic profile C_q. It is not the assertion that C_q itself equals a power of ten.",
+    "The conclusion is finite and does not extend the CA support theorem beyond X=164967000000000000000000 or prove the Riemann hypothesis."
+  ],
+  "runtime_environment": {
+    "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "python_implementation": "CPython",
+    "decimal_module_version": "1.70",
+    "libmpdec_version": "4.0.0",
+    "precision_decimal_digits": 60,
+    "script_path": "C:\\Users\\robop\\source\\repos\\Riemann_publish\\current_support\\robin_mvdc_status_support\\test_ca_all_integer_cutoff_certificate.py",
+    "script_sha256": "df1238bee0184a3dccebdcaf72920b9362984ec845273692a786bf69030e4052",
+    "argv": [
+      "test_ca_all_integer_cutoff_certificate.py"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+# Preserve the paper PDF and normalize only its TeX source.
+.gitattributes text eol=lf
+Finite_Robin_Verification_via_CA_Prime_Power_Reduction_en.pdf binary
+Finite_Robin_Verification_via_CA_Prime_Power_Reduction_en.tex text eol=lf

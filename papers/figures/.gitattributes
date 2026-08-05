@@ -1,0 +1,5 @@
+# Preserve the exact archived figure and sample bytes.
+.gitattributes text eol=lf
+*.png binary
+*.svg -text diff
+*.csv -text diff
