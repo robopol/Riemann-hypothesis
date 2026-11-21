@@ -1,0 +1,567 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,linkcolor=MidnightBlue,urlcolor=MidnightBlue,citecolor=MidnightBlue]{hyperref}
+\pagestyle{plain}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\e}{\mathrm e}
+\newcommand{\D}{\mathcal D}
+\newcommand{\Rea}{\operatorname{Re}}
+\hypersetup{pdftitle={Importing arithmetic windows into the prime-power cone},
+pdfauthor={Robert Polak},
+pdfsubject={A short-window criterion for exclusion of zeta zeros and its consequence for the prime-power cone}}
+\title{Importing arithmetic windows\\into the prime-power cone}
+\author{Ing.\ Robert Polak\thanks{Correspondence:
+\href{mailto:robopol@gmail.com}{robopol@gmail.com}.}\\[0.4em]
+\small Mathematical derivations and manuscript preparation with GPT-6 Pro (OpenAI)\\
+\small Mathematical review and editing with GPT ASTRA 6.2 (OpenAI)}
+\date{21 November 2026 \quad (version 1.0)}
+\begin{document}\maketitle
+\begin{abstract}
+Fix \(0\le s<1/2\). We show that a one-sided bound
+\(F(x)\le C_s x^{1/2+s}\) for the integrated von Mangoldt residual on
+arbitrarily late intervals \([Z,Z\log Z]\) excludes every zeta zero
+with real part greater than \(1/2+s\). The proof uses the positive
+kernel of the completed zeta function to isolate a single zero,
+including its multiplicity. The resulting oscillation has exponential
+size on each sufficiently late interval of logarithmic time of length
+\(\log(T/2)\) centred at \(T\).
+We apply this criterion to an arithmetic window estimate extracted
+from the Alp\"oge--Claude development. Taking that estimate as input
+gives RH and the strict determinant bound from the earlier prime-power
+cone criterion. We identify the Lean declarations supplying the
+arithmetic input and give the analytic argument here in ordinary
+mathematical prose.
+\end{abstract}
+
+\section{The arithmetic interface to import}
+Define
+\begin{equation}
+ F(x)=\sum_{n\le x}\Lambda(n)(x/n-1)
+                 -x\log x+(1+\gamma_E)x.\label{eq:F}
+\end{equation}
+This is exactly \texttt{Formalism.Gz} in the released source
+\cite{Source}, \texttt{Formalism/StatementOC.lean}.
+
+The application to the Alp\"oge--Claude development uses the following
+arithmetic estimate.
+\medskip
+\noindent\textbf{Arithmetic input (A).}
+There exist fixed \(E>0\) and \(\varepsilon_*>0\) such that for every
+\(0<\varepsilon<\varepsilon_*\) and every \(Z_0\) there exists
+\(Z\ge\max(Z_0,2)\) for which
+\begin{equation}
+ F(x)\le x^{1/2+E\varepsilon}
+       \qquad(Z\le x\le Z^{3/2}).\label{eq:external}
+\end{equation}
+The constants \(E\) and \(\varepsilon_*\) are chosen before
+\(\varepsilon\). The subsequent construction parameters and
+thresholds may depend on \(\varepsilon\). No uniformity as
+\(\varepsilon\downarrow0\) is required.
+\medskip
+
+In the source this is obtained by combining the arithmetic
+comparison, the existence of suitable families and their windows,
+and the principal-character specialization. It is not presented
+there under this exact single theorem name. Section
+\ref{sec:audit} records the extraction boundary. In particular,
+the assertion is stronger than the conditional statement of
+\texttt{core\_gm} alone: the existence hypotheses of that statement
+must be supplied by the preceding construction.
+
+The concrete source uses \(e_D=2\) and \(e_L=0\), which gives
+\(E=e_D+e_L+7=9\). Extracting those exact witnesses would require
+a strengthened wrapper. For the existing public interface, it is
+enough to take \(E=\max(1,e_D+e_L+7)\) and use \(x\ge1\).
+The analytic proof below needs only this fixed-positive-\(E\) form.
+
+The cutoff \(\varepsilon_*\) incorporates internal positive
+thresholds. The explicit restriction \(\varepsilon<1/52\) visible
+in window selection is not, by itself, the complete permitted range
+of all later steps. Only the existence of a positive cutoff matters
+in the argument below.
+
+\paragraph{Relation to the existing paper.}
+Section~9 of the companion paper \cite{Polak} explains that
+the arithmetic window bound, together with the external windowed
+Landau theorem, yields RH and hence the cone conclusion. The
+contribution of the present note is the direct xi-kernel proof of
+the window-to-spectrum step and the explicit import boundary.
+
+\section{The retained growth factor}
+Use the residual and notation
+\begin{align}
+ B(t)&=\sum_\rho a_\rho\e^{\lambda_\rho t},&
+ a_\rho&=\frac1{\rho(1-\rho)},&
+ \lambda_\rho&=\rho-\frac12,\label{eq:B}\\
+ C&=B(0)=2+\gamma_E-\log(4\pi),&
+ \Phi(t)&=C-B(t).\nonumber
+\end{align}
+Zeros are counted with multiplicity. The classical zero count gives
+\(S:=\sum_\rho|a_\rho|<\infty\). The function \(B\) is real and
+even, and
+\begin{equation}
+ |B(v)|\le S\e^{|v|/2}\quad(v\in\mathbb R).\label{eq:Bbound}
+\end{equation}
+The exact prime-side formula of \cite{Polak} implies
+\begin{equation}
+ B(\log x)=F(x)/\sqrt{x}+O(x^{-1/2})\quad(x\to\infty).
+ \label{eq:BF}
+\end{equation}
+The correction is unconditional and uniform for large real \(x\).
+
+\begin{lemma}[Exponential oscillation from one zero]\label{lem:exp}
+Suppose \(\rho_*\) is one nontrivial zero with
+\(\alpha:=\Rea\rho_*-1/2\ge0\). Then there are constants
+\(b_*>0\) and \(T_*>0\), depending on this zero, such that every
+\(T\ge T_*\) admits points \(t_+,t_-\) in
+\begin{equation}
+ [T-R_T,T+R_T],\qquad R_T=\tfrac12\log(T/2),\label{eq:R}
+\end{equation}
+satisfying
+\begin{equation}
+ B(t_+)\ge b_*\e^{\alpha T},\qquad
+ B(t_-)\le-b_*\e^{\alpha T}.\label{eq:exposc}
+\end{equation}
+No assumption about a rightmost zero or simple zeros is needed.
+\end{lemma}
+\begin{proof}
+We use the classical positive even xi kernel \cite{Newman}. For
+\(u\ge0\), write
+\[
+ K(u)=\sum_{n\ge1}
+   (4\pi^2n^4\e^{9u/2}-6\pi n^2\e^{5u/2})
+                 \e^{-\pi n^2\e^{2u}},
+\]
+extended evenly. Its transform and tails satisfy
+\begin{align}
+ M(z):=\int_{\mathbb R}K(u)\e^{zu}\dd u&=\xi(1/2+z),\nonumber\\
+ c_0\e^{9|u|/2-\pi\e^{2|u|}}
+ &\le K(u)\le C_0\e^{9|u|/2-\pi\e^{2|u|}}.\label{eq:K}
+\end{align}
+Here \(\xi(w)=\tfrac12 w(w-1)\pi^{-w/2}\Gamma(w/2)\zeta(w)\).
+To check the normalisation, set
+\(f(u)=\e^{u/2}\sum_{n\ge1}\exp(-\pi n^2\e^{2u})\) on the real line.
+The Jacobi theta transformation gives
+\(f(-u)-f(u)=(\e^{u/2}-\e^{-u/2})/2\). Thus \(f''-f/4\) is even,
+and termwise differentiation for \(u\ge0\) identifies it with \(K\).
+Writing \(w=1/2+z\), Mellin integration gives
+\(\int_{\mathbb R}f(u)\e^{zu}\dd u
+=\tfrac12\pi^{-w/2}\Gamma(w/2)\zeta(w)\) for \(\Rea w>1\).
+Two integrations by parts supply the factor \(z^2-1/4=w(w-1)\).
+The kernel's double-exponential decay then extends the transform
+identity to every \(z\).
+For \(u\ge0\) each summand of \(K\) is positive. Keeping the first
+summand gives \(c_0=4\pi^2-6\pi>0\), and dropping the negative terms
+inside the brackets gives
+\(C_0=4\pi^2\sum_{n\ge1}n^4\e^{-\pi(n^2-1)}\).
+
+Put \(\lambda=\rho_*-1/2\), and let \(r\) be the exact
+multiplicity of \(\rho_*\). Define
+\begin{align}
+ h_r(u)
+ &=\frac1{(r-1)!}\int_0^\infty
+       v^{r-1}\e^{\lambda v}K(u+v)\dd v\nonumber\\
+ &=\frac{(-1)^r}{(r-1)!}\int_0^\infty
+       v^{r-1}\e^{-\lambda v}K(u-v)\dd v.\label{eq:h}
+\end{align}
+The equality follows by splitting
+\(\int_{\mathbb R}(w-u)^{r-1}\e^{\lambda w}K(w)\dd w=0\)
+at \(w=u\). This integral vanishes because
+\(M^{(j)}(\lambda)=0\) for \(0\le j<r\).
+
+The first formula bounds the right tail and the second the left.
+Using \(\e^{2v}-1\ge2v\) and \(|\Rea\lambda|\le1/2\),
+\[
+ \frac{|h_r(u)|}{K(u)}
+ \le \frac{C_0/c_0}{(2\pi\e^{2|u|}-5)^r}\le L<\infty.
+\]
+Here \(2\pi-5>0\). Consequently the transform of \(h_r\)
+is entire. Absolute Fubini for \(\Rea z>\alpha\), followed by
+analytic continuation, gives
+\begin{equation}
+ H_r(z)=\int_{\mathbb R}h_r(u)\e^{zu}\dd u
+       =\frac{M(z)}{(z-\lambda)^r},\qquad
+ H_r(\lambda)=\frac{M^{(r)}(\lambda)}{r!}\ne0.\label{eq:H}
+\end{equation}
+
+Equations \eqref{eq:Bbound} and \eqref{eq:K}, together with
+\(|h_r|\le LK\), justify termwise integration of the full zero
+series, including the region \(T+u<0\). Thus
+\begin{align}
+ \int K(u)B(T+u)\dd u&=0,\label{eq:zeroavg}\\
+ \int h_r(u)B(T+u)\dd u
+   &=A_*\e^{\lambda T},&
+ A_*&=r a_{\rho_*}\frac{M^{(r)}(\lambda)}{r!}\ne0.
+ \label{eq:nonzeroavg}
+\end{align}
+The factor \(r\) comes from multiplicity in the zero sum.
+Let \(d_*=|A_*|>0\), and put \(B_+=\max(B,0)\),
+\(B_-=\max(-B,0)\). Crucially, retain the full magnitude in
+\eqref{eq:nonzeroavg}:
+\begin{equation}
+ \int K B_+(T+u)\dd u
+ =\int K B_-(T+u)\dd u
+ \ge\frac{d_*}{2L}\e^{\alpha T}.\label{eq:massgrowth}
+\end{equation}
+For a zero on the critical line this gives a fixed lower bound.
+For a zero to its right, \(\alpha>0\) and both integrals grow at
+least exponentially with \(T\).
+
+For \(R\ge0\), the tails satisfy
+\begin{align*}
+ \int_{|u|>R}K(u)|B(T+u)|\dd u
+ &\ll\e^{T/2}\int_R^\infty\e^{5v-\pi\e^{2v}}\dd v\\
+ &\ll\e^{T/2+3R-\pi\e^{2R}}.
+\end{align*}
+With \(R=R_T\), this is
+\(O(T^{3/2}\e^{-(\pi-1)T/2})=o(1)\), hence also
+\(o(\e^{\alpha T})\). Both central signed integrals are
+therefore at least \(d_*\e^{\alpha T}/(4L)\) for large \(T\).
+Set \(M_0=\int K=\xi(1/2)>0\) and
+\(b_*=d_*/(4LM_0)\). The corresponding maximum of \(B_+\)
+and of \(B_-\) on the compact interval is at least
+\(b_*\e^{\alpha T}\), proving \eqref{eq:exposc}.
+\end{proof}
+
+\section{Sparse arithmetic windows exclude zeros}
+\begin{theorem}[A window-to-spectrum implication]\label{thm:window}
+Fix \(s\in[0,1/2)\) and \(C_s>0\). Suppose there are
+arbitrarily large \(Z\) such that
+\begin{equation}
+ F(x)\le C_s x^{1/2+s}\qquad(Z\le x\le Z\log Z).
+ \label{eq:logwindow}
+\end{equation}
+Then every nontrivial zero satisfies \(\Rea\rho\le1/2+s\).
+In particular, the conclusion holds if \eqref{eq:logwindow}
+is known on the longer windows \([Z,Z^{1+\kappa}]\), for any
+fixed \(\kappa>0\).
+\end{theorem}
+\begin{proof}
+Suppose instead that a zero has
+\(\alpha=\Rea\rho-1/2>s\). Apply Lemma \ref{lem:exp} to
+this one zero. Choose one of the arbitrarily late windows, put
+\(U=\log Z\), and set
+\[
+ T=U+\tfrac12\log U,\qquad R_T=\tfrac12\log(T/2).
+\]
+For large \(U\), \(T\le2U\), so \(R_T\le\tfrac12\log U\).
+It follows that
+\[
+ [T-R_T,T+R_T]\subseteq[U,U+\log U].
+\]
+The point \(t_+\) in Lemma \ref{lem:exp} therefore lies within
+the logarithmic image of the arithmetic window. By
+\eqref{eq:BF} and \eqref{eq:logwindow},
+\[
+ b_*\e^{\alpha T}\le B(t_+)
+       \le C_s'\e^{s t_+}
+       \le C_s'\e^{sT}(T/2)^{s/2}.
+\]
+Thus
+\(\e^{(\alpha-s)T}\le(C_s'/b_*)(T/2)^{s/2}\), which is
+impossible along the arbitrarily late windows. This excludes
+every such zero individually. Finally,
+\(Z\log Z\le Z^{1+\kappa}\) for all sufficiently large \(Z\),
+so the longer-window assertion follows.
+\end{proof}
+
+\begin{corollary}[Arithmetic input (A) implies RH]\label{cor:RH}
+If the imported statement \eqref{eq:external} holds for every
+sufficiently small fixed \(\varepsilon>0\), then RH holds.
+\end{corollary}
+\begin{proof}
+For every such \(\varepsilon\) with \(E\varepsilon<1/2\),
+Theorem \ref{thm:window} gives
+\(\Rea\rho\le1/2+E\varepsilon\) for every zero. Equivalently,
+given a hypothetical zero with displacement \(\alpha>0\),
+first choose one fixed
+\[
+ 0<\varepsilon<\min(\varepsilon_*,\alpha/(2E)).
+\]
+Fix all parameters for this \(\varepsilon\), and only then take
+an arbitrarily late window. Its exponent satisfies
+\(E\varepsilon<\alpha\), contradicting Theorem \ref{thm:window}.
+No rightmost zero or uniform threshold in \(\varepsilon\) has
+been assumed. The functional equation completes RH.
+\end{proof}
+
+The proof of Corollary~\ref{cor:RH} uses the external arithmetic
+construction only through (A). Lemma~\ref{lem:exp} supplies the
+analytic zero-exclusion step.
+
+Conversely, if all nontrivial zeros satisfy \(\Rea\rho\le1/2+s\),
+then \(|B(t)|\le S\e^{st}\) for \(t\ge0\) by absolute convergence.
+Equation~\eqref{eq:BF} gives \(F(x)\ll x^{1/2+s}\) for all large \(x\).
+In particular, RH gives \(F(x)\le A\sqrt{x}\) for some \(A>0\).
+For each fixed \(\varepsilon>0\), \(x^\varepsilon\ge A\) eventually,
+so (A) follows with \(E=1\). Thus (A) and RH are equivalent for
+this particular residual. The arithmetic content of the application
+lies in obtaining (A) from the external construction.
+
+\section{The cone conclusion and the earlier obstructions}
+Use Polak's definitions
+\[
+ k(t)=\e^{t/2}-\frac{\e^{-t/2}}{\e^{2t}-1}-\frac C4,
+ \qquad
+ \D_\pm(t)=\Phi(t)(2k(t)+\Phi(t)/4)-\Phi'(t\pm)^2.
+\]
+Once Corollary \ref{cor:RH} places the zeros on the line,
+the absolutely convergent spectral representation gives
+\begin{equation}
+ \Phi(t)=2\sum_{\gamma>0}
+      \frac{1-\cos(\gamma t)}{\gamma^2+1/4},
+ \qquad 0\le\Phi(t)\le2C.\label{eq:phibound}
+\end{equation}
+The conditional cone theorem of \cite{Polak} now gives
+\(\D_+(\log q)>0\) at all sufficiently large prime powers
+\(q\). We give the derivation of the sharper asymptotic bound
+recorded in the working note \cite{PreviousNote}.
+\begin{corollary}\label{cor:margin}
+Under RH, and hence under arithmetic input (A), for either one-sided
+derivative one has
+\[
+ \D_\pm(t)\ge(1/32-o(1))t^2.
+\]
+\end{corollary}
+\begin{proof}
+Put \(X=\e^{t/2}\) and \(h=t/(4X)\). The cosine identity and the
+expansion at the origin in Sections~3 and~4 of \cite{Polak} give
+\[
+ 4\Phi(t)\ge2\Phi(h)-\bigl[\Phi(t+h)+\Phi(t-h)-2\Phi(t)\bigr],
+ \qquad 2\Phi(h)=h\log(1/h)+O(h).
+\]
+On \([t-h,t+h]\) the smooth density of \(\Phi''\) is
+\(k(v)+\Phi(v)/4\le(1+o(1))X\), and every atom is negative.
+Integration against the triangular weight \((h-|v-t|)_+\) bounds
+the second difference above by \((1+o(1))Xh^2\). Since
+\(\log(1/h)=t/2-\log(t/4)\), this gives
+\(\Phi(t)\ge(1/64-o(1))t^2/X\) for every sufficiently large real \(t\).
+
+For either slope \(p=\Phi'(t\pm)\), the RH Chebyshev estimate in
+\cite[Section~4]{Polak} gives \(|p|=O(t^2)\). Take \(u=-p/k(t)\), so
+\(|u|=O(t^2/X)\). The upper Taylor estimate from the same section,
+valid across downward jumps for either choice of initial slope, gives
+\[
+ \Phi(t+u)\le\Phi(t)-\frac{p^2}{2k(t)}
+                       +O(u^2+X|u|^3).
+\]
+The error is \(o(t^2/X)\). The lower bound just proved, applied at
+\(t+u=t+o(1)\), gives
+\(\Phi(t+u)\ge(1/64-o(1))t^2/X\). Multiplication by
+\(2k(t)=(2+o(1))X\) and addition of \(\Phi(t)^2/4\) yield the result.
+\end{proof}
+
+\paragraph{A short direct bound for the weak target.}
+Even without the strict cone reserve, \eqref{eq:phibound} and
+the prime-side measure identity already supply the desired weak
+floor. Put \(X=\e^{t/2}\) and let \(p\) be either one-sided slope
+of \(\Phi\). On \(|v-t|\le1\), its smooth second-derivative
+density is at most \(2X\) for large \(t\), and all its derivative
+jumps are negative. Integral Taylor expansion in the direction
+opposite to \(p\) gives, for \(0<h<1\),
+\[
+ 0\le\Phi(t)-|p|h+Xh^2\le2C-|p|h+Xh^2.
+\]
+The inequality works for either initial side of a downward jump.
+Taking \(h=\sqrt{2C/X}\) gives \(p^2\le8CX\). Since \(k(t)>0\)
+eventually,
+\begin{equation}
+ \D_\pm(t)\ge-8C\e^{t/2}.\label{eq:weak}
+\end{equation}
+Consequently the weak sampled target
+\(d_m=\D_+(\log p_m)/\sqrt{p_m}\ge-K\) holds at every
+sufficiently large index, with \(K=8C\). With the strict cone
+theorem, \(K=0\) works as well. The waiting time for this weak
+target is then zero.
+
+\paragraph{Relation to the short-interval problem.}
+The local transfer in \cite{Polak} retains the factor
+\(x^{E\varepsilon}\) inside an arithmetic window.
+Here \(\varepsilon\) is fixed for one hypothetical zero. The forbidden
+excursion occurs in every sufficiently late interval of the length in
+Lemma~\ref{lem:exp}, so an arithmetic window beyond the fixed thresholds
+suffices. The spectral conclusion then applies at every prescribed sample.
+The joint error estimate for four shifted prime sums on a prescribed
+prefix remains a separate question. For example, the even profile
+\(B_*(t)=|t|\) has the same large-positive-time growth as the model
+\(F_*(x)=\sqrt{x}\log x\) in \cite{Polak}. Its average against any
+translate of \(K\) is strictly positive, whereas the zeta residual
+satisfies \eqref{eq:zeroavg}.
+
+\section{Source extraction and verification boundary}\label{sec:audit}
+This section records a static reading of the released source at
+commit \texttt{40e56bab} of \cite{Source}. It distinguishes the
+arithmetic theorem we import from the analytic statements that
+follow it in that source. A standalone Lean declaration for
+\eqref{eq:external} has not been written or compiled here.
+
+\subsection{The comparison and its arithmetic hypotheses}
+\texttt{UpperTheory.Comparison\textsubscript{2}.core\_gm}
+in \href{https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean}{\texttt{CoreGm.lean}}
+has the following essential quantifier order: after fixing the
+level, \(e_D,e_L\), the comparison constants and
+\(\varepsilon>0\), it supplies a threshold \(x_1\); then it
+bounds \(\Lambda.\mathrm{Gm}(x)\) for all \(x\ge x_1\) and all
+arithmetic frames satisfying \texttt{EAtH} and \texttt{CoreAtH}.
+Its exponent is
+\[
+ \frac12+(e_D+e_L+7)\varepsilon.
+\]
+The threshold is chosen before the arithmetic witnesses, so those
+witnesses may vary with \(x\) across one full window.
+
+This is a conditional comparison theorem, not a construction of
+its hypotheses. Its underlying \texttt{ch\_top} calls
+\texttt{each\_unit\_bound\_statement}, whose conclusion has the
+form \(ASK\le Main+Err\). The input includes divisor, height,
+slope, loss, counting and parameter bounds.
+\texttt{PChain.errX5at\_le} absorbs the error at sufficiently
+large \(x\), including the requirements
+\[
+ \log x\le x^\varepsilon,\qquad
+ 200(1+K)^2(1+c_{HH})(1+e_K)\le x^\varepsilon.
+\]
+The scale condition \(|a(t)/b-x|\le1\) is retained.
+The heavy arithmetic content lies in realizing these hypotheses.
+
+\subsection{Families, complete windows and fixed parameters}
+\href{https://github.com/leanprover-community/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/PrimitiveCosets/WindowInequalityOfArtinInputs.lean}{\texttt{windowInequality\_of\_artinInputs}}
+and
+\href{https://github.com/leanprover-community/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/PrimitiveCosets/LevelGmLeOnFamilyScales.lean}{\texttt{level\_gm\_le\_on\_family\_scales}}
+supply the property \texttt{ChebyshevInequalityOnWindows} defined in
+\href{https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/TopWin.lean}{\texttt{TopWin.lean}}.
+This supplies the same bound on a family's windows above a
+single threshold. The definition \texttt{HasWindows} in
+\href{https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/Window.lean}{\texttt{Window.lean}}
+means
+\[
+ \forall y\ \exists Y\ge y\ \forall x\in[Y,Y^{\ell}],
+ \quad x\text{ belongs to the family's window set}.
+\]
+It therefore supplies full real intervals and absorbs any fixed
+large-\(x\) threshold by requesting a later \(Y\).
+
+\texttt{FamilyClassConnected}, defined in
+\href{https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/CharacterBoxes/DivinNOfHypV.lean}{\texttt{DivinNOfHypV.lean}},
+chooses fixed \(e_D,e_L\) and a positive epsilon cutoff
+\emph{before} choosing epsilon-dependent tied families. The
+current top-level path is
+\texttt{zero\_free\_all\_of\_green\_v\_win} in
+\href{https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopPlug.lean}{\texttt{ThirdPlaceSeries/TopPlug.lean}}.
+Before its zero-free call it constructs \texttt{TopG} from
+\texttt{forall\_goal\_of\_shape\_of\_hyps} and
+\texttt{shape\_closed\_link\_n\_of\_green}; \texttt{supplyChi}
+supplies \texttt{HostExW} for \(\ell=3/2\).
+
+The concrete proof in
+\href{https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopShape.lean}{\texttt{ThirdPlaceSeries/TopShape.lean}}
+ends with \texttt{topDesWin} applied to parameters
+\(2,3,2,0\); the last two are \(e_D=2,e_L=0\).
+\texttt{topDesWin} returns those witnesses unchanged, with a
+positive minimum of internal epsilon cutoffs. Its public return
+type hides their exact numerical values. This explains both the
+concrete coefficient \(9\) and the safer public-interface
+form with an unspecified fixed \(E>0\).
+
+\subsection{Specialization and the precise stopping point}
+Apply the resulting \texttt{TopG} at the trivial primitive
+character, using \texttt{hypV\_of\_cls} and
+\texttt{eFamC\_of\_cls}. These are the family-producing steps in
+\href{https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean}{\texttt{ZeroFreeAllOfTopG.lean}}.
+For \texttt{Level.cyc PChar.one}, the subgroup generated by the
+trivial character consists of that character alone. Its retained
+primitive character set is \(\{1\}\), and erasing \texttt{PChar.one}
+leaves an empty sum. The definitions of
+\href{https://github.com/leanprover-community/riemann-hypothesis/blob/40e56bab/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean}{\texttt{Level.cyc}, \texttt{Level.Nt} and \texttt{Level.Gm}}
+therefore reduce the aggregate to \texttt{Formalism.Gz},
+which is exactly \eqref{eq:F}. Combining this with the preceding
+comparison and absorbing its threshold gives arithmetic input (A).
+
+This extraction stops \emph{before} \texttt{formB},
+\texttt{zeroFree\_of\_rpow\_window}, \texttt{rh\_of\_every},
+or the final RH theorem. Theorem \ref{thm:window} supplies our
+own analytic conversion of the arithmetic input instead.
+
+\subsection{Where the existence premises are supplied}
+The starting point is
+\href{https://github.com/leanprover-community/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/CharacterBoxes/MainConclusion.lean}{\texttt{MainConclusion.lean}}.
+Its proof uses a row from the theta-lift construction and the existence
+result \texttt{recTExists} to assemble the literature record. The same
+row supplies \texttt{VWin} through \texttt{vwin\_of\_row}.
+The row itself is constructed in
+\href{https://github.com/leanprover-community/riemann-hypothesis/blob/40e56bab/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean}{\texttt{RowSrc.lean}}
+by applying \texttt{galoisRepresentations\_of\_thetaLift}.
+The next step supplies the theta integrals, local matching data and
+geometric covolume bounds. These are used to construct the
+hypothesis record passed to \texttt{TopPlug} and \texttt{TopShape}.
+
+These proof terms supply the premises of \texttt{core\_gm}.
+The interfaces traced here require no explicit assumption of RH.
+Our source review covers this extraction, including the order in
+which its witnesses are chosen.
+
+\subsection{Reported checks versus checks performed here}
+Andrew Sutherland's MIT report \cite{MIT}, updated
+21 November 2026 at 08:45 UTC, reports that all 175,187 modules
+compile, all have passed Lean kernel replay, and the five headline
+theorems depend only on Lean's three standard axioms. It reports
+acceptance of the full export by nanoda and con-leche, agreement of
+the theorem statements under con-leche's comparison, and successful
+module checks by lean4lean. The end-to-end \texttt{lake comparator}
+run and Lean-kernel replay of the full export were still running
+at that update. These are reported third-party checks.
+
+In this note the extraction of (A) was checked by source inspection.
+The new analytic argument was checked on paper. A machine-checked
+version would also require formalising that argument and compiling
+the specialised statement (A).
+
+\section{Conclusion and attribution}
+For the classical zeta function, the positive xi kernel forces
+oscillations of size \(\e^{\alpha T}\) from each zero with real part
+\(1/2+\alpha\). Their localisation is strong enough to use bounds
+on \([Z,Z\log Z]\). In the application, the longer arithmetic
+windows are supplied by the Alp\"oge--Claude development. The
+determinant and its differential identities come from \cite{Polak}.
+Version 1.2 already described how external arithmetic windows and
+a separate windowed Landau theorem would imply the cone result.
+The proof here supplies the analytic implication directly and gives
+the shorter sufficient window length.
+
+\begin{thebibliography}{9}
+\bibitem{Polak}
+R.~Polak, \emph{An Explicit Prime-Power Cone Criterion for the
+Riemann Hypothesis}, version 1.2, 20 November 2026.
+\href{https://zenodo.org/records/24406562}{Zenodo record 24406562};
+\href{https://doi.org/10.5281/zenodo.24406562}{doi:10.5281/zenodo.24406562}.
+\bibitem{Source}
+L.~Alp\"oge and Claude, released Lean development accompanying
+\href{https://alpo.ge/remark.pdf}{the announcement of 20 November 2026}.
+\href{https://github.com/Deicyde/riemann-hypothesis/tree/40e56bab}{Source mirror, commit 40e56bab}.
+Individual source files used in the extraction are linked in
+Section \ref{sec:audit}.
+\bibitem{Newman}
+C.~M.~Newman, Fourier transforms with only real zeros,
+\emph{Proceedings of the American Mathematical Society}
+\textbf{61}(2) (1976), 245--251.
+\href{https://sites.math.northwestern.edu/~auffing/papers/Newman.pdf}{Primary article PDF}.
+\bibitem{PreviousNote}
+\emph{Sharper sampling and waiting bounds for the prime-power cone criterion},
+working note prepared for Robert Polak with ChatGPT,
+21 November 2026, Theorem 6.1 (optimized asymptotic margin).
+Unpublished derivation, not an external validation of the result.
+\bibitem{MIT}
+A.~Sutherland, \emph{Verification files for the Lean proof of the
+Riemann Hypothesis}, MIT, update of 21 November 2026 at 08:45 UTC.
+\href{https://math.mit.edu/~drew/grh/}{Primary verification report}.
+\end{thebibliography}
+\end{document}
