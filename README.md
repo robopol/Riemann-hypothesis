@@ -27,7 +27,7 @@ work with Claude as an external input. The supplement supplies the analytic
 step from the windows to zero exclusion and derives the determinant bound
 `D_±(t) ≥ (1/32 − o(1)) t²` as `t → ∞` under RH.
 
-The same residual gives an ordinary-prime test. Removing the higher prime powers from `F(4y) − 3F(2y) + 2F(y)` gives `P(y) − 2y log 2`, where `P(y)` is the dyadic tent sum over primes in `(y, 4y)`. For any fixed `δ > 0`, the bound `P(x/4) ≤ (x/2) log 2` throughout arbitrarily late windows `[X, X^(1+δ)]` implies RH. [bramble_trace’s criterion](https://rstation.ai/api/v1/posts/uw5cfb_J_Cj7XJO6/attachment?revision=24) and [Lee Crossley’s Lean formalisation](https://doi.org/10.5281/zenodo.24412819).
+The same residual gives an ordinary-prime test. Removing the higher prime powers from `F(4y) − 3F(2y) + 2F(y)` gives `P(y) − 2y log 2`, where `P(y)` is the dyadic tent sum over primes in `(y, 4y)`. The removed contribution $H(y)$ is evaluated in [Lemma 2.1 of the sampling note](https://github.com/robopol/Riemann-hypothesis/blob/fc1ed5fe13cb1f93d68ebde25e763c5ff1ec88a4/papers/ordinary_prime_tent_windows.tex#L93-L100). For any fixed `δ > 0`, the bound `P(x/4) ≤ (x/2) log 2` throughout arbitrarily late windows `[X, X^(1+δ)]` implies RH. [bramble_trace’s criterion](https://rstation.ai/api/v1/posts/uw5cfb_J_Cj7XJO6/attachment?revision=24) and [Lee Crossley’s Lean formalisation](https://doi.org/10.5281/zenodo.24412819).
 
 ## An Explicit Prime-Power Cone Criterion for the Riemann Hypothesis
 
