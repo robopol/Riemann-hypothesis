@@ -1,0 +1,319 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hmargin=27mm,vmargin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Testing an ordinary-prime criterion at the first primes above fourth powers},
+  pdfauthor={Robert Polak},
+  pdfsubject={A sampled short-window criterion for the Riemann hypothesis}}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\e}{\mathrm e}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\dd}{\,\mathrm d}
+
+\title{Testing an ordinary-prime criterion\\at the first primes above fourth powers}
+\author{Ing.\ Robert Polak\thanks{Correspondence:
+\href{mailto:robopol@gmail.com}{robopol@gmail.com}.}\\[0.4em]
+\small Mathematical derivations and manuscript preparation with GPT ASTRA 6.2 (OpenAI)\\
+\small Review of the underlying working note with GPT-6 Pro (OpenAI)}
+\date{21 November 2026 \quad (research note, version 1.0)}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Let \(P(y)\) be the dyadically weighted sum of \(\log p\) over primes
+between \(y\) and \(4y\), with weight one at \(2y\). We show that the
+Riemann hypothesis is equivalent to the following sign test.
+For arbitrarily large \(X\), one has \(P(p_m/4)\le (p_m/2)\log 2\)
+at every sampled prime \(p_m\in[X,X\log X]\), where \(p_m\) is the
+first prime at or above \(m^4\). A three-point difference of the
+integrated von Mangoldt residual gives the weighted prime sum and an
+explicit contribution from higher prime powers. The difference retains
+every nontrivial zeta zero. A positive xi kernel detects a zero to
+the right of the critical line inside each sufficiently late window,
+and interpolation between consecutive samples bounds the cost of
+checking the sign only on the prescribed sequence.
+\end{abstract}
+
+\section{The sign test}
+
+Throughout, \(\log\) denotes the natural logarithm. For \(v>0\) and
+\(y>0\), define
+\begin{equation}\label{eq:prime-sum}
+ w(v)=
+ \begin{cases}
+  2-2/v&1<v\le2,\\
+  4/v-1&2<v<4,\\
+  0&\text{otherwise},
+ \end{cases}
+ \qquad
+ P(y)=\sum_{\substack{y<p<4y\\ p\ {\rm prime}}}(\log p)\,w(p/y).
+\end{equation}
+The weight in \eqref{eq:prime-sum} is continuous, with \(w(1)=w(4)=0\) and \(w(2)=1\).
+Here \((y,4y)\) specifies the primes entering a single sum. An interval
+of test positions specifies how many of these sums must satisfy the bound.
+
+\begin{theorem}\label{thm:samples}
+For each positive integer \(m\), let \(p_m=\min\{p\ge m^4:p\text{ prime}\}\).
+The Riemann hypothesis (RH) is equivalent to the existence of arbitrarily
+large real \(X\) for which
+\begin{equation}\label{eq:sample-sign}
+ P(p_m/4)\le \frac{p_m}{2}\log 2
+ \qquad\text{for every }m\text{ with }X\le p_m\le X\log X .
+\end{equation}
+\end{theorem}
+
+The ordinary-prime sign test originates in the work of
+\texttt{bramble\_trace}, whose dyadic formulation includes tests at
+integer squares \cite{bramble}. Crossley's Lean theorem, in version
+1.0.4, proves one direction on real power windows. For any single
+fixed \(\delta>0\), the bound \(P(x/4)\le(x/2)\log2\) for every real
+\(x\in[X,X^{1+\delta}]\), for arbitrarily large \(X\), implies RH
+\cite{crossley}. Crossley pointed out the connection with the
+prime-power residual in his proposed addition to the research archive
+\cite{pr}. The shorter interval \([X,X\log X]\) and the sequence
+\((p_m)\) in Theorem~\ref{thm:samples} require an additional argument.
+We give it here using the xi-kernel method of \cite{windows}.
+
+\section{Removing higher powers}
+
+Let \(\Lambda(p^j)=\log p\) for \(j\ge1\), with \(\Lambda(n)=0\)
+at other positive integers, and let \(\gamma_E\) be Euler's constant.
+Write
+\begin{align*}
+ F(y)&=\sum_{n\le y}\Lambda(n)(y/n-1)-y\log y+(1+\gamma_E)y,\\
+ \Delta F(y)&=F(4y)-3F(2y)+2F(y),\qquad Q(y)=P(y)-2y\log 2 .
+\end{align*}
+
+\begin{lemma}\label{lem:powers}
+For \(y>0\),
+\begin{equation}\label{eq:exact}
+ \Delta F(y)=Q(y)+H(y),\qquad
+ H(y)=\sum_{j\ge2}\sum_p(\log p)\,w(p^j/y)\ge0 .
+\end{equation}
+As \(y\to\infty\), \(H(y)=(6\sqrt2-8+o(1))\sqrt y\).
+\end{lemma}
+\begin{proof}
+For each \(n\), the difference applied to \((y/n-1)_+\) is \(w(n/y)\),
+as follows by splitting at \(n=y,2y,4y\). The linear term cancels and
+\(\Delta(-y\log y)=-2y\log2\). Separating the primes gives
+\eqref{eq:exact}. At \(y=2\), for instance, the square \(2^2\) has
+weight one and accounts for all of \(H(2)=\log2\).
+
+For squares, the prime number theorem for
+\(\vartheta(v)=\sum_{p\le v}\log p\) and partial summation give
+\[
+ \frac{1}{\sqrt y}\sum_p(\log p)\,w(p^2/y)
+ \ \longrightarrow\ \int_1^2 w(u^2)\dd u
+ =\int_1^{\sqrt2}(2-2/u^2)\dd u+
+   \int_{\sqrt2}^{2}(4/u^2-1)\dd u
+ =6\sqrt2-8 .
+\]
+Indeed \(\vartheta(u\sqrt y)/\sqrt y\to u\) uniformly for \(1\le u\le2\),
+and \(u\mapsto w(u^2)\) has bounded variation. An exponent \(j\ge3\)
+contributes at most \((4y)^{1/3}\log(4y)\), by counting possible bases
+and using \(0\le w\le1\). There are \(O(\log(4y))\) such exponents.
+Their total is \(o(\sqrt y)\).
+\end{proof}
+
+\section{The effect of the difference on zeta zeros}
+
+Use the spectral sum from \cite{cone,windows},
+\[
+ B(t)=\sum_\rho a_\rho\e^{(\rho-1/2)t},\qquad
+ a_\rho=\frac1{\rho(1-\rho)},\qquad
+ C=B(0)=2+\gamma_E-\log(4\pi).
+\]
+Here the nontrivial zeros are counted with multiplicity and
+\(\sum_\rho |a_\rho|<\infty\). Put \(\ell=\log2\) and
+\[
+ B_\Delta(t)=2B(t+2\ell)-3\sqrt2\,B(t+\ell)+2B(t).
+\]
+The explicit formula in \cite[Section~2]{cone} gives, for \(y>1\),
+\[
+ F(y)=\sqrt y\,B(\log y)+\log(2\pi)+R(y),\qquad
+ R(y)=-\sum_{j\ge1}\frac{y^{-2j}}{2j(2j+1)}
+     =-\frac1{6y^2}+O(y^{-4}).
+\]
+Since \(1-3+2=0\), the constant \(\log(2\pi)\) cancels.
+The leading coefficient of \(\Delta R\) is
+\(-(4^{-2}-3\cdot2^{-2}+2)/6=-7/32\). Thus
+\begin{equation}\label{eq:remainder}
+ \frac{\Delta F(y)}{\sqrt y}
+ =B_\Delta(\log y)-\frac7{32}y^{-5/2}+O(y^{-9/2}).
+\end{equation}
+In the series for \(B_\Delta\), the coefficient of each zero is
+\(a_\rho M(\rho)\), with
+\begin{equation}\label{eq:multiplier}
+ M(z)=4^z-3\cdot2^z+2=(2^z-1)(2^z-2).
+\end{equation}
+In \(0<\Rea z<1\) we have \(1<|2^z|<2\). Hence \(M\) has no zero
+in the open strip, and \(|M(z)|\le12\) there. Crossley's delayed
+transform uses the symbol \(-4^{-z}M(z)\), corresponding to the
+opposite sign and the variable \(x=4y\) \cite{crossley}.
+
+\begin{lemma}\label{lem:osc}
+Fix a zero \(\rho_*\) with \(\alpha=\Rea\rho_*-1/2>0\).
+There is \(b_*>0\) such that for every sufficiently large \(T\)
+some \(t\) satisfies
+\begin{equation}\label{eq:osc}
+ |t-T|\le R_T=\tfrac12\log(T/2),\qquad B_\Delta(t)\ge b_*\e^{\alpha T}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+We recall the ingredients of \cite[Lemma~2.1]{windows} to justify its
+use after taking the difference. The positive, integrable kernel \(K\)
+has bilateral transform \(\xi(1/2+z)\). For a zero \(\rho_*\) of
+multiplicity \(r\) the isolating kernel \(h_r\) satisfies
+\(|h_r|\le LK\) for a constant \(L>0\), and its transform is
+\(\xi(1/2+z)/(z-\lambda_*)^r\), where \(\lambda_*=\rho_*-1/2\).
+This transform has a nonzero value at \(\lambda_*\) and vanishes at
+every other shifted zero.
+
+The coefficients modified by \eqref{eq:multiplier} are absolutely summable. Conjugate pairing
+makes \(B_\Delta\) real, and \(|B_\Delta(v)|\le C_0\e^{|v|/2}\)
+on the real line for some \(C_0>0\). Termwise integration therefore
+gives
+\[
+ \int_{\mathbb R} K(u)B_\Delta(T+u)\dd u=0,\qquad
+ \int_{\mathbb R} h_r(u)B_\Delta(T+u)\dd u
+    =M(\rho_*)A_*\e^{\lambda_*T},\qquad A_*\ne0 .
+\]
+In the second equality the \(r\) contributions from \(\rho_*\) add.
+Since \(K\) is positive, the integrals of the positive and negative
+parts against \(K\) are equal. Each is at least
+\(|M(\rho_*)A_*|\e^{\alpha T}/(2L)\).
+The bound \(K(u)\le C_1\exp(9|u|/2-\pi\e^{2|u|})\) gives
+\[
+ \int_{|u|>R_T}K(u)|B_\Delta(T+u)|\dd u
+ =O\!\left(T^{3/2}\e^{-(\pi-1)T/2}\right)=o(1)
+\]
+by the same integral estimate as in \cite{windows}. Dividing the
+remaining positive mass by \(\int_{\mathbb R}K(u)\dd u\) proves
+\eqref{eq:osc}.
+\end{proof}
+
+\section{Short windows and interpolation}
+
+\begin{proposition}\label{prop:windows}
+Fix \(0\le s<1/2\). Suppose there is a constant \(A\ge0\) such that
+for arbitrarily large \(Z\) one has
+\[
+ Q(y)\le A y^{1/2+s}\qquad(Z\le y\le Z\log Z).
+\]
+Then every nontrivial zeta zero has real part at most \(1/2+s\).
+\end{proposition}
+\begin{proof}
+By \eqref{eq:exact}, \eqref{eq:remainder} and \(H(y)=O(\sqrt y)\),
+there is a constant \(C_s>0\) such that on each such window,
+for \(Z\) sufficiently large, \(B_\Delta(t)\le C_s\e^{st}\)
+at every \(t=\log y\). Suppose a zero has \(\alpha>s\).
+Choose \(U=\log Z\) and \(T=U+\frac12\log U\). Because \(T\le2U\)
+eventually, \([T-R_T,T+R_T]\subseteq[U,U+\log U]\).
+At the point from Lemma~\ref{lem:osc} we would have
+\[
+ b_*\e^{\alpha T}\le C_s\e^{sT}(T/2)^{s/2}.
+\]
+This fails as the window starts tend to infinity.
+\end{proof}
+
+\begin{lemma}\label{lem:forward}
+Assuming RH, \(Q(y)<0\) for all sufficiently large real \(y\).
+\end{lemma}
+\begin{proof}
+Under RH all \(a_\rho\) are positive and sum to \(C\).
+On the critical line \(|M(\rho)|\le4+3\sqrt2\). Consequently
+\(|B_\Delta(t)|\le(4+3\sqrt2)C\) uniformly. Lemma~\ref{lem:powers}
+and \eqref{eq:remainder} give
+\[
+ \limsup_{y\to\infty}\frac{Q(y)}{\sqrt y}
+ \le (4+3\sqrt2)C-(6\sqrt2-8)<-0.1045 .
+\]
+The strict inequality follows by substituting the displayed value of \(C\).
+\end{proof}
+
+In particular the sign on complete real windows \([X,X\log X]\) in
+the variable \(x=4y\) is equivalent to RH. The forward implication
+uses Lemma~\ref{lem:forward}. Conversely, taking \(Z=X/4\) gives the
+sign on \([Z,Z\log Z]\), so Proposition~\ref{prop:windows} with \(s=0\)
+and the functional equation give RH.
+
+\begin{proof}[Proof of Theorem~\ref{thm:samples}]
+Lemma~\ref{lem:forward} proves necessity. For sufficiency put
+\(a_m=p_m/4\). The prime gap estimate of Baker, Harman and Pintz
+\cite{bhp} gives \(p_m=m^4+O(m^{2.1})\) as in \cite{cone}.
+Hence the sequence is eventually strictly increasing and its gaps
+are \(O(a_m^{3/4})\). We first estimate the interpolation error
+between two consecutive sample points \(a,b\), with \(h=b-a\).
+
+As a function of \(y\), \(Q(y)\) is continuous and piecewise affine.
+For a prime \(p\) the three slope jumps occur at \(p/4,p/2,p\) and
+are \(4,-6,2\), respectively, in units of \((\log p)/p\).
+Within \([a,b]\) the corresponding primes belong to
+\([4a,4b]\), \([2a,2b]\), or \([a,b]\). Each interval contains
+\(O(h+1)\) integers, each with \((\log p)/p=O((\log a)/a)\).
+The sum of the absolute jumps is thus \(O((h+1)(\log a)/a)\).
+The chord slope is an average of the one-sided slopes on the open
+pieces. Integrating their difference from this average bounds the
+absolute error from the chord by
+\[
+ O\!\left(h(h+1)\frac{\log a}{a}\right)=O(\sqrt a\log a).
+\]
+When \(Q(a),Q(b)\le0\), the chord is nonpositive, so
+\(Q(y)\le C_2\sqrt y\log y\) for \(a\le y\le b\), with \(C_2\)
+independent of the samples.
+
+In a window satisfying \eqref{eq:sample-sign}, the admissible \(a_m\)
+lie in \([Z,Z\log(4Z)]\), where \(Z=X/4\). The distances from the
+ends to the nearest samples inside the window are respectively
+\(O(Z^{3/4})\) and \(O((Z\log(4Z))^{3/4})\), by the gap bound.
+For \(U=\log Z\) and \(T=U+\frac12\log U\) one has
+\[
+ \frac{\e^{T-R_T}}{Z}\longrightarrow\sqrt2,\qquad
+ \frac{\e^{T+R_T}}{Z\log Z}\longrightarrow\frac1{\sqrt2}.
+\]
+Thus \([\e^{T-R_T},\e^{T+R_T}]\) lies between the first and last
+sample of the window for large \(Z\). Interpolation, \eqref{eq:exact}
+and \eqref{eq:remainder} give \(B_\Delta(t)\le C_3(1+t)\) throughout
+\([T-R_T,T+R_T]\). A fixed zero with \(\alpha>0\) would give
+\(b_*\e^{\alpha T}\le C_3(1+T+R_T)\) on arbitrarily late windows.
+This contradiction excludes every zero to the right of the line,
+and the functional equation proves RH.
+\end{proof}
+
+The arithmetic question is whether windows satisfying
+\eqref{eq:sample-sign} can be constructed directly from the primes.
+Theorem~\ref{thm:samples} establishes the equivalence. The
+shorter-window and sampled statements in this note are written
+mathematical proofs. Crossley's Lean declaration cited above
+formalises the real power-window implication.
+
+\begin{thebibliography}{9}
+\bibitem{bramble} \texttt{bramble\_trace}, \emph{Reading Alp\"oge's
+proposed proof of RH from theta lifts to prime sums}, rStation, 2026.
+\href{https://rstation.ai/r/riemann_hypothesis/posts/100}{Author's discussion}
+and \href{https://rstation.ai/api/v1/posts/uw5cfb_J_Cj7XJO6/attachment?revision=24}{revision 24}.
+\bibitem{crossley} L.~Crossley, \emph{An ordinary-prime window criterion
+for the Riemann hypothesis}, version 1.0.4, 2026.
+\href{https://doi.org/10.5281/zenodo.24412819}{Zenodo}.
+\href{https://github.com/leecrossley/prime-window-rh-criterion/blob/v1.0.4/PrimeWindow.lean#L195-L211}{Lean declaration}.
+\bibitem{pr} L.~Crossley, \emph{Relate the short-window bound to the
+ordinary-prime test}, 2026.
+\href{https://github.com/robopol/Riemann-hypothesis/pull/3}{RoboPol research archive, PR 3}.
+\bibitem{cone} R.~Polak, \emph{An Explicit Prime-Power Cone Criterion for
+the Riemann Hypothesis}, version 1.2, 2026.
+\href{https://doi.org/10.5281/zenodo.24406562}{Zenodo}.
+\bibitem{windows} R.~Polak, \emph{Importing arithmetic windows into the
+prime-power cone}, version 1.0, 2026.
+\href{https://doi.org/10.5281/zenodo.24415724}{Zenodo}.
+\bibitem{bhp} R.~C.~Baker, G.~Harman and J.~Pintz,
+The difference between consecutive primes, II,
+\emph{Proc. London Math. Soc.} (3) \textbf{83} (2001), 532--562.
+\href{https://doi.org/10.1112/plms/83.3.532}{DOI}.
+\end{thebibliography}
+\end{document}

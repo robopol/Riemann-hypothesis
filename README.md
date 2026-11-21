@@ -5,9 +5,29 @@ adds a new finite computer-assisted verification of Robin's inequality,
 together with its source, reproducibility programs, interval certificates,
 recorded reports, and exploratory prime-power diagnostics.
 
-The August study proves Robin's inequality on a finite range. The two November
-preprints develop a prime-power criterion for RH and connect it to bounds for
-prime sums on short multiplicative intervals.
+The August study proves Robin's inequality on a finite range. The November
+papers develop a prime-power criterion for RH, connect arithmetic windows
+to zeta zeros, and study an ordinary-prime sign test at sparse samples.
+
+## Testing an ordinary-prime criterion at the first primes above fourth powers
+
+Robert Polak · research note, version 1.0 · 21 November 2026
+
+[Read the research note (PDF)](papers/ordinary_prime_tent_windows.pdf) · [LaTeX source of the note](papers/ordinary_prime_tent_windows.tex)
+
+The dyadic sign test of bramble_trace uses a weighted sum $P(y)$ over the
+ordinary primes between $y$ and $4y$. Lee Crossley formalised the implication
+to RH on complete real power windows and pointed out the connection with
+our residual. [Original discussion](https://rstation.ai/r/riemann_hypothesis/posts/100) ·
+[Crossley's Lean theorem (v1.0.4)](https://github.com/leecrossley/prime-window-rh-criterion/blob/v1.0.4/PrimeWindow.lean#L195-L211) · [PR #3](https://github.com/robopol/Riemann-hypothesis/pull/3)
+
+The exact identity is $F(4y)-3F(2y)+2F(y)=P(y)-2y\log 2+H(y)$, where
+$H(y)$ is the nonnegative contribution from higher prime powers.
+Using the xi kernel and interpolation, the note proves a sampled equivalence.
+Let $p_m$ be the first prime at or above $m^4$. RH holds if and only if
+arbitrarily large $X$ satisfy $P(p_m/4)\le(p_m/2)\log 2$ at **every**
+sample $p_m$ in $[X,X\log X]$. Proving the existence of such windows
+directly from the primes remains an arithmetic problem.
 
 ## Importing arithmetic windows into the prime-power cone
 
