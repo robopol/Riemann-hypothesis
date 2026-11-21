@@ -5,8 +5,35 @@ adds a new finite computer-assisted verification of Robin's inequality,
 together with its source, reproducibility programs, interval certificates,
 recorded reports, and exploratory prime-power diagnostics.
 
-The new theorem is explicitly finite. Neither it nor the exploratory material
-proves Robin's inequality for all integers or proves the Riemann Hypothesis.
+The August study proves Robin's inequality on a finite range. The November
+preprint develops an equivalent criterion for the Riemann hypothesis.
+
+## An Explicit Prime-Power Cone Criterion for the Riemann Hypothesis
+
+Robert Polak · version 1.2 · 20 November 2026
+
+[Read the PDF](papers/Prime_Power_Cone_Criterion_en.pdf) · [Zenodo record and TeX source](https://doi.org/10.5281/zenodo.24406562)
+
+The preprint builds on the August study by expressing the Riemann hypothesis
+(RH) in terms of a determinant computed from two prime-power sums.
+
+- **Criterion and bound.** RH holds exactly when the determinant immediately
+  after each sufficiently large prime power is positive. Under RH, both
+  one-sided versions are at least `0.006 t²` for `t = log x ≥ 11`. Interval
+  arithmetic verifies positivity after all 6,148 prime powers up to 60,000.
+- **Gaps between samples.** Let `p_m` be the first prime at or above `m⁴`.
+  Divide the determinant by `√p_m`. For any fixed `0 < c ≤ 2B(0)` and block
+  length `N`, the preprint gives an unconditional bound of
+  `m exp(O_{c,N}((log log m)²))` on the starting index of the next block of
+  `N` samples at or above `c`. For every fixed positive threshold, there are
+  arbitrarily long blocks below it. RH is equivalent to a
+  subpower bound on the wait for a positive sample. For every fixed `δ` in
+  `(0, 1)`, a positive sample must occur within `H_δ m^δ` indices of every
+  sufficiently large starting index `m`, for some constant `H_δ`.
+- **Comparison with the Lean argument.** The paper identifies the shared
+  von Mangoldt sum and explains what a theta-lift window estimate gives for
+  the determinant. A bound for the signed combination of four shifted
+  errors is still needed for the proposed short-interval transfer.
 
 ## Latest finite verification (5 August 2026)
 
@@ -70,7 +97,7 @@ Zenodo record for the earlier corrected-status package:
 ## Verification material
 
 - [`verification/finite_robin_prime_power/`](verification/finite_robin_prime_power/)
-  Complete computational companion to the latest paper. It contains the finite
+  Complete computational companion to the August study. It contains the finite
   interval certifiers, archived JSON reports, manifest/hash validator,
   exploratory prime-power programs, analytic investigation notes, regression
   tests, and figure generator. Its own README separates rigorous finite
@@ -92,7 +119,7 @@ an infinite conclusion.
 
 ## Reproduction
 
-Run the non-destructive integrity audit for the latest paper from the
+Run the non-destructive integrity audit for the August study from the
 repository root:
 
 ```powershell
