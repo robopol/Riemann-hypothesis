@@ -5,8 +5,27 @@ adds a new finite computer-assisted verification of Robin's inequality,
 together with its source, reproducibility programs, interval certificates,
 recorded reports, and exploratory prime-power diagnostics.
 
-The August study proves Robin's inequality on a finite range. The November
-preprint develops an equivalent criterion for the Riemann hypothesis.
+The August study proves Robin's inequality on a finite range. The two November
+preprints develop a prime-power criterion for RH and connect it to bounds for
+prime sums on short multiplicative intervals.
+
+## Importing arithmetic windows into the prime-power cone
+
+Robert Polak · version 1.0 · 21 November 2026 · supplement to the 20 November preprint below
+
+[PDF](papers/rh_theta_window_bridge.pdf) · [LaTeX source](papers/rh_theta_window_bridge.tex) · [Zenodo record (DOI 10.5281/zenodo.24415724)](https://zenodo.org/records/24415724)
+
+How much control of the prime sum is enough to exclude a zeta zero? Fix
+`0 ≤ s < 1/2`. If the integrated von Mangoldt residual satisfies
+`F(x) ≤ C_s x^(1/2+s)` throughout `[Z, Z log Z]` for arbitrarily large `Z`,
+with the same constant `C_s`, every nontrivial zero has real part at most
+`1/2 + s`. The proof uses the positive kernel of the completed zeta function
+to isolate a single zero, including its multiplicity.
+
+The application to RH takes the arithmetic window estimate from Alpöge’s
+work with Claude as an external input. The supplement supplies the analytic
+step from the windows to zero exclusion and derives the determinant bound
+`D_±(t) ≥ (1/32 − o(1)) t²` as `t → ∞` under RH.
 
 ## An Explicit Prime-Power Cone Criterion for the Riemann Hypothesis
 
