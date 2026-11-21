@@ -1,0 +1,17 @@
+{
+  "certified": true,
+  "integer_endpoint": 60000,
+  "post_event_count": 6148,
+  "decimal_precision": 50,
+  "gamma_harmonic_terms": 100000,
+  "minima_of_post_event_lower_endpoints": {
+    "phi": {
+      "lower": "0.027766063040106382580740283487538331576733872759942",
+      "q": 3109
+    },
+    "determinant": {
+      "lower": "0.078982826888926468113577139171396866420028245932969",
+      "q": 2
+    }
+  }
+}
